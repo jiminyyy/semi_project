@@ -7,7 +7,7 @@ public interface InterMemberDAO {
 	
 	//MemberVO loginOKmemberInfo(String userid, String pwd) throws SQLException;
 
-	//boolean idDuplicateCheck(String userid) throws SQLException;
+	int idDuplicateCheck(String userid) throws SQLException;
 
 	int registerMember(MemberVO membervo) throws SQLException;
 /*

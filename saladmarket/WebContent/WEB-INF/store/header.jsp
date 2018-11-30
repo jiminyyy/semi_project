@@ -77,6 +77,8 @@
 								<li class="active"><a href="index.html">Home</a></li>
 								<li><a href="<%= CtxPath %>/login.do">로그인</a></li>
 								<li><a href="">로그아웃</a></li>
+								
+								<%-- 181130 회원가입 만드는 중... --%>
 								<li><a href="<%= CtxPath %>/memberRegister.do">회원가입</a></li>
 								<li><a href=""></a></li>
 								<li class="has-dropdown">

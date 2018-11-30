@@ -28,6 +28,14 @@ $(document).ready(function(){
 	$("#error_passwd").hide();
 	$("#userid").focus();
 	
+	$(":input").keydown(function(event){
+		
+		if(event.keyCode == 13) {
+			$(this).next().focus();
+		}
+		
+	});
+	
 	$(".requiredInfo").each(function(){
 		
 		$(this).blur(function(){ //blur -> 포커스를 잃을 때
@@ -46,20 +54,49 @@ $(document).ready(function(){
 			});
 			
 	});
-	
-	$("#userid").bind("keyup", function(){
-		alert("먼저 아이디 중복확인을 하세요");
-		$(this).val("");
-	});
+	/* *********************************************************************************** 중복확인 버튼 클릭여부 확인 처리해야함
+	$("#userid").blur(function(){
+		alert("아이디 중복확인을 하세요");
 		
-	//////////////////// ID 중복확인 팝업창 생성
+	});
+	*/
 	$("#idcheck").click(function(){
-		var url = "idDuplicateCheck.do";
-		window.open(url, "idcheck", 
-						 "left= 500px, top= 100px, width= 300px, height= 230px" );
-		// 기본적으로 아무런 조건없이 그냥 어떤 창을 띄우면 method는 GET방식으로 움직인다.
+		
+		if($("#userid").val().trim() == "") {
+			alert("ID를 입력하세요!!");
+			return;
+		}
+		
+		var form_data = {userid:$("#userid").val()};
+		$.ajax({
+			url:"idDuplicateCheck.do",
+			type:"POST",
+			data:form_data,
+		    dataType:"JSON",
+		    success:function(json){
+		    	
+		    	if(json.n == 0) {
+		    		$("#id_error").empty().html("ID로 사용가능합니다.");
+		    	}
+		    	else if(json.n == 1) {
+		    		$("#id_error").empty().html("이미 사용중인 ID입니다.");
+		    	}
+		    	
+		    },
+		    error: function(request, status, error){
+				alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+			}
+		});
+		
+	});
 	
-	}); // end of $("#idcheck").click(function(){
+	/*
+	181130
+	아이디 입력 후 중복확인 작업 없이 다음 창으로 갈 경우 alert
+	중복확인 작업 시 id사용불가 시 나머지 input창 비활성 id창 empty focus
+	id사용가능 시 다음 input focus
+	
+	*/
 		
 	$("#pwd").blur(function(){
 		var passwd = $(this).val();
@@ -220,7 +257,7 @@ function goRegister(event) {
 				<div class="col-md-6">
 					<label for="userid">아이디</label>
 					<input type="text" id="userid" name="userid" class="form-control requiredInfo" placeholder="ID" required/>
-					<span class="error">아이디란은 필수입력 사항입니다.</span>
+					<span id="id_error" class="error">아이디란은 필수입력 사항입니다.</span>
 				</div>
 				
 				<%-- 아이디 중복체크 --%>
