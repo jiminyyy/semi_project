@@ -29,14 +29,12 @@ public class IdDuplicateCheckAction extends AbstractController {
 			String str_json = jsonObj.toString();
 			
 			req.setAttribute("userid", userid);
-			req.setAttribute("str_json", str_json);
-			
-			//req.setAttribute("str_json", str_json);
+			req.setAttribute("json", str_json);
 
 		}
 		
 		super.setRedirect(false);
-		super.setViewPage("/WEB-INF/store/member/join.jsp"); // 보여줄 페이지 설정
+		super.setViewPage("/WEB-INF/store/member/idCheck.jsp"); // 보여줄 페이지 설정
 
 	}
 

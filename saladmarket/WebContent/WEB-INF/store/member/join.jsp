@@ -25,13 +25,14 @@ $(document).ready(function(){
 	var now = new Date();
 	
 	$(".error").hide();
+	$("#error_id").hide();
 	$("#error_passwd").hide();
 	$("#userid").focus();
 	
-	$(":input").keydown(function(event){
+	$(".requiredInfo").keydown(function(event){
 		
 		if(event.keyCode == 13) {
-			$(this).next().focus();
+			return false;
 		}
 		
 	});
@@ -54,12 +55,7 @@ $(document).ready(function(){
 			});
 			
 	});
-	/* *********************************************************************************** 중복확인 버튼 클릭여부 확인 처리해야함
-	$("#userid").blur(function(){
-		alert("아이디 중복확인을 하세요");
-		
-	});
-	*/
+	
 	$("#idcheck").click(function(){
 		
 		if($("#userid").val().trim() == "") {
@@ -72,31 +68,24 @@ $(document).ready(function(){
 			url:"idDuplicateCheck.do",
 			type:"POST",
 			data:form_data,
-		    dataType:"JSON",
+		    dataType:"json",
 		    success:function(json){
 		    	
 		    	if(json.n == 0) {
-		    		$("#id_error").empty().html("ID로 사용가능합니다.");
+		    		$("#error_id").empty();
+		    		$("#good_id").empty().html("ID로 사용가능합니다.");
 		    	}
 		    	else if(json.n == 1) {
-		    		$("#id_error").empty().html("이미 사용중인 ID입니다.");
+		    		$("#good_id").empty();
+		    		$("#error_id").empty().html("이미 사용중인 ID입니다.");
+		    		return;
 		    	}
-		    	
 		    },
 		    error: function(request, status, error){
 				alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
 			}
 		});
-		
 	});
-	
-	/*
-	181130
-	아이디 입력 후 중복확인 작업 없이 다음 창으로 갈 경우 alert
-	중복확인 작업 시 id사용불가 시 나머지 input창 비활성 id창 empty focus
-	id사용가능 시 다음 input focus
-	
-	*/
 		
 	$("#pwd").blur(function(){
 		var passwd = $(this).val();
@@ -183,10 +172,17 @@ $(document).ready(function(){
 		
 	}); //end of $("#phone").blur(function(){
 		
+	/* 181202 우편번호찾기 누르기 전에 에러메시지가 안떴으면 좋겠다...	
+	$("#postnum").focus(function(){
+		
+	
+	});
+	 */	
+	 
 	$("#zipcodeSearch").click(function(){
 		new daum.Postcode({
 				oncomplete: function(data) {
-				    $("#postnum").val(data.postcode);
+				    $("#postnum").val(data.zonecode);
 				    $("#addr1").val(data.address); 
 				    $("#addr2").focus();
 				}
@@ -211,6 +207,17 @@ $(document).ready(function(){
 	
 function goRegister(event) {
 
+	
+	if ($("#good_id").val().trim() == null && $("#error_id").val().trim() == null){		
+		alert("ID 중복확인 버튼을 눌러주세요!!")
+		return;
+	}
+	
+	else if ($("#good_id").val().trim() == null){		
+		alert("새로운 ID를 입력하세요!!")
+		return;
+	}
+	
 	if (!$("input:checkbox[id=agree]").is(":checked")) {
 		alert("이용약관에 동의해주세요!!")
 		return;
@@ -256,8 +263,10 @@ function goRegister(event) {
 			
 				<div class="col-md-6">
 					<label for="userid">아이디</label>
-					<input type="text" id="userid" name="userid" class="form-control requiredInfo" placeholder="ID" required/>
-					<span id="id_error" class="error">아이디란은 필수입력 사항입니다.</span>
+					<input type="text" id="userid" name="userid" class="form-control requiredInfo userid" placeholder="ID" required/>
+					<span class="error">아이디란은 필수입력 사항입니다.</span>
+					<span id="good_id"></span>
+					<span id="error_id"></span> 
 				</div>
 				
 				<%-- 아이디 중복체크 --%>
@@ -305,7 +314,7 @@ function goRegister(event) {
             <div class="form-group">   
             	<div class="col-md-6">
 					<label for="phone">연락처</label>
-					<input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number" required/>
+					<input type="text" id="phone" name="phone" class="form-control requiredInfo" placeholder="Phone Number" required/>
 					<span class="error error_hp">휴대폰 형식이 아닙니다.</span>
                </div>   
             </div>
@@ -313,7 +322,7 @@ function goRegister(event) {
             <div class="form-group">
 				<div class="col-md-4">
 					<label for="postnum">우편번호</label>
-					<input type="text" id="postnum" name="postnum" class="form-control" placeholder="PostNum" required/>
+					<input type="text" id="postnum" name="postnum" class="form-control requiredInfo" placeholder="PostNum" required/>
 					<span class="error error_post">우편번호 형식이 아닙니다.</span>
 				</div>
 				<%-- 우편번호찾기 버튼 --%>
@@ -327,10 +336,10 @@ function goRegister(event) {
             <div class="col-md-6">
 				<div class="form-group">
 					<label for="fname">주소</label>
-					<input type="text" id="addr1" name="addr1" class="form-control address" placeholder="Enter Your Address" required/>
+					<input type="text" id="addr1" name="addr1" class="form-control requiredInfo address" placeholder="Enter Your Address" required/>
 				</div>
 				<div class="form-group">
-					<input type="text" id="addr2" name="addr2" class="form-control address" placeholder="Second Address" required/>
+					<input type="text" id="addr2" name="addr2" class="form-control requiredInfo address" placeholder="Second Address" required/>
 					<span class="error">주소를 입력하세요.</span>
 				</div>
 			</div>
@@ -338,10 +347,10 @@ function goRegister(event) {
                <div class="form-group">
                <div class="col-md-4">
                   <label for="postnum">생년월일</label>
-                  <input type="number" id="birthyyyy"name="birthyyyy" class="form-control" min="1950" max="2050" step="1" value="1995" required/>               
+                  <input type="number" id="birthyyyy"name="birthyyyy" class="form-control requiredInfo" min="1950" max="2050" step="1" value="1995" required/>               
                </div>
                <div class="col-md-3" style="margin-top: 4%">
-                  <select id="birthmm" name="birthmm" class="form-control">
+                  <select id="birthmm" name="birthmm" class="form-control requiredInfo">
                      <option value ="01">01</option>
                      <option value ="02">02</option>
                      <option value ="03">03</option>
@@ -357,7 +366,7 @@ function goRegister(event) {
                   </select> 
                </div>
                <div class="col-md-3" style="margin-top: 4%">
-                  <select id="birthdd" name="birthdd" class="form-control">
+                  <select id="birthdd" name="birthdd" class="form-control requiredInfo">
 	                  <option value ="01">01</option>
 	                  <option value ="02">02</option>
 	                  <option value ="03">03</option>

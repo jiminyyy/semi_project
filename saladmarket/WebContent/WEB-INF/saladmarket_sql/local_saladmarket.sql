@@ -1,13 +1,13 @@
 show user;
--- USERì´(ê°€) "SALADMARKET"ìž…ë‹ˆë‹¤.
+-- USERÀÌ(°¡) "SALADMARKET"ÀÔ´Ï´Ù.
 
 
--- íšŒì› ë“±ê¸‰(member_level) í…Œì´ë¸” ìƒì„±; 1~3ë“±ê¸‰
+-- È¸¿ø µî±Þ(member_level) Å×ÀÌºí »ý¼º; 1~3µî±Þ
 create table member_level 
-(lvnum       number         not null -- ë“±ê¸‰ë²ˆí˜¸; 1, 2, 3
-,lvname      varchar2(100)  not null -- ë“±ê¸‰ëª…; bronze, silver, gold
-,lvbenefit   clob           not null -- ë“±ê¸‰í˜œíƒ
-,lvcontents  clob           not null -- ë“±ê¸‰ì¡°ê±´ë‚´ìš©
+(lvnum       number         not null -- µî±Þ¹øÈ£; 1, 2, 3
+,lvname      varchar2(100)  not null -- µî±Þ¸í; bronze, silver, gold
+,lvbenefit   clob           not null -- µî±ÞÇýÅÃ
+,lvcontents  clob           not null -- µî±ÞÁ¶°Ç³»¿ë
 ,constraint  PK_level primary key (lvnum)
 );
   
@@ -20,27 +20,27 @@ nocycle
 nocache;
 
 insert into member_level 
-values(seq_member_level_lvnum.nextval, 'bronze', 'íšŒì›ê°€ìž…ì¿ í°(ìµœëŒ€ 5000ì› í• ì¸), í• ì¸ì¿ í° 10%(1ë§Œì› ì´ìƒ êµ¬ë§¤ì‹œ ìµœëŒ€ 3000ì›)', 'íšŒì›ê°€ìž…ì‹œ'); 
+values(seq_member_level_lvnum.nextval, 'bronze', 'È¸¿ø°¡ÀÔÄíÆù(ÃÖ´ë 5000¿ø ÇÒÀÎ), ÇÒÀÎÄíÆù 10%(1¸¸¿ø ÀÌ»ó ±¸¸Å½Ã ÃÖ´ë 3000¿ø)', 'È¸¿ø°¡ÀÔ½Ã'); 
 
 insert into member_level 
-values(seq_member_level_lvnum.nextval, 'silver', 'íšŒì›ê°€ìž…ì¿ í°(ìµœëŒ€ 5000ì› í• ì¸), í• ì¸ì¿ í° 10%(1ë§Œì› ì´ìƒ êµ¬ë§¤ì‹œ ìµœëŒ€ 3000ì›), í• ì¸ì¿ í° 15%(1ë§Œ5ì²œì› ì´ìƒ êµ¬ë§¤ì‹œ ìµœëŒ€ 5000ì›)', '10ë§Œì› ì´ìƒ êµ¬ë§¤ì‹œ'); 
+values(seq_member_level_lvnum.nextval, 'silver', 'È¸¿ø°¡ÀÔÄíÆù(ÃÖ´ë 5000¿ø ÇÒÀÎ), ÇÒÀÎÄíÆù 10%(1¸¸¿ø ÀÌ»ó ±¸¸Å½Ã ÃÖ´ë 3000¿ø), ÇÒÀÎÄíÆù 15%(1¸¸5Ãµ¿ø ÀÌ»ó ±¸¸Å½Ã ÃÖ´ë 5000¿ø)', '10¸¸¿ø ÀÌ»ó ±¸¸Å½Ã'); 
 
 insert into member_level 
-values(seq_member_level_lvnum.nextval, 'gold', 'íšŒì›ê°€ìž…ì¿ í°(ìµœëŒ€ 5000ì› í• ì¸), í• ì¸ì¿ í° 10%(1ë§Œì› ì´ìƒ êµ¬ë§¤ì‹œ ìµœëŒ€ 3000ì›), í• ì¸ì¿ í° 15%(1ë§Œ5ì²œì› ì´ìƒ êµ¬ë§¤ì‹œ ìµœëŒ€ 5000ì›), í• ì¸ì¿ í° 20%(2ë§Œì› ì´ìƒ êµ¬ë§¤ì‹œ ìµœëŒ€ 7000ì›), ë¬´ë£Œë°°ì†¡', '30ë§Œì› ì´ìƒ êµ¬ë§¤ì‹œ');  
+values(seq_member_level_lvnum.nextval, 'gold', 'È¸¿ø°¡ÀÔÄíÆù(ÃÖ´ë 5000¿ø ÇÒÀÎ), ÇÒÀÎÄíÆù 10%(1¸¸¿ø ÀÌ»ó ±¸¸Å½Ã ÃÖ´ë 3000¿ø), ÇÒÀÎÄíÆù 15%(1¸¸5Ãµ¿ø ÀÌ»ó ±¸¸Å½Ã ÃÖ´ë 5000¿ø), ÇÒÀÎÄíÆù 20%(2¸¸¿ø ÀÌ»ó ±¸¸Å½Ã ÃÖ´ë 7000¿ø), ¹«·á¹è¼Û', '30¸¸¿ø ÀÌ»ó ±¸¸Å½Ã');  
 
 commit;
 
 select *
-from coupon
+from coupon;
 
--- ì¿ í°(coupon) í…Œì´ë¸” ìƒì„± 
+-- ÄíÆù(coupon) Å×ÀÌºí »ý¼º 
 create table coupon 
-(cpnum          number not null             -- ì¿ í°ë²ˆí˜¸ 
-,cpname         varchar2(100) not null      -- ì¿ í°ëª… 
-,discountper    number not null         -- í• ì¸ìœ¨
-,cpstatus        number  default 1 not null         -- ì¿ í° ì‚¬ìš© ìƒíƒœ; 0:ì‚¬ìš©ë¨ 1:ë¯¸ì‚¬ìš©
-,cpusemoney   number not null           -- ì¿ í° ì‚¬ìš© ì¡°ê±´; ex. 1ë§Œì› ì´ìƒ ì‚¬ìš©ì‹œ ~~
-,cpuselimit      number not null           -- ì¿ í° í• ì¸ê¸ˆì•¡ ì œí•œ; ex. ìµœëŒ€ 5000ì›
+(cpnum          number not null             -- ÄíÆù¹øÈ£ 
+,cpname         varchar2(100) not null      -- ÄíÆù¸í 
+,discountper    number not null         -- ÇÒÀÎÀ²
+,cpstatus        number  default 1 not null         -- ÄíÆù »ç¿ë »óÅÂ; 0:»ç¿ëµÊ 1:¹Ì»ç¿ë
+,cpusemoney   number not null           -- ÄíÆù »ç¿ë Á¶°Ç; ex. 1¸¸¿ø ÀÌ»ó »ç¿ë½Ã ~~
+,cpuselimit      number not null           -- ÄíÆù ÇÒÀÎ±Ý¾× Á¦ÇÑ; ex. ÃÖ´ë 5000¿ø
 ,constraint PK_coupon primary key(cpnum)
 ,constraint CK_coupon_cpstatus check( cpstatus in(0, 1) )
 );
@@ -53,42 +53,42 @@ nominvalue
 nocycle
 nocache;
 
--- íšŒì›ê°€ìž…ì¿ í°(ìµœëŒ€ 5000ì› í• ì¸), í• ì¸ì¿ í° 10%(1ë§Œì› ì´ìƒ êµ¬ë§¤ì‹œ ìµœëŒ€ 3000ì›), í• ì¸ì¿ í° 15%(1ë§Œ5ì²œì› ì´ìƒ êµ¬ë§¤ì‹œ ìµœëŒ€ 5000ì›), í• ì¸ì¿ í° 20%(2ë§Œì› ì´ìƒ êµ¬ë§¤ì‹œ ìµœëŒ€ 7000ì›)
+-- È¸¿ø°¡ÀÔÄíÆù(ÃÖ´ë 5000¿ø ÇÒÀÎ), ÇÒÀÎÄíÆù 10%(1¸¸¿ø ÀÌ»ó ±¸¸Å½Ã ÃÖ´ë 3000¿ø), ÇÒÀÎÄíÆù 15%(1¸¸5Ãµ¿ø ÀÌ»ó ±¸¸Å½Ã ÃÖ´ë 5000¿ø), ÇÒÀÎÄíÆù 20%(2¸¸¿ø ÀÌ»ó ±¸¸Å½Ã ÃÖ´ë 7000¿ø)
 insert into coupon(cpnum, cpname, discountper, cpstatus, cpusemoney, cpuselimit)
-values(seq_coupon_cpnum.nextval, 'íšŒì›ê°€ìž…ì¿ í°', 100, default, 0, 5000);
+values(seq_coupon_cpnum.nextval, 'È¸¿ø°¡ÀÔÄíÆù', 100, default, 0, 5000);
 
 insert into coupon(cpnum, cpname, discountper, cpstatus, cpusemoney, cpuselimit)
-values(seq_coupon_cpnum.nextval, 'í• ì¸ì¿ í° 10%', 10, default, 10000, 3000);
+values(seq_coupon_cpnum.nextval, 'ÇÒÀÎÄíÆù 10%', 10, default, 10000, 3000);
 
 insert into coupon(cpnum, cpname, discountper, cpstatus, cpusemoney, cpuselimit)
-values(seq_coupon_cpnum.nextval, 'í• ì¸ì¿ í° 15%', 15, default, 15000, 5000);
+values(seq_coupon_cpnum.nextval, 'ÇÒÀÎÄíÆù 15%', 15, default, 15000, 5000);
 
 insert into coupon(cpnum, cpname, discountper, cpstatus, cpusemoney, cpuselimit)
-values(seq_coupon_cpnum.nextval, 'í• ì¸ì¿ í° 20%', 20, default, 20000, 7000);
+values(seq_coupon_cpnum.nextval, 'ÇÒÀÎÄíÆù 20%', 20, default, 20000, 7000);
 
 insert into coupon(cpnum, cpname, discountper, cpstatus, cpusemoney, cpuselimit)
-values(seq_coupon_cpnum.nextval, 'ë¬´ë£Œë°°ì†¡', 0, default, 0, 2500);
+values(seq_coupon_cpnum.nextval, '¹«·á¹è¼Û', 0, default, 0, 2500);
 
 commit;
 
--- íšŒì›(member) í…Œì´ë¸” ìƒì„± 
+-- È¸¿ø(member) Å×ÀÌºí »ý¼º 
 create table member 
-(mnum               number                not null  -- íšŒì›ë²ˆí˜¸
-,userid             varchar2(100)         not null  -- íšŒì›ì•„ì´ë””
-,name               varchar2(10)          not null  -- íšŒì›ëª…
-,email              varchar2(200)         not null  -- ì´ë©”ì¼(AES256 ì•”í˜¸í™”)
-,phone              varchar2(400)         not null  -- íœ´ëŒ€í°(AES256 ì•”í˜¸í™”)
-,birthday           date                  not null  -- ìƒë…„ì›”ì¼
-,postnum            number                not null  -- ìš°íŽ¸ë²ˆí˜¸
-,address1           varchar2(200)         not null  -- ì£¼ì†Œ
-,address2           varchar2(200)         not null  -- ìƒì„¸ì£¼ì†Œ
-,point              number default 0      not null  -- í¬ì¸íŠ¸
-,registerdate       date default sysdate  not null  -- ê°€ìž…ì¼ìž
-,last_logindate     date default sysdate  not null  -- ë§ˆì§€ë§‰ë¡œê·¸ì¸ì¼ìž
-,last_changepwdate  date default sysdate  not null  -- ë¹„ë°€ë²ˆí˜¸ë³€ê²½ì¼ìž
-,status             number default 1      not null  -- íšŒì›íƒˆí‡´ìœ ë¬´ / 0:íƒˆí‡´ 1:í™œë™ 2:íœ´ë©´
-,summoney           number default 0      not null  -- ëˆ„ì êµ¬ë§¤ê¸ˆì•¡
-,fk_lvnum           number default 1      not null  -- íšŒì›ë“±ê¸‰ë²ˆí˜¸
+(mnum               number                not null  -- È¸¿ø¹øÈ£
+,userid             varchar2(100)         not null  -- È¸¿ø¾ÆÀÌµð
+,name               varchar2(10)          not null  -- È¸¿ø¸í
+,email              varchar2(200)         not null  -- ÀÌ¸ÞÀÏ(AES256 ¾ÏÈ£È­)
+,phone              varchar2(400)         not null  -- ÈÞ´ëÆù(AES256 ¾ÏÈ£È­)
+,birthday           date                  not null  -- »ý³â¿ùÀÏ
+,postnum            number                not null  -- ¿ìÆí¹øÈ£
+,address1           varchar2(200)         not null  -- ÁÖ¼Ò
+,address2           varchar2(200)         not null  -- »ó¼¼ÁÖ¼Ò
+,point              number default 0      not null  -- Æ÷ÀÎÆ®
+,registerdate       date default sysdate  not null  -- °¡ÀÔÀÏÀÚ
+,last_logindate     date default sysdate  not null  -- ¸¶Áö¸··Î±×ÀÎÀÏÀÚ
+,last_changepwdate  date default sysdate  not null  -- ºñ¹Ð¹øÈ£º¯°æÀÏÀÚ
+,status             number default 1      not null  -- È¸¿øÅ»ÅðÀ¯¹« / 0:Å»Åð 1:È°µ¿ 2:ÈÞ¸é
+,summoney           number default 0      not null  -- ´©Àû±¸¸Å±Ý¾×
+,fk_lvnum           number default 1      not null  -- È¸¿øµî±Þ¹øÈ£
 ,constraint PK_member_mnum	primary key(mnum)
 ,constraint UQ_member_userid unique(userid)
 ,constraint FK_member_lvnum foreign key(fk_lvnum)
@@ -97,6 +97,7 @@ create table member
 );
 
 alter table member modify(fk_lvnum number default 1); 
+alter table member modify(pwd varchar2(200) not null); 
 
 
 create sequence seq_member_mnum
@@ -108,23 +109,28 @@ nocycle
 nocache;
 
 
--- ë³¸ì¸ì´ í™•ì¸ í•  ìˆ˜ ìžˆëŠ” ì´ë©”ì¼ì´ëž‘ ë²ˆí˜¸ ë„£ì–´ì£¼ì„¸ìš”
+select *
+from member;
+
+
+-- º»ÀÎÀÌ È®ÀÎ ÇÒ ¼ö ÀÖ´Â ÀÌ¸ÞÀÏÀÌ¶û ¹øÈ£ ³Ö¾îÁÖ¼¼¿ä
+(³ÖÁö ¾Ê°í È¸¿ø°¡ÀÔÀ¸·Î Ã³¸®ÇÏÀÚ)
 insert into member(mnum,userid,name,email,phone ,birthday,postnum ,address1,address2,point,registerdate ,last_logindate ,last_changepwdate ,status,summoney ,fk_lvnum)
 values(seq_member_mnum.nextval, 'leess', 
-'ì´ìˆœì‹ ', 'ë³¸ì¸ì´ í…ŒìŠ¤íŠ¸ í•  ìˆ˜ ìžˆëŠ” ì´ë©”ì¼', 'ë³¸ì¸ì´ í…ŒìŠ¤íŠ¸ ê°€ëŠ¥í•œ ë²ˆí˜¸', add_months(sysdate, -50), 14409, 'ê²½ê¸°ë„ ë¶€ì²œì‹œ ê³ ë¦¬ìš¸ë¡œ 64ë²ˆê¸¸ 19', 'ì˜ˆë‹¤ì›€ 502í˜¸',
+'ÀÌ¼ø½Å', 'believe142@gmail.com', '01074567876', add_months(sysdate, -50), 14409, '°æ±âµµ ºÎÃµ½Ã °í¸®¿ï·Î 64¹ø±æ 19', '¿¹´Ù¿ò 502È£',
 default, default, default, default, default, default, default);
 
 update member set email = 'believe1412@naver.com', phone = '01074567876'
 
 select *
-from member
+from member;
 
 
--- ë³´ìœ ì¿ í°(my_coupon) í…Œì´ë¸” ìƒì„± 
+-- º¸À¯ÄíÆù(my_coupon) Å×ÀÌºí »ý¼º 
 create table my_coupon 
-(fk_userid   varchar2(100) not null  -- íšŒì›ì•„ì´ë”” 
-,fk_cpnum  number not null  -- ì¿ í°ë²ˆí˜¸
-,cpexpiredate date not null         -- ì¿ í° ì‚¬ìš© ê¸°í•œ
+(fk_userid   varchar2(100) not null  -- È¸¿ø¾ÆÀÌµð 
+,fk_cpnum  number not null  -- ÄíÆù¹øÈ£
+,cpexpiredate date not null         -- ÄíÆù »ç¿ë ±âÇÑ
 ,constraint FK_my_coupon_userid foreign key(fk_userid)
                                   references member(userid)
 ,constraint FK_my_coupon_cpnum foreign key(fk_cpnum)
@@ -134,39 +140,37 @@ create table my_coupon
 insert into my_coupon values('leess', 1, add_months(sysdate, 3));
 
 
--- ë¡œê·¸ì¸(login) í…Œì´ë¸” ìƒì„± 
+-- ·Î±×ÀÎ(login) Å×ÀÌºí »ý¼º 
 create table login 
-(fk_userid  varchar2(100) not null  -- íšŒì›ì•„ì´ë”” 
-,pw         varchar2(200) not null  -- ì•”í˜¸(SHA256 ì•”í˜¸í™”) 
-,name       varchar2(30)  not null  -- íšŒì›ëª… 
+(fk_userid  varchar2(100) not null  -- È¸¿ø¾ÆÀÌµð 
+,pw         varchar2(200) not null  -- ¾ÏÈ£(SHA256 ¾ÏÈ£È­) 
+,name       varchar2(30)  not null  -- È¸¿ø¸í 
 ,constraint PK_login_userid primary key(fk_userid)
 ,constraint FK_login_userid foreign key(fk_userid)
                                   references member(userid)
 );
 
-insert into login values('leess', 'qwer1234$', 'ì´ìˆœì‹ ');
+insert into login values('leess', 'qwer1234$', 'ÀÌ¼ø½Å');
 
--- ê´€ë¦¬ìž(admin) í…Œì´ë¸” ìƒì„± 
+-- °ü¸®ÀÚ(admin) Å×ÀÌºí »ý¼º 
 create table admin 
-(adminid varchar2(100) -- ê´€ë¦¬ìžì•„ì´ë”” 
-,adminpw varchar2(200) -- ê´€ë¦¬ìžì•”í˜¸ 
+(adminid varchar2(100) -- °ü¸®ÀÚ¾ÆÀÌµð 
+,adminpw varchar2(200) -- °ü¸®ÀÚ¾ÏÈ£ 
 );
 
 insert into admin values('admin', 'qwer1234$');
 
 -----------------------------------------------------------------------------
 
--- ìƒí’ˆíŒ¨í‚¤ì§€(product_package) í…Œì´ë¸” ìƒì„± 
+-- »óÇ°ÆÐÅ°Áö(product_package) Å×ÀÌºí »ý¼º 
 create table product_package 
-(pacnum       number default 0  not null    -- ìƒí’ˆíŒ¨í‚¤ì§€ë²ˆí˜¸ 
-,pacname      varchar2(100)     not null    -- ìƒí’ˆíŒ¨í‚¤ì§€ëª… 
-,paccontents  clob                          -- íŒ¨í‚¤ì§€ë‚´ìš© 
-,pacimage     varchar2(200)                 -- íŒ¨í‚¤ì§€ì´ë¯¸ì§€ 
+(pacnum       number default 0  not null    -- »óÇ°ÆÐÅ°Áö¹øÈ£ 
+,pacname      varchar2(100)     not null    -- »óÇ°ÆÐÅ°Áö¸í 
+,paccontents  clob                          -- ÆÐÅ°Áö³»¿ë 
+,pacimage     varchar2(200)                 -- ÆÐÅ°ÁöÀÌ¹ÌÁö 
 ,constraint PK_product_package primary key(pacnum)
 ,constraint UQ_product_package unique(pacname)
 );
-
-drop table product_package purge;
 
 commit;
 create sequence seq_product_Package_pacnum
@@ -177,14 +181,14 @@ nominvalue
 nocycle
 nocache;
 
-insert into product_package values(seq_product_Package_pacnum.nextval, 'ì—†ìŒ', 'ì—†ìŒ', 'ì—†ìŒ');
+insert into product_package values(seq_product_Package_pacnum.nextval, '¾øÀ½', '¾øÀ½', '¾øÀ½');
 
 commit;
 
--- ëŒ€ë¶„ë¥˜ìƒì„¸(large_detail) í…Œì´ë¸” ìƒì„± 
+-- ´ëºÐ·ù»ó¼¼(large_detail) Å×ÀÌºí »ý¼º 
 create table large_detail 
-(ldnum   number         not null  -- ëŒ€ë¶„ë¥˜ìƒì„¸ë²ˆí˜¸ 
-,ldname  varchar2(100)  not null  -- ëŒ€ë¶„ë¥˜ëª… 
+(ldnum   number         not null  -- ´ëºÐ·ù»ó¼¼¹øÈ£ 
+,ldname  varchar2(100)  not null  -- ´ëºÐ·ù¸í 
 ,constraint PK_large_detail	primary key(ldnum)
 ,constraint UQ_large_detail unique (ldname)
 );
@@ -197,15 +201,15 @@ nominvalue
 nocycle
 nocache;
 
-insert into large_detail values(seq_large_detail_ldnum.nextval, 'ìƒëŸ¬ë“œ');
-insert into large_detail values(seq_large_detail_ldnum.nextval, 'ë””í†¡ìŠ¤');
+insert into large_detail values(seq_large_detail_ldnum.nextval, '»ø·¯µå');
+insert into large_detail values(seq_large_detail_ldnum.nextval, 'µðÅå½º');
 insert into large_detail values(seq_large_detail_ldnum.nextval, 'DIY');
 
--- ì†Œë¶„ë¥˜ìƒì„¸(small_detail) í…Œì´ë¸” ìƒì„±
+-- ¼ÒºÐ·ù»ó¼¼(small_detail) Å×ÀÌºí »ý¼º
 create table small_detail 
-(sdnum     number         not null  -- ì†Œë¶„ë¥˜ìƒì„¸ë²ˆí˜¸
-,fk_ldname  varchar2(100)       not null  -- ëŒ€ë¶„ë¥˜ìƒì„¸ëª…
-,sdname    varchar2(100)  not null  -- ì†Œë¶„ë¥˜ëª…
+(sdnum     number         not null  -- ¼ÒºÐ·ù»ó¼¼¹øÈ£
+,fk_ldname  varchar2(100)       not null  -- ´ëºÐ·ù»ó¼¼¸í
+,sdname    varchar2(100)  not null  -- ¼ÒºÐ·ù¸í
 ,constraint PK_small_detail	primary key(sdnum)
 ,constraint FK_small_detail_ldname foreign key(fk_ldname)
                                   references large_detail(ldname)
@@ -223,30 +227,30 @@ nocache;
 
 select *
 from small_detail;
-insert into small_detail values(seq_small_detail_sdnum.nextval, 'ìƒëŸ¬ë“œ', 'ì‹œë¦¬ì–¼');
-insert into small_detail values(seq_small_detail_sdnum.nextval, 'ìƒëŸ¬ë“œ', 'ìƒëŸ¬ë“œë„ì‹œë½');
-insert into small_detail values(seq_small_detail_sdnum.nextval, 'ìƒëŸ¬ë“œ', 'ì£½/ìŠ¤í”„');
+insert into small_detail values(seq_small_detail_sdnum.nextval, '»ø·¯µå', '½Ã¸®¾ó');
+insert into small_detail values(seq_small_detail_sdnum.nextval, '»ø·¯µå', '»ø·¯µåµµ½Ã¶ô');
+insert into small_detail values(seq_small_detail_sdnum.nextval, '»ø·¯µå', 'Á×/½ºÇÁ');
 
-insert into small_detail values(seq_small_detail_sdnum.nextval, 'ë””í†¡ìŠ¤', 'ë¬¼/ì£¼ìŠ¤');
-insert into small_detail values(seq_small_detail_sdnum.nextval, 'ë””í†¡ìŠ¤', 'ê±´ê°•ì¦™');
-insert into small_detail values(seq_small_detail_sdnum.nextval, 'ë””í†¡ìŠ¤', 'ê±´ê°•ì°¨');
+insert into small_detail values(seq_small_detail_sdnum.nextval, 'µðÅå½º', '¹°/ÁÖ½º');
+insert into small_detail values(seq_small_detail_sdnum.nextval, 'µðÅå½º', '°Ç°­Áó');
+insert into small_detail values(seq_small_detail_sdnum.nextval, 'µðÅå½º', '°Ç°­Â÷');
 
-insert into small_detail values(seq_small_detail_sdnum.nextval, 'DIY', 'ì•¼ì±„/ê³¡ë¥˜');
-insert into small_detail values(seq_small_detail_sdnum.nextval, 'DIY', 'ê³¼ì¼');
-insert into small_detail values(seq_small_detail_sdnum.nextval, 'DIY', 'ê³ ê¸°/ë‹¬ê±€');
-insert into small_detail values(seq_small_detail_sdnum.nextval, 'DIY', 'ìƒì„ ');
-insert into small_detail values(seq_small_detail_sdnum.nextval, 'DIY', 'ì†ŒìŠ¤');
-insert into small_detail values(seq_small_detail_sdnum.nextval, 'DIY', 'ìœ ì œí’ˆ');
+insert into small_detail values(seq_small_detail_sdnum.nextval, 'DIY', '¾ßÃ¤/°î·ù');
+insert into small_detail values(seq_small_detail_sdnum.nextval, 'DIY', '°úÀÏ');
+insert into small_detail values(seq_small_detail_sdnum.nextval, 'DIY', '°í±â/´Þ°¿');
+insert into small_detail values(seq_small_detail_sdnum.nextval, 'DIY', '»ý¼±');
+insert into small_detail values(seq_small_detail_sdnum.nextval, 'DIY', '¼Ò½º');
+insert into small_detail values(seq_small_detail_sdnum.nextval, 'DIY', 'À¯Á¦Ç°');
 
 commit;
 
 select *
 from small_detail;
 
--- ìŠ¤íŽ™íƒœê·¸(spec_tag) í…Œì´ë¸” ìƒì„± / (Hit, Best, New)
+-- ½ºÆåÅÂ±×(spec_tag) Å×ÀÌºí »ý¼º / (Hit, Best, New)
 create table spec_tag 
-(stnum   number         not null  -- ìŠ¤íŽ™íƒœê·¸ë²ˆí˜¸ 
-,stname  varchar2(100)  not null  -- ìŠ¤íŽ™íƒœê·¸ëª… 
+(stnum   number         not null  -- ½ºÆåÅÂ±×¹øÈ£ 
+,stname  varchar2(100)  not null  -- ½ºÆåÅÂ±×¸í 
 ,constraint PK_spec_tag	primary key(stnum)
 ,constraint UQ_spec_tag unique (stname)
 );
@@ -266,10 +270,10 @@ insert into spec_tag values(seq_spec_tag_stnum.nextval, 'NEW');
 select *
 from spec_tag;
 
--- ì¹´í…Œê³ ë¦¬íƒœê·¸(category_tag) í…Œì´ë¸” ìƒì„± 
+-- Ä«Å×°í¸®ÅÂ±×(category_tag) Å×ÀÌºí »ý¼º 
 create table category_tag 
-(ctnum   number         not null  -- ì¹´í…Œê³ ë¦¬ë²ˆí˜¸ 
-,ctname  varchar2(100)  not null  -- ì¹´í…Œê³ ë¦¬ëª… 
+(ctnum   number         not null  -- Ä«Å×°í¸®¹øÈ£ 
+,ctname  varchar2(100)  not null  -- Ä«Å×°í¸®¸í 
 ,constraint PK_category_tag primary key(ctnum)
 ,constraint UQ_category_tag unique (ctname)
 );
@@ -282,18 +286,18 @@ nominvalue
 nocycle
 nocache;
 
-insert into category_tag values(seq_category_tag_ctnum.nextval, 'ë‹¤ì´ì–´íŠ¸ìš©');
-insert into category_tag values(seq_category_tag_ctnum.nextval, 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©');
-insert into category_tag values(seq_category_tag_ctnum.nextval, 'ì±„ì‹ì£¼ì˜ìžìš©');
+insert into category_tag values(seq_category_tag_ctnum.nextval, '´ÙÀÌ¾îÆ®¿ë');
+insert into category_tag values(seq_category_tag_ctnum.nextval, '½Ä»ç´ë¿ë/°£½Ä¿ë');
+insert into category_tag values(seq_category_tag_ctnum.nextval, 'Ã¤½ÄÁÖÀÇÀÚ¿ë');
 
 select *
 from category_tag;
 
--- ì´ë²¤íŠ¸íƒœê·¸(event_tag) í…Œì´ë¸” ìƒì„± 
+-- ÀÌº¥Æ®ÅÂ±×(event_tag) Å×ÀÌºí »ý¼º 
 create table event_tag 
-(etnum   number  not null  -- ì´ë²¤íŠ¸ë²ˆí˜¸ 
-,etname  varchar2(100)     -- ì´ë²¤íŠ¸ëª…
-,etimagefilename varchar2(200) -- ì´ë²¤íŠ¸ ì´ë¯¸ì§€
+(etnum   number  not null  -- ÀÌº¥Æ®¹øÈ£ 
+,etname  varchar2(100)     -- ÀÌº¥Æ®¸í
+,etimagefilename varchar2(200) -- ÀÌº¥Æ® ÀÌ¹ÌÁö
 ,constraint PK_event_tag primary key(etnum)
 ,constraint UQ_event_tag unique (etname)
 );
@@ -306,19 +310,19 @@ nominvalue
 nocycle
 nocache;
 
-insert into event_tag values(seq_event_tag_etnum.nextval, 'í¬ë¦¬ìŠ¤ë§ˆìŠ¤ ì´ë²¤íŠ¸', 'MerryChristmas.PNG');
-insert into event_tag values(seq_event_tag_etnum.nextval, 'ì—°ë§ ì´ë²¤íŠ¸', 'LastSale.png');
-insert into event_tag values(seq_event_tag_etnum.nextval, 'ì—°ì´ˆ ì´ë²¤íŠ¸', 'NewYearSale.png');
-insert into event_tag values(seq_event_tag_etnum.nextval, 'ì—†ìŒ', null);
+insert into event_tag values(seq_event_tag_etnum.nextval, 'Å©¸®½º¸¶½º ÀÌº¥Æ®', 'MerryChristmas.PNG');
+insert into event_tag values(seq_event_tag_etnum.nextval, '¿¬¸» ÀÌº¥Æ®', 'LastSale.png');
+insert into event_tag values(seq_event_tag_etnum.nextval, '¿¬ÃÊ ÀÌº¥Æ®', 'NewYearSale.png');
+insert into event_tag values(seq_event_tag_etnum.nextval, '¾øÀ½', null);
 
 
--- ì´ë²¤íŠ¸ í…Œì´ë¸” ì´ë¯¸ì§€ì»¬ëŸ¼ ì¶”ê°€(ë¯¸ë¦¬ ë§Œë“œì‹  ë¶„ë§Œ ì‹¤í–‰í•˜ì„¸ìš”)
+-- ÀÌº¥Æ® Å×ÀÌºí ÀÌ¹ÌÁöÄÃ·³ Ãß°¡(¹Ì¸® ¸¸µå½Å ºÐ¸¸ ½ÇÇàÇÏ¼¼¿ä)
 alter table event_tag add etimagefilename varchar2(200); 
 update event_tag set etimagefilename= 'MerryChristmas.PNG' where etnum=1;
 update event_tag set etimagefilename= 'LastSale.png' where etnum=2;
 update event_tag set etimagefilename= 'NewYearSale.png' where etnum=3;
 update event_tag set etimagefilename= null where etnum=4;
--- í•˜ì§€ë§ˆ...
+-- ÇÏÁö¸¶...
 
 commit;
 
@@ -326,27 +330,27 @@ select *
 from event_tag;
 
 commit;
--- ìƒí’ˆ(product) í…Œì´ë¸” ìƒì„±
+-- »óÇ°(product) Å×ÀÌºí »ý¼º
 create table product 
-(pnum          number  not null                -- ìƒí’ˆë²ˆí˜¸ 
-,fk_pacname     varchar2(100)  not null                -- ìƒí’ˆíŒ¨í‚¤ì§€ëª…
-,fk_sdname      varchar2(100)  not null                -- ì†Œë¶„ë¥˜ìƒì„¸ëª… 
-,fk_ctname      varchar2(100)  not null                -- ì¹´í…Œê³ ë¦¬íƒœê·¸ëª… 
-,fk_stname      varchar2(100)  not null                -- ìŠ¤íŽ™íƒœê·¸ëª… 
-,fk_etname      varchar2(100)  not null      -- ì´ë²¤íŠ¸íƒœê·¸ëª…
-,pname         varchar2(100)  not null         -- ìƒí’ˆëª… 
-,price         number default 0  not null      -- ì›ê°€ 
-,saleprice     number default 0  not null      -- íŒë§¤ê°€ 
-,point         number default 0  not null      -- í¬ì¸íŠ¸ 
-,pqty          number default 0  not null      -- ìž¬ê³ ëŸ‰ 
-,pcontents     clob                            -- ìƒí’ˆì„¤ëª… 
-,pcompanyname  varchar2(100)  not null         -- ìƒí’ˆíšŒì‚¬ëª… 
-,pexpiredate varchar2(200) default 'ìƒì„¸ë‚´ìš©ì°¸ì¡°'  not null -- ìœ í†µê¸°í•œ 
-,allergy       clob                            -- ì•Œë ˆë¥´ê¸°ì •ë³´ 
-,weight        number default 0  not null      -- ìš©ëŸ‰ 
-,salecount     number default 0  not null      -- íŒë§¤ëŸ‰ 
-,plike         number default 0  not null      -- ìƒí’ˆì¢‹ì•„ìš” 
-,pdate         date default sysdate  not null  -- ìƒí’ˆë“±ë¡ì¼ìž
+(pnum          number  not null                -- »óÇ°¹øÈ£ 
+,fk_pacname     varchar2(100)  not null                -- »óÇ°ÆÐÅ°Áö¸í
+,fk_sdname      varchar2(100)  not null                -- ¼ÒºÐ·ù»ó¼¼¸í 
+,fk_ctname      varchar2(100)  not null                -- Ä«Å×°í¸®ÅÂ±×¸í 
+,fk_stname      varchar2(100)  not null                -- ½ºÆåÅÂ±×¸í 
+,fk_etname      varchar2(100)  not null      -- ÀÌº¥Æ®ÅÂ±×¸í
+,pname         varchar2(100)  not null         -- »óÇ°¸í 
+,price         number default 0  not null      -- ¿ø°¡ 
+,saleprice     number default 0  not null      -- ÆÇ¸Å°¡ 
+,point         number default 0  not null      -- Æ÷ÀÎÆ® 
+,pqty          number default 0  not null      -- Àç°í·® 
+,pcontents     clob                            -- »óÇ°¼³¸í 
+,pcompanyname  varchar2(100)  not null         -- »óÇ°È¸»ç¸í 
+,pexpiredate varchar2(200) default '»ó¼¼³»¿ëÂüÁ¶'  not null -- À¯Åë±âÇÑ 
+,allergy       clob                            -- ¾Ë·¹¸£±âÁ¤º¸ 
+,weight        number default 0  not null      -- ¿ë·® 
+,salecount     number default 0  not null      -- ÆÇ¸Å·® 
+,plike         number default 0  not null      -- »óÇ°ÁÁ¾Æ¿ä 
+,pdate         date default sysdate  not null  -- »óÇ°µî·ÏÀÏÀÚ
 ,constraint PK_product_pnum primary key(pnum)
 ,constraint FK_product_pacname foreign key(fk_pacname)
                                references product_package(pacname)
@@ -360,6 +364,8 @@ create table product
                                references event_tag(etname)
 );
 
+alter table product modify(pexpiredate varchar2(200) default '»ó¼¼³»¿ëÂüÁ¶'); 
+
 create sequence seq_product_pnum
 start with 1
 increment by 1
@@ -369,28 +375,28 @@ nocycle
 nocache;
 
 
--- ìƒí’ˆë°±ì—…(Product_backup) í…Œì´ë¸” ìƒì„± 
+-- »óÇ°¹é¾÷(Product_backup) Å×ÀÌºí »ý¼º 
 create table product_backup 
 (deletenum     number  not null         -- deletenum 
-,pnum          number  not null                -- ìƒí’ˆë²ˆí˜¸ 
-,fk_pacname     number  not null                -- ìƒí’ˆíŒ¨í‚¤ì§€ëª…
-,fk_sdname      number  not null                -- ì†Œë¶„ë¥˜ìƒì„¸ëª… 
-,fk_ctname      number  not null                -- ì¹´í…Œê³ ë¦¬íƒœê·¸ëª… 
-,fk_stname      number  not null                -- ìŠ¤íŽ™íƒœê·¸ëª… 
-,fk_etname      number  default 0 not null      -- ì´ë²¤íŠ¸íƒœê·¸ëª…
-,pname         varchar2(100)  not null         -- ìƒí’ˆëª… 
-,price         number default 0  not null      -- ì›ê°€ 
-,saleprice     number default 0  not null      -- íŒë§¤ê°€ 
-,point         number default 0  not null      -- í¬ì¸íŠ¸ 
-,pqty          number default 0  not null      -- ìž¬ê³ ëŸ‰ 
-,pcontents     clob                            -- ìƒí’ˆì„¤ëª… 
-,pcompanyname  varchar2(100)  not null         -- ìƒí’ˆíšŒì‚¬ëª… 
-,pexpiredate   date default sysdate  not null  -- ìœ í†µê¸°í•œ 
-,allergy       clob                            -- ì•Œë ˆë¥´ê¸°ì •ë³´ 
-,weight        number default 0  not null      -- ìš©ëŸ‰ 
-,salecount     number default 0  not null      -- íŒë§¤ëŸ‰ 
-,plike         number default 0  not null      -- ìƒí’ˆì¢‹ì•„ìš” 
-,pdate         date default sysdate  not null  -- ?ìƒí’ˆíŒë§¤ì¼ìž
+,pnum          number  not null                -- »óÇ°¹øÈ£ 
+,fk_pacname     number  not null                -- »óÇ°ÆÐÅ°Áö¸í
+,fk_sdname      number  not null                -- ¼ÒºÐ·ù»ó¼¼¸í 
+,fk_ctname      number  not null                -- Ä«Å×°í¸®ÅÂ±×¸í 
+,fk_stname      number  not null                -- ½ºÆåÅÂ±×¸í 
+,fk_etname      number  default 0 not null      -- ÀÌº¥Æ®ÅÂ±×¸í
+,pname         varchar2(100)  not null         -- »óÇ°¸í 
+,price         number default 0  not null      -- ¿ø°¡ 
+,saleprice     number default 0  not null      -- ÆÇ¸Å°¡ 
+,point         number default 0  not null      -- Æ÷ÀÎÆ® 
+,pqty          number default 0  not null      -- Àç°í·® 
+,pcontents     clob                            -- »óÇ°¼³¸í 
+,pcompanyname  varchar2(100)  not null         -- »óÇ°È¸»ç¸í 
+,pexpiredate   date default sysdate  not null  -- À¯Åë±âÇÑ 
+,allergy       clob                            -- ¾Ë·¹¸£±âÁ¤º¸ 
+,weight        number default 0  not null      -- ¿ë·® 
+,salecount     number default 0  not null      -- ÆÇ¸Å·® 
+,plike         number default 0  not null      -- »óÇ°ÁÁ¾Æ¿ä 
+,pdate         date default sysdate  not null  -- ?»óÇ°ÆÇ¸ÅÀÏÀÚ
 ,constraint PK_product_backup primary key(deletenum)
 );
 
@@ -403,11 +409,11 @@ nocycle
 nocache;
 
 
--- ì°œ(pick) í…Œì´ë¸” ìƒì„± 
+-- Âò(pick) Å×ÀÌºí »ý¼º 
 create table pick 
-(picknum    number         not null  -- ì°œë²ˆí˜¸ 
-,fk_userid  varchar2(100)  not null  -- íšŒì›ì•„ì´ë”” 
-,fk_pnum    number         not null  -- ìƒí’ˆë²ˆí˜¸    
+(picknum    number         not null  -- Âò¹øÈ£ 
+,fk_userid  varchar2(100)  not null  -- È¸¿ø¾ÆÀÌµð 
+,fk_pnum    number         not null  -- »óÇ°¹øÈ£    
 ,constraint PK_pick_picknum primary key(picknum)
 ,constraint FK_pick_userid foreign key(fk_userid)
                             references member(userid)
@@ -423,13 +429,13 @@ nominvalue
 nocycle
 nocache;
 
--- ìž¥ë°”êµ¬ë‹ˆ í…Œì´ë¸” ìƒì„±
+-- Àå¹Ù±¸´Ï Å×ÀÌºí »ý¼º
  create table product_cart
- (cartno  number               not null   --  ìž¥ë°”êµ¬ë‹ˆ ë²ˆí˜¸
- ,fk_userid  varchar2(20)         not null   --  ì‚¬ìš©ìžID
- ,fk_pnum    number(8)            not null   --  ì œí’ˆë²ˆí˜¸ 
- ,oqty    number(8) default 0  not null   --  ì£¼ë¬¸ëŸ‰
- ,status  number(1) default 1             --  ì‚­ì œìœ ë¬´; 0: ì‚­ì œ 1: ìƒì„±
+ (cartno  number               not null   --  Àå¹Ù±¸´Ï ¹øÈ£
+ ,fk_userid  varchar2(20)         not null   --  »ç¿ëÀÚID
+ ,fk_pnum    number(8)            not null   --  Á¦Ç°¹øÈ£ 
+ ,oqty    number(8) default 0  not null   --  ÁÖ¹®·®
+ ,status  number(1) default 1             --  »èÁ¦À¯¹«; 0: »èÁ¦ 1: »ý¼º
  ,constraint PK_product_cart_cartno primary key(cartno)
  ,constraint FK_product_cart_userid foreign key(fk_userid)
                                 references member(userid) 
@@ -447,11 +453,11 @@ nocache;
  nocache;
 
 
--- ìƒí’ˆì´ë¯¸ì§€(product_images) í…Œì´ë¸” ìƒì„± 
+-- »óÇ°ÀÌ¹ÌÁö(product_images) Å×ÀÌºí »ý¼º 
 create table product_images 
-(pimgnum       number         not null -- ìƒí’ˆì´ë¯¸ì§€ë²ˆí˜¸ 
-,pimgfilename  varchar2(100)  not null -- ìƒí’ˆì´ë¯¸ì§€íŒŒì¼ëª… 
-,fk_pnum       number         not null -- ìƒí’ˆë²ˆí˜¸ 
+(pimgnum       number         not null -- »óÇ°ÀÌ¹ÌÁö¹øÈ£ 
+,pimgfilename  varchar2(100)  not null -- »óÇ°ÀÌ¹ÌÁöÆÄÀÏ¸í 
+,fk_pnum       number         not null -- »óÇ°¹øÈ£ 
 ,constraint PK_product_images primary key(pimgnum)
 ,constraint FK_product_images_ldnum foreign key(fk_pnum)
                                       references product(pnum)
@@ -466,18 +472,18 @@ nocycle
 nocache;
 
 
--- ë¦¬ë·°ê²Œì‹œíŒ(review_borad) í…Œì´ë¸” ìƒì„± 
+-- ¸®ºä°Ô½ÃÆÇ(review_borad) Å×ÀÌºí »ý¼º 
 create table review_borad 
-(rbnum        number  not null                -- ë¦¬ë·°ë²ˆí˜¸ 
-,fk_pnum      number  not null                -- ìƒí’ˆë²ˆí˜¸ 
-,fk_userid    varchar2(100)  not null         -- ì‚¬ìš©ìžì•„ì´ë”” 
-,rbtitle      varchar2(100)  not null         -- ë¦¬ë·°ì œëª© 
-,rbgrade      number default 0      not null  -- ë¦¬ë·°í‰ì  
-,rbwritedate  date default sysdate  not null  -- ë¦¬ë·°ìž‘ì„±ì¼ìž 
-,rbcontents   clob  not null                  -- ë¦¬ë·°ë‚´ìš©
-,rbimage    varchar2(200)                 -- ë¦¬ë·°ì´ë¯¸ì§€
-,rbviewcount  number default 0  not null      -- ë¦¬ë·°ì¡°íšŒìˆ˜ 
-,rblike       number default 0  not null      -- ë¦¬ë·°ì¢‹ì•„ìš” 
+(rbnum        number  not null                -- ¸®ºä¹øÈ£ 
+,fk_pnum      number  not null                -- »óÇ°¹øÈ£ 
+,fk_userid    varchar2(100)  not null         -- »ç¿ëÀÚ¾ÆÀÌµð 
+,rbtitle      varchar2(100)  not null         -- ¸®ºäÁ¦¸ñ 
+,rbgrade      number default 0      not null  -- ¸®ºäÆòÁ¡ 
+,rbwritedate  date default sysdate  not null  -- ¸®ºäÀÛ¼ºÀÏÀÚ 
+,rbcontents   clob  not null                  -- ¸®ºä³»¿ë
+,rbimage    varchar2(200)                 -- ¸®ºäÀÌ¹ÌÁö
+,rbviewcount  number default 0  not null      -- ¸®ºäÁ¶È¸¼ö 
+,rblike       number default 0  not null      -- ¸®ºäÁÁ¾Æ¿ä 
 ,rbstatus     number default 1  not null   
 ,constraint PK_review_borad primary key(rbnum)
 ,constraint FK_review_borad_pnum foreign key(fk_pnum)
@@ -495,19 +501,19 @@ nominvalue
 nocycle
 nocache;
 
--- ê¸°ì¡´ì— ë¦¬ë·°ê²Œì‹œíŒ í…Œì´ë¸” ë§Œë“œì‹  ë¶„ë§Œ ì‹¤í–‰í•˜ì„¸ìš”
+-- ±âÁ¸¿¡ ¸®ºä°Ô½ÃÆÇ Å×ÀÌºí ¸¸µå½Å ºÐ¸¸ ½ÇÇàÇÏ¼¼¿ä
 alter table review_borad add rbimage varchar2(200);
 
 commit;
 
--- ë¦¬ë·°ê²Œì‹œíŒëŒ“ê¸€(review_comment) í…Œì´ë¸” ìƒì„± 
+-- ¸®ºä°Ô½ÃÆÇ´ñ±Û(review_comment) Å×ÀÌºí »ý¼º 
 create table review_comment 
-(rcnum        number         not null         -- ë¦¬ë·°ëŒ“ê¸€ë²ˆí˜¸
-,fk_rbnum     number         not null         -- ë¦¬ë·°ê²Œì‹œíŒë²ˆí˜¸
-,fk_userid    varchar2(100)  not null         -- ì‚¬ìš©ìžì•„ì´ë””
-,name      varchar2(10) not null                -- ì‚¬ìš©ìžì´ë¦„  
-,rcwritedate  date default sysdate  not null  -- ë¦¬ë·°ëŒ“ê¸€ìž‘ì„±ì¼ìž 
-,rccontents   number  not null                -- ë¦¬ë·°ëŒ“ê¸€ë‚´ìš© 
+(rcnum        number         not null         -- ¸®ºä´ñ±Û¹øÈ£
+,fk_rbnum     number         not null         -- ¸®ºä°Ô½ÃÆÇ¹øÈ£
+,fk_userid    varchar2(100)  not null         -- »ç¿ëÀÚ¾ÆÀÌµð
+,name      varchar2(10) not null                -- »ç¿ëÀÚÀÌ¸§  
+,rcwritedate  date default sysdate  not null  -- ¸®ºä´ñ±ÛÀÛ¼ºÀÏÀÚ 
+,rccontents   number  not null                -- ¸®ºä´ñ±Û³»¿ë 
 ,constraint PK_review_comment primary key(rcnum)
 ,constraint FK_review_comment_rbnum foreign key(fk_rbnum)
                                        references review_borad(rbnum)
@@ -524,13 +530,13 @@ nocycle
 nocache;
 
 
--- ìƒí’ˆì£¼ë¬¸(product_order)  í…Œì´ë¸” ìƒì„± 
+-- »óÇ°ÁÖ¹®(product_order)  Å×ÀÌºí »ý¼º 
 create table product_order 
-(odrcode        varchar2(100)  not null         -- ì£¼ë¬¸ì½”ë“œ / íšŒì‚¬ì½”ë“œ-ì£¼ë¬¸ì¼ìž-seq (ex. s-20181123-1
-,fk_userid      varchar2(100)  not null         -- ì‚¬ìš©ìžì•„ì´ë”” 
-,odrtotalprice  number         not null         -- ì£¼ë¬¸ì´ì•¡ 
-,odrtotalpoint  number         not null         -- ì£¼ë¬¸ì´í¬ì¸íŠ¸ 
-,odrdate        date default sysdate  not null  -- ì£¼ë¬¸ì¼ìž
+(odrcode        varchar2(100)  not null         -- ÁÖ¹®ÄÚµå / È¸»çÄÚµå-ÁÖ¹®ÀÏÀÚ-seq (ex. s-20181123-1
+,fk_userid      varchar2(100)  not null         -- »ç¿ëÀÚ¾ÆÀÌµð 
+,odrtotalprice  number         not null         -- ÁÖ¹®ÃÑ¾× 
+,odrtotalpoint  number         not null         -- ÁÖ¹®ÃÑÆ÷ÀÎÆ® 
+,odrdate        date default sysdate  not null  -- ÁÖ¹®ÀÏÀÚ
 ,constraint PK_product_order primary key(odrcode)
 ,constraint FK_product_order_userid foreign key(fk_userid)
                                       references member(userid)
@@ -550,16 +556,16 @@ select *
 from product_order;
 
 
--- ì£¼ë¬¸ìƒì„¸(product_order_detail) í…Œì´ë¸” ìƒì„± 
+-- ÁÖ¹®»ó¼¼(product_order_detail) Å×ÀÌºí »ý¼º 
 create table product_order_detail 
-(odrdnum        number not null            -- ì£¼ë¬¸ìƒì„¸ë²ˆí˜¸ 
-,fk_pnum        number not null            -- ìƒí’ˆë²ˆí˜¸ 
-,fk_odrcode     varchar2(100) not null     -- ì£¼ë¬¸ì½”ë“œ 
-,oqty           number not null            -- ì£¼ë¬¸ìˆ˜ëŸ‰ 
-,odrprice       number not null            -- ì£¼ë¬¸ì‹œ ìƒí’ˆê°€ê²©
-,odrstatus  number default 0 not null  -- ë°°ì†¡ìƒíƒœ / 0:ë°°ì†¡ì „(ì£¼ë¬¸ì™„ë£Œ) 1:ë°°ì†¡ì¤‘ 2:ë°°ì†¡ì™„ë£Œ 3: ì£¼ë¬¸ì·¨ì†Œ 4: êµí™˜í™˜ë¶ˆ
-,deliverdate    date                       -- ë°°ì†¡ì™„ë£Œì¼ìž?
-,invoice        varchar2(200)              -- ìš´ì†¡ìž¥ë²ˆí˜¸ 
+(odrdnum        number not null            -- ÁÖ¹®»ó¼¼¹øÈ£ 
+,fk_pnum        number not null            -- »óÇ°¹øÈ£ 
+,fk_odrcode     varchar2(100) not null     -- ÁÖ¹®ÄÚµå 
+,oqty           number not null            -- ÁÖ¹®¼ö·® 
+,odrprice       number not null            -- ÁÖ¹®½Ã »óÇ°°¡°Ý
+,odrstatus  number default 0 not null  -- ¹è¼Û»óÅÂ / 0:¹è¼ÛÀü(ÁÖ¹®¿Ï·á) 1:¹è¼ÛÁß 2:¹è¼Û¿Ï·á 3: ÁÖ¹®Ãë¼Ò 4: ±³È¯È¯ºÒ
+,deliverdate    date                       -- ¹è¼Û¿Ï·áÀÏÀÚ?
+,invoice        varchar2(200)              -- ¿î¼ÛÀå¹øÈ£ 
 ,constraint PK_order_detail	primary key (odrdnum)
 ,constraint FK_order_detail_pnum foreign key(fk_pnum)
                                    references product(pnum)                             
@@ -582,15 +588,15 @@ as
 select *
 from product_order_detail;
 
--- ìƒí’ˆë¬¸ì˜ê²Œì‹œíŒ(qna_borad) í…Œì´ë¸” ìƒì„± 
+-- »óÇ°¹®ÀÇ°Ô½ÃÆÇ(qna_borad) Å×ÀÌºí »ý¼º 
 create table qna_borad 
-(qnanum        number not null                -- ìƒí’ˆë¬¸ì˜ë²ˆí˜¸ 
-,fk_pnum       number not null                -- ìƒí’ˆë²ˆí˜¸ 
-,fk_userid     varchar2(100) not null         -- ì‚¬ìš©ìžì•„ì´ë”” 
-,qnawritedate  date default sysdate not null  -- ìƒí’ˆë¬¸ì˜ìž‘ì„±ì¼ìž 
-,qnatitle      varchar2(100) not null         -- ìƒí’ˆë¬¸ì˜ì œëª© 
-,qnacontents   clob not null                  -- ìƒí’ˆë¬¸ì˜ë‚´ìš© 
-,qnaopencheck  number default 1 not null      -- ìƒí’ˆë¬¸ì˜ê³µê°œì—¬ë¶€ / 0:ì‚­ì œ 1:ê³µê°œ 
+(qnanum        number not null                -- »óÇ°¹®ÀÇ¹øÈ£ 
+,fk_pnum       number not null                -- »óÇ°¹øÈ£ 
+,fk_userid     varchar2(100) not null         -- »ç¿ëÀÚ¾ÆÀÌµð 
+,qnawritedate  date default sysdate not null  -- »óÇ°¹®ÀÇÀÛ¼ºÀÏÀÚ 
+,qnatitle      varchar2(100) not null         -- »óÇ°¹®ÀÇÁ¦¸ñ 
+,qnacontents   clob not null                  -- »óÇ°¹®ÀÇ³»¿ë 
+,qnaopencheck  number default 1 not null      -- »óÇ°¹®ÀÇ°ø°³¿©ºÎ / 0:»èÁ¦ 1:°ø°³ 
 ,qnastatus     number default 1 not null
 ,constraint PK_qna_borad primary key(qnanum)
 ,constraint FK_qna_borad_pnum foreign key(fk_pnum)
@@ -609,12 +615,12 @@ nocycle
 nocache;
 
 
--- ìƒí’ˆë¬¸ì˜ëŒ“ê¸€(qna_comment) í…Œì´ë¸” ìƒì„±
+-- »óÇ°¹®ÀÇ´ñ±Û(qna_comment) Å×ÀÌºí »ý¼º
 create table qna_comment 
-(qnacnum        number not null                -- ìƒí’ˆë¬¸ì˜ëŒ“ê¸€ë²ˆí˜¸ 
-,fk_qnanum      number not null                -- ìƒí’ˆë¬¸ì˜ë²ˆí˜¸ 
-,qnacwritedate  date default sysdate not null  -- ìƒí’ˆë¬¸ì˜ëŒ“ê¸€ìž‘ì„±ì¼ìž 
-,qnaccontents   clob not null                  -- ìƒí’ˆë¬¸ì˜ëŒ“ê¸€ë‚´ìš© 
+(qnacnum        number not null                -- »óÇ°¹®ÀÇ´ñ±Û¹øÈ£ 
+,fk_qnanum      number not null                -- »óÇ°¹®ÀÇ¹øÈ£ 
+,qnacwritedate  date default sysdate not null  -- »óÇ°¹®ÀÇ´ñ±ÛÀÛ¼ºÀÏÀÚ 
+,qnaccontents   clob not null                  -- »óÇ°¹®ÀÇ´ñ±Û³»¿ë 
 ,constraint PK_qna_comment primary key(qnacnum)
 ,constraint FK_qna_comment_qnanum foreign key(fk_qnanum)
                                     references qna_borad(qnanum)
@@ -629,11 +635,11 @@ nocycle
 nocache;
 
 
--- ì£¼ë¬¸ì·¨ì†Œ(order_cancel) í…Œì´ë¸” ìƒì„±
+-- ÁÖ¹®Ãë¼Ò(order_cancel) Å×ÀÌºí »ý¼º
 create table order_cancel 
-(odrcnum       number not null  -- ì£¼ë¬¸ì·¨ì†Œë²ˆí˜¸
-,odrccontents  clob not null    -- ì£¼ë¬¸ì·¨ì†Œì‚¬ìœ 
-,fk_odrcode     varchar2(100)  not null -- ì£¼ë¬¸ì½”ë“œ
+(odrcnum       number not null  -- ÁÖ¹®Ãë¼Ò¹øÈ£
+,odrccontents  clob not null    -- ÁÖ¹®Ãë¼Ò»çÀ¯
+,fk_odrcode     varchar2(100)  not null -- ÁÖ¹®ÄÚµå
 ,constraint PK_order_cancel primary key(odrcnum)
 ,constraint FK_order_cancel_odrcode foreign key(fk_odrcode) 
                                        references product_order(odrcode)  on delete cascade
@@ -647,15 +653,15 @@ nominvalue
 nocycle
 nocache;
 
--- ê²°ì œì •ë³´ ì €ìž¥ í…Œì´ë¸”
---(íšŒì›ì•„ì´ë””/ê²°ì œì¼ì‹œ/ê²°ì œê¸ˆì•¡/ì„¸ë¶€ê²°ì œìˆ˜ë‹¨/ê²°ì œìƒíƒœ(ì‹¤íŒ¨/ì„±ê³µ))
+-- °áÁ¦Á¤º¸ ÀúÀå Å×ÀÌºí
+--(È¸¿ø¾ÆÀÌµð/°áÁ¦ÀÏ½Ã/°áÁ¦±Ý¾×/¼¼ºÎ°áÁ¦¼ö´Ü/°áÁ¦»óÅÂ(½ÇÆÐ/¼º°ø))
 create table payment 
-(paynum  number             not null    -- ê²°ì œì •ë³´ì¸ë±ìŠ¤
-,fk_userid varchar2(100)    not null    -- ì‚¬ìš©ìžì•„ì´ë””
-,paydate    date               not null    -- ê²°ì œì¼ì‹œ
-,payamounts number        not null      -- ê²°ì œê¸ˆì•¡
-,paymethod     varchar2(100)    not null    -- ê²°ì œìˆ˜ë‹¨
-,paystatus      number      not null        -- ê²°ì œìƒíƒœ(0; ì‹¤íŒ¨/1; ì„±ê³µ)
+(paynum  number             not null    -- °áÁ¦Á¤º¸ÀÎµ¦½º
+,fk_userid varchar2(100)    not null    -- »ç¿ëÀÚ¾ÆÀÌµð
+,paydate    date               not null    -- °áÁ¦ÀÏ½Ã
+,payamounts number        not null      -- °áÁ¦±Ý¾×
+,paymethod     varchar2(100)    not null    -- °áÁ¦¼ö´Ü
+,paystatus      number      not null        -- °áÁ¦»óÅÂ(0; ½ÇÆÐ/1; ¼º°ø)
 ,constraint PK_payment primary key(paynum)
 ,constraint FK_payment_userid foreign key(fk_userid)
                                       references member(userid)
@@ -679,42 +685,42 @@ from payment;
 
 commit;
 
-alter table product modify(pexpiredate varchar2(200) default 'ìƒì„¸ë‚´ìš©ì°¸ì¡°'); 
+alter table product modify(pexpiredate varchar2(200) default '»ó¼¼³»¿ëÂüÁ¶'); 
 
 commit;
 
 
 
---------- ë°ì´í„° ì¸ì„œíŠ¸ ì¿¼ë¦¬ (product_package, product) ------------
--- ìƒëŸ¬ë“œ - ìƒëŸ¬ë“œë„ì‹œë½
+--------- µ¥ÀÌÅÍ ÀÎ¼­Æ® Äõ¸® (product_package, product) ------------
+-- »ø·¯µå - »ø·¯µåµµ½Ã¶ô
 insert into product_package(pacnum, pacname, paccontents,  pacimage)
 values(seq_product_Package_pacnum.nextval
-, '[í€¸ì¦ˆí”„ë ˆì‹œ] í”„ë¦¬ë¯¸ì—„ ìƒëŸ¬ë“œ 3ì¢…'
-, 'ìˆ˜ë¶„ì„ ì ë‹¹ížˆ ë¨¸ê¸ˆì–´ ì•„ì‚­í•˜ê²Œ ì”¹ížˆëŠ” ì±„ì†Œì™€ ì‹ ì„ í•œ ê³¼ì¼ì— ì‚°ëœ»í•˜ê²Œ ê³ë“¤ì—¬ì§€ëŠ” ë“œë ˆì‹±. 
-ì—¬ê¸°ì— ê°„ì´ ì„¸ì§€ ì•Šì€ ê³ ê¸°ë‚˜ ì‰¬ë¦¼í”„ ë“±ì˜ ìž¬ë£Œê°€ ì–´ìš°ëŸ¬ì§€ë©´, í•œ ë¼ ì‹ì‚¬ë¡œë„ ì†ìƒ‰ì—†ëŠ” ë“ ë“ í•œ ìƒëŸ¬ë“œê°€ ì™„ì„±ë˜ì£ . 
-ìƒëŸ¬ë“œëŠ” ê°„íŽ¸í•  ë¿ ì•„ë‹ˆë¼ ë‹¤ì–‘í•œ ì˜ì–‘ì†Œê°€ ê³ ë£¨ ë‹´ê²¨ ìžˆì–´ ë§Žì€ ì‚¬ëžŒë“¤ì´ ì¦ê²¨ ì°¾ìŠµë‹ˆë‹¤. 
-ì´ ê³ ë§ˆìš´ ìƒëŸ¬ë“œì— ì—¬ì„±ì„ í–¥í•œ â€˜ê°ë³„í•œâ€™ ë§ˆìŒì´ í•œ ì¤Œ ë”í•´ì¡Œì–´ìš”. 
-ì»¬ë¦¬ê°€ ì†Œê°œí•˜ëŠ” ìƒëŸ¬ë“œëŠ” ì˜ì–‘ì‚¬, ì±„ì†Œì—°êµ¬ì› ë“± ì „ë¬¸ê°€ì˜ ìžë¬¸ì„ ë°›ì•„ ì—¬ì„± ê±´ê°•ì— ë„ì›€ì„ ì£¼ëŠ” ë ˆì‹œí”¼ë¡œ ì„¸ì‹¬í•˜ê²Œ êµ¬ì„±ëì–´ìš”. 
-ìœ ê¸°ë† ìž¬ë£Œë¥¼ ê°€ì§€ê³  ì €ì—¼ì‹ ì¡°ë¦¬ë²•ìœ¼ë¡œ ë§Œë“¤ì–´ì ¸ ë”ìš± ì•ˆì‹¬í•˜ê³  ê±´ê°•í•˜ê²Œ ì¦ê¸¸ ìˆ˜ ìžˆë‹µë‹ˆë‹¤. ì „ë¬¸ ì…°í”„ê°€ ë§Œë“  í”„ë¦¬ë¯¸ì—„ ìƒëŸ¬ë“œ, í€¸ì¦ˆí”„ë ˆì‹œì˜ ìƒëŸ¬ë“œë¥¼ ì§ì ‘ ê²½í—˜í•´ë³´ì„¸ìš”. '
+, '[ÄýÁîÇÁ·¹½Ã] ÇÁ¸®¹Ì¾ö »ø·¯µå 3Á¾'
+, '¼öºÐÀ» Àû´çÈ÷ ¸Ó±Ý¾î ¾Æ»èÇÏ°Ô ¾ÃÈ÷´Â Ã¤¼Ò¿Í ½Å¼±ÇÑ °úÀÏ¿¡ »ê¶æÇÏ°Ô °çµé¿©Áö´Â µå·¹½Ì. 
+¿©±â¿¡ °£ÀÌ ¼¼Áö ¾ÊÀº °í±â³ª ½¬¸²ÇÁ µîÀÇ Àç·á°¡ ¾î¿ì·¯Áö¸é, ÇÑ ³¢ ½Ä»ç·Îµµ ¼Õ»ö¾ø´Â µçµçÇÑ »ø·¯µå°¡ ¿Ï¼ºµÇÁÒ. 
+»ø·¯µå´Â °£ÆíÇÒ »Ó ¾Æ´Ï¶ó ´Ù¾çÇÑ ¿µ¾ç¼Ò°¡ °í·ç ´ã°Ü ÀÖ¾î ¸¹Àº »ç¶÷µéÀÌ Áñ°Ü Ã£½À´Ï´Ù. 
+ÀÌ °í¸¶¿î »ø·¯µå¿¡ ¿©¼ºÀ» ÇâÇÑ ¡®°¢º°ÇÑ¡¯ ¸¶À½ÀÌ ÇÑ ÁÜ ´õÇØÁ³¾î¿ä. 
+ÄÃ¸®°¡ ¼Ò°³ÇÏ´Â »ø·¯µå´Â ¿µ¾ç»ç, Ã¤¼Ò¿¬±¸¿ø µî Àü¹®°¡ÀÇ ÀÚ¹®À» ¹Þ¾Æ ¿©¼º °Ç°­¿¡ µµ¿òÀ» ÁÖ´Â ·¹½ÃÇÇ·Î ¼¼½ÉÇÏ°Ô ±¸¼ºµÆ¾î¿ä. 
+À¯±â³ó Àç·á¸¦ °¡Áö°í Àú¿°½Ä Á¶¸®¹ýÀ¸·Î ¸¸µé¾îÁ® ´õ¿í ¾È½ÉÇÏ°í °Ç°­ÇÏ°Ô Áñ±æ ¼ö ÀÖ´ä´Ï´Ù. Àü¹® ¼ÎÇÁ°¡ ¸¸µç ÇÁ¸®¹Ì¾ö »ø·¯µå, ÄýÁîÇÁ·¹½ÃÀÇ »ø·¯µå¸¦ Á÷Á¢ °æÇèÇØº¸¼¼¿ä. '
 , '1496199185281l0.jpg' );
  
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname
 , price, saleprice, point, pqty, pcontents, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate)
-values(seq_product_pnum.nextval, '[í€¸ì¦ˆí”„ë ˆì‹œ] í”„ë¦¬ë¯¸ì—„ ìƒëŸ¬ë“œ 3ì¢…', 'ìƒëŸ¬ë“œë„ì‹œë½', 'ë‹¤ì´ì–´íŠ¸ìš©', 'HIT', 'ì—†ìŒ', 'ë² ë¦¬'||chr(38)||'ë¦¬ì½”íƒ€'
-, 6900, 6900, 690, 100, 'ë¦¬ì½”íƒ€ ì¹˜ì¦ˆëŠ” ë¶€ë“œëŸ¬ìš´ ì§ˆê°ê³¼ ê³ ì†Œí•˜ë©´ì„œë„ ì‚´ì§ ì‹œí¼í•œ ë§›ì´ ì—¬ì‹¬ì„ ì €ê²©í•˜ëŠ” ëŒ€í‘œ ìŒì‹ìœ¼ë¡œ ì¹¼ìŠ˜ì€ ë¬¼ë¡  ì˜¤ë©”ê°€ 3ì™€ 6ê°€ í’ë¶€í•˜ì£ . ì—¬ê¸°ì— ìƒí¼í•œ ë§›ì´ í†¡ íŠ€ë©° ì¦ê±°ì›€ì„ ì•ˆê¸°ëŠ” ì•„ë¡œë‹ˆì•„, ë¸”ë£¨ë² ë¦¬, í¬ëžœë² ë¦¬ ë“±ì„ ë‹´ì•„ ì¹¼ë¡œë¦¬ ë¶€ë‹´ì„ ë‚®ì·„ì–´ìš”. ë² ë¦¬ë¥˜ì—ëŠ” ë¹„íƒ€ë¯¼, ì•ˆí† ì‹œì•„ë‹Œ ë“±ì˜ ì„±ë¶„ì´ í’ë¶€í•˜ë‹µë‹ˆë‹¤. ì´íƒˆë¦¬ì•„ì‚° í¬ë„ ê³¼ì¦™ìœ¼ë¡œ ë§Œë“¤ì–´ì§„ ë°œì‚¬ë¯¹ ë“œë ˆì‹±ì€ ìƒëŸ¬ë“œì˜ ì‚°ëœ»í•¨ì„ í•œì¸µ ë”í•´ ì¤„ ê±°ì˜ˆìš”.'
-,'queensfresh', 'ì œì¡°ì¼ë¡œë¶€í„° 5ì¼', 'ë‚œë¥˜, ë•…ì½©, ì†Œê³ ê¸°, ë‹­ê³ ê¸°, ìƒˆìš°ì™€ ê°™ì€ ì‹œì„¤ì—ì„œ ìƒì‚°', 245, 30, 10, sysdate);
+values(seq_product_pnum.nextval, '[ÄýÁîÇÁ·¹½Ã] ÇÁ¸®¹Ì¾ö »ø·¯µå 3Á¾', '»ø·¯µåµµ½Ã¶ô', '´ÙÀÌ¾îÆ®¿ë', 'HIT', '¾øÀ½', 'º£¸®'||chr(38)||'¸®ÄÚÅ¸'
+, 6900, 6900, 690, 100, '¸®ÄÚÅ¸ Ä¡Áî´Â ºÎµå·¯¿î Áú°¨°ú °í¼ÒÇÏ¸é¼­µµ »ìÂ¦ ½ÃÅ­ÇÑ ¸ÀÀÌ ¿©½ÉÀ» Àú°ÝÇÏ´Â ´ëÇ¥ À½½ÄÀ¸·Î Ä®½·Àº ¹°·Ð ¿À¸Þ°¡ 3¿Í 6°¡ Ç³ºÎÇÏÁÒ. ¿©±â¿¡ »óÅ­ÇÑ ¸ÀÀÌ Åå Æ¢¸ç Áñ°Å¿òÀ» ¾È±â´Â ¾Æ·Î´Ï¾Æ, ºí·çº£¸®, Å©·£º£¸® µîÀ» ´ã¾Æ Ä®·Î¸® ºÎ´ãÀ» ³·Ãè¾î¿ä. º£¸®·ù¿¡´Â ºñÅ¸¹Î, ¾ÈÅä½Ã¾Æ´Ñ µîÀÇ ¼ººÐÀÌ Ç³ºÎÇÏ´ä´Ï´Ù. ÀÌÅ»¸®¾Æ»ê Æ÷µµ °úÁóÀ¸·Î ¸¸µé¾îÁø ¹ß»ç¹Í µå·¹½ÌÀº »ø·¯µåÀÇ »ê¶æÇÔÀ» ÇÑÃþ ´õÇØ ÁÙ °Å¿¹¿ä.'
+,'queensfresh', 'Á¦Á¶ÀÏ·ÎºÎÅÍ 5ÀÏ', '³­·ù, ¶¥Äá, ¼Ò°í±â, ´ß°í±â, »õ¿ì¿Í °°Àº ½Ã¼³¿¡¼­ »ý»ê', 245, 30, 10, sysdate);
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname
 , price, saleprice, point, pqty, pcontents, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate)
-values(seq_product_pnum.nextval, '[í€¸ì¦ˆí”„ë ˆì‹œ] í”„ë¦¬ë¯¸ì—„ ìƒëŸ¬ë“œ 3ì¢…', 'ìƒëŸ¬ë“œë„ì‹œë½', 'ë‹¤ì´ì–´íŠ¸ìš©', 'HIT', 'ì—†ìŒ', 'ì‰¬ë¦¼í”„'||chr(38)||'í”„ë Œì¹˜ë¹ˆ'
-, 6900, 6900, 690, 100, 'ë°”ë‹¤ ë‚´ìŒì´ ì€ì€ížˆ ë²ˆì§€ëŠ” íƒ±ê¸€íƒ±ê¸€í•˜ê³  ì‹ ì„ í•œ ìƒˆìš°ì™€ ì”¹ì„ìˆ˜ë¡ ê³ ì†Œí•œ í’ë¯¸ë¥¼ ì„ ì‚¬í•˜ëŠ” í”„ë Œì¹˜ë¹ˆì´ ë§Œë‚¬ì–´ìš”. ìƒˆìš°ì—ëŠ” ì˜¤ë©”ê°€ 3, ì¹¼ìŠ˜, ë¹„íƒ€ë¯¼ Dê°€, í”„ë Œì¹˜ë¹ˆì—ëŠ” ì¹¼ìŠ˜, ì½œë¦°, ë¹„íƒ€ë¯¼ ë“±ì˜ ì„±ë¶„ì´ í’ë¶€í•´ìš”. ì—¬ê¸°ì— êµ¬ìš´ ë§ˆëŠ˜ê³¼ ì–‘íŒŒê°€ ë“¤ì–´ê°€ ë§›ê³¼ ì˜ì–‘ì„ ë”í–ˆë‹µë‹ˆë‹¤. ë§›ì˜ í™”ë£¡ì ì •ì„ ì°ì–´ì¤„ ì¹ ë¦¬ì–´ë‹ˆì–¸ ë“œë ˆì‹±ì€ í• ë¼í”¼ë‡¨ì™€ ì˜¤ì´í”¼í´ë¡œ ë§¤ì½¤ìƒˆì½¤í•œ ë§›ì„ ì‚´ë ¸ê¸°ì— ë³´ë‹¤ í’ì„±í•œ ë§›ì˜ ì¡°í™”ë¥¼ ì´ëŒì–´ ë‚¼ ê±°ì˜ˆìš”.'
-,'queensfresh', 'ì œì¡°ì¼ë¡œë¶€í„° 5ì¼', 'ë‚œë¥˜, ë•…ì½©, ì†Œê³ ê¸°, ë‹­ê³ ê¸°, ìƒˆìš°ì™€ ê°™ì€ ì‹œì„¤ì—ì„œ ìƒì‚°', 270, 30, 10, sysdate);
+values(seq_product_pnum.nextval, '[ÄýÁîÇÁ·¹½Ã] ÇÁ¸®¹Ì¾ö »ø·¯µå 3Á¾', '»ø·¯µåµµ½Ã¶ô', '´ÙÀÌ¾îÆ®¿ë', 'HIT', '¾øÀ½', '½¬¸²ÇÁ'||chr(38)||'ÇÁ·»Ä¡ºó'
+, 6900, 6900, 690, 100, '¹Ù´Ù ³»À½ÀÌ ÀºÀºÈ÷ ¹øÁö´Â ÅÊ±ÛÅÊ±ÛÇÏ°í ½Å¼±ÇÑ »õ¿ì¿Í ¾ÃÀ»¼ö·Ï °í¼ÒÇÑ Ç³¹Ì¸¦ ¼±»çÇÏ´Â ÇÁ·»Ä¡ºóÀÌ ¸¸³µ¾î¿ä. »õ¿ì¿¡´Â ¿À¸Þ°¡ 3, Ä®½·, ºñÅ¸¹Î D°¡, ÇÁ·»Ä¡ºó¿¡´Â Ä®½·, ÄÝ¸°, ºñÅ¸¹Î µîÀÇ ¼ººÐÀÌ Ç³ºÎÇØ¿ä. ¿©±â¿¡ ±¸¿î ¸¶´Ã°ú ¾çÆÄ°¡ µé¾î°¡ ¸À°ú ¿µ¾çÀ» ´õÇß´ä´Ï´Ù. ¸ÀÀÇ È­·æÁ¡Á¤À» Âï¾îÁÙ Ä¥¸®¾î´Ï¾ð µå·¹½ÌÀº ÇÒ¶óÇÇ´¢¿Í ¿ÀÀÌÇÇÅ¬·Î ¸ÅÄÞ»õÄÞÇÑ ¸ÀÀ» »ì·È±â¿¡ º¸´Ù Ç³¼ºÇÑ ¸ÀÀÇ Á¶È­¸¦ ÀÌ²ø¾î ³¾ °Å¿¹¿ä.'
+,'queensfresh', 'Á¦Á¶ÀÏ·ÎºÎÅÍ 5ÀÏ', '³­·ù, ¶¥Äá, ¼Ò°í±â, ´ß°í±â, »õ¿ì¿Í °°Àº ½Ã¼³¿¡¼­ »ý»ê', 270, 30, 10, sysdate);
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname
 , price, saleprice, point, pqty, pcontents, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate)
-values(seq_product_pnum.nextval, '[í€¸ì¦ˆí”„ë ˆì‹œ] í”„ë¦¬ë¯¸ì—„ ìƒëŸ¬ë“œ 3ì¢…', 'ìƒëŸ¬ë“œë„ì‹œë½', 'ë‹¤ì´ì–´íŠ¸ìš©', 'HIT', 'ì—†ìŒ', 'ë¹„í”„'||chr(38)||'ë¨¸ì‰¬ë£¸'
-, 6900, 6900, 690, 100, 'ë¶€ë“œëŸ½ê³  ë‹´ë°±í•˜ê²Œ ì”¹ížˆëŠ” ì²­ì • í˜¸ì£¼ì‚° ì†Œê³ ê¸°ì™€ ì«„ê¹ƒí•˜ê³  ê³ ì†Œí•œ í’ë¯¸ê°€ ì¸ìƒì ì¸ êµ­ë‚´ì‚° ìƒˆì†¡ì´ë²„ì„¯ì´ ê³ ê¸‰ìŠ¤ëŸ¬ìš´ ì¡°í™”ë¥¼ ì´ë¤˜ì–´ìš”. ì†Œê³ ê¸°ì—ëŠ” ë‹¨ë°±ì§ˆ, ë¹„íƒ€ë¯¼ B, ë‚˜ì´ì•„ì‹  ì„±ë¶„ì´, ìƒˆì†¡ì´ë²„ì„¯ì—ëŠ” ì§ˆ ì¢‹ì€ ì¹¼ìŠ˜ê³¼ ë¹„íƒ€ë¯¼ Cê°€ í’ë¶€í•˜ë‹µë‹ˆë‹¤. í•¨ê»˜ ì–¹ížŒ íŒŒì¸ì• í”Œì€ ê³ ê¸°ì˜ ìœ¡ì§ˆì„ ë¶€ë“œëŸ½ê²Œ í•´ì¤„ ë¿ ì•„ë‹ˆë¼, ìƒˆì½¤í•˜ê³  ë‹¬ë‹¬í•œ ë§›ìœ¼ë¡œ ì‚°ëœ»í•œ í’ë¯¸ë¥¼ ì•ˆê²¨ì¤„ ê±°ì˜ˆìš”. ì˜¤ë¦¬ì—”íƒˆ ë“œë ˆì‹±ì„ ê³ë“¤ì—¬ ê°ì¹ ë§›ì„ ë”í•´ë³´ì„¸ìš”.'
-,'queensfresh', 'ì œì¡°ì¼ë¡œë¶€í„° 5ì¼', 'ë‚œë¥˜, ë•…ì½©, ì†Œê³ ê¸°, ë‹­ê³ ê¸°, ìƒˆìš°ì™€ ê°™ì€ ì‹œì„¤ì—ì„œ ìƒì‚°', 250, 30, 10, sysdate);
+values(seq_product_pnum.nextval, '[ÄýÁîÇÁ·¹½Ã] ÇÁ¸®¹Ì¾ö »ø·¯µå 3Á¾', '»ø·¯µåµµ½Ã¶ô', '´ÙÀÌ¾îÆ®¿ë', 'HIT', '¾øÀ½', 'ºñÇÁ'||chr(38)||'¸Ó½¬·ë'
+, 6900, 6900, 690, 100, 'ºÎµå·´°í ´ã¹éÇÏ°Ô ¾ÃÈ÷´Â Ã»Á¤ È£ÁÖ»ê ¼Ò°í±â¿Í ÂÌ±êÇÏ°í °í¼ÒÇÑ Ç³¹Ì°¡ ÀÎ»óÀûÀÎ ±¹³»»ê »õ¼ÛÀÌ¹ö¼¸ÀÌ °í±Þ½º·¯¿î Á¶È­¸¦ ÀÌ·ð¾î¿ä. ¼Ò°í±â¿¡´Â ´Ü¹éÁú, ºñÅ¸¹Î B, ³ªÀÌ¾Æ½Å ¼ººÐÀÌ, »õ¼ÛÀÌ¹ö¼¸¿¡´Â Áú ÁÁÀº Ä®½·°ú ºñÅ¸¹Î C°¡ Ç³ºÎÇÏ´ä´Ï´Ù. ÇÔ²² ¾ñÈù ÆÄÀÎ¾ÖÇÃÀº °í±âÀÇ À°ÁúÀ» ºÎµå·´°Ô ÇØÁÙ »Ó ¾Æ´Ï¶ó, »õÄÞÇÏ°í ´Þ´ÞÇÑ ¸ÀÀ¸·Î »ê¶æÇÑ Ç³¹Ì¸¦ ¾È°ÜÁÙ °Å¿¹¿ä. ¿À¸®¿£Å» µå·¹½ÌÀ» °çµé¿© °¨Ä¥¸ÀÀ» ´õÇØº¸¼¼¿ä.'
+,'queensfresh', 'Á¦Á¶ÀÏ·ÎºÎÅÍ 5ÀÏ', '³­·ù, ¶¥Äá, ¼Ò°í±â, ´ß°í±â, »õ¿ì¿Í °°Àº ½Ã¼³¿¡¼­ »ý»ê', 250, 30, 10, sysdate);
 
 commit;
 
@@ -737,37 +743,37 @@ from product_package;
 rollback;
 commit;
 
---------ìƒëŸ¬ë“œ:ì‹œë¦¬ì–¼ insert
+--------»ø·¯µå:½Ã¸®¾ó insert
 insert into product_package(pacnum, pacname, paccontents ,pacimage)
-values( seq_product_Package_pacnum.nextval, '[ë„¤ì´ì³íŒ¨ìŠ¤] ìœ ê¸°ë† ì‹œë¦¬ì–¼ 4ì¢…','ê¹ê¹í•˜ê²Œ ì—„ì„ ëœ ìœ ê¸°ë† ìž¬ë£Œë¡œ ë”ìš± ê±´ê°•í•˜ê²Œ ì¦ê¸°ëŠ” ì‹œë¦¬ì–¼','1508744357840l0.jpg');
+values( seq_product_Package_pacnum.nextval, '[³×ÀÌÃÄÆÐ½º] À¯±â³ó ½Ã¸®¾ó 4Á¾','±ñ±ñÇÏ°Ô ¾ö¼±µÈ À¯±â³ó Àç·á·Î ´õ¿í °Ç°­ÇÏ°Ô Áñ±â´Â ½Ã¸®¾ó','1508744357840l0.jpg');
 
---product ì‹œí€€ìŠ¤ 4ë²ˆ
+--product ½ÃÄö½º 4¹ø
 insert into product (pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point
                                     ,pqty, pcontents, pcompanyname, pexpiredate
                                     ,allergy, weight, salecount, plike, pdate )
-values(seq_product_pnum.nextval,  '[ë„¤ì´ì³íŒ¨ìŠ¤] ìœ ê¸°ë† ì‹œë¦¬ì–¼ 4ì¢…','ì‹œë¦¬ì–¼','ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©','NEW','í¬ë¦¬ìŠ¤ë§ˆìŠ¤ ì´ë²¤íŠ¸','í—¤ë¦¬í‹°ì§€ í”Œë ˆì´í¬',8000,7800,780,300,'ë°€, ë³´ë¦¬, í€´ë…¸ì•„ë¥¼ ë¹„ë¡¯í•´ ì˜ì–‘ ë§Œì ì˜ ê³¡ë¬¼ë“¤ì´ í˜¼í•©ë˜ì–´ ê³ ì†Œí•œ í’ë¯¸ë¥¼ ì „í•´ìš”. ìœ ê¸°ë† ê¿€ì´ ì²¨ê°€ë˜ì–´ ì‚´ì§ ë‹¬ì½¤í•œ ë§›ì´ ë‚˜ë©° ì‚¬íƒ•ìˆ˜ìˆ˜ë¥¼ ì¦ë°œì‹œì¼œ ë§Œë“  ì„¬ìœ ì§ˆì´ ë“¤ì–´ê°€ ê±´ê°•ì„ ë”í•˜ì˜€ì£ . í†µê³¡ë¬¼ ë³¸ì—°ì˜ ë§›ê³¼ ì‹ê°ì´ ìž˜ ì‚´ì•„ ìžˆë‹µë‹ˆë‹¤.'
-,'Nature Path Foods Inc.','ì œí’ˆì— ë³„ë„ í‘œê¸°ëœ ë‚ ì§œê¹Œì§€(ì½ëŠ”ë²•:ë…„.ì›”.ì¼ ìˆœ)','ë°€ í¬í•¨',375,568,84,default);
+values(seq_product_pnum.nextval,  '[³×ÀÌÃÄÆÐ½º] À¯±â³ó ½Ã¸®¾ó 4Á¾','½Ã¸®¾ó','½Ä»ç´ë¿ë/°£½Ä¿ë','NEW','Å©¸®½º¸¶½º ÀÌº¥Æ®','Çì¸®Æ¼Áö ÇÃ·¹ÀÌÅ©',8000,7800,780,300,'¹Ð, º¸¸®, Äû³ë¾Æ¸¦ ºñ·ÔÇØ ¿µ¾ç ¸¸Á¡ÀÇ °î¹°µéÀÌ È¥ÇÕµÇ¾î °í¼ÒÇÑ Ç³¹Ì¸¦ ÀüÇØ¿ä. À¯±â³ó ²ÜÀÌ Ã·°¡µÇ¾î »ìÂ¦ ´ÞÄÞÇÑ ¸ÀÀÌ ³ª¸ç »çÅÁ¼ö¼ö¸¦ Áõ¹ß½ÃÄÑ ¸¸µç ¼¶À¯ÁúÀÌ µé¾î°¡ °Ç°­À» ´õÇÏ¿´ÁÒ. Åë°î¹° º»¿¬ÀÇ ¸À°ú ½Ä°¨ÀÌ Àß »ì¾Æ ÀÖ´ä´Ï´Ù.'
+,'Nature Path Foods Inc.','Á¦Ç°¿¡ º°µµ Ç¥±âµÈ ³¯Â¥±îÁö(ÀÐ´Â¹ý:³â.¿ù.ÀÏ ¼ø)','¹Ð Æ÷ÇÔ',375,568,84,default);
 
---product ì‹œí€€ìŠ¤ 5ë²ˆ
+--product ½ÃÄö½º 5¹ø
 insert into product (pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point
                                     ,pqty, pcontents, pcompanyname, pexpiredate
                                     ,allergy, weight, salecount, plike, pdate )
-values(seq_product_pnum.nextval,  '[ë„¤ì´ì³íŒ¨ìŠ¤] ìœ ê¸°ë† ì‹œë¦¬ì–¼ 4ì¢…','ì‹œë¦¬ì–¼','ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©','NEW','í¬ë¦¬ìŠ¤ë§ˆìŠ¤ ì´ë²¤íŠ¸','ì½”ì•Œë¼ í¬ë¦¬ìŠ¤í”¼ ',8000,7800,780,0,'ê±´ê°•ì— ì¢‹ì€ í˜„ë¯¸ë¥¼ ë‹¬ì½¤í•œ ì½”ì½”ì•„ë¡œ ê°ì‹¼ ì½”ì•Œë¼ í¬ë¦¬ìŠ¤í”¼ëŠ” ë°”ì‚­ë°”ì‚­í•œ ì‹ê°ì´ ì¼í’ˆì´ì—ìš”. í˜„ë¯¸ì˜ ê³ ì†Œí•¨ê³¼ ì½”ì½”ì•„ì˜ ë‹¬ë‹¬í•œ í’ë¯¸ê°€ ì¡°í™”ë¡­ê²Œ ì–´ìš°ëŸ¬ì¡Œì§€ìš”. ìž…ë§› ì—†ëŠ” ì•„ì¹¨ë„ ë¬¸ì œì—†ë‹µë‹ˆë‹¤.'
-,'Nature Path Foods Inc.','ì œí’ˆì— ë³„ë„ í‘œê¸°ëœ ë‚ ì§œê¹Œì§€(ì½ëŠ”ë²•:ë…„.ì›”.ì¼ ìˆœ)','ì—†ìŒ',325,215,43,default);
+values(seq_product_pnum.nextval,  '[³×ÀÌÃÄÆÐ½º] À¯±â³ó ½Ã¸®¾ó 4Á¾','½Ã¸®¾ó','½Ä»ç´ë¿ë/°£½Ä¿ë','NEW','Å©¸®½º¸¶½º ÀÌº¥Æ®','ÄÚ¾Ë¶ó Å©¸®½ºÇÇ ',8000,7800,780,0,'°Ç°­¿¡ ÁÁÀº Çö¹Ì¸¦ ´ÞÄÞÇÑ ÄÚÄÚ¾Æ·Î °¨½Ñ ÄÚ¾Ë¶ó Å©¸®½ºÇÇ´Â ¹Ù»è¹Ù»èÇÑ ½Ä°¨ÀÌ ÀÏÇ°ÀÌ¿¡¿ä. Çö¹ÌÀÇ °í¼ÒÇÔ°ú ÄÚÄÚ¾ÆÀÇ ´Þ´ÞÇÑ Ç³¹Ì°¡ Á¶È­·Ó°Ô ¾î¿ì·¯Á³Áö¿ä. ÀÔ¸À ¾ø´Â ¾ÆÄ§µµ ¹®Á¦¾ø´ä´Ï´Ù.'
+,'Nature Path Foods Inc.','Á¦Ç°¿¡ º°µµ Ç¥±âµÈ ³¯Â¥±îÁö(ÀÐ´Â¹ý:³â.¿ù.ÀÏ ¼ø)','¾øÀ½',325,215,43,default);
 
---product ì‹œí€€ìŠ¤ 6ë²ˆ
+--product ½ÃÄö½º 6¹ø
 insert into product (pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point
                                     ,pqty, pcontents, pcompanyname, pexpiredate
                                     ,allergy, weight, salecount, plike, pdate )
-values(seq_product_pnum.nextval,  '[ë„¤ì´ì³íŒ¨ìŠ¤] ìœ ê¸°ë† ì‹œë¦¬ì–¼ 4ì¢…','ì‹œë¦¬ì–¼','ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©','NEW','í¬ë¦¬ìŠ¤ë§ˆìŠ¤ ì´ë²¤íŠ¸','ë¸”ë£¨ë² ë¦¬ ì‹œë‚˜ëª¬ í”Œë ‰ìŠ¤ ',8000,7800,780,50,'í†µë°€ê³¼ ë°€ê¸°ìš¸ì„ ë¹„ë¡¯í•´ ì•„ë§ˆì”¨, ëŒ€ë‘, ê·€ë¦¬ ë“± ë‹¤ì–‘í•œ ê³¡ë¬¼ê³¼ ìƒí¼í•œ ë¸”ë£¨ë² ë¦¬, í–¥ê¸‹í•œ ì‹œë‚˜ëª¬, ë‹¬ì½¤í•œ ì‚¬íƒ•ìˆ˜ìˆ˜ì¦™ì„ ì„žì–´ ë§Œë“¤ì—ˆì–´ìš”. ë‹¤ì±„ë¡œìš´ ìž¬ë£Œê°€ ì–´ìš°ëŸ¬ì¡Œê¸°ì— ì”¹ížˆëŠ” ì‹ê°ì´ í’ì„±í•˜ê³ , ê³ ì†Œí•˜ë©´ì„œë„ í–¥ê¸‹í•œ í’ë¯¸ë¥¼ ì „í•˜ì§€ìš”.'
-,'Nature Path Foods Inc.','ì œí’ˆì— ë³„ë„ í‘œê¸°ëœ ë‚ ì§œê¹Œì§€(ì½ëŠ”ë²•:ë…„.ì›”.ì¼ ìˆœ)','ë°€, ëŒ€ë‘ í•¨ìœ ',400,100,20,default);
+values(seq_product_pnum.nextval,  '[³×ÀÌÃÄÆÐ½º] À¯±â³ó ½Ã¸®¾ó 4Á¾','½Ã¸®¾ó','½Ä»ç´ë¿ë/°£½Ä¿ë','NEW','Å©¸®½º¸¶½º ÀÌº¥Æ®','ºí·çº£¸® ½Ã³ª¸ó ÇÃ·º½º ',8000,7800,780,50,'Åë¹Ð°ú ¹Ð±â¿ïÀ» ºñ·ÔÇØ ¾Æ¸¶¾¾, ´ëµÎ, ±Í¸® µî ´Ù¾çÇÑ °î¹°°ú »óÅ­ÇÑ ºí·çº£¸®, Çâ±ßÇÑ ½Ã³ª¸ó, ´ÞÄÞÇÑ »çÅÁ¼ö¼öÁóÀ» ¼¯¾î ¸¸µé¾ú¾î¿ä. ´ÙÃ¤·Î¿î Àç·á°¡ ¾î¿ì·¯Á³±â¿¡ ¾ÃÈ÷´Â ½Ä°¨ÀÌ Ç³¼ºÇÏ°í, °í¼ÒÇÏ¸é¼­µµ Çâ±ßÇÑ Ç³¹Ì¸¦ ÀüÇÏÁö¿ä.'
+,'Nature Path Foods Inc.','Á¦Ç°¿¡ º°µµ Ç¥±âµÈ ³¯Â¥±îÁö(ÀÐ´Â¹ý:³â.¿ù.ÀÏ ¼ø)','¹Ð, ´ëµÎ ÇÔÀ¯',400,100,20,default);
 
---product ì‹œí€€ìŠ¤ 7ë²ˆ
+--product ½ÃÄö½º 7¹ø
 insert into product (pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point
                                     ,pqty, pcontents, pcompanyname, pexpiredate
                                     ,allergy, weight, salecount, plike, pdate )
-values(seq_product_pnum.nextval,  '[ë„¤ì´ì³íŒ¨ìŠ¤] ìœ ê¸°ë† ì‹œë¦¬ì–¼ 4ì¢…','ì‹œë¦¬ì–¼','ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©','NEW','í¬ë¦¬ìŠ¤ë§ˆìŠ¤ ì´ë²¤íŠ¸','ì´ˆì½” ì¹¨ìŠ¤ ',8000,7800,780,165,'í™œì§ ì›ƒê³  ìžˆëŠ” ì•„ê¸° ì˜¤ëž‘ìš°íƒ„ì´ ê·¸ë ¤ì ¸ ìžˆì–´ ì•„ì´ë“¤ì˜ í¥ë¯¸ë¥¼ ë„ëŠ” ì´ˆì½” ì¹¨ìŠ¤ì˜ˆìš”. ìœ ê¸°ë†ìœ¼ë¡œ ìžëž€ ì˜¥ìˆ˜ìˆ˜ì™€ ìœ ê¸°ë† ì½”ì½”ì•„ë¡œ ë§Œë“¤ì–´ì§„ ë‹¬ë‹¬í•˜ë©° ê³ ì†Œí•œ ì¸ê¸° ë§Œì ì˜ ì‹œë¦¬ì–¼ì´ëžë‹ˆë‹¤.'
-,'Nature Path Foods Inc.','ì œí’ˆì— ë³„ë„ í‘œê¸°ëœ ë‚ ì§œê¹Œì§€(ì½ëŠ”ë²•:ë…„.ì›”.ì¼ ìˆœ)','ì—†ìŒ',284,86,4,default);
+values(seq_product_pnum.nextval,  '[³×ÀÌÃÄÆÐ½º] À¯±â³ó ½Ã¸®¾ó 4Á¾','½Ã¸®¾ó','½Ä»ç´ë¿ë/°£½Ä¿ë','NEW','Å©¸®½º¸¶½º ÀÌº¥Æ®','ÃÊÄÚ Ä§½º ',8000,7800,780,165,'È°Â¦ ¿ô°í ÀÖ´Â ¾Æ±â ¿À¶û¿ìÅºÀÌ ±×·ÁÁ® ÀÖ¾î ¾ÆÀÌµéÀÇ Èï¹Ì¸¦ ²ô´Â ÃÊÄÚ Ä§½º¿¹¿ä. À¯±â³óÀ¸·Î ÀÚ¶õ ¿Á¼ö¼ö¿Í À¯±â³ó ÄÚÄÚ¾Æ·Î ¸¸µé¾îÁø ´Þ´ÞÇÏ¸ç °í¼ÒÇÑ ÀÎ±â ¸¸Á¡ÀÇ ½Ã¸®¾óÀÌ¶ø´Ï´Ù.'
+,'Nature Path Foods Inc.','Á¦Ç°¿¡ º°µµ Ç¥±âµÈ ³¯Â¥±îÁö(ÀÐ´Â¹ý:³â.¿ù.ÀÏ ¼ø)','¾øÀ½',284,86,4,default);
 
 
 insert into product_images(pimgnum,pimgfilename,fk_pnum) 
@@ -797,18 +803,18 @@ from product_package;
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname
 , price, saleprice, point, pqty, pcontents, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate)
-values(seq_product_pnum.nextval, 'ì—†ìŒ', 'ì£½/ìŠ¤í”„', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'HIT', 'ì—†ìŒ', 'ìƒˆìš° ì™„íƒ• í´ë¦¬ì–´ìŠ¤í”„'
-, 3900, 3900, 390, 100, 'í™ì½©ì´ë‚˜ ì¤‘êµ­ì€ ë¬¼ë¡  íƒœêµ­ì˜ ê¸¸ê±°ë¦¬ì—ì„œë„ ì™„íƒ• ê°€ê²Œë¥¼ ì‰½ê²Œ ë°œê²¬í•  ìˆ˜ ìžˆì–´ìš”. ì˜¹ê¸°ì¢…ê¸° ëª¨ì—¬ì•‰ì•„ ì™„íƒ• í•œ ê·¸ë¦‡ì„ ë¹„ìš°ëŠ” ì‚¬ëžŒë“¤ì€ íƒœêµ­ì˜ ì¼ìƒì ì¸ í’ê²½ì´ê¸°ë„ í•˜ì£ . ìƒˆìš° í•œ ë§ˆë¦¬ê°€ ê½‰ ë“¤ì–´ì°¨ ì”¹ìœ¼ë©´ ì”¹ì„ìˆ˜ë¡ íƒ±ê¸€íƒ±ê¸€ í’€ì–´ì§€ëŠ” ì™„íƒ•ì˜ ê·¸ ë§›. ì™„íƒ• í•œ ìž…, êµ­ë¬¼ í•œ ìž… ë¨¹ë‹¤ ë³´ë©´ ê¸ˆë°© ë°”ë‹¥ì„ ë³´ê²Œ ë˜ëŠ”ë°ìš”. ì§€ê¸ˆ ì†Œê°œí•˜ëŠ” ìƒˆìš° ì™„íƒ• í´ë¦¬ì–´ ìˆ˜í”„ëŠ” íƒœêµ­ì—ì„œ ì†ê¼½ížˆëŠ” ê·œëª¨ì˜ ìˆ˜ì‚°ë¬¼ ì „ë¬¸ ì—…ì²´ê°€ ë…¸í•˜ìš°ë¥¼ ì‚´ë ¤ í˜„ì§€ì˜ ë§›ì„ ê·¸ëŒ€ë¡œ ë‹´ì•„ë‚¸ ì œí’ˆìž…ë‹ˆë‹¤. ì‹ ì„ í•œ ìƒˆìš°ì˜ ê»ì§ˆê³¼ ë‚´ìž¥ì„ ê¹¨ë—í•˜ê²Œ ì†ì§ˆí•˜ì—¬ ë¹„ë¦¬ì§€ ì•Šê³  ê³ ì†Œí•œ ë§›ì´ ë‚˜ì§€ìš”. í–¥ì‹ ë£Œê°€ ê³¼í•˜ê²Œ ë“¤ì–´ê°€ì§€ ì•Šê³  êµ­ë¬¼ì´ ë§‘ê³  ë‹´ë°±í•´ ê³„ì† ë¨¹ê²Œ ë˜ëŠ” ë§¤ë ¥ì„ ì§€ë…”ì–´ìš”. ë“œì‹¤ ë• ë¹„ë‹ì„ ì œê±°í•œ ë’¤ í‘œì‹œì„ ê¹Œì§€ ë¬¼ì„ ë¶“ê³  ì „ìžë ˆì¸ì§€ì— ì‚¼ ë¶„ë§Œ ëŒë ¤ì£¼ì„¸ìš”. ê°„ë‹¨í•˜ê²Œ ì´êµ­ì ì¸ ë§›ì˜ ìš”ë¦¬ë¥¼ ì¦ê¸°ì‹¤ ìˆ˜ ìžˆì„ ê±°ì˜ˆìš”.'
-,'OKEANOSFOOD COMPANY LIMITED', 'ì œì¡°ì¼ë¡œë¶€í„° 18ê°œì›”', 'ìƒˆìš°, ë°€ê°€ë£¨(ë°€), ëŒ€ë‘ í•¨ìœ ', 150, 50, 10, sysdate);
+values(seq_product_pnum.nextval, '¾øÀ½', 'Á×/½ºÇÁ', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'HIT', '¾øÀ½', '»õ¿ì ¿ÏÅÁ Å¬¸®¾î½ºÇÁ'
+, 3900, 3900, 390, 100, 'È«ÄáÀÌ³ª Áß±¹Àº ¹°·Ð ÅÂ±¹ÀÇ ±æ°Å¸®¿¡¼­µµ ¿ÏÅÁ °¡°Ô¸¦ ½±°Ô ¹ß°ßÇÒ ¼ö ÀÖ¾î¿ä. ¿Ë±âÁ¾±â ¸ð¿©¾É¾Æ ¿ÏÅÁ ÇÑ ±×¸©À» ºñ¿ì´Â »ç¶÷µéÀº ÅÂ±¹ÀÇ ÀÏ»óÀûÀÎ Ç³°æÀÌ±âµµ ÇÏÁÒ. »õ¿ì ÇÑ ¸¶¸®°¡ ²Ë µé¾îÂ÷ ¾ÃÀ¸¸é ¾ÃÀ»¼ö·Ï ÅÊ±ÛÅÊ±Û Ç®¾îÁö´Â ¿ÏÅÁÀÇ ±× ¸À. ¿ÏÅÁ ÇÑ ÀÔ, ±¹¹° ÇÑ ÀÔ ¸Ô´Ù º¸¸é ±Ý¹æ ¹Ù´ÚÀ» º¸°Ô µÇ´Âµ¥¿ä. Áö±Ý ¼Ò°³ÇÏ´Â »õ¿ì ¿ÏÅÁ Å¬¸®¾î ¼öÇÁ´Â ÅÂ±¹¿¡¼­ ¼Õ²ÅÈ÷´Â ±Ô¸ðÀÇ ¼ö»ê¹° Àü¹® ¾÷Ã¼°¡ ³ëÇÏ¿ì¸¦ »ì·Á ÇöÁöÀÇ ¸ÀÀ» ±×´ë·Î ´ã¾Æ³½ Á¦Ç°ÀÔ´Ï´Ù. ½Å¼±ÇÑ »õ¿ìÀÇ ²®Áú°ú ³»ÀåÀ» ±ú²ýÇÏ°Ô ¼ÕÁúÇÏ¿© ºñ¸®Áö ¾Ê°í °í¼ÒÇÑ ¸ÀÀÌ ³ªÁö¿ä. Çâ½Å·á°¡ °úÇÏ°Ô µé¾î°¡Áö ¾Ê°í ±¹¹°ÀÌ ¸¼°í ´ã¹éÇØ °è¼Ó ¸Ô°Ô µÇ´Â ¸Å·ÂÀ» Áö³æ¾î¿ä. µå½Ç ¶© ºñ´ÒÀ» Á¦°ÅÇÑ µÚ Ç¥½Ã¼±±îÁö ¹°À» º×°í ÀüÀÚ·¹ÀÎÁö¿¡ »ï ºÐ¸¸ µ¹·ÁÁÖ¼¼¿ä. °£´ÜÇÏ°Ô ÀÌ±¹ÀûÀÎ ¸ÀÀÇ ¿ä¸®¸¦ Áñ±â½Ç ¼ö ÀÖÀ» °Å¿¹¿ä.'
+,'OKEANOSFOOD COMPANY LIMITED', 'Á¦Á¶ÀÏ·ÎºÎÅÍ 18°³¿ù', '»õ¿ì, ¹Ð°¡·ç(¹Ð), ´ëµÎ ÇÔÀ¯', 150, 50, 10, sysdate);
 
 insert into product_images(pimgnum,pimgfilename,fk_pnum) 
 values(seq_product_images_pimgnum.nextval,'hobakjook.png', 8);
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname
 , price, saleprice, point, pqty, pcontents, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate)
-values(seq_product_pnum.nextval, 'ì—†ìŒ', 'ì£½/ìŠ¤í”„', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'HIT', 'ì—†ìŒ', '[ì •ë¯¸ê²½í‚¤ì¹œ] ë‹¨í˜¸ë°• ì£½'
-, 6000, 6000, 600, 200, 'ì •ë¯¸ê²½í‚¤ì¹œì€ ì „í†µ ìš”ë¦¬, ì •í†µ í•œì‹ì„ ê³ ìˆ˜í•˜ê¸°ë³´ë‹¤ëŠ” ì‹œëŒ€ì— ë§žëŠ” ì‹ìž¬ë£Œì™€ ë¬¸í™”ë¥¼ ì•„ìš°ëŸ¬ ëˆ„êµ¬ë“  ì¹œìˆ™í•˜ê²Œ ì¦ê¸¸ ìˆ˜ ìžˆëŠ” ì§‘ë°¥ ë ˆì‹œí”¼ë¥¼ ì§€í–¥í•©ë‹ˆë‹¤. ëª¨ì–‘ì´ í™”ë ¤í•˜ì§€ ì•Šì•„ë„ ìž¬ë£Œê°€ ë…¹ì•„ë“  ëª¨ì–‘ìƒˆì™€ ê¹Šì€ ë§›ì„ ë³´ë©´ ìš”ë¦¬ì—°êµ¬ê°€ì˜ ë‚¨ë‹¤ë¥¸ ë‚´ê³µì´ ëŠê»´ì§€ì£ . ìš°ì—°ì°®ê²Œ ìš”ë¦¬ë¥¼ ê°€ë¥´ì¹˜ê¸° ì‹œìž‘í•œ ì •ë¯¸ê²½ ìš”ë¦¬ì—°êµ¬ê°€ëŠ” ì–´ëŠë§ ìš”ë¦¬ ì¸ìƒ 30ë…„ì˜ ê¸¸ì„ ê±¸ìœ¼ë©° í˜„ìž¬, ëŒ€í•œë¯¼êµ­ì„ ëŒ€í‘œí•˜ëŠ” ìŒì‹ ì „ë¬¸ê°€ë¡œ í™œì•½í•˜ê³  ìžˆëŠ”ë°ìš”. ê³ ê¸‰ ìš”ë¦¬ í•™ì›ì˜ í•œì‹ ì „ë¬¸ ê°•ì‚¬, ì´ë°¥ì°¨ ìš”ë¦¬ ì—°êµ¬ì†Œìž¥, ì •ë¯¸ê²½ ì‚¬ê³„ì²  ë°˜ì°¬ ëŒ€í‘œë¼ëŠ” íƒ„íƒ„í•œ íƒ€ì´í‹€ì´ ê·¸ë…€ë¥¼ ì¦ëª…í•´ì¤˜ìš”. ëˆ„êµ¬ë“  ë§›ìžˆê³  ê°„íŽ¸í•˜ê²Œ ì¡°ë¦¬í•  ìˆ˜ ìžˆëŠ” ì§‘ë°¥ ë ˆì‹œí”¼ë¥¼ ê°ì¢… ë°©ì†¡ê³¼ ì±… ìž‘ì—…, ê°•ì—° ë“± ì—¬ëŸ¬ ë¬´ëŒ€ì—ì„œ ì•Œë¦¬ê³  ìžˆì§€ìš”. ì´ì œ ì»¬ë¦¬ë¥¼ í†µí•´ ë§Œë‚˜ë³´ì„¸ìš”. ì§‘ë°¥ì´ ì¦ê±°ì›Œì§€ëŠ” ì´ìœ , ë”°ëœ»í•œ ë°¥ê³¼ ì–´ìš°ëŸ¬ì§€ëŠ” ì§‘ë°¥ ë ˆì‹œí”¼ë¥¼ ê°€ì •ì—ì„œ ê²½í—˜í•  ìˆ˜ ìžˆë‹µë‹ˆë‹¤. ì „ì„¸ëŒ€ê°€ ì–´ìš°ëŸ¬ì§€ëŠ” í–‰ë³µí•œ ì‹íƒì„ íŽ¼ì³ë³´ì„¸ìš”.'
-,'(ì£¼)ì •ë¯¸ê²½í‚¤ì¹œ', 'ì œì¡°ì¼ë¡œë¶€í„° 7ì¼', 'ê²Œ, ìƒˆìš°, ê³ ë“±ì–´, ë‚œë¥˜, ë•…ì½©, ëŒ€ë‘, ìš°ìœ , ë°€, ë©”ë°€, ë¼ì§€ê³ ê¸°, í† ë§ˆí† , í˜¸ë‘, ìž£, í‚¤ìœ„, ë‹­ê³ ê¸°, ì¡°ê°œë¥˜(êµ´,ì „ë³µ,í™í•©í¬í•¨), ì˜¤ì§•ì–´, ì‡ ê³ ê¸°, ì°¸ê¹¨ì™€ ê°™ì€ ì‹œì„¤ì—ì„œ ì œì¡°', 350, 30, 10, sysdate);
+values(seq_product_pnum.nextval, '¾øÀ½', 'Á×/½ºÇÁ', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'HIT', '¾øÀ½', '[Á¤¹Ì°æÅ°Ä£] ´ÜÈ£¹Ú Á×'
+, 6000, 6000, 600, 200, 'Á¤¹Ì°æÅ°Ä£Àº ÀüÅë ¿ä¸®, Á¤Åë ÇÑ½ÄÀ» °í¼öÇÏ±âº¸´Ù´Â ½Ã´ë¿¡ ¸Â´Â ½ÄÀç·á¿Í ¹®È­¸¦ ¾Æ¿ì·¯ ´©±¸µç Ä£¼÷ÇÏ°Ô Áñ±æ ¼ö ÀÖ´Â Áý¹ä ·¹½ÃÇÇ¸¦ ÁöÇâÇÕ´Ï´Ù. ¸ð¾çÀÌ È­·ÁÇÏÁö ¾Ê¾Æµµ Àç·á°¡ ³ì¾Æµç ¸ð¾ç»õ¿Í ±íÀº ¸ÀÀ» º¸¸é ¿ä¸®¿¬±¸°¡ÀÇ ³²´Ù¸¥ ³»°øÀÌ ´À²¸ÁöÁÒ. ¿ì¿¬Âú°Ô ¿ä¸®¸¦ °¡¸£Ä¡±â ½ÃÀÛÇÑ Á¤¹Ì°æ ¿ä¸®¿¬±¸°¡´Â ¾î´Àµ¡ ¿ä¸® ÀÎ»ý 30³âÀÇ ±æÀ» °ÉÀ¸¸ç ÇöÀç, ´ëÇÑ¹Î±¹À» ´ëÇ¥ÇÏ´Â À½½Ä Àü¹®°¡·Î È°¾àÇÏ°í ÀÖ´Âµ¥¿ä. °í±Þ ¿ä¸® ÇÐ¿øÀÇ ÇÑ½Ä Àü¹® °­»ç, ÀÌ¹äÂ÷ ¿ä¸® ¿¬±¸¼ÒÀå, Á¤¹Ì°æ »ç°èÃ¶ ¹ÝÂù ´ëÇ¥¶ó´Â ÅºÅºÇÑ Å¸ÀÌÆ²ÀÌ ±×³à¸¦ Áõ¸íÇØÁà¿ä. ´©±¸µç ¸ÀÀÖ°í °£ÆíÇÏ°Ô Á¶¸®ÇÒ ¼ö ÀÖ´Â Áý¹ä ·¹½ÃÇÇ¸¦ °¢Á¾ ¹æ¼Û°ú Ã¥ ÀÛ¾÷, °­¿¬ µî ¿©·¯ ¹«´ë¿¡¼­ ¾Ë¸®°í ÀÖÁö¿ä. ÀÌÁ¦ ÄÃ¸®¸¦ ÅëÇØ ¸¸³ªº¸¼¼¿ä. Áý¹äÀÌ Áñ°Å¿öÁö´Â ÀÌÀ¯, µû¶æÇÑ ¹ä°ú ¾î¿ì·¯Áö´Â Áý¹ä ·¹½ÃÇÇ¸¦ °¡Á¤¿¡¼­ °æÇèÇÒ ¼ö ÀÖ´ä´Ï´Ù. Àü¼¼´ë°¡ ¾î¿ì·¯Áö´Â Çàº¹ÇÑ ½ÄÅ¹À» ÆîÃÄº¸¼¼¿ä.'
+,'(ÁÖ)Á¤¹Ì°æÅ°Ä£', 'Á¦Á¶ÀÏ·ÎºÎÅÍ 7ÀÏ', '°Ô, »õ¿ì, °íµî¾î, ³­·ù, ¶¥Äá, ´ëµÎ, ¿ìÀ¯, ¹Ð, ¸Þ¹Ð, µÅÁö°í±â, Åä¸¶Åä, È£µÎ, Àã, Å°À§, ´ß°í±â, Á¶°³·ù(±¼,Àüº¹,È«ÇÕÆ÷ÇÔ), ¿ÀÂ¡¾î, ¼è°í±â, Âü±ú¿Í °°Àº ½Ã¼³¿¡¼­ Á¦Á¶', 350, 30, 10, sysdate);
 
 insert into product_images(pimgnum,pimgfilename,fk_pnum) 
 values(seq_product_images_pimgnum.nextval,'shirimp_soup.png', 9);
@@ -820,55 +826,53 @@ select *
 from product;
 
 
--- ***** ê±´ê°•ì°¨ insert
--- ìžëª½ì²­
+-- ***** °Ç°­Â÷ insert
+-- ÀÚ¸ùÃ»
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point
              , pqty, pcontents, pcompanyname, weight)
-values(10, 'ì—†ìŒ', 'ê±´ê°•ì°¨', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'NEW', 'ì—†ìŒ', '[ê²¨ìš¸í–¥ê¸°] ìžëª½ì²­ 950g', 10000, 8800, 880
-     , 100, 'ì† ëì´ ì°¨ê°‘ê²Œ ì•„ë ¤ì˜¤ëŠ” ë‚ , ë”°ëˆí•œ ê³¼ì¼ì°¨ë¥¼ í˜¸ë¥´ë¥µ ë§ˆì‹œëŠ” ëŠë‚Œì€ ì°¸ ê°ë³„í•´ìš”. 
-     ì½” ëì— ê°ê²¨ ì˜¤ëŠ” í’ì„±í•œ ê³¼ì¼í–¥ê³¼ ìž… ì•ˆ ê°€ë“í•œ ë‹¬ì½¤í•¨ì€ ìƒê°ë§Œ í•´ë„ ê¸°ë¶„ì´ ì¢‹ì•„ì§€ì£ . 
-     ì»¬ë¦¬ê°€ ìžëª½ ê³¼ìœ¡ì´ í’ì„±í•˜ê²Œ ë“¤ì–´ê°„ ìžëª½ì²­ì„ ì¤€ë¹„í–ˆìŠµë‹ˆë‹¤. ìƒê³¼ì¼ë¡œ ë¨¹ì„ ë•Œì— ë¹„í•´ ìŒ‰ì‹¸ë¦„í•œ ë§›ì´ ì¤„ì–´ë“¤ê³  ë¶‰ê²Œ ìµì€ ë§Œë‹¤ë¦°ì´ ì—°ìƒë˜ëŠ” 
-     ì§„í–¥ í–¥ì´ ë§¤ë ¥ì ì´ì—ìš”. ë² íƒ€ì¹´ë¡œí‹´ê³¼ ë¹„íƒ€ë¯¼A ë“±ì´ í’ë¶€í•œ ìžëª½ì— ì„¤íƒ•ë§Œì„ ë„£ì–´ì„œ ë§Œë“  ê±´ê°•í•œ ê³¼ì¼ì²­ì´ì£ . 
-     ê³¼ìœ¡ì„ ì–‡ê²Œ ì°ì–´ ë„£ì€ ë•ë¶„ì— ì‹ê°ì´ ì‚´ì•„ìžˆìœ¼ë©´ì„œë„ ì”¹ëŠ”ë° ë¶€ë‹´ì´ ì—†ì–´ìš”. 
-     ê²¨ìš¸ì—ëŠ” ë”°ëˆí•œ ì°¨ë¡œ, ì—¬ë¦„ì—ëŠ” íƒ„ì‚°ìˆ˜ì— ë„£ì–´ ì²­ëŸ‰í•œ íƒ„ì‚°ìŒë£Œë¡œ í™œìš©í•´ë³´ì„¸ìš”.'
-     , 'ì‹ ì„±ì—í”„ì—”ë¹„', 950);
+values(10, '¾øÀ½', '°Ç°­Â÷', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'NEW', '¾øÀ½', '[°Ü¿ïÇâ±â] ÀÚ¸ùÃ» 950g', 10000, 8800, 880
+     , 100, '¼Õ ³¡ÀÌ Â÷°©°Ô ¾Æ·Á¿À´Â ³¯, µû²öÇÑ °úÀÏÂ÷¸¦ È£¸£¸¤ ¸¶½Ã´Â ´À³¦Àº Âü °¢º°ÇØ¿ä. 
+     ÄÚ ³¡¿¡ °¨°Ü ¿À´Â Ç³¼ºÇÑ °úÀÏÇâ°ú ÀÔ ¾È °¡µæÇÑ ´ÞÄÞÇÔÀº »ý°¢¸¸ ÇØµµ ±âºÐÀÌ ÁÁ¾ÆÁöÁÒ. 
+     ÄÃ¸®°¡ ÀÚ¸ù °úÀ°ÀÌ Ç³¼ºÇÏ°Ô µé¾î°£ ÀÚ¸ùÃ»À» ÁØºñÇß½À´Ï´Ù. »ý°úÀÏ·Î ¸ÔÀ» ¶§¿¡ ºñÇØ ½Ô½Î¸§ÇÑ ¸ÀÀÌ ÁÙ¾îµé°í ºÓ°Ô ÀÍÀº ¸¸´Ù¸°ÀÌ ¿¬»óµÇ´Â 
+     ÁøÇâ ÇâÀÌ ¸Å·ÂÀûÀÌ¿¡¿ä. º£Å¸Ä«·ÎÆ¾°ú ºñÅ¸¹ÎA µîÀÌ Ç³ºÎÇÑ ÀÚ¸ù¿¡ ¼³ÅÁ¸¸À» ³Ö¾î¼­ ¸¸µç °Ç°­ÇÑ °úÀÏÃ»ÀÌÁÒ. 
+     °úÀ°À» ¾ã°Ô ½ä¾î ³ÖÀº ´öºÐ¿¡ ½Ä°¨ÀÌ »ì¾ÆÀÖÀ¸¸é¼­µµ ¾Ã´Âµ¥ ºÎ´ãÀÌ ¾ø¾î¿ä. 
+     °Ü¿ï¿¡´Â µû²öÇÑ Â÷·Î, ¿©¸§¿¡´Â Åº»ê¼ö¿¡ ³Ö¾î Ã»·®ÇÑ Åº»êÀ½·á·Î È°¿ëÇØº¸¼¼¿ä.'
+     , '½Å¼º¿¡ÇÁ¿£ºñ', 950);
      
--- ìœ ìžì²­
+-- À¯ÀÚÃ»
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point
              , pqty, pcontents, pcompanyname, weight)
-values(11, 'ì—†ìŒ', 'ê±´ê°•ì°¨', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'NEW', 'ì—†ìŒ', '[ê²¨ìš¸í–¥ê¸°] ìœ ìžì²­ 1kg', 10000, 7700, 770
-     , 100, 'ì† ëì´ ì°¨ê°‘ê²Œ ì•„ë ¤ì˜¤ëŠ” ë‚ , ë”°ëˆí•œ ê³¼ì¼ì°¨ë¥¼ í˜¸ë¥´ë¥µ ë§ˆì‹œëŠ” ëŠë‚Œì€ ì°¸ ê°ë³„í•´ìš”.
-     ì½” ëì— ê°ê²¨ ì˜¤ëŠ” í’ì„±í•œ ê³¼ì¼í–¥ê³¼ ìž… ì•ˆ ê°€ë“í•œ ë‹¬ì½¤í•¨ì€ ìƒê°ë§Œ í•´ë„ ê¸°ë¶„ì´ ì¢‹ì•„ì§€ì£ .
-     ì»¬ë¦¬ê°€ ì§„í•œ ê³¼ì¼í–¥ì˜ ëŒ€í‘œì£¼ìžì¸ ìœ ìž ê³¼ìœ¡ì´ í’ì„±í•˜ê²Œ ë“¤ì–´ê°„ ìœ ìžì²­ì„ ì¤€ë¹„í–ˆìŠµë‹ˆë‹¤.
-     ë¹„íƒ€ë¯¼Cì™€ êµ¬ì—°ì‚°, ì—½ì‚° ë“±ì´ í’ë¶€í•œ ìœ ìžì— ì„¤íƒ•ë§Œì„ ë„£ì–´ì„œ ë§Œë“  ê±´ê°•í•œ ê³¼ì¼ì²­ì´ì£ .
-     ê³¼ìœ¡ì„ ì–‡ê²Œ ì°ì–´ ë„£ì€ ë•ë¶„ì— ì‹ê°ì´ ì‚´ì•„ìžˆìœ¼ë©´ì„œë„ ì”¹ëŠ”ë° ë¶€ë‹´ì´ ì—†ì–´ìš”.
-     ê²¨ìš¸ì—ëŠ” ë”°ëˆí•œ ì°¨ë¡œ, ì—¬ë¦„ì—ëŠ” íƒ„ì‚°ìˆ˜ì— ë„£ì–´ ì²­ëŸ‰í•œ íƒ„ì‚°ìŒë£Œë¡œ í™œìš©í•´ë³´ì„¸ìš”.'
-     , 'ì‹ ì„±ì—í”„ì—”ë¹„', 1000);
+values(11, '¾øÀ½', '°Ç°­Â÷', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'NEW', '¾øÀ½', '[°Ü¿ïÇâ±â] À¯ÀÚÃ» 1kg', 10000, 7700, 770
+     , 100, '¼Õ ³¡ÀÌ Â÷°©°Ô ¾Æ·Á¿À´Â ³¯, µû²öÇÑ °úÀÏÂ÷¸¦ È£¸£¸¤ ¸¶½Ã´Â ´À³¦Àº Âü °¢º°ÇØ¿ä.
+     ÄÚ ³¡¿¡ °¨°Ü ¿À´Â Ç³¼ºÇÑ °úÀÏÇâ°ú ÀÔ ¾È °¡µæÇÑ ´ÞÄÞÇÔÀº »ý°¢¸¸ ÇØµµ ±âºÐÀÌ ÁÁ¾ÆÁöÁÒ.
+     ÄÃ¸®°¡ ÁøÇÑ °úÀÏÇâÀÇ ´ëÇ¥ÁÖÀÚÀÎ À¯ÀÚ °úÀ°ÀÌ Ç³¼ºÇÏ°Ô µé¾î°£ À¯ÀÚÃ»À» ÁØºñÇß½À´Ï´Ù.
+     ºñÅ¸¹ÎC¿Í ±¸¿¬»ê, ¿±»ê µîÀÌ Ç³ºÎÇÑ À¯ÀÚ¿¡ ¼³ÅÁ¸¸À» ³Ö¾î¼­ ¸¸µç °Ç°­ÇÑ °úÀÏÃ»ÀÌÁÒ.
+     °úÀ°À» ¾ã°Ô ½ä¾î ³ÖÀº ´öºÐ¿¡ ½Ä°¨ÀÌ »ì¾ÆÀÖÀ¸¸é¼­µµ ¾Ã´Âµ¥ ºÎ´ãÀÌ ¾ø¾î¿ä.
+     °Ü¿ï¿¡´Â µû²öÇÑ Â÷·Î, ¿©¸§¿¡´Â Åº»ê¼ö¿¡ ³Ö¾î Ã»·®ÇÑ Åº»êÀ½·á·Î È°¿ëÇØº¸¼¼¿ä.'
+     , '½Å¼º¿¡ÇÁ¿£ºñ', 1000);
      
      
--- ë ˆëª¬ì²­
+-- ·¹¸óÃ»
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point
              , pqty, pcontents, pcompanyname, weight)
-values(12, 'ì—†ìŒ', 'ê±´ê°•ì°¨', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'NEW', 'ì—†ìŒ', '[ê²¨ìš¸í–¥ê¸°] ë ˆëª¬ì²­ 950g', 10000, 8800, 880
-     , 100, 'ì† ëì´ ì°¨ê°‘ê²Œ ì•„ë ¤ì˜¤ëŠ” ë‚ , ë”°ëˆí•œ ê³¼ì¼ì°¨ë¥¼ í˜¸ë¥´ë¥µ ë§ˆì‹œëŠ” ëŠë‚Œì€ ì°¸ ê°ë³„í•´ìš”. 
-     ì½” ëì— ê°ê²¨ ì˜¤ëŠ” í’ì„±í•œ ê³¼ì¼í–¥ê³¼ ìž… ì•ˆ ê°€ë“í•œ ë‹¬ì½¤í•¨ì€ ìƒê°ë§Œ í•´ë„ ê¸°ë¶„ì´ ì¢‹ì•„ì§€ì£ . 
-     ì»¬ë¦¬ê°€ ë ˆëª¬ ê³¼ìœ¡ì´ í’ì„±í•˜ê²Œ ë“¤ì–´ê°„ ë ˆëª¬ì²­ì„ ì¤€ë¹„í–ˆìŠµë‹ˆë‹¤. ë¹„íƒ€ë¯¼Cì™€ êµ¬ì—°ì‚° ë“±ì´ í’ë¶€í•œ ë ˆëª¬ì— ì„¤íƒ•ë§Œì„ ë„£ì–´ì„œ ë§Œë“  ê±´ê°•í•œ ê³¼ì¼ì²­ì´ì£ .
-     ê³¼ìœ¡ì„ ì–‡ê²Œ ì°ì–´ ë„£ì€ ë•ë¶„ì— ì‹ê°ì´ ì‚´ì•„ìžˆìœ¼ë©´ì„œë„ ì”¹ëŠ”ë° ë¶€ë‹´ì´ ì—†ì–´ìš”. 
-     ê²¨ìš¸ì—ëŠ” ë”°ëˆí•œ ì°¨ë¡œ, ì—¬ë¦„ì—ëŠ” íƒ„ì‚°ìˆ˜ì— ë„£ì–´ ì²­ëŸ‰í•œ íƒ„ì‚°ìŒë£Œë¡œ í™œìš©í•´ë³´ì„¸ìš”.'
-     , 'ì‹ ì„±ì—í”„ì—”ë¹„', 950);
+values(12, '¾øÀ½', '°Ç°­Â÷', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'NEW', '¾øÀ½', '[°Ü¿ïÇâ±â] ·¹¸óÃ» 950g', 10000, 8800, 880
+     , 100, '¼Õ ³¡ÀÌ Â÷°©°Ô ¾Æ·Á¿À´Â ³¯, µû²öÇÑ °úÀÏÂ÷¸¦ È£¸£¸¤ ¸¶½Ã´Â ´À³¦Àº Âü °¢º°ÇØ¿ä. 
+     ÄÚ ³¡¿¡ °¨°Ü ¿À´Â Ç³¼ºÇÑ °úÀÏÇâ°ú ÀÔ ¾È °¡µæÇÑ ´ÞÄÞÇÔÀº »ý°¢¸¸ ÇØµµ ±âºÐÀÌ ÁÁ¾ÆÁöÁÒ. 
+     ÄÃ¸®°¡ ·¹¸ó °úÀ°ÀÌ Ç³¼ºÇÏ°Ô µé¾î°£ ·¹¸óÃ»À» ÁØºñÇß½À´Ï´Ù. ºñÅ¸¹ÎC¿Í ±¸¿¬»ê µîÀÌ Ç³ºÎÇÑ ·¹¸ó¿¡ ¼³ÅÁ¸¸À» ³Ö¾î¼­ ¸¸µç °Ç°­ÇÑ °úÀÏÃ»ÀÌÁÒ.
+     °úÀ°À» ¾ã°Ô ½ä¾î ³ÖÀº ´öºÐ¿¡ ½Ä°¨ÀÌ »ì¾ÆÀÖÀ¸¸é¼­µµ ¾Ã´Âµ¥ ºÎ´ãÀÌ ¾ø¾î¿ä. 
+     °Ü¿ï¿¡´Â µû²öÇÑ Â÷·Î, ¿©¸§¿¡´Â Åº»ê¼ö¿¡ ³Ö¾î Ã»·®ÇÑ Åº»êÀ½·á·Î È°¿ëÇØº¸¼¼¿ä.'
+     , '½Å¼º¿¡ÇÁ¿£ºñ', 950);
      
--- í•œë¼ë´‰ì²­
+-- ÇÑ¶óºÀÃ»
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point
              , pqty, pcontents, pcompanyname, weight)
-values(13, 'ì—†ìŒ', 'ê±´ê°•ì°¨', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'BEST', 'ì—†ìŒ', '[ê²¨ìš¸í–¥ê¸°] í•œë¼ë´‰ì²­ 950g', 10000, 8800, 880
-     , 100, 'ì† ëì´ ì°¨ê°‘ê²Œ ì•„ë ¤ì˜¤ëŠ” ë‚ , ë”°ëˆí•œ ê³¼ì¼ì°¨ë¥¼ í˜¸ë¥´ë¥µ ë§ˆì‹œëŠ” ëŠë‚Œì€ ì°¸ ê°ë³„í•´ìš”. 
-     ì½” ëì— ê°ê²¨ ì˜¤ëŠ” í’ì„±í•œ ê³¼ì¼í–¥ê³¼ ìž… ì•ˆ ê°€ë“í•œ ë‹¬ì½¤í•¨ì€ ìƒê°ë§Œ í•´ë„ ê¸°ë¶„ì´ ì¢‹ì•„ì§€ì£ . 
-     ì»¬ë¦¬ê°€ í•œë¼ë´‰ ê³¼ìœ¡ì´ í’ì„±í•˜ê²Œ ë“¤ì–´ê°„ í•œë¼ë´‰ì²­ì„ ì¤€ë¹„í–ˆìŠµë‹ˆë‹¤. ë¹„íƒ€ë¯¼Cì™€ êµ¬ì—°ì‚° ë“±ì´ í’ë¶€í•œ í•œë¼ë´‰ì— ì„¤íƒ•ë§Œì„ ë„£ì–´ì„œ ë§Œë“  ê±´ê°•í•œ ê³¼ì¼ì²­ì´ì£ .
-     ê³¼ìœ¡ì„ ì–‡ê²Œ ì°ì–´ ë„£ì€ ë•ë¶„ì— ì‹ê°ì´ ì‚´ì•„ìžˆìœ¼ë©´ì„œë„ ì”¹ëŠ”ë° ë¶€ë‹´ì´ ì—†ì–´ìš”. 
-     ê²¨ìš¸ì—ëŠ” ë”°ëˆí•œ ì°¨ë¡œ, ì—¬ë¦„ì—ëŠ” íƒ„ì‚°ìˆ˜ì— ë„£ì–´ ì²­ëŸ‰í•œ íƒ„ì‚°ìŒë£Œë¡œ í™œìš©í•´ë³´ì„¸ìš”.'
-     , 'ì‹ ì„±ì—í”„ì—”ë¹„', 950);
-
-update product set fk_sdname = 'ê±´ê°•ì°¨';
+values(13, '¾øÀ½', '°Ç°­Â÷', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'BEST', '¾øÀ½', '[°Ü¿ïÇâ±â] ÇÑ¶óºÀÃ» 950g', 10000, 8800, 880
+     , 100, '¼Õ ³¡ÀÌ Â÷°©°Ô ¾Æ·Á¿À´Â ³¯, µû²öÇÑ °úÀÏÂ÷¸¦ È£¸£¸¤ ¸¶½Ã´Â ´À³¦Àº Âü °¢º°ÇØ¿ä. 
+     ÄÚ ³¡¿¡ °¨°Ü ¿À´Â Ç³¼ºÇÑ °úÀÏÇâ°ú ÀÔ ¾È °¡µæÇÑ ´ÞÄÞÇÔÀº »ý°¢¸¸ ÇØµµ ±âºÐÀÌ ÁÁ¾ÆÁöÁÒ. 
+     ÄÃ¸®°¡ ÇÑ¶óºÀ °úÀ°ÀÌ Ç³¼ºÇÏ°Ô µé¾î°£ ÇÑ¶óºÀÃ»À» ÁØºñÇß½À´Ï´Ù. ºñÅ¸¹ÎC¿Í ±¸¿¬»ê µîÀÌ Ç³ºÎÇÑ ÇÑ¶óºÀ¿¡ ¼³ÅÁ¸¸À» ³Ö¾î¼­ ¸¸µç °Ç°­ÇÑ °úÀÏÃ»ÀÌÁÒ.
+     °úÀ°À» ¾ã°Ô ½ä¾î ³ÖÀº ´öºÐ¿¡ ½Ä°¨ÀÌ »ì¾ÆÀÖÀ¸¸é¼­µµ ¾Ã´Âµ¥ ºÎ´ãÀÌ ¾ø¾î¿ä. 
+     °Ü¿ï¿¡´Â µû²öÇÑ Â÷·Î, ¿©¸§¿¡´Â Åº»ê¼ö¿¡ ³Ö¾î Ã»·®ÇÑ Åº»êÀ½·á·Î È°¿ëÇØº¸¼¼¿ä.'
+     , '½Å¼º¿¡ÇÁ¿£ºñ', 950);
 
 insert into product_images(pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval, 'grapefruitjuice.jpg', 10);
@@ -892,43 +896,43 @@ commit;
 
 
 ---------------------------------
--- ***** ê±´ê°•ì¦™ insert
--- ë„ë¼ì§€ë°°ì¦™
+-- ***** °Ç°­Áó insert
+-- µµ¶óÁö¹èÁó
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point
              , pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, 'ì—†ìŒ', 'ê±´ê°•ì¦™', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'BEST', 'ì—†ìŒ', '[ì°¸ë“ ê±´ê°•] ì•„ì´ë‹¬ì½¤ ë„ë¼ì§€ë°°ì¦™ (20í¬)', 30000, 25000, 2500
-     , 100, 'í™˜ì ˆê¸° ì‹í’ˆì˜ ëŒ€ëª…ì‚¬ì¸ ë„ë¼ì§€ì™€ ë°°. ìš”ì¦˜ì—” í™˜ì ˆê¸° ë¿ë§Œ ì•„ë‹ˆë¼ í‰ìƒì‹œì—ë„ ì°¾ê²Œ ë¼ìš”.
-     ì—ì–´ì»¨ì´ë‚˜ ë‚œë°©ê¸° ì‚¬ìš©ë¶€í„° ë¯¸ì„¸ë¨¼ì§€ê¹Œì§€ ëŒ€ë¹„í•´ì•¼ í•  ê²ƒë„ ì±™ê¸¸ ê²ƒë„ ë§Žê¸° ë•Œë¬¸ì´ì£ . ê·¸ëž˜ì„œ ì•„ì´ì—ê²Œ ë„ë¼ì§€ë°°ì¦™ì„ ë¨¹ì´ë ¤ê³  í•˜ëŠ” ë¶„ë“¤ì´ ë§Žìœ¼ì‹¤ í…ë°ìš”. 
-     ì°¸ë“ ê±´ê°•ì€ ì•„ì´ê°€ ë¨¹ê³  ë§ˆì‹¤ ê±°ë¼ë©´ ë” ê¼¼ê¼¼í•´ì§ˆ ìˆ˜ë°–ì— ì—†ëŠ” ë¶€ëª¨ì˜ ë§ˆìŒìœ¼ë¡œ êµ­ì‚° ë°°ì™€ ë„ë¼ì§€ë¥¼ ê¹¨ë—í•œ ì¦™ì— ë‹´ì•˜ìŠµë‹ˆë‹¤.'
-     , 'ì°¸ë“ ê±´ê°•ê³¼í•™', 100);
+values(14, '¾øÀ½', '°Ç°­Áó', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'BEST', '¾øÀ½', '[Âüµç°Ç°­] ¾ÆÀÌ´ÞÄÞ µµ¶óÁö¹èÁó (20Æ÷)', 30000, 25000, 2500
+     , 100, 'È¯Àý±â ½ÄÇ°ÀÇ ´ë¸í»çÀÎ µµ¶óÁö¿Í ¹è. ¿äÁò¿£ È¯Àý±â »Ó¸¸ ¾Æ´Ï¶ó Æò»ó½Ã¿¡µµ Ã£°Ô µÅ¿ä.
+     ¿¡¾îÄÁÀÌ³ª ³­¹æ±â »ç¿ëºÎÅÍ ¹Ì¼¼¸ÕÁö±îÁö ´ëºñÇØ¾ß ÇÒ °Íµµ Ã¬±æ °Íµµ ¸¹±â ¶§¹®ÀÌÁÒ. ±×·¡¼­ ¾ÆÀÌ¿¡°Ô µµ¶óÁö¹èÁóÀ» ¸ÔÀÌ·Á°í ÇÏ´Â ºÐµéÀÌ ¸¹À¸½Ç ÅÙµ¥¿ä. 
+     Âüµç°Ç°­Àº ¾ÆÀÌ°¡ ¸Ô°í ¸¶½Ç °Å¶ó¸é ´õ ²Ä²ÄÇØÁú ¼ö¹Û¿¡ ¾ø´Â ºÎ¸ðÀÇ ¸¶À½À¸·Î ±¹»ê ¹è¿Í µµ¶óÁö¸¦ ±ú²ýÇÑ Áó¿¡ ´ã¾Ò½À´Ï´Ù.'
+     , 'Âüµç°Ç°­°úÇÐ', 100);
      
--- í¬ë„ì¦™
+-- Æ÷µµÁó
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point
              , pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, 'ì—†ìŒ', 'ê±´ê°•ì¦™', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'BEST', 'ì—†ìŒ', '[ìž¥ìˆ˜ì´ì•¼ê¸°] ìˆœì§„í•œ í¬ë„ì¦™ 10í¬', 20000, 16000, 1600
-     , 100, 'ìž¥ìˆ˜ì´ì•¼ê¸°ëŠ” í¬ë„ì˜ ê³¼ìœ¡ë¿ë§Œ ì•„ë‹ˆë¼ ì˜ì–‘ì´ í’ë¶€í•œ ê»ì§ˆê³¼ ì”¨ê¹Œì§€ í†µì§¸ë¡œ ì°©ì¦™í•˜ì—¬ ìˆœì§„í•œ í¬ë„ì¦™ì„ ë§Œë“¤ì—ˆìŠµë‹ˆë‹¤. 
-     ë¬´ì—‡ë³´ë‹¤ ìˆœì§„í•œ í¬ë„ì¦™ì˜ ê°€ìž¥ í° ë§¤ë ¥ìœ¼ë¡œëŠ” ìƒì°©ì¦™ ê³µì •ì„ ê¼½ì„ ìˆ˜ ìžˆëŠ”ë°ìš”. ë³´í†µ ìž¬ë£Œë¥¼ ì˜¤ëžœ ì‹œê°„ ë“ì—¬ ì¦™ì„ ì–»ëŠ” ê²ƒê³¼ ë‹¬ë¦¬ ìž¥ìˆ˜ì´ì•¼ê¸°ëŠ” ì—´ì— ì˜í•´ 
-     ì˜ì–‘ì†Œê°€ íŒŒê´´ë˜ëŠ” ê²ƒì„ ë§‰ê¸° ìœ„í•˜ì—¬ ê¹Œë‹¤ë¡­ê²Œ ìƒìœ¼ë¡œ ì°©ì¦™í•˜ëŠ” ê³¼ì •ì„ ë§ˆë‹¤í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ê·¸ë ‡ê²Œ ë§Œë“¤ì–´ì§„ ìˆœì§„í•œ í¬ë„ì¦™ì„ í•œ ìž… ë“¤ì´ì¼œë³´ë©´, 
-     ë§ˆì¹˜ ìƒí¬ë„ë¥¼ ë¨¹ëŠ” ë“¯ ì‹ ì„ í•œ ë§›ì´ ë„ë“œë¼ì§„ë‹µë‹ˆë‹¤. ì´ì œ í¬ë„ ë³¸ì—°ì˜ ì˜ì–‘ê³¼ í’ë¯¸ë¥¼ ë³´ì¡´í•œ ìž¥ìˆ˜ì´ì•¼ê¸° í¬ë„ì¦™ ì„ ë¬¼ì„¸íŠ¸ë¡œ ì†Œì¤‘í•œ ì§€ì¸ì—ê²Œ ê±´ê°•ì„ ì„ ë¬¼í•´ë³´ì„¸ìš”.'
-     , 'ìž¥ìˆ˜ì´ì•¼ê¸°', 120);
+values(15, '¾øÀ½', '°Ç°­Áó', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'BEST', '¾øÀ½', '[Àå¼öÀÌ¾ß±â] ¼øÁøÇÑ Æ÷µµÁó 10Æ÷', 20000, 16000, 1600
+     , 100, 'Àå¼öÀÌ¾ß±â´Â Æ÷µµÀÇ °úÀ°»Ó¸¸ ¾Æ´Ï¶ó ¿µ¾çÀÌ Ç³ºÎÇÑ ²®Áú°ú ¾¾±îÁö ÅëÂ°·Î ÂøÁóÇÏ¿© ¼øÁøÇÑ Æ÷µµÁóÀ» ¸¸µé¾ú½À´Ï´Ù. 
+     ¹«¾ùº¸´Ù ¼øÁøÇÑ Æ÷µµÁóÀÇ °¡Àå Å« ¸Å·ÂÀ¸·Î´Â »ýÂøÁó °øÁ¤À» ²ÅÀ» ¼ö ÀÖ´Âµ¥¿ä. º¸Åë Àç·á¸¦ ¿À·£ ½Ã°£ ²ú¿© ÁóÀ» ¾ò´Â °Í°ú ´Þ¸® Àå¼öÀÌ¾ß±â´Â ¿­¿¡ ÀÇÇØ 
+     ¿µ¾ç¼Ò°¡ ÆÄ±«µÇ´Â °ÍÀ» ¸·±â À§ÇÏ¿© ±î´Ù·Ó°Ô »ýÀ¸·Î ÂøÁóÇÏ´Â °úÁ¤À» ¸¶´ÙÇÏÁö ¾Ê½À´Ï´Ù. ±×·¸°Ô ¸¸µé¾îÁø ¼øÁøÇÑ Æ÷µµÁóÀ» ÇÑ ÀÔ µéÀÌÄÑº¸¸é, 
+     ¸¶Ä¡ »ýÆ÷µµ¸¦ ¸Ô´Â µí ½Å¼±ÇÑ ¸ÀÀÌ µµµå¶óÁø´ä´Ï´Ù. ÀÌÁ¦ Æ÷µµ º»¿¬ÀÇ ¿µ¾ç°ú Ç³¹Ì¸¦ º¸Á¸ÇÑ Àå¼öÀÌ¾ß±â Æ÷µµÁó ¼±¹°¼¼Æ®·Î ¼ÒÁßÇÑ ÁöÀÎ¿¡°Ô °Ç°­À» ¼±¹°ÇØº¸¼¼¿ä.'
+     , 'Àå¼öÀÌ¾ß±â', 120);
      
--- í˜¸ë°•ì¦™
+-- È£¹ÚÁó
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point
              , pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, 'ì—†ìŒ', 'ê±´ê°•ì¦™', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'HIT', 'ì—†ìŒ', '[ë‹´ì•„ë³¸] ìœ ê¸°ë† í˜¸ë°•ì¦™', 35000, 32000, 3200
-     , 100, 'ì¢‹ì€ ì›ìž¬ë£Œë¡œ ë§Œë“  ì¦™ì„ ì§‘ì— ê°–ì¶”ê³  ìžˆìœ¼ë©´ ì£¼ìŠ¤ ëŒ€ìš©ìœ¼ë¡œ í•œ í¬ì”© ì­‰ì­‰ ë“¤ì´í‚¤ê¸° ì°¸ ì¢‹ì§€ìš”. ì¦™ì„ ê¾¸ì¤€ížˆ ë¨¹ì–´ë³¼ê¹Œ í•˜ëŠ” ìƒê°ì´ ë“œì‹ ë‹¤ë©´,
-     ë‹´ì•„ë³¸ì˜ ìœ ê¸°ë† í˜¸ë°•ì¦™ì„ ì¤€ë¹„í•´ ë³´ì„¸ìš”. ê·¸ ì–´ë–¤ ì‹í’ˆì²¨ê°€ë¬¼ë„ ë„£ì§€ ì•Šê³  ìœ ê¸°ë†ìœ¼ë¡œ ìž¬ë°°í•œ ëŠ™ì€ í˜¸ë°•ì— ê·¹ì†ŒëŸ‰ì˜ ìœ ê¸°ë† ì„¤íƒ•ë§Œì„ ë„£ì–´ ë§Œë“¤ì—ˆìŠµë‹ˆë‹¤.
-     ë‹¬ì½¤í•˜ê²Œ ìž˜ ìµì€ ëŠ™ì€ í˜¸ë°•ì„ ê·¸ëŒ€ë¡œ ì°©ì¦™í–ˆê¸°ì— ë§¤ë ¥ì ì¸ í˜¸ë°•ì˜ í’ë¯¸ë¥¼ ëŠë‚„ ìˆ˜ ìžˆì–´ìš”. 30ê°œìž… ë°•ìŠ¤ ì œí’ˆìœ¼ë¡œ, ì£¼ë³€ ë¶„ë“¤ì—ê²Œ ì„ ë¬¼í•˜ê¸°ì—ë„ ì œê²©ì´ì—ìš”.'
-     , 'ë‹´ì•„ë³¸', 80);
+values(16, '¾øÀ½', '°Ç°­Áó', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'HIT', '¾øÀ½', '[´ã¾Æº»] À¯±â³ó È£¹ÚÁó', 35000, 32000, 3200
+     , 100, 'ÁÁÀº ¿øÀç·á·Î ¸¸µç ÁóÀ» Áý¿¡ °®Ãß°í ÀÖÀ¸¸é ÁÖ½º ´ë¿ëÀ¸·Î ÇÑ Æ÷¾¿ ÂßÂß µéÀÌÅ°±â Âü ÁÁÁö¿ä. ÁóÀ» ²ÙÁØÈ÷ ¸Ô¾îº¼±î ÇÏ´Â »ý°¢ÀÌ µå½Å´Ù¸é,
+     ´ã¾Æº»ÀÇ À¯±â³ó È£¹ÚÁóÀ» ÁØºñÇØ º¸¼¼¿ä. ±× ¾î¶² ½ÄÇ°Ã·°¡¹°µµ ³ÖÁö ¾Ê°í À¯±â³óÀ¸·Î Àç¹èÇÑ ´ÄÀº È£¹Ú¿¡ ±Ø¼Ò·®ÀÇ À¯±â³ó ¼³ÅÁ¸¸À» ³Ö¾î ¸¸µé¾ú½À´Ï´Ù.
+     ´ÞÄÞÇÏ°Ô Àß ÀÍÀº ´ÄÀº È£¹ÚÀ» ±×´ë·Î ÂøÁóÇß±â¿¡ ¸Å·ÂÀûÀÎ È£¹ÚÀÇ Ç³¹Ì¸¦ ´À³¥ ¼ö ÀÖ¾î¿ä. 30°³ÀÔ ¹Ú½º Á¦Ç°À¸·Î, ÁÖº¯ ºÐµé¿¡°Ô ¼±¹°ÇÏ±â¿¡µµ Á¦°ÝÀÌ¿¡¿ä.'
+     , '´ã¾Æº»', 80);
      
--- ì°©ì¦™
+-- ÂøÁó
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point
              , pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, 'ì—†ìŒ', 'ê±´ê°•ì¦™', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'BEST', 'ì—†ìŒ', '[ê·¸ëž€í…Œ] 100% ì°©ì¦™ ì„ë¥˜ì£¼ìŠ¤', 20000, 18000, 1800
-     , 100, 'ì„ë¥˜ëŠ” ì˜ˆë¡œë¶€í„° ë¯¸ì¸ë“¤ê³¼ ì–½ížŒ ì´ì•¼ê¸°ê°€ ë§Žì•˜ì–´ìš”. ì–‘ê·€ë¹„ì™€ í´ë ˆì˜¤íŒŒíŠ¸ë¼ê°€ ì¦ê²¨ ë¨¹ì—ˆë‹¤ëŠ” ì¼í™”ê°€ ì „í•´ ë‚´ë ¤ì˜¤ê³ , í•˜ë°ìŠ¤ëŠ” íŽ˜ë¥´ì„¸í¬ë„¤ë¥¼ ì„ë¥˜ë¡œ 
-     ìœ í˜¹í–ˆë‹¤ê³  í•˜ì£ . íƒ€ëŠ” ë“¯ ë¶‰ì€ ì—´ë§¤ ì†ì—ëŠ” ë³´ì„ì²˜ëŸ¼ ë¹›ë‚˜ëŠ” ì•Œê°±ì´ê°€ ì•Œì•Œì´ ë°•í˜€ ë§›ê³¼ í–¥ì„ ë½ë‚´ëŠ”ë°ìš”. ì„ë¥˜ì˜ ê³¼ìœ¡ì—ëŠ” ì‹ë¬¼ì„± ì—ìŠ¤íŠ¸ë¡œê²ê³¼ í•„ìˆ˜ ì•„ë¯¸ë…¸ì‚°ì´, 
-     ì”¨ì•—ì—ëŠ” ì‹ì´ì„¬ìœ ê°€ í’ë¶€í•´ì„œ ì—¬ì„±ì—ê²Œ ì¶”ì²œí•˜ê¸°ì—ëŠ” ë”ì—†ì´ ì¢‹ì€ ì‹í’ˆì´ê¸°ë„ í•©ë‹ˆë‹¤. '
-     , 'ê·¸ëž€í…Œ', 100);
+values(17, '¾øÀ½', '°Ç°­Áó', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'BEST', '¾øÀ½', '[±×¶õÅ×] 100% ÂøÁó ¼®·ùÁÖ½º', 20000, 18000, 1800
+     , 100, '¼®·ù´Â ¿¹·ÎºÎÅÍ ¹ÌÀÎµé°ú ¾ôÈù ÀÌ¾ß±â°¡ ¸¹¾Ò¾î¿ä. ¾ç±Íºñ¿Í Å¬·¹¿ÀÆÄÆ®¶ó°¡ Áñ°Ü ¸Ô¾ú´Ù´Â ÀÏÈ­°¡ ÀüÇØ ³»·Á¿À°í, ÇÏµ¥½º´Â Æä¸£¼¼Æ÷³×¸¦ ¼®·ù·Î 
+     À¯È¤Çß´Ù°í ÇÏÁÒ. Å¸´Â µí ºÓÀº ¿­¸Å ¼Ó¿¡´Â º¸¼®Ã³·³ ºû³ª´Â ¾Ë°»ÀÌ°¡ ¾Ë¾ËÀÌ ¹ÚÇô ¸À°ú ÇâÀ» »Ë³»´Âµ¥¿ä. ¼®·ùÀÇ °úÀ°¿¡´Â ½Ä¹°¼º ¿¡½ºÆ®·Î°Õ°ú ÇÊ¼ö ¾Æ¹Ì³ë»êÀÌ, 
+     ¾¾¾Ñ¿¡´Â ½ÄÀÌ¼¶À¯°¡ Ç³ºÎÇØ¼­ ¿©¼º¿¡°Ô ÃßÃµÇÏ±â¿¡´Â ´õ¾øÀÌ ÁÁÀº ½ÄÇ°ÀÌ±âµµ ÇÕ´Ï´Ù. '
+     , '±×¶õÅ×', 100);
      
 insert into product_images(pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval, 'bellflowerjuice.jpg', 14);
@@ -950,20 +954,24 @@ from product_images;
 select *
 from product_package;
 
----- íŒ¨í‚¤ì§€ -> ë¬¼/ì£¼ìŠ¤
+
+select seq_product_pnum.nextval
+from dual; 
+
+---- ÆÐÅ°Áö -> ¹°/ÁÖ½º
 
 
--- 1. íŒ¨í‚¤ì§€ìžˆëŠ” ì£¼ìŠ¤
+-- 1. ÆÐÅ°ÁöÀÖ´Â ÁÖ½º
 insert into product_package(pacnum, pacname, paccontents,  pacimage)
 values(seq_product_Package_pacnum.nextval
-, '[ìžì—°ë§ˆì„] ê³¼ì¼ ì£¼ìŠ¤ 8ì¢…'
-, 'ê³¼ì¼ì˜ í’ë¶€í•œ ì˜ì–‘ ì„±ë¶„ì„ ì‰½ê³  ê°„íŽ¸í•˜ê²Œ ëˆ„ë¦´ ìˆ˜ ìžˆëŠ” ì£¼ìŠ¤. ì•„ì´ì—ê²Œ ì§ì ‘ ì‹ ì„ í•œ ì£¼ìŠ¤ë¥¼ ë§Œë“¤ì–´ì£¼ê³  ì‹¶ì§€ë§Œ, ë§Œë“¤ê¸°ê°€ ë²ˆê±°ë¡­ì£ . 
-ì»¬ë¦¬ëŠ” ê³¼ì¼ ê·¸ëŒ€ë¡œë¥¼ ì°©ì¦™í•œ ìžì—°ë§ˆì„ ê³¼ì¼ì£¼ìŠ¤ 8ì¢…ì„ ê°€ì ¸ì™”ì–´ìš”. 
-ì»¬ë¦¬ì—ì„œ íŒë§¤ë˜ê³  ìžˆëŠ” ë‹¤ì–‘í•œ ì¢…ë¥˜ì˜ êµ­ë‚´ì‚° ê³¼ì¼ì„ ê³µê¸‰í•´ì£¼ëŠ” ìžì—°ë§ˆì„ì—ì„œ ë§Œë“  ì œí’ˆì´ì—ìš”. 
-ë†ì¶• ê³¼ì¦™ì„ ì‚¬ìš©í•œ ì£¼ìŠ¤ê°€ ì•„ë‹Œ, ì‹í’ˆ ì²¨ê°€ë¬¼ì€ ë¬¼ë¡  ì •ì œìˆ˜ë„ ë„£ì§€ ì•Šì€ ì°©ì¦™ ì£¼ìŠ¤ëžë‹ˆë‹¤. 
-ì›ìƒíƒœì˜ ê³¼ì¼ì„ ì°©ì¦™í•œ ë’¤, ë¹„íƒ€ë¯¼ì´ë‚˜ íš¨ì†Œ ë“±ì´ íŒŒê´´ë˜ì§€ ì•Šì„ ì •ë„ë¡œ ìˆœê°„ ì‚´ê·  ê³¼ì •ë§Œ ê±°ì³ ê³¼ì¼ ê³ ìœ ì˜ ë§›ê³¼ í–¥ì„ ê·¸ëŒ€ë¡œ ì¦ê¸¸ ìˆ˜ ìžˆì–´ìš”. 
-ë¨¹ê¸° íŽ¸í•œ ìŠ¤íŒŒìš°íŠ¸ íŒŒìš°ì¹˜ë¡œ íœ´ëŒ€í•˜ê¸°ë„ ë¶ˆíŽ¸í•¨ì´ ì—†ìœ¼ë©°, ìš©ëŸ‰ë„ 100mlë¡œ ì•„ì´ê°€ ë§ˆì‹œê¸° ì ë‹¹í•´ìš”. 
-ê·¸ëƒ¥ ë§ˆì…”ë„ ë§›ìžˆì§€ë§Œ, ëƒ‰ë™ì‹¤ì— ì–¼ë¦¬ë©´ ì‹œì›í•œ ìƒ¤ë² íŠ¸ë¡œ ì¦ê¸¸ ìˆ˜ ìžˆì–´ìš”.'
+, '[ÀÚ¿¬¸¶À»] °úÀÏ ÁÖ½º 8Á¾'
+, '°úÀÏÀÇ Ç³ºÎÇÑ ¿µ¾ç ¼ººÐÀ» ½±°í °£ÆíÇÏ°Ô ´©¸± ¼ö ÀÖ´Â ÁÖ½º. ¾ÆÀÌ¿¡°Ô Á÷Á¢ ½Å¼±ÇÑ ÁÖ½º¸¦ ¸¸µé¾îÁÖ°í ½ÍÁö¸¸, ¸¸µé±â°¡ ¹ø°Å·ÓÁÒ. 
+ÄÃ¸®´Â °úÀÏ ±×´ë·Î¸¦ ÂøÁóÇÑ ÀÚ¿¬¸¶À» °úÀÏÁÖ½º 8Á¾À» °¡Á®¿Ô¾î¿ä. 
+ÄÃ¸®¿¡¼­ ÆÇ¸ÅµÇ°í ÀÖ´Â ´Ù¾çÇÑ Á¾·ùÀÇ ±¹³»»ê °úÀÏÀ» °ø±ÞÇØÁÖ´Â ÀÚ¿¬¸¶À»¿¡¼­ ¸¸µç Á¦Ç°ÀÌ¿¡¿ä. 
+³óÃà °úÁóÀ» »ç¿ëÇÑ ÁÖ½º°¡ ¾Æ´Ñ, ½ÄÇ° Ã·°¡¹°Àº ¹°·Ð Á¤Á¦¼öµµ ³ÖÁö ¾ÊÀº ÂøÁó ÁÖ½º¶ø´Ï´Ù. 
+¿ø»óÅÂÀÇ °úÀÏÀ» ÂøÁóÇÑ µÚ, ºñÅ¸¹ÎÀÌ³ª È¿¼Ò µîÀÌ ÆÄ±«µÇÁö ¾ÊÀ» Á¤µµ·Î ¼ø°£ »ì±Õ °úÁ¤¸¸ °ÅÃÄ °úÀÏ °íÀ¯ÀÇ ¸À°ú ÇâÀ» ±×´ë·Î Áñ±æ ¼ö ÀÖ¾î¿ä. 
+¸Ô±â ÆíÇÑ ½ºÆÄ¿ìÆ® ÆÄ¿ìÄ¡·Î ÈÞ´ëÇÏ±âµµ ºÒÆíÇÔÀÌ ¾øÀ¸¸ç, ¿ë·®µµ 100ml·Î ¾ÆÀÌ°¡ ¸¶½Ã±â Àû´çÇØ¿ä. 
+±×³É ¸¶¼Åµµ ¸ÀÀÖÁö¸¸, ³Ãµ¿½Ç¿¡ ¾ó¸®¸é ½Ã¿øÇÑ »þº£Æ®·Î Áñ±æ ¼ö ÀÖ¾î¿ä.'
 , 'fruitjuice2.jpg' );
 
 update product_package set pacnum=4 where pacnum=6;
@@ -971,30 +979,30 @@ commit;
 
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point, pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, '[ìžì—°ë§ˆì„] ê³¼ì¼ ì£¼ìŠ¤ 8ì¢…', 'ë¬¼/ì£¼ìŠ¤', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'NEW', 'ì—†ìŒ', '[ìžì—°ë§ˆì„] ë°°ë„ë¼ì§€ ì£¼ìŠ¤ 1íŒ©', 1400, 990, 99, 100, 'ì—„ì„ ëœ ë°°ë¥¼ ê»ì§ˆì§¸ í†µì§¸ë¡œ ì°©ì¦™í•˜ê³ , ë„ë¼ì§€ë¥¼ ì‚¬ìš©í•œ ì œí’ˆ ìœ í†µê¸°í•œ : 2019ë…„ 11ì›” 26ì¼ê¹Œì§€', 'ìžì—°ë§ˆì„', 100);
+values(seq_product_pnum.nextval, '[ÀÚ¿¬¸¶À»] °úÀÏ ÁÖ½º 8Á¾', '¹°/ÁÖ½º', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'NEW', '¾øÀ½', '[ÀÚ¿¬¸¶À»] ¹èµµ¶óÁö ÁÖ½º 1ÆÑ', 1400, 990, 99, 100, '¾ö¼±µÈ ¹è¸¦ ²®ÁúÂ° ÅëÂ°·Î ÂøÁóÇÏ°í, µµ¶óÁö¸¦ »ç¿ëÇÑ Á¦Ç° À¯Åë±âÇÑ : 2019³â 11¿ù 26ÀÏ±îÁö', 'ÀÚ¿¬¸¶À»', 100);
 
 commit;
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point, pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, '[ìžì—°ë§ˆì„] ê³¼ì¼ ì£¼ìŠ¤ 8ì¢…', 'ë¬¼/ì£¼ìŠ¤', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'NEW', 'ì—†ìŒ', '[ìžì—°ë§ˆì„] í¬ë„ì£¼ìŠ¤ 1íŒ©', 1400, 990, 99, 100, 'ì—„ì„ ëœ êµ­ë‚´ì‚° í¬ë„ë¥¼ ê·¸ëŒ€ë¡œ ì°©ì¦™í•˜ì—¬ ì›ë¬¼ì˜ ì˜ì–‘ íŒŒê´´ë¥¼ ìµœì†Œí™”í•œ ì œí’ˆ ìœ í†µê¸°í•œ : 2019ë…„ 11ì›” 26ì¼ê¹Œì§€', 'ìžì—°ë§ˆì„', 100);
+values(seq_product_pnum.nextval, '[ÀÚ¿¬¸¶À»] °úÀÏ ÁÖ½º 8Á¾', '¹°/ÁÖ½º', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'NEW', '¾øÀ½', '[ÀÚ¿¬¸¶À»] Æ÷µµÁÖ½º 1ÆÑ', 1400, 990, 99, 100, '¾ö¼±µÈ ±¹³»»ê Æ÷µµ¸¦ ±×´ë·Î ÂøÁóÇÏ¿© ¿ø¹°ÀÇ ¿µ¾ç ÆÄ±«¸¦ ÃÖ¼ÒÈ­ÇÑ Á¦Ç° À¯Åë±âÇÑ : 2019³â 11¿ù 26ÀÏ±îÁö', 'ÀÚ¿¬¸¶À»', 100);
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point, pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, '[ìžì—°ë§ˆì„] ê³¼ì¼ ì£¼ìŠ¤ 8ì¢…', 'ë¬¼/ì£¼ìŠ¤', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'NEW', 'ì—†ìŒ', '[ìžì—°ë§ˆì„] ê°ê·¤ì£¼ìŠ¤ 1íŒ©', 1400, 990, 99, 100, 'ë¬´ë†ì•½ ì¸ì¦ì„ ë°›ì€ ì œì£¼ë„ ê°ê·¤ì„ ê·¸ëŒ€ë¡œ ì°©ì¦™í•˜ì—¬ ì›ë¬¼ì˜ ì˜ì–‘ íŒŒê´´ë¥¼ ìµœì†Œí™”í•œ ì œí’ˆ ìœ í†µê¸°í•œ : 2019ë…„ 11ì›” 26ì¼ê¹Œì§€', 'ìžì—°ë§ˆì„', 100);
+values(seq_product_pnum.nextval, '[ÀÚ¿¬¸¶À»] °úÀÏ ÁÖ½º 8Á¾', '¹°/ÁÖ½º', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'NEW', '¾øÀ½', '[ÀÚ¿¬¸¶À»] °¨±ÖÁÖ½º 1ÆÑ', 1400, 990, 99, 100, '¹«³ó¾à ÀÎÁõÀ» ¹ÞÀº Á¦ÁÖµµ °¨±ÖÀ» ±×´ë·Î ÂøÁóÇÏ¿© ¿ø¹°ÀÇ ¿µ¾ç ÆÄ±«¸¦ ÃÖ¼ÒÈ­ÇÑ Á¦Ç° À¯Åë±âÇÑ : 2019³â 11¿ù 26ÀÏ±îÁö', 'ÀÚ¿¬¸¶À»', 100);
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point, pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, '[ìžì—°ë§ˆì„] ê³¼ì¼ ì£¼ìŠ¤ 8ì¢…', 'ë¬¼/ì£¼ìŠ¤', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'NEW', 'ì—†ìŒ', '[ìžì—°ë§ˆì„] ë°° ì£¼ìŠ¤ 1íŒ©', 1400, 990, 99, 100, 'ì—„ì„ ëœ êµ­ë‚´ì‚° ë°°ë¥¼ ê·¸ëŒ€ë¡œ ì°©ì¦™í•˜ì—¬ ì›ë¬¼ì˜ ì˜ì–‘ íŒŒê´´ë¥¼ ìµœì†Œí™”í•œ ì œí’ˆ ìœ í†µê¸°í•œ : 2019ë…„ 11ì›” 26ì¼ê¹Œì§€', 'ìžì—°ë§ˆì„', 100);
+values(seq_product_pnum.nextval, '[ÀÚ¿¬¸¶À»] °úÀÏ ÁÖ½º 8Á¾', '¹°/ÁÖ½º', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'NEW', '¾øÀ½', '[ÀÚ¿¬¸¶À»] ¹è ÁÖ½º 1ÆÑ', 1400, 990, 99, 100, '¾ö¼±µÈ ±¹³»»ê ¹è¸¦ ±×´ë·Î ÂøÁóÇÏ¿© ¿ø¹°ÀÇ ¿µ¾ç ÆÄ±«¸¦ ÃÖ¼ÒÈ­ÇÑ Á¦Ç° À¯Åë±âÇÑ : 2019³â 11¿ù 26ÀÏ±îÁö', 'ÀÚ¿¬¸¶À»', 100);
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point, pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, '[ìžì—°ë§ˆì„] ê³¼ì¼ ì£¼ìŠ¤ 8ì¢…', 'ë¬¼/ì£¼ìŠ¤', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'NEW', 'ì—†ìŒ', '[ìžì—°ë§ˆì„] ë”¸ê¸° ì£¼ìŠ¤ 1íŒ©', 1400, 990, 99, 100, 'ë¬´ë†ì•½ ì¸ì¦ì„ ë°›ì€ ë”¸ê¸°ë¥¼ ì €ì˜¨ ì¶”ì¶œì•¡ ê³µë²•ìœ¼ë¡œ ì¶”ì¶œí•˜ì—¬ ì›ë¬¼ì˜ ì˜ì–‘ íŒŒê´´ë¥¼ ìµœì†Œí™”í•œ ì œí’ˆ. ìœ í†µê¸°í•œ : 2019ë…„ 11ì›” 26ì¼ê¹Œì§€', 'ìžì—°ë§ˆì„', 100);
+values(seq_product_pnum.nextval, '[ÀÚ¿¬¸¶À»] °úÀÏ ÁÖ½º 8Á¾', '¹°/ÁÖ½º', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'NEW', '¾øÀ½', '[ÀÚ¿¬¸¶À»] µþ±â ÁÖ½º 1ÆÑ', 1400, 990, 99, 100, '¹«³ó¾à ÀÎÁõÀ» ¹ÞÀº µþ±â¸¦ Àú¿Â ÃßÃâ¾× °ø¹ýÀ¸·Î ÃßÃâÇÏ¿© ¿ø¹°ÀÇ ¿µ¾ç ÆÄ±«¸¦ ÃÖ¼ÒÈ­ÇÑ Á¦Ç°. À¯Åë±âÇÑ : 2019³â 11¿ù 26ÀÏ±îÁö', 'ÀÚ¿¬¸¶À»', 100);
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point, pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, '[ìžì—°ë§ˆì„] ê³¼ì¼ ì£¼ìŠ¤ 8ì¢…', 'ë¬¼/ì£¼ìŠ¤', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'NEW', 'ì—†ìŒ', '[ìžì—°ë§ˆì„] ì‚¬ê³¼ë‹¹ê·¼ ì£¼ìŠ¤ 1íŒ©', 1400, 990, 99, 100, 'ì—„ì„ ëœ ì‚¬ê³¼ì™€ ë‹¹ê·¼ì„ ê·¸ëŒ€ë¡œ ì°©ì¦™í•˜ì—¬ ì›ë¬¼ì˜ ì˜ì–‘ íŒŒê´´ë¥¼ ìµœì†Œí™”í•œ ì œí’ˆ ìœ í†µê¸°í•œ : 2019ë…„ 11ì›” 26ì¼ê¹Œì§€', 'ìžì—°ë§ˆì„', 100);
+values(seq_product_pnum.nextval, '[ÀÚ¿¬¸¶À»] °úÀÏ ÁÖ½º 8Á¾', '¹°/ÁÖ½º', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'NEW', '¾øÀ½', '[ÀÚ¿¬¸¶À»] »ç°ú´ç±Ù ÁÖ½º 1ÆÑ', 1400, 990, 99, 100, '¾ö¼±µÈ »ç°ú¿Í ´ç±ÙÀ» ±×´ë·Î ÂøÁóÇÏ¿© ¿ø¹°ÀÇ ¿µ¾ç ÆÄ±«¸¦ ÃÖ¼ÒÈ­ÇÑ Á¦Ç° À¯Åë±âÇÑ : 2019³â 11¿ù 26ÀÏ±îÁö', 'ÀÚ¿¬¸¶À»', 100);
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point, pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, '[ìžì—°ë§ˆì„] ê³¼ì¼ ì£¼ìŠ¤ 8ì¢…', 'ë¬¼/ì£¼ìŠ¤', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'NEW', 'ì—†ìŒ', '[ìžì—°ë§ˆì„] ì‚¬ê³¼ ì£¼ìŠ¤ 1íŒ©', 1400, 990, 99, 100, 'ì—„ì„ ëœ êµ­ë‚´ì‚° ì‚¬ê³¼ë¥¼ ê·¸ëŒ€ë¡œ ì°©ì¦™í•˜ì—¬ ì›ë¬¼ì˜ ì˜ì–‘ íŒŒê´´ë¥¼ ìµœì†Œí™”í•œ ì œí’ˆ ìœ í†µê¸°í•œ : 2019ë…„ 11ì›” 26ì¼ê¹Œì§€', 'ìžì—°ë§ˆì„', 100);
+values(seq_product_pnum.nextval, '[ÀÚ¿¬¸¶À»] °úÀÏ ÁÖ½º 8Á¾', '¹°/ÁÖ½º', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'NEW', '¾øÀ½', '[ÀÚ¿¬¸¶À»] »ç°ú ÁÖ½º 1ÆÑ', 1400, 990, 99, 100, '¾ö¼±µÈ ±¹³»»ê »ç°ú¸¦ ±×´ë·Î ÂøÁóÇÏ¿© ¿ø¹°ÀÇ ¿µ¾ç ÆÄ±«¸¦ ÃÖ¼ÒÈ­ÇÑ Á¦Ç° À¯Åë±âÇÑ : 2019³â 11¿ù 26ÀÏ±îÁö', 'ÀÚ¿¬¸¶À»', 100);
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point, pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, '[ìžì—°ë§ˆì„] ê³¼ì¼ ì£¼ìŠ¤ 8ì¢…', 'ë¬¼/ì£¼ìŠ¤', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'NEW', 'ì—†ìŒ', '[ìžì—°ë§ˆì„] ì‚¬ê³¼ì•„ë¡œë‹ˆì•„ ì£¼ìŠ¤ 1íŒ©', 1400, 990, 99, 100, 'ì—„ì„ ëœ êµ­ë‚´ì‚° ì‚¬ê³¼ì™€ ë¬´ë†ì•½ ì¸ì¦ì„ ë°›ì€ ì•„ë¡œë‹ˆì•„ë¥¼ ê·¸ëŒ€ë¡œ ì°©ì¦™í•˜ì—¬ ì›ë¬¼ì˜ ì˜ì–‘ íŒŒê´´ë¥¼ ìµœì†Œí™”í•œ ì œí’ˆ ìœ í†µê¸°í•œ : 2019ë…„ 11ì›” 26ì¼ê¹Œì§€', 'ìžì—°ë§ˆì„', 100);
+values(seq_product_pnum.nextval, '[ÀÚ¿¬¸¶À»] °úÀÏ ÁÖ½º 8Á¾', '¹°/ÁÖ½º', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'NEW', '¾øÀ½', '[ÀÚ¿¬¸¶À»] »ç°ú¾Æ·Î´Ï¾Æ ÁÖ½º 1ÆÑ', 1400, 990, 99, 100, '¾ö¼±µÈ ±¹³»»ê »ç°ú¿Í ¹«³ó¾à ÀÎÁõÀ» ¹ÞÀº ¾Æ·Î´Ï¾Æ¸¦ ±×´ë·Î ÂøÁóÇÏ¿© ¿ø¹°ÀÇ ¿µ¾ç ÆÄ±«¸¦ ÃÖ¼ÒÈ­ÇÑ Á¦Ç° À¯Åë±âÇÑ : 2019³â 11¿ù 26ÀÏ±îÁö', 'ÀÚ¿¬¸¶À»', 100);
 
 insert into product_images(pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval, 'fruitjuice1.jpg', 18);
@@ -1116,9 +1124,9 @@ from product_images;
 select *
 from product_package;
 
--- 2. íŒ¨í‚¤ì§€ ì—†ëŠ” ë¬¼
+-- 2. ÆÐÅ°Áö ¾ø´Â ¹°
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point, pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, 'ì—†ìŒ', 'ë¬¼/ì£¼ìŠ¤', 'ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©', 'BEST', 'ì—†ìŒ', '[ë¯¸ë„¤ëž„ì›Œí„°] ë”¥ìŠ¤ í•´ì–‘ì‹¬ì¸µìˆ˜ 2L', 2000, 1800, 180, 100, '5ëŒ€ ì˜ì–‘ì†Œì˜ í•˜ë‚˜ì¸ ì²œì—° ë¯¸ë„¤ëž„ì´ í’ë¶€í•œ ë”¥ìŠ¤ í•´ì–‘ì‹¬ì¸µìˆ˜', '(ì£¼)ê¸€ë¡œë²Œì‹¬ì¸µìˆ˜', 2000);
+values(seq_product_pnum.nextval, '¾øÀ½', '¹°/ÁÖ½º', '½Ä»ç´ë¿ë/°£½Ä¿ë', 'BEST', '¾øÀ½', '[¹Ì³×¶ö¿öÅÍ] µö½º ÇØ¾ç½ÉÃþ¼ö 2L', 2000, 1800, 180, 100, '5´ë ¿µ¾ç¼ÒÀÇ ÇÏ³ªÀÎ Ãµ¿¬ ¹Ì³×¶öÀÌ Ç³ºÎÇÑ µö½º ÇØ¾ç½ÉÃþ¼ö', '(ÁÖ)±Û·Î¹ú½ÉÃþ¼ö', 2000);
 
 insert into product_images(pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval, 'water1.jpg', 26);
@@ -1131,10 +1139,10 @@ values(seq_product_images_pimgnum.nextval, 'water3.jpg', 26);
 
 
 
--- 3. íŒ¨í‚¤ì§€ì—†ëŠ” ì˜¤ë Œì§€ ì£¼ìŠ¤
+-- 3. ÆÐÅ°Áö¾ø´Â ¿À·»Áö ÁÖ½º
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point, pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, 'ì—†ìŒ', 'ë¬¼/ì£¼ìŠ¤', 'ë‹¤ì´ì–´íŠ¸ìš©', 'HIT', 'ì—†ìŒ', '[ì½œë¦°ìŠ¤ê·¸ë¦°] ë” ì˜¤ë Œì§€', 18000, 15600, 1560, 100, 'ë¬¼ í•œë°©ìš¸ ë„£ì§€ ì•Šê³  ìˆœìˆ˜í•œ ì˜¤ë Œì§€ ê³¼ìœ¡ì„ ì§œë‚¸ 100% ì°©ì¦™ ì˜¤ë Œì§€ ì£¼ìŠ¤ ìœ í†µê¸°í•œ : ìˆ˜ë ¹ì¼ë¡œë¶€í„° 2~3ì¼ê¹Œì§€ ', 'ì½œë¦°ìŠ¤ê·¸ë¦°', 1000);
+values(seq_product_pnum.nextval, '¾øÀ½', '¹°/ÁÖ½º', '´ÙÀÌ¾îÆ®¿ë', 'HIT', '¾øÀ½', '[ÄÝ¸°½º±×¸°] ´õ ¿À·»Áö', 18000, 15600, 1560, 100, '¹° ÇÑ¹æ¿ï ³ÖÁö ¾Ê°í ¼ø¼öÇÑ ¿À·»Áö °úÀ°À» Â¥³½ 100% ÂøÁó ¿À·»Áö ÁÖ½º À¯Åë±âÇÑ : ¼ö·ÉÀÏ·ÎºÎÅÍ 2~3ÀÏ±îÁö ', 'ÄÝ¸°½º±×¸°', 1000);
 
 insert into product_images(pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval, 'orangejuice1.jpg', 27);
@@ -1148,18 +1156,18 @@ values(seq_product_images_pimgnum.nextval, 'orangejuice3.jpg', 27);
 
 
 
--- 4. íŒ¨í‚¤ì§€ì—†ëŠ” ë¸ëª¬íŠ¸ í‘¸ë£¬ ì£¼ìŠ¤ 
+-- 4. ÆÐÅ°Áö¾ø´Â µ¨¸óÆ® Çª·é ÁÖ½º 
 
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point, pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, 'ì—†ìŒ', 'ë¬¼/ì£¼ìŠ¤', 'ì±„ì‹ì£¼ì˜ìžìš©', 'HIT', 'ì—†ìŒ', '[ë¸ëª¬íŠ¸] í”„ë£¬ì£¼ìŠ¤', 10000, 8500, 850, 100, 'ë§ë¦° ì„œì–‘ ìžë‘ë¥¼ ëœ»í•˜ëŠ” í”„ë£¬ì€ ì‹ì´ì„¬ìœ , ë¹„íƒ€ë¯¼, ì² ë¶„ì„ í’ë¶€í•˜ê²Œ í•¨ìœ í•˜ê³  ìžˆì–´ìš”. 
-ì´ë²ˆì— ì»¬ë¦¬ëŠ” ìžë‘ì˜ ì˜ì–‘ì„ í†µì§¸ë¡œ ë‹´ì€ ë¸ëª¬íŠ¸ì˜ í”„ë£¬ ì£¼ìŠ¤ë¥¼ ê°€ì ¸ì™”ë‹µë‹ˆë‹¤. 
-ì´ ì œí’ˆì€ 120ë…„ ì „í†µì˜ ê¸€ë¡œë²Œ ê³¼ì¼ ë¸Œëžœë“œ ë¸ëª¬íŠ¸ê°€ ê³¼ìœ¡ì´ ì‹¤í•˜ê³  ë‹¹ë„ê°€ ë†’ì€ ì„œì–‘ ìžë‘ë¥¼ ì—„ì„ í•˜ì—¬ ë§Œë“  ê²ƒì´ì—ìš”. 
-ë³´ì¡´ë£Œ, ì„¤íƒ•, ê°ë¯¸ë£Œ ë“± ì‹í’ˆì²¨ê°€ë¬¼ì„ ì¼ì ˆ ë„£ì§€ ì•Šê³  ë§ë¦° ìžë‘(í”„ë£¬)ì™€ ë¬¼ë§Œ í‘¹ ë“ì—¬ì„œ ì–»ì€ 100% ê³¼ì¼ ì£¼ìŠ¤ì´ì§€ìš”. 
-ë¸ëª¬íŠ¸ í”„ë£¬ ì£¼ìŠ¤ë¥¼ í•œ ìž… ë§ˆì…”ë³´ë©´, ì¸ê³µì ì¸ ë‹¬ì½¤í•¨ ëŒ€ì‹  ê³¼ì¼ ë³¸ì—°ì˜ ë‹¬ì½¤í•˜ê³  ì‹±ê·¸ëŸ¬ìš´ í’ë¯¸ë¥¼ ìƒìƒí•˜ê²Œ ëŠë‚„ ìˆ˜ ìžˆë‹µë‹ˆë‹¤. 
-ì´ì œ ìƒì¾Œí•˜ê²Œ ì•„ì¹¨ì„ ì‹œìž‘í•  ë•Œ, ì‹í›„ì— ìž…ê°€ì‹¬í•  ë•Œ, ë¸ëª¬íŠ¸ì˜ í”„ë£¬ ì£¼ìŠ¤ë¥¼ ë§ˆì…”ë³´ì„¸ìš”. 
-900mlê°€ ë„˜ëŠ” ë„‰ë„‰í•œ ì–‘ì´ê¸° ë•Œë¬¸ì— ëƒ‰ìž¥ê³ ì— ë‘ê³  ì˜¨ ê°€ì¡±ì´ í•¨ê»˜ ë‚˜ëˆ  ë§ˆì‹œê¸°ì—ë„ ì¢‹ì„ ê±°ì˜ˆìš”.
-ë³´ê´€ë°©ë²• : ì§ì‚¬ê´‘ì„ ì„ í”¼í•˜ê³  ì„œëŠ˜í•œ ê³³ì— ë³´ê´€. ê°œë´‰ í›„ì—ëŠ” ë°˜ë“œì‹œ ëƒ‰ìž¥ë³´ê´€í•˜ì‹œê³  ê°€ê¸‰ì  ë¹¨ë¦¬ ë“œì‹œê¸° ë°”ëžë‹ˆë‹¤.', 'ë¸ëª¬íŠ¸', 946);
+values(seq_product_pnum.nextval, '¾øÀ½', '¹°/ÁÖ½º', 'Ã¤½ÄÁÖÀÇÀÚ¿ë', 'HIT', '¾øÀ½', '[µ¨¸óÆ®] ÇÁ·éÁÖ½º', 10000, 8500, 850, 100, '¸»¸° ¼­¾ç ÀÚµÎ¸¦ ¶æÇÏ´Â ÇÁ·éÀº ½ÄÀÌ¼¶À¯, ºñÅ¸¹Î, Ã¶ºÐÀ» Ç³ºÎÇÏ°Ô ÇÔÀ¯ÇÏ°í ÀÖ¾î¿ä. 
+ÀÌ¹ø¿¡ ÄÃ¸®´Â ÀÚµÎÀÇ ¿µ¾çÀ» ÅëÂ°·Î ´ãÀº µ¨¸óÆ®ÀÇ ÇÁ·é ÁÖ½º¸¦ °¡Á®¿Ô´ä´Ï´Ù. 
+ÀÌ Á¦Ç°Àº 120³â ÀüÅëÀÇ ±Û·Î¹ú °úÀÏ ºê·£µå µ¨¸óÆ®°¡ °úÀ°ÀÌ ½ÇÇÏ°í ´çµµ°¡ ³ôÀº ¼­¾ç ÀÚµÎ¸¦ ¾ö¼±ÇÏ¿© ¸¸µç °ÍÀÌ¿¡¿ä. 
+º¸Á¸·á, ¼³ÅÁ, °¨¹Ì·á µî ½ÄÇ°Ã·°¡¹°À» ÀÏÀý ³ÖÁö ¾Ê°í ¸»¸° ÀÚµÎ(ÇÁ·é)¿Í ¹°¸¸ Ç« ²ú¿©¼­ ¾òÀº 100% °úÀÏ ÁÖ½ºÀÌÁö¿ä. 
+µ¨¸óÆ® ÇÁ·é ÁÖ½º¸¦ ÇÑ ÀÔ ¸¶¼Åº¸¸é, ÀÎ°øÀûÀÎ ´ÞÄÞÇÔ ´ë½Å °úÀÏ º»¿¬ÀÇ ´ÞÄÞÇÏ°í ½Ì±×·¯¿î Ç³¹Ì¸¦ »ý»ýÇÏ°Ô ´À³¥ ¼ö ÀÖ´ä´Ï´Ù. 
+ÀÌÁ¦ »óÄèÇÏ°Ô ¾ÆÄ§À» ½ÃÀÛÇÒ ¶§, ½ÄÈÄ¿¡ ÀÔ°¡½ÉÇÒ ¶§, µ¨¸óÆ®ÀÇ ÇÁ·é ÁÖ½º¸¦ ¸¶¼Åº¸¼¼¿ä. 
+900ml°¡ ³Ñ´Â ³Ë³ËÇÑ ¾çÀÌ±â ¶§¹®¿¡ ³ÃÀå°í¿¡ µÎ°í ¿Â °¡Á·ÀÌ ÇÔ²² ³ª´² ¸¶½Ã±â¿¡µµ ÁÁÀ» °Å¿¹¿ä.
+º¸°ü¹æ¹ý : Á÷»ç±¤¼±À» ÇÇÇÏ°í ¼­´ÃÇÑ °÷¿¡ º¸°ü. °³ºÀ ÈÄ¿¡´Â ¹Ýµå½Ã ³ÃÀåº¸°üÇÏ½Ã°í °¡±ÞÀû »¡¸® µå½Ã±â ¹Ù¶ø´Ï´Ù.', 'µ¨¸óÆ®', 946);
 
 insert into product_images(pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval, 'prunejuice1.jpg', 28);
@@ -1183,16 +1191,16 @@ select *
 from product_package;
 
 
--- 5. íŒ¨í‚¤ì§€ ì—†ëŠ” ê·€ë¦¬ìŒë£Œ
+-- 5. ÆÐÅ°Áö ¾ø´Â ±Í¸®À½·á
 
 insert into product(pnum, fk_pacname, fk_sdname, fk_ctname, fk_stname, fk_etname, pname, price, saleprice, point, pqty, pcontents, pcompanyname, weight)
-values(seq_product_pnum.nextval, 'ì—†ìŒ', 'ë¬¼/ì£¼ìŠ¤', 'ì±„ì‹ì£¼ì˜ìžìš©', 'NEW', 'ì—†ìŒ', '[ì„œê°•ìœ ì—…] ì˜¤íŠ¸ë°¸ë¦¬', 4000, 3500, 350, 100, 'ì‹ë¬¼ì„± ìš°ìœ ëŠ” ìš°ìœ ì²˜ëŸ¼ í°ë¹›ì„ ë ê³  ìš°ìœ ì˜ ì—­í• ì„ ëŒ€ì‹ í•˜ëŠ” ì‹í’ˆìœ¼ë¡œ ì£¼ëª©ë°›ê³  ìžˆì–´ìš”. 
-íŠ¹ížˆ ë‹¤ì–‘í•œ ì´ìœ ë¡œ ìš°ìœ ë¥¼ ì„­ì·¨í•˜ì§€ ëª»í•˜ëŠ” ë¶„ë“¤ì´ ì´ ì‹ë¬¼ì„± ìš°ìœ ë¥¼ ì¦ê²¨ ì°¾ìœ¼ì‹¤ í…ë°ìš”. 
-ì‹ë¬¼ì„± ìš°ìœ ì˜ ìž¬ë£Œë¡œ ë§Žì´ ì“°ì´ëŠ” ê·€ë¦¬ëŠ” ì‹ì´ì„¬ìœ ê°€ ë§Žê³  ë§›ì´ ê³ ì†Œí•´ ìŒë£Œë¡œ ë§Œë“¤ë©´ ë‚¨ë…€ë…¸ì†Œê°€ ìž˜ ë§ˆì‹¤ ìˆ˜ ìžˆëŠ” ê³¡ë¬¼ì´ì£ . 
-30ë…„ì´ ë„˜ëŠ” ì„¸ì›” ë™ì•ˆ ì •ì§í•˜ê²Œ ì‹í’ˆì„ ë§Œë“¤ì–´ì˜¨ ì„œê°•ìœ ì—… ë˜í•œ ê·€ë¦¬ ìŒë£Œë¥¼ ì„ ë³´ìž…ë‹ˆë‹¤. 
-ìºë‚˜ë‹¤ì‚° ê·€ë¦¬ë¥¼ ì‚¬ìš©í•œ ì˜¤íŠ¸ë°¸ë¦¬ ì˜¤íŠ¸ë°€í¬ì—ëŠ” ê·€ë¦¬ íŠ¹ìœ ì˜ ê³ ì†Œí•œ ë§›ê³¼ í–¥ì´ ìž˜ ë‹´ê²¨ ìžˆì–´ìš”. 
-ì½œë ˆìŠ¤í…Œë¡¤ê³¼ í¬í™”ì§€ë°©ì´ ì—†ê³  ì‹í’ˆì²¨ê°€ë¬¼ì´ ë“¤ì–´ê°€ì§€ ì•Šì•„ ìœ ë‹¹ ë¶„í•´ê°€ ì–´ë ¤ìš´ ì•„ì´ì—ê²Œ ì£¼ì…”ë„ ì¢‹ìŠµë‹ˆë‹¤. 
-ì•„ì´ë¶€í„° ì–´ë¥¸ê¹Œì§€, ì˜¨ ê°€ì¡±ì´ ì•„ì¹¨ë§ˆë‹¤ í•œ ìž”ì”© ë‚˜ëˆ„ì–´ë³´ì„¸ìš”. ë¶€ë‹´ ì—†ê³  ë“ ë“ í•œ í•˜ë£¨ë¥¼ ì‹œìž‘í•˜ì‹¤ ìˆ˜ ìžˆì„ ê±°ì˜ˆìš”.', 'ì„œê°•ìœ ì—…', 1000);
+values(seq_product_pnum.nextval, '¾øÀ½', '¹°/ÁÖ½º', 'Ã¤½ÄÁÖÀÇÀÚ¿ë', 'NEW', '¾øÀ½', '[¼­°­À¯¾÷] ¿ÀÆ®¹ë¸®', 4000, 3500, 350, 100, '½Ä¹°¼º ¿ìÀ¯´Â ¿ìÀ¯Ã³·³ ÈòºûÀ» ¶ì°í ¿ìÀ¯ÀÇ ¿ªÇÒÀ» ´ë½ÅÇÏ´Â ½ÄÇ°À¸·Î ÁÖ¸ñ¹Þ°í ÀÖ¾î¿ä. 
+Æ¯È÷ ´Ù¾çÇÑ ÀÌÀ¯·Î ¿ìÀ¯¸¦ ¼·ÃëÇÏÁö ¸øÇÏ´Â ºÐµéÀÌ ÀÌ ½Ä¹°¼º ¿ìÀ¯¸¦ Áñ°Ü Ã£À¸½Ç ÅÙµ¥¿ä. 
+½Ä¹°¼º ¿ìÀ¯ÀÇ Àç·á·Î ¸¹ÀÌ ¾²ÀÌ´Â ±Í¸®´Â ½ÄÀÌ¼¶À¯°¡ ¸¹°í ¸ÀÀÌ °í¼ÒÇØ À½·á·Î ¸¸µé¸é ³²³à³ë¼Ò°¡ Àß ¸¶½Ç ¼ö ÀÖ´Â °î¹°ÀÌÁÒ. 
+30³âÀÌ ³Ñ´Â ¼¼¿ù µ¿¾È Á¤Á÷ÇÏ°Ô ½ÄÇ°À» ¸¸µé¾î¿Â ¼­°­À¯¾÷ ¶ÇÇÑ ±Í¸® À½·á¸¦ ¼±º¸ÀÔ´Ï´Ù. 
+Ä³³ª´Ù»ê ±Í¸®¸¦ »ç¿ëÇÑ ¿ÀÆ®¹ë¸® ¿ÀÆ®¹ÐÅ©¿¡´Â ±Í¸® Æ¯À¯ÀÇ °í¼ÒÇÑ ¸À°ú ÇâÀÌ Àß ´ã°Ü ÀÖ¾î¿ä. 
+ÄÝ·¹½ºÅ×·Ñ°ú Æ÷È­Áö¹æÀÌ ¾ø°í ½ÄÇ°Ã·°¡¹°ÀÌ µé¾î°¡Áö ¾Ê¾Æ À¯´ç ºÐÇØ°¡ ¾î·Á¿î ¾ÆÀÌ¿¡°Ô ÁÖ¼Åµµ ÁÁ½À´Ï´Ù. 
+¾ÆÀÌºÎÅÍ ¾î¸¥±îÁö, ¿Â °¡Á·ÀÌ ¾ÆÄ§¸¶´Ù ÇÑ ÀÜ¾¿ ³ª´©¾îº¸¼¼¿ä. ºÎ´ã ¾ø°í µçµçÇÑ ÇÏ·ç¸¦ ½ÃÀÛÇÏ½Ç ¼ö ÀÖÀ» °Å¿¹¿ä.', '¼­°­À¯¾÷', 1000);
 
 insert into product_images(pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval, 'oatmilk1.jpg', 29);
@@ -1206,17 +1214,17 @@ values(seq_product_images_pimgnum.nextval, 'oatmilk3.jpg', 29);
 
 commit;
 
-----------------------------'DIY', 'ì•¼ì±„/ê³¡ë¥˜----------------------------------------------
+----------------------------'DIY', '¾ßÃ¤/°î·ù----------------------------------------------
 insert into product_package(pacnum, pacname, paccontents,  pacimage)
 values(seq_product_Package_pacnum.nextval
-, 'ë¬´ë†ì•½ ê°„íŽ¸ ìƒëŸ¬ë“œ 6ì¢…'
-, 'ì§™ì€ ë…¹ìƒ‰ì˜ ìžŽì±„ì†ŒëŠ” ì‹ì´ì„¬ìœ ë¶€í„° ë¯¸ë„¤ëž„, ì² ë¶„, ë¹„íƒ€ë¯¼, ì—½ì‚° ë“± ê°ì¢… ì˜ì–‘ë¶„ì´ í’ë¶€í•œë°ìš”. ìžŽì±„ì†Œì˜ ì˜ì–‘ë¶„ì„ íš¨ê³¼ì ìœ¼ë¡œ ì„­ì·¨í•˜ëŠ” ë°©ë²•ì€ ë¬´ì—‡ì¼ê¹Œìš”? ìµížˆì§€ ì•Šê³  ìƒìœ¼ë¡œ ë¨¹ëŠ” ê²ƒì´ì£ . ì»¬ë¦¬ê°€ ì—¬ëŸ¬ë¶„ì˜ ê±´ê°•ì„ ìœ„í•´ ê°„íŽ¸í•˜ê²Œ ì¦ê¸¸ ìˆ˜ ìžˆëŠ” ìƒëŸ¬ë“œë¥¼ ì¤€ë¹„í–ˆìŠµë‹ˆë‹¤. ì¡°ê¸ˆì”© ë‹¤ë¥¸ ë§›ê³¼ ìƒê¹€ìƒˆ, ì˜ì–‘ë¶„ì„ ê°€ì§„ ìžŽì±„ì†Œë¥¼ í•œ íŒ©ìœ¼ë¡œ ë§Œë‚˜ë³´ì„¸ìš”.'
+, '¹«³ó¾à °£Æí »ø·¯µå 6Á¾'
+, 'Â£Àº ³ì»öÀÇ ÀÙÃ¤¼Ò´Â ½ÄÀÌ¼¶À¯ºÎÅÍ ¹Ì³×¶ö, Ã¶ºÐ, ºñÅ¸¹Î, ¿±»ê µî °¢Á¾ ¿µ¾çºÐÀÌ Ç³ºÎÇÑµ¥¿ä. ÀÙÃ¤¼ÒÀÇ ¿µ¾çºÐÀ» È¿°úÀûÀ¸·Î ¼·ÃëÇÏ´Â ¹æ¹ýÀº ¹«¾ùÀÏ±î¿ä? ÀÍÈ÷Áö ¾Ê°í »ýÀ¸·Î ¸Ô´Â °ÍÀÌÁÒ. ÄÃ¸®°¡ ¿©·¯ºÐÀÇ °Ç°­À» À§ÇØ °£ÆíÇÏ°Ô Áñ±æ ¼ö ÀÖ´Â »ø·¯µå¸¦ ÁØºñÇß½À´Ï´Ù. Á¶±Ý¾¿ ´Ù¸¥ ¸À°ú »ý±è»õ, ¿µ¾çºÐÀ» °¡Áø ÀÙÃ¤¼Ò¸¦ ÇÑ ÆÑÀ¸·Î ¸¸³ªº¸¼¼¿ä.'
 , '1470792312213l0.jpg' );
 --1
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'ë¬´ë†ì•½ ê°„íŽ¸ ìƒëŸ¬ë“œ 6ì¢…','ì•¼ì±„/ê³¡ë¥˜','ë‹¤ì´ì–´íŠ¸ìš©','NEW','í¬ë¦¬ìŠ¤ë§ˆìŠ¤ ì´ë²¤íŠ¸','ì†ì§ˆ ë¡œë©”ì¸ 40g(1,800ì›)',2000,1800,180,10
-,'ë¡œë§ˆì‹œëŒ€ ë¡œë§ˆì¸ë“¤ì´ ì¦ê²¨ ë¨¹ë˜ ìƒì¶”ë¼ê³  í•˜ì—¬ ì´ë¦„ì´ ë¶™ì€ ë¡œë©”ì¸ì€ ìƒì¶”ê³¼ì˜ ì±„ì†Œì§€ë§Œ ìƒì¶”ì™€ ë‹¬ë¦¬ ì“´ë§›ì´ ì ê³  ì”¹ëŠ” ë§›ì´ ì•„ì‚­í•´ ì‹ê°ì´ ë›°ì–´ë‚©ë‹ˆë‹¤. ê²‰ìžŽì€ ì•½ê°„ ì“´ë§›ì´ ë‚˜ê³  ì•ˆìª½ì˜ ìžŽë“¤ì€ ë” ë‹¬ê³  í–¥ê¸‹í•©ë‹ˆë‹¤.'
-,'ë†ì—…íšŒì‚¬ë²•ì¸ ë¯¸ëž˜ì›(ì£¼)',default,'ë¡œë©”ì¸ìƒì¶”'
+values(seq_product_pnum.nextval,'¹«³ó¾à °£Æí »ø·¯µå 6Á¾','¾ßÃ¤/°î·ù','´ÙÀÌ¾îÆ®¿ë','NEW','Å©¸®½º¸¶½º ÀÌº¥Æ®','¼ÕÁú ·Î¸ÞÀÎ 40g(1,800¿ø)',2000,1800,180,10
+,'·Î¸¶½Ã´ë ·Î¸¶ÀÎµéÀÌ Áñ°Ü ¸Ô´ø »óÃß¶ó°í ÇÏ¿© ÀÌ¸§ÀÌ ºÙÀº ·Î¸ÞÀÎÀº »óÃß°úÀÇ Ã¤¼ÒÁö¸¸ »óÃß¿Í ´Þ¸® ¾´¸ÀÀÌ Àû°í ¾Ã´Â ¸ÀÀÌ ¾Æ»èÇØ ½Ä°¨ÀÌ ¶Ù¾î³³´Ï´Ù. °ÑÀÙÀº ¾à°£ ¾´¸ÀÀÌ ³ª°í ¾ÈÂÊÀÇ ÀÙµéÀº ´õ ´Þ°í Çâ±ßÇÕ´Ï´Ù.'
+,'³ó¾÷È¸»ç¹ýÀÎ ¹Ì·¡¿ø(ÁÖ)',default,'·Î¸ÞÀÎ»óÃß'
 ,40,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
@@ -1224,44 +1232,44 @@ values(seq_product_images_pimgnum.nextval,'gv40000001409_1.jpg', 30);
 
 
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'ë¬´ë†ì•½ ê°„íŽ¸ ìƒëŸ¬ë“œ 6ì¢…','ì•¼ì±„/ê³¡ë¥˜','ë‹¤ì´ì–´íŠ¸ìš©','NEW','í¬ë¦¬ìŠ¤ë§ˆìŠ¤ ì´ë²¤íŠ¸','ì†ì§ˆ ê·¸ë¦°ë¯¹ìŠ¤ 40g(1,800ì›)',2000,1800,180,default
-,'ë‹¤ì–‘í•œ ì¢…ë¥˜ë§Œí¼ ì œê°ê¸° ë‹¤ë¥¸ ë§›ì„ ê°€ì§„ ìžŽì±„ì†Œë“¤. ì´ ë•Œë¬¸ì— ì–´ë–¤ ì±„ì†Œë“¤ì„, ì–´ë–»ê²Œ ë¯¹ìŠ¤í• ê¹Œ ê³ ë¯¼ì´ ë˜ê³¤ í•˜ëŠ”ë°ìš”. ì»¬ë¦¬ëŠ” ì•½ê°„ì˜ ë‹¨ë§›ê³¼ ìŒ‰ìŒ€í•¨ì´ ì–´ìš°ëŸ¬ì§€ê²Œë” ë¡œë©”ì¸, ì ê·¼ëŒ€, ì¹˜ì»¤ë¦¬ë¥¼ í•˜ë‚˜ë¡œ ëª¨ì•˜ì–´ìš”. ìƒëŸ¬ë“œ í•œ íŒ©ìœ¼ë¡œ ë‹¤ì–‘í•œ ìžŽì±„ì†Œì˜ ì¡°í™”ë¥¼ ì¦ê²¨ë³´ì„¸ìš”.'
-,'ë†ì—…íšŒì‚¬ë²•ì¸ ë¯¸ëž˜ì›(ì£¼)',default,'ë¡œë©”ì¸ìƒì¶”,ì ê·¼ëŒ€,ì¹˜ì»¤ë¦¬'
+values(seq_product_pnum.nextval,'¹«³ó¾à °£Æí »ø·¯µå 6Á¾','¾ßÃ¤/°î·ù','´ÙÀÌ¾îÆ®¿ë','NEW','Å©¸®½º¸¶½º ÀÌº¥Æ®','¼ÕÁú ±×¸°¹Í½º 40g(1,800¿ø)',2000,1800,180,default
+,'´Ù¾çÇÑ Á¾·ù¸¸Å­ Á¦°¢±â ´Ù¸¥ ¸ÀÀ» °¡Áø ÀÙÃ¤¼Òµé. ÀÌ ¶§¹®¿¡ ¾î¶² Ã¤¼ÒµéÀ», ¾î¶»°Ô ¹Í½ºÇÒ±î °í¹ÎÀÌ µÇ°ï ÇÏ´Âµ¥¿ä. ÄÃ¸®´Â ¾à°£ÀÇ ´Ü¸À°ú ½Ô½ÒÇÔÀÌ ¾î¿ì·¯Áö°Ô²û ·Î¸ÞÀÎ, Àû±Ù´ë, Ä¡Ä¿¸®¸¦ ÇÏ³ª·Î ¸ð¾Ò¾î¿ä. »ø·¯µå ÇÑ ÆÑÀ¸·Î ´Ù¾çÇÑ ÀÙÃ¤¼ÒÀÇ Á¶È­¸¦ Áñ°Üº¸¼¼¿ä.'
+,'³ó¾÷È¸»ç¹ýÀÎ ¹Ì·¡¿ø(ÁÖ)',default,'·Î¸ÞÀÎ»óÃß,Àû±Ù´ë,Ä¡Ä¿¸®'
 ,40,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'gv00000001408_1.jpg', 31);
 
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'ë¬´ë†ì•½ ê°„íŽ¸ ìƒëŸ¬ë“œ 6ì¢…','ì•¼ì±„/ê³¡ë¥˜','ë‹¤ì´ì–´íŠ¸ìš©','NEW','í¬ë¦¬ìŠ¤ë§ˆìŠ¤ ì´ë²¤íŠ¸','ì†ì§ˆ ì–‘ìƒì¶” 60g(1,850ì›)',2100,1850,185,default
-,'ìš°ë¦¬ì—ê²Œ ë„ˆë¬´ë‚˜ë„ ì¹œìˆ™í•˜ê³  ìµìˆ™í•œ ì±„ì†Œì¸ ì–‘ìƒì¶”ëŠ” ì§„í•œ ë§›ì´ë‚˜ í–¥ì€ ì—†ì§€ë§Œ ìˆ˜ë¶„ì´ ì „ì²´ì˜ 94~95%ë¥¼ ì°¨ì§€í•˜ê³  ìžˆì–´ ì‹±ê·¸ëŸ¬ì›€ì´ ê·¸ëŒ€ë¡œ ì „í•´ì§‘ë‹ˆë‹¤. ë‚ ë¡œ ë¨¹ì–´ì•¼ ì˜ì–‘ ì†ì‹¤ì„ ë§‰ì„ ìˆ˜ ìžˆìœ¼ë¯€ë¡œ ìƒŒë“œìœ„ì¹˜ë‚˜ ìƒëŸ¬ë“œë¥¼ ë§Œë“¤ì–´ ë¨¹ëŠ” ê²ƒì´ ì¢‹ì•„ìš”. ì•„ì‚­í•˜ê²Œ ì”¹ëŠ” ë§›ë„ ì¢‹ì•„ ìƒëŸ¬ë“œì—” ë¹ ì§€ì§€ ì•Šê³  ë“¤ì–´ê°€ëŠ” ì±„ì†Œì§€ìš”.'
-,'ë†ì—…íšŒì‚¬ë²•ì¸ ë¯¸ëž˜ì›(ì£¼)',default,'ì–‘ìƒì¶”'
+values(seq_product_pnum.nextval,'¹«³ó¾à °£Æí »ø·¯µå 6Á¾','¾ßÃ¤/°î·ù','´ÙÀÌ¾îÆ®¿ë','NEW','Å©¸®½º¸¶½º ÀÌº¥Æ®','¼ÕÁú ¾ç»óÃß 60g(1,850¿ø)',2100,1850,185,default
+,'¿ì¸®¿¡°Ô ³Ê¹«³ªµµ Ä£¼÷ÇÏ°í ÀÍ¼÷ÇÑ Ã¤¼ÒÀÎ ¾ç»óÃß´Â ÁøÇÑ ¸ÀÀÌ³ª ÇâÀº ¾øÁö¸¸ ¼öºÐÀÌ ÀüÃ¼ÀÇ 94~95%¸¦ Â÷ÁöÇÏ°í ÀÖ¾î ½Ì±×·¯¿òÀÌ ±×´ë·Î ÀüÇØÁý´Ï´Ù. ³¯·Î ¸Ô¾î¾ß ¿µ¾ç ¼Õ½ÇÀ» ¸·À» ¼ö ÀÖÀ¸¹Ç·Î »÷µåÀ§Ä¡³ª »ø·¯µå¸¦ ¸¸µé¾î ¸Ô´Â °ÍÀÌ ÁÁ¾Æ¿ä. ¾Æ»èÇÏ°Ô ¾Ã´Â ¸Àµµ ÁÁ¾Æ »ø·¯µå¿£ ºüÁöÁö ¾Ê°í µé¾î°¡´Â Ã¤¼ÒÁö¿ä.'
+,'³ó¾÷È¸»ç¹ýÀÎ ¹Ì·¡¿ø(ÁÖ)',default,'¾ç»óÃß'
 ,60,default,default,default);
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'gv30000001410_1.jpg', 32);
 
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'ë¬´ë†ì•½ ê°„íŽ¸ ìƒëŸ¬ë“œ 6ì¢…','ì•¼ì±„/ê³¡ë¥˜','ë‹¤ì´ì–´íŠ¸ìš©','NEW','í¬ë¦¬ìŠ¤ë§ˆìŠ¤ ì´ë²¤íŠ¸','ì†ì§ˆ ì–‘ë°°ì¶”+ì ì±„ 80g (1,700ì›)',2000,1700,170,default
-,'ì–‘ë°°ì¶”ì™€ ì ì±„ ìƒëŸ¬ë“œëŠ” ê³ ê¸°ë¥¼ ë¨¹ì„ ë•Œ ìžì£¼ ê³ë“¤ì´ì£ . ë¶‰ì€ ì–‘ë°°ì¶”ì¸ ì ì±„ì™€ ì–‘ë°°ì¶”ëŠ” ìµížˆë©´ ë¬´ê¸°ì§ˆ, ë‹¨ë°±ì§ˆ, íƒ„ìˆ˜í™”ë¬¼ ë“±ì´ ë§Žì´ ì†ì‹¤ë˜ê³  ìœ í™©ì´ë¼ëŠ” ì„±ë¶„ì´ íœ˜ë°œì„±ìœ¼ë¡œ ë³€í•´ ë§›ì´ ì—†ì–´ì§€ê¸° ë•Œë¬¸ì— ìƒìœ¼ë¡œ ë¨¹ëŠ” ê²ƒì´ ì¢‹ì•„ìš”. ë¶‰ì€ ì ìžìƒ‰ì„ ê°€ì§„ ì ì±„ëŠ” ë…íŠ¹í•œ ìƒ‰ê¹” ë•ë¶„ì— ìƒëŸ¬ë“œë¥¼ ë”ìš± ë§›ê¹”ìŠ¤ëŸ½ê²Œ ë³´ì´ê²Œ í•˜ì£ . ê¼­ ìƒëŸ¬ë“œê°€ ì•„ë‹ˆì–´ë„ ë¹„ë¹”ë°¥ì´ë‚˜ ëƒ‰ë©´ì˜ ê³ ëª…, ê¹€ë°¥ ìž¬ë£Œë¡œ í™œìš©í•´ë„ ì¢‹ì•„ìš”.'
-,'ë†ì—…íšŒì‚¬ë²•ì¸ ë¯¸ëž˜ì›(ì£¼)',default,'ì ì±„,ì–‘ë°°ì¶”'
+values(seq_product_pnum.nextval,'¹«³ó¾à °£Æí »ø·¯µå 6Á¾','¾ßÃ¤/°î·ù','´ÙÀÌ¾îÆ®¿ë','NEW','Å©¸®½º¸¶½º ÀÌº¥Æ®','¼ÕÁú ¾ç¹èÃß+ÀûÃ¤ 80g (1,700¿ø)',2000,1700,170,default
+,'¾ç¹èÃß¿Í ÀûÃ¤ »ø·¯µå´Â °í±â¸¦ ¸ÔÀ» ¶§ ÀÚÁÖ °çµéÀÌÁÒ. ºÓÀº ¾ç¹èÃßÀÎ ÀûÃ¤¿Í ¾ç¹èÃß´Â ÀÍÈ÷¸é ¹«±âÁú, ´Ü¹éÁú, Åº¼öÈ­¹° µîÀÌ ¸¹ÀÌ ¼Õ½ÇµÇ°í À¯È²ÀÌ¶ó´Â ¼ººÐÀÌ ÈÖ¹ß¼ºÀ¸·Î º¯ÇØ ¸ÀÀÌ ¾ø¾îÁö±â ¶§¹®¿¡ »ýÀ¸·Î ¸Ô´Â °ÍÀÌ ÁÁ¾Æ¿ä. ºÓÀº ÀûÀÚ»öÀ» °¡Áø ÀûÃ¤´Â µ¶Æ¯ÇÑ »ö±ò ´öºÐ¿¡ »ø·¯µå¸¦ ´õ¿í ¸À±ò½º·´°Ô º¸ÀÌ°Ô ÇÏÁÒ. ²À »ø·¯µå°¡ ¾Æ´Ï¾îµµ ºñºö¹äÀÌ³ª ³Ã¸éÀÇ °í¸í, ±è¹ä Àç·á·Î È°¿ëÇØµµ ÁÁ¾Æ¿ä.'
+,'³ó¾÷È¸»ç¹ýÀÎ ¹Ì·¡¿ø(ÁÖ)',default,'ÀûÃ¤,¾ç¹èÃß'
 ,80,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'gv10000001411_1.jpg', 33);
 --5
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'ë¬´ë†ì•½ ê°„íŽ¸ ìƒëŸ¬ë“œ 6ì¢…','ì•¼ì±„/ê³¡ë¥˜','ë‹¤ì´ì–´íŠ¸ìš©','NEW','í¬ë¦¬ìŠ¤ë§ˆìŠ¤ ì´ë²¤íŠ¸','íŒŒí”„ë¦¬ì¹´ ìŠ¬ë¼ì´ìŠ¤ 100g (2,700ì›)',3000,2700,270,default
-,'ì–‘ë°°ì¶”ì™€ ì ì±„ ìƒëŸ¬ë“œëŠ” ê³ ê¸°ë¥¼ ë¨¹ì„ ë•Œ ìžì£¼ ê³ë“¤ì´ì£ . ë¶‰ì€ ì–‘ë°°ì¶”ì¸ ì ì±„ì™€ ì–‘ë°°ì¶”ëŠ” ìµížˆë©´ ë¬´ê¸°ì§ˆ, ë‹¨ë°±ì§ˆ, íƒ„ìˆ˜í™”ë¬¼ ë“±ì´ ë§Žì´ ì†ì‹¤ë˜ê³  ìœ í™©ì´ë¼ëŠ” ì„±ë¶„ì´ íœ˜ë°œì„±ìœ¼ë¡œ ë³€í•´ ë§›ì´ ì—†ì–´ì§€ê¸° ë•Œë¬¸ì— ìƒìœ¼ë¡œ ë¨¹ëŠ” ê²ƒì´ ì¢‹ì•„ìš”. ë¶‰ì€ ì ìžìƒ‰ì„ ê°€ì§„ ì ì±„ëŠ” ë…íŠ¹í•œ ìƒ‰ê¹” ë•ë¶„ì— ìƒëŸ¬ë“œë¥¼ ë”ìš± ë§›ê¹”ìŠ¤ëŸ½ê²Œ ë³´ì´ê²Œ í•˜ì£ . ê¼­ ìƒëŸ¬ë“œê°€ ì•„ë‹ˆì–´ë„ ë¹„ë¹”ë°¥ì´ë‚˜ ëƒ‰ë©´ì˜ ê³ ëª…, ê¹€ë°¥ ìž¬ë£Œë¡œ í™œìš©í•´ë„ ì¢‹ì•„ìš”.'
-,'ë†ì—…íšŒì‚¬ë²•ì¸ ë¯¸ëž˜ì›(ì£¼)',default,'ì ì±„,ì–‘ë°°ì¶”'
+values(seq_product_pnum.nextval,'¹«³ó¾à °£Æí »ø·¯µå 6Á¾','¾ßÃ¤/°î·ù','´ÙÀÌ¾îÆ®¿ë','NEW','Å©¸®½º¸¶½º ÀÌº¥Æ®','ÆÄÇÁ¸®Ä« ½½¶óÀÌ½º 100g (2,700¿ø)',3000,2700,270,default
+,'¾ç¹èÃß¿Í ÀûÃ¤ »ø·¯µå´Â °í±â¸¦ ¸ÔÀ» ¶§ ÀÚÁÖ °çµéÀÌÁÒ. ºÓÀº ¾ç¹èÃßÀÎ ÀûÃ¤¿Í ¾ç¹èÃß´Â ÀÍÈ÷¸é ¹«±âÁú, ´Ü¹éÁú, Åº¼öÈ­¹° µîÀÌ ¸¹ÀÌ ¼Õ½ÇµÇ°í À¯È²ÀÌ¶ó´Â ¼ººÐÀÌ ÈÖ¹ß¼ºÀ¸·Î º¯ÇØ ¸ÀÀÌ ¾ø¾îÁö±â ¶§¹®¿¡ »ýÀ¸·Î ¸Ô´Â °ÍÀÌ ÁÁ¾Æ¿ä. ºÓÀº ÀûÀÚ»öÀ» °¡Áø ÀûÃ¤´Â µ¶Æ¯ÇÑ »ö±ò ´öºÐ¿¡ »ø·¯µå¸¦ ´õ¿í ¸À±ò½º·´°Ô º¸ÀÌ°Ô ÇÏÁÒ. ²À »ø·¯µå°¡ ¾Æ´Ï¾îµµ ºñºö¹äÀÌ³ª ³Ã¸éÀÇ °í¸í, ±è¹ä Àç·á·Î È°¿ëÇØµµ ÁÁ¾Æ¿ä.'
+,'³ó¾÷È¸»ç¹ýÀÎ ¹Ì·¡¿ø(ÁÖ)',default,'ÀûÃ¤,¾ç¹èÃß'
 ,100,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'gv40000001412_1.jpg', 34);
 --6
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'ë¬´ë†ì•½ ê°„íŽ¸ ìƒëŸ¬ë“œ 6ì¢…','ì•¼ì±„/ê³¡ë¥˜','ë‹¤ì´ì–´íŠ¸ìš©','NEW','í¬ë¦¬ìŠ¤ë§ˆìŠ¤ ì´ë²¤íŠ¸','ì–´ë¦°ìžŽì±„ì†Œ ë¯¹ìŠ¤ 40g (1,900ì›)',2500,1900,190,default
-,'ë¶€ë“œëŸ½ê³  ì•„ê¸°ìžê¸°í•œ ì‹ê°ì´ ì‚¬ëž‘ìŠ¤ëŸ¬ìš´ ìƒëŸ¬ë“œìž…ë‹ˆë‹¤. ì±„ì†Œê°€ ì™„ì „ížˆ ìžë¼ ì„±ìˆ™í•´ì§€ê¸° ì „ ìˆ˜í™•í•œ ì–´ë¦°ìžŽì„ ëª¨ì€ ê²ƒìœ¼ë¡œ, ì„±ìž¥ì— í•„ìš”í•œ ì˜ì–‘ì†Œë¥¼ ì‘ì¶•í•˜ê³  ìžˆëŠ” ê²ƒì´ íŠ¹ì§•ì´ì—ìš”. ë–«ì€ë§›ì´ ë‚˜ì§€ ì•Šì•„ ì±„ì†Œë¥¼ ì¢‹ì•„í•˜ì§€ ì•ŠëŠ” ì‚¬ëžŒë“¤ë„ ë¶€ë‹´ ì—†ì´ ì¦ê¸¸ ìˆ˜ ìžˆìŠµë‹ˆë‹¤..'
-,'ë†ì—…íšŒì‚¬ë²•ì¸ ë¯¸ëž˜ì›(ì£¼)',default,'ì–´ë¦°ìžŽ'
+values(seq_product_pnum.nextval,'¹«³ó¾à °£Æí »ø·¯µå 6Á¾','¾ßÃ¤/°î·ù','´ÙÀÌ¾îÆ®¿ë','NEW','Å©¸®½º¸¶½º ÀÌº¥Æ®','¾î¸°ÀÙÃ¤¼Ò ¹Í½º 40g (1,900¿ø)',2500,1900,190,default
+,'ºÎµå·´°í ¾Æ±âÀÚ±âÇÑ ½Ä°¨ÀÌ »ç¶û½º·¯¿î »ø·¯µåÀÔ´Ï´Ù. Ã¤¼Ò°¡ ¿ÏÀüÈ÷ ÀÚ¶ó ¼º¼÷ÇØÁö±â Àü ¼öÈ®ÇÑ ¾î¸°ÀÙÀ» ¸ðÀº °ÍÀ¸·Î, ¼ºÀå¿¡ ÇÊ¿äÇÑ ¿µ¾ç¼Ò¸¦ ÀÀÃàÇÏ°í ÀÖ´Â °ÍÀÌ Æ¯Â¡ÀÌ¿¡¿ä. ¶µÀº¸ÀÀÌ ³ªÁö ¾Ê¾Æ Ã¤¼Ò¸¦ ÁÁ¾ÆÇÏÁö ¾Ê´Â »ç¶÷µéµµ ºÎ´ã ¾øÀÌ Áñ±æ ¼ö ÀÖ½À´Ï´Ù..'
+,'³ó¾÷È¸»ç¹ýÀÎ ¹Ì·¡¿ø(ÁÖ)',default,'¾î¸°ÀÙ'
 ,40,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
@@ -1280,17 +1288,26 @@ from product_images;
 select *
 from product_package;
 
----------------------- 'DIY', 'ê³¼ì¼'----------------------------------
+---------------------- 'DIY', '°úÀÏ'----------------------------------
+
+rollback;
+
+
+update product_package set paccontents = 'Âù¹Ù¶÷ÀÌ ºÒ±â ½ÃÀÛÇÏ¸é ±ÖÀÇ °èÀýÀÔ´Ï´Ù. °Ü¿ì³» ÀÌºÒ¼Ó¿¡¼­ Æ¼ºñ¿Í ÇÔ²² ºÎÁ·ÇÑ ºñÅ¸¹ÎÀ» ÃæÀüÇÏ¼¼¿ä. ´Ù¸¥ °úÀÏ¿¡ ºñÇØ ±ÖÀº Ä£È¯°æÀ¸·Î Àç¹èÇÑ °ÍÀÌ ¸ÀÀÌ ¿ùµîÈ÷ ÁÁ´ä´Ï´Ù.'
+where pacnum = 6;
+
+update product_package set pacnum = 6 where pacnum = 7;
+
 insert into product_package(pacnum, pacname, paccontents,  pacimage)
 values(seq_product_Package_pacnum.nextval
-, 'ì œì£¼ ë¬´ë†ì•½ ë…¸ì§€ ê°ê·¤ 3ì¢…'
-, 'ì°¸ë°”ëžŒì´ ë¶ˆê¸° ì‹œìž‘í•˜ë©´ ê·¤ì˜ ê³„ì ˆìž…ë‹ˆë‹¤. ê²¨ìš°ë‚´ ì´ë¶ˆì†ì—ì„œ í‹°ë¹„ì™€ í•¨ê»˜ ë¶€ì¡±í•œ ë¹„íƒ€ë¯¼ì„ ì¶©ì „í•˜ì„¸ìš”. ë‹¤ë¥¸ ê³¼ì¼ì— ë¹„í•´ ê·¤ì€ ì¹œí™˜ê²½ìœ¼ë¡œ ìž¬ë°°í•œ ê²ƒì´ ë§›ì´ ì›”ë“±ížˆ ì¢‹ë‹µë‹ˆë‹¤.'
+, 'Á¦ÁÖ ¹«³ó¾à ³ëÁö °¨±Ö 3Á¾'
+, 'Âü¹Ù¶÷ÀÌ ºÒ±â ½ÃÀÛÇÏ¸é ±ÖÀÇ °èÀýÀÔ´Ï´Ù. °Ü¿ì³» ÀÌºÒ¼Ó¿¡¼­ Æ¼ºñ¿Í ÇÔ²² ºÎÁ·ÇÑ ºñÅ¸¹ÎÀ» ÃæÀüÇÏ¼¼¿ä. ´Ù¸¥ °úÀÏ¿¡ ºñÇØ ±ÖÀº Ä£È¯°æÀ¸·Î Àç¹èÇÑ °ÍÀÌ ¸ÀÀÌ ¿ùµîÈ÷ ÁÁ´ä´Ï´Ù.'
 , '1510036387296l0.jpg' );
 --1
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'ì œì£¼ ë¬´ë†ì•½ ë…¸ì§€ ê°ê·¤ 3ì¢…','ê³¼ì¼','ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©','BEST','ì—°ë§ ì´ë²¤íŠ¸','ì œì£¼ ë¬´ë†ì•½ ë…¸ì§€ ê°ê·¤ 800g(4,900ì›)',5000,4900,490,default
-,'ì°¸ë°”ëžŒì´ ë¶ˆê¸° ì‹œìž‘í•˜ë©´ ê·¤ì˜ ê³„ì ˆìž…ë‹ˆë‹¤. ê²¨ìš°ë‚´ ì´ë¶ˆì†ì—ì„œ í‹°ë¹„ì™€ í•¨ê»˜ ë¶€ì¡±í•œ ë¹„íƒ€ë¯¼ì„ ì¶©ì „í•˜ì„¸ìš”. ë‹¤ë¥¸ ê³¼ì¼ì— ë¹„í•´ ê·¤ì€ ì¹œí™˜ê²½ìœ¼ë¡œ ìž¬ë°°í•œ ê²ƒì´ ë§›ì´ ì›”ë“±ížˆ ì¢‹ë‹µë‹ˆë‹¤.'
-,'ìžì—°ë§ˆì„',default,'ê°ê·¤'
+values(seq_product_pnum.nextval,'Á¦ÁÖ ¹«³ó¾à ³ëÁö °¨±Ö 3Á¾','°úÀÏ','½Ä»ç´ë¿ë/°£½Ä¿ë','BEST','¿¬¸» ÀÌº¥Æ®','Á¦ÁÖ ¹«³ó¾à ³ëÁö °¨±Ö 800g(4,900¿ø)',5000,4900,490,default
+,'Âù¹Ù¶÷ÀÌ ºÒ±â ½ÃÀÛÇÏ¸é ±ÖÀÇ °èÀýÀÔ´Ï´Ù. °Ü¿ì³» ÀÌºÒ¼Ó¿¡¼­ Æ¼ºñ¿Í ÇÔ²² ºÎÁ·ÇÑ ºñÅ¸¹ÎÀ» ÃæÀüÇÏ¼¼¿ä. ´Ù¸¥ °úÀÏ¿¡ ºñÇØ ±ÖÀº Ä£È¯°æÀ¸·Î Àç¹èÇÑ °ÍÀÌ ¸ÀÀÌ ¿ùµîÈ÷ ÁÁ´ä´Ï´Ù.'
+,'ÀÚ¿¬¸¶À»',default,'°¨±Ö'
 ,800,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
@@ -1300,9 +1317,9 @@ insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'7f7322460c4afb3ed2a4.jpg', 36);
 --2
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'ì œì£¼ ë¬´ë†ì•½ ë…¸ì§€ ê°ê·¤ 3ì¢…','ê³¼ì¼','ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©','BEST','ì—°ë§ ì´ë²¤íŠ¸','ì œì£¼ ë¬´ë†ì•½ ë…¸ì§€ ê°ê·¤ 2kg(10,800ì›)',11000,10800,1080,default
-,'ì°¸ë°”ëžŒì´ ë¶ˆê¸° ì‹œìž‘í•˜ë©´ ê·¤ì˜ ê³„ì ˆìž…ë‹ˆë‹¤. ê²¨ìš°ë‚´ ì´ë¶ˆì†ì—ì„œ í‹°ë¹„ì™€ í•¨ê»˜ ë¶€ì¡±í•œ ë¹„íƒ€ë¯¼ì„ ì¶©ì „í•˜ì„¸ìš”. ë‹¤ë¥¸ ê³¼ì¼ì— ë¹„í•´ ê·¤ì€ ì¹œí™˜ê²½ìœ¼ë¡œ ìž¬ë°°í•œ ê²ƒì´ ë§›ì´ ì›”ë“±ížˆ ì¢‹ë‹µë‹ˆë‹¤.'
-,'ìžì—°ë§ˆì„',default,'ê°ê·¤'
+values(seq_product_pnum.nextval,'Á¦ÁÖ ¹«³ó¾à ³ëÁö °¨±Ö 3Á¾','°úÀÏ','½Ä»ç´ë¿ë/°£½Ä¿ë','BEST','¿¬¸» ÀÌº¥Æ®','Á¦ÁÖ ¹«³ó¾à ³ëÁö °¨±Ö 2kg(10,800¿ø)',11000,10800,1080,default
+,'Âù¹Ù¶÷ÀÌ ºÒ±â ½ÃÀÛÇÏ¸é ±ÖÀÇ °èÀýÀÔ´Ï´Ù. °Ü¿ì³» ÀÌºÒ¼Ó¿¡¼­ Æ¼ºñ¿Í ÇÔ²² ºÎÁ·ÇÑ ºñÅ¸¹ÎÀ» ÃæÀüÇÏ¼¼¿ä. ´Ù¸¥ °úÀÏ¿¡ ºñÇØ ±ÖÀº Ä£È¯°æÀ¸·Î Àç¹èÇÑ °ÍÀÌ ¸ÀÀÌ ¿ùµîÈ÷ ÁÁ´ä´Ï´Ù.'
+,'ÀÚ¿¬¸¶À»',default,'°¨±Ö'
 ,2000,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
@@ -1312,45 +1329,45 @@ insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'7f7322460c4afb3ed2a45.jpg', 37);
 --3
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'ì œì£¼ ë¬´ë†ì•½ ë…¸ì§€ ê°ê·¤ 3ì¢…','ê³¼ì¼','ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©','BEST','ì—°ë§ ì´ë²¤íŠ¸','ì œì£¼ ë¬´ë†ì•½ ì ë³´ ê°ê·¤ 1kg(4,400ì›)',5000,4400,440,default
-,'ì°¸ë°”ëžŒì´ ë¶ˆê¸° ì‹œìž‘í•˜ë©´ ê·¤ì˜ ê³„ì ˆìž…ë‹ˆë‹¤. ê²¨ìš°ë‚´ ì´ë¶ˆì†ì—ì„œ í‹°ë¹„ì™€ í•¨ê»˜ ë¶€ì¡±í•œ ë¹„íƒ€ë¯¼ì„ ì¶©ì „í•˜ì„¸ìš”. ë‹¤ë¥¸ ê³¼ì¼ì— ë¹„í•´ ê·¤ì€ ì¹œí™˜ê²½ìœ¼ë¡œ ìž¬ë°°í•œ ê²ƒì´ ë§›ì´ ì›”ë“±ížˆ ì¢‹ë‹µë‹ˆë‹¤.'
-,'ìžì—°ë§ˆì„',default,'ê°ê·¤'
+values(seq_product_pnum.nextval,'Á¦ÁÖ ¹«³ó¾à ³ëÁö °¨±Ö 3Á¾','°úÀÏ','½Ä»ç´ë¿ë/°£½Ä¿ë','BEST','¿¬¸» ÀÌº¥Æ®','Á¦ÁÖ ¹«³ó¾à Á¡º¸ °¨±Ö 1kg(4,400¿ø)',5000,4400,440,default
+,'Âù¹Ù¶÷ÀÌ ºÒ±â ½ÃÀÛÇÏ¸é ±ÖÀÇ °èÀýÀÔ´Ï´Ù. °Ü¿ì³» ÀÌºÒ¼Ó¿¡¼­ Æ¼ºñ¿Í ÇÔ²² ºÎÁ·ÇÑ ºñÅ¸¹ÎÀ» ÃæÀüÇÏ¼¼¿ä. ´Ù¸¥ °úÀÏ¿¡ ºñÇØ ±ÖÀº Ä£È¯°æÀ¸·Î Àç¹èÇÑ °ÍÀÌ ¸ÀÀÌ ¿ùµîÈ÷ ÁÁ´ä´Ï´Ù.'
+,'ÀÚ¿¬¸¶À»',default,'°¨±Ö'
 ,1000,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'333.jpg', 38);
--------------------------'ê³ ê¸°/ë‹¬ê±€'-------------------------------
+-------------------------'°í±â/´Þ°¿'-------------------------------
 ---------------------------------------------------------------
 insert into product_package(pacnum, pacname, paccontents,  pacimage)
-values(seq_product_Package_pacnum.nextval
-, '[ë°±ë…„ë°±ê³„] ë‹­ ì•ˆì‹¬ì‚´'
-, 'ê³ ì†Œí•˜ê³  ë‹´ë°±í•œ ë§›ì€ ë¬¼ë¡  ëª¸ì— ì¢‹ì€ ì˜ì–‘ì†Œê°€ ë‹¤ëŸ‰ í•¨ìœ ë˜ì–´ ëˆ„êµ¬ë‚˜ ë¶€ë‹´ ì—†ì´ ì¦ê¸¸ ìˆ˜ ìžˆëŠ” ë§Œì¸ì˜ ê³ ê¸°, ë‹­ê³ ê¸°! ê³ ë‹¨ë°± ì €ì¹¼ë¡œë¦¬ ì‹í’ˆìœ¼ë¡œ ìž˜ ì•Œë ¤ì ¸ ì˜ì–‘ì‹ì— ë¹¼ë†“ì„ ìˆ˜ ì—†ëŠ” ìµìˆ™í•œ ì‹í’ˆì´ì£ . ë¶€ìœ„ ë³„ë¡œ ê°ê¸° ë‹¤ë¥¸ ë§›ê³¼ ì‹ê° ë•ë¶„ì—, ì·¨í–¥ë³„ë¡œ ê³¨ë¼ ë¨¹ê¸°ë„ ì¢‹ì€ë°ìš”. ê·¸ì¤‘ì—ì„œë„ ë¼ˆë¥¼ ë°œë¼ë‚¼ í•„ìš” ì—†ì´ ê½‰ ì°¬ ì‚´ì½”ê¸°ê°€ ìžˆëŠ” ë¶€ìœ„ë¥¼ ì¦ê¸°ëŠ” ë¶„ë“¤ì„ ìœ„í•´, ë¨¹ê¸° ì¢‹ê²Œ ì†ì§ˆí•œ ë‹­ ì•ˆì‹¬ì‚´ì„ ì¤€ë¹„í–ˆì–´ìš”. ë“ëŠ” ë¬¼ì— ìž ê¹ ë°ì³ì„œ ê°„ë‹¨í•˜ê²Œ ìƒëŸ¬ë“œì— ê³ë“¤ì´ëŠ” ê²ƒë¶€í„° ì‚´ì§ êµ¬ì›Œ ë¨¹ê¸° ì¢‹ê²Œ ì°ì–´ ë³¶ìŒë°¥ ìž¬ë£Œê¹Œì§€ ë‹¤ì–‘í•˜ê²Œ í™œìš© ê°€ëŠ¥í•œ ë‹­ ì•ˆì‹¬ì‚´ë¡œ í‘¸ì§í•œ í•œ ë¼ ì‹ì‚¬ë¥¼ ì°¨ë ¤ë³´ì„¸ìš”!'
+values(7
+, '[¹é³â¹é°è] ´ß ¾È½É»ì'
+, '°í¼ÒÇÏ°í ´ã¹éÇÑ ¸ÀÀº ¹°·Ð ¸ö¿¡ ÁÁÀº ¿µ¾ç¼Ò°¡ ´Ù·® ÇÔÀ¯µÇ¾î ´©±¸³ª ºÎ´ã ¾øÀÌ Áñ±æ ¼ö ÀÖ´Â ¸¸ÀÎÀÇ °í±â, ´ß°í±â! °í´Ü¹é ÀúÄ®·Î¸® ½ÄÇ°À¸·Î Àß ¾Ë·ÁÁ® ¿µ¾ç½Ä¿¡ »©³õÀ» ¼ö ¾ø´Â ÀÍ¼÷ÇÑ ½ÄÇ°ÀÌÁÒ. ºÎÀ§ º°·Î °¢±â ´Ù¸¥ ¸À°ú ½Ä°¨ ´öºÐ¿¡, ÃëÇâº°·Î °ñ¶ó ¸Ô±âµµ ÁÁÀºµ¥¿ä. ±×Áß¿¡¼­µµ »À¸¦ ¹ß¶ó³¾ ÇÊ¿ä ¾øÀÌ ²Ë Âù »ìÄÚ±â°¡ ÀÖ´Â ºÎÀ§¸¦ Áñ±â´Â ºÐµéÀ» À§ÇØ, ¸Ô±â ÁÁ°Ô ¼ÕÁúÇÑ ´ß ¾È½É»ìÀ» ÁØºñÇß¾î¿ä. ²ú´Â ¹°¿¡ Àá±ñ µ¥ÃÄ¼­ °£´ÜÇÏ°Ô »ø·¯µå¿¡ °çµéÀÌ´Â °ÍºÎÅÍ »ìÂ¦ ±¸¿ö ¸Ô±â ÁÁ°Ô ½ä¾î ººÀ½¹ä Àç·á±îÁö ´Ù¾çÇÏ°Ô È°¿ë °¡´ÉÇÑ ´ß ¾È½É»ì·Î ÇªÁüÇÑ ÇÑ ³¢ ½Ä»ç¸¦ Â÷·Áº¸¼¼¿ä!'
 , '1472727892110l0.jpg' );
 
 
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'[ë°±ë…„ë°±ê³„] ë‹­ ì•ˆì‹¬ì‚´','ê³ ê¸°/ë‹¬ê±€','ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©','BEST','ì—°ë§ ì´ë²¤íŠ¸','ë¬´í•­ìƒì œ ì¹œí™˜ê²½ ë‹­ê³ ê¸° ë‹­ ì•ˆì‹¬ì‚´ (300g)',5000,4100,410,default
-,'ê³ ì†Œí•˜ê³  ë‹´ë°±í•œ ë§›ì€ ë¬¼ë¡  ëª¸ì— ì¢‹ì€ ì˜ì–‘ì†Œê°€ ë‹¤ëŸ‰ í•¨ìœ ë˜ì–´ ëˆ„êµ¬ë‚˜ ë¶€ë‹´ ì—†ì´ ì¦ê¸¸ ìˆ˜ ìžˆëŠ” ë§Œì¸ì˜ ê³ ê¸°, ë‹­ê³ ê¸°! ê³ ë‹¨ë°± ì €ì¹¼ë¡œë¦¬ ì‹í’ˆìœ¼ë¡œ ìž˜ ì•Œë ¤ì ¸ ì˜ì–‘ì‹ì— ë¹¼ë†“ì„ ìˆ˜ ì—†ëŠ” ìµìˆ™í•œ ì‹í’ˆì´ì£ . ë¶€ìœ„ ë³„ë¡œ ê°ê¸° ë‹¤ë¥¸ ë§›ê³¼ ì‹ê° ë•ë¶„ì—, ì·¨í–¥ë³„ë¡œ ê³¨ë¼ ë¨¹ê¸°ë„ ì¢‹ì€ë°ìš”. ê·¸ì¤‘ì—ì„œë„ ë¼ˆë¥¼ ë°œë¼ë‚¼ í•„ìš” ì—†ì´ ê½‰ ì°¬ ì‚´ì½”ê¸°ê°€ ìžˆëŠ” ë¶€ìœ„ë¥¼ ì¦ê¸°ëŠ” ë¶„ë“¤ì„ ìœ„í•´, ë¨¹ê¸° ì¢‹ê²Œ ì†ì§ˆí•œ ë‹­ ì•ˆì‹¬ì‚´ì„ ì¤€ë¹„í–ˆì–´ìš”. ë“ëŠ” ë¬¼ì— ìž ê¹ ë°ì³ì„œ ê°„ë‹¨í•˜ê²Œ ìƒëŸ¬ë“œì— ê³ë“¤ì´ëŠ” ê²ƒë¶€í„° ì‚´ì§ êµ¬ì›Œ ë¨¹ê¸° ì¢‹ê²Œ ì°ì–´ ë³¶ìŒë°¥ ìž¬ë£Œê¹Œì§€ ë‹¤ì–‘í•˜ê²Œ í™œìš© ê°€ëŠ¥í•œ ë‹­ ì•ˆì‹¬ì‚´ë¡œ í‘¸ì§í•œ í•œ ë¼ ì‹ì‚¬ë¥¼ ì°¨ë ¤ë³´ì„¸ìš”!'
-,'(ì£¼)ì²´ë¦¬ë¶€ë¡œ',default,'ë‹­'
+values(seq_product_pnum.nextval,'[¹é³â¹é°è] ´ß ¾È½É»ì','°í±â/´Þ°¿','½Ä»ç´ë¿ë/°£½Ä¿ë','BEST','¿¬¸» ÀÌº¥Æ®','¹«Ç×»ýÁ¦ Ä£È¯°æ ´ß°í±â ´ß ¾È½É»ì (300g)',5000,4100,410,default
+,'°í¼ÒÇÏ°í ´ã¹éÇÑ ¸ÀÀº ¹°·Ð ¸ö¿¡ ÁÁÀº ¿µ¾ç¼Ò°¡ ´Ù·® ÇÔÀ¯µÇ¾î ´©±¸³ª ºÎ´ã ¾øÀÌ Áñ±æ ¼ö ÀÖ´Â ¸¸ÀÎÀÇ °í±â, ´ß°í±â! °í´Ü¹é ÀúÄ®·Î¸® ½ÄÇ°À¸·Î Àß ¾Ë·ÁÁ® ¿µ¾ç½Ä¿¡ »©³õÀ» ¼ö ¾ø´Â ÀÍ¼÷ÇÑ ½ÄÇ°ÀÌÁÒ. ºÎÀ§ º°·Î °¢±â ´Ù¸¥ ¸À°ú ½Ä°¨ ´öºÐ¿¡, ÃëÇâº°·Î °ñ¶ó ¸Ô±âµµ ÁÁÀºµ¥¿ä. ±×Áß¿¡¼­µµ »À¸¦ ¹ß¶ó³¾ ÇÊ¿ä ¾øÀÌ ²Ë Âù »ìÄÚ±â°¡ ÀÖ´Â ºÎÀ§¸¦ Áñ±â´Â ºÐµéÀ» À§ÇØ, ¸Ô±â ÁÁ°Ô ¼ÕÁúÇÑ ´ß ¾È½É»ìÀ» ÁØºñÇß¾î¿ä. ²ú´Â ¹°¿¡ Àá±ñ µ¥ÃÄ¼­ °£´ÜÇÏ°Ô »ø·¯µå¿¡ °çµéÀÌ´Â °ÍºÎÅÍ »ìÂ¦ ±¸¿ö ¸Ô±â ÁÁ°Ô ½ä¾î ººÀ½¹ä Àç·á±îÁö ´Ù¾çÇÏ°Ô È°¿ë °¡´ÉÇÑ ´ß ¾È½É»ì·Î ÇªÁüÇÑ ÇÑ ³¢ ½Ä»ç¸¦ Â÷·Áº¸¼¼¿ä!'
+,'(ÁÖ)Ã¼¸®ºÎ·Î',default,'´ß'
 ,300,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'gv00000001159_1.jpg', 39);
 
----------------------------'ìƒì„ '------------------------------------
+---------------------------'»ý¼±'------------------------------------
 insert into product_package(pacnum, pacname, paccontents,  pacimage)
 values(seq_product_Package_pacnum.nextval
-, '[Sea to Table] FROYA SALMON ë…¸ë¥´ì›¨ì´ ìƒì—°ì–´ 2ì¢…'
-, 'ì—°ì–´ëŠ” ì–´ë–»ê²Œ ìžë¥´ëƒì— ë”°ë¼ ê·¸ ì‹ê°ê³¼ í’ë¯¸ê°€ ë‹¬ë¼ì§€ëŠ” ëŒ€í‘œì ì¸ ìƒì„  ì¤‘ í•˜ë‚˜ì˜ˆìš”. ì´ë²ˆì— ì†Œê°œí•˜ëŠ” FROYA SALMONì€ ë‚´ê°€ ì›í•˜ëŠ” ë‘ê»˜ë¡œ ì§ì ‘ ìž˜ë¼ ì¦ê¸¸ ìˆ˜ ìžˆëŠ” ëƒ‰ìž¥ ìƒì—°ì–´ìž…ë‹ˆë‹¤. ë…¸ë¥´ì›¨ì´ì˜ ì²­ì •í•œ ë°”ë‹¤ì—ì„œ ì—°ì–´ë¥¼ ì–´íší•œ í›„ ê³§ë°”ë¡œ ë¶€ìœ„ë³„ë¡œ ì†ì§ˆí•˜ê³  í¬ìž¥í–ˆì§€ìš”. ì´ ëª¨ë“  ê³¼ì •ì„ ì™„ìˆ˜í•˜ëŠ”ë° ê±¸ë¦¬ëŠ” ì‹œê°„ì€ 2ì‹œê°„ ì´ë‚´. ì´ì²˜ëŸ¼ ì‹ ì„ í•œ ì—°ì–´ë¥¼ ì»¬ë¦¬ëŠ” í•­ê³µíŽ¸ì„ ì´ìš©í•´ ê³ ì´ ëª¨ì…”ì™”ìŠµë‹ˆë‹¤. 
+, '[Sea to Table] FROYA SALMON ³ë¸£¿þÀÌ »ý¿¬¾î 2Á¾'
+, '¿¬¾î´Â ¾î¶»°Ô ÀÚ¸£³Ä¿¡ µû¶ó ±× ½Ä°¨°ú Ç³¹Ì°¡ ´Þ¶óÁö´Â ´ëÇ¥ÀûÀÎ »ý¼± Áß ÇÏ³ª¿¹¿ä. ÀÌ¹ø¿¡ ¼Ò°³ÇÏ´Â FROYA SALMONÀº ³»°¡ ¿øÇÏ´Â µÎ²²·Î Á÷Á¢ Àß¶ó Áñ±æ ¼ö ÀÖ´Â ³ÃÀå »ý¿¬¾îÀÔ´Ï´Ù. ³ë¸£¿þÀÌÀÇ Ã»Á¤ÇÑ ¹Ù´Ù¿¡¼­ ¿¬¾î¸¦ ¾îÈ¹ÇÑ ÈÄ °ð¹Ù·Î ºÎÀ§º°·Î ¼ÕÁúÇÏ°í Æ÷ÀåÇßÁö¿ä. ÀÌ ¸ðµç °úÁ¤À» ¿Ï¼öÇÏ´Âµ¥ °É¸®´Â ½Ã°£Àº 2½Ã°£ ÀÌ³». ÀÌÃ³·³ ½Å¼±ÇÑ ¿¬¾î¸¦ ÄÃ¸®´Â Ç×°øÆíÀ» ÀÌ¿ëÇØ °íÀÌ ¸ð¼Å¿Ô½À´Ï´Ù. 
 
-í¬ìž¥ í›„ ê³µê¸°ì¤‘ìœ¼ë¡œ ë…¸ì¶œë˜ëŠ” ì‹œê°„ì´ ì „í˜€ ì—†ê³  ë‹¨ í•œë²ˆì˜ ëƒ‰ë™ ê³¼ì • ì—†ì´ ê¹Œë‹¤ë¡­ê²Œ ë“¤ì–´ì˜¨ ì—°ì–´ì´ê¸° ë•Œë¬¸ì— íƒ„ë ¥ ìžˆê³  íƒ±íƒ±í•œ ì¡°ì§ì„ ê·¸ëŒ€ë¡œ ìœ ì§€í•˜ê³  ìžˆì–´ìš”. í•œ ìž… ë¨¹ì–´ë³´ë©´, ì—°ì–´ ë³¸ì—°ì˜ ê³ ì†Œí•œ ë§›ì´ ìž˜ ì‚´ì•„ìžˆë‹¤ëŠ” ê²ƒì„ ëŠë¼ì‹¤ ìˆ˜ ìžˆì„ ê±°ì˜ˆìš”. FROYA SALMONì˜ ì—°ì–´ëŠ” ìŠ¬ë¼ì´ìŠ¤ ë˜ì§€ ì•Šì€ í•„ë ›(í†µì‚´) í˜•íƒœì´ê¸° ë•Œë¬¸ì— ì°ì–´ì„œ ì‹±ê·¸ëŸ¬ìš´ íšŒë¡œ ì¦ê¸°ë©´ ë”í•  ë‚˜ìœ„ ì—†ê³  ê³ ê¸‰ ì—°ì–´ ìŠ¤í…Œì´í¬ë¡œ í™œìš©í•´ë„ ì†ìƒ‰ì´ ì—†ë‹µë‹ˆë‹¤.'
+Æ÷Àå ÈÄ °ø±âÁßÀ¸·Î ³ëÃâµÇ´Â ½Ã°£ÀÌ ÀüÇô ¾ø°í ´Ü ÇÑ¹øÀÇ ³Ãµ¿ °úÁ¤ ¾øÀÌ ±î´Ù·Ó°Ô µé¾î¿Â ¿¬¾îÀÌ±â ¶§¹®¿¡ Åº·Â ÀÖ°í ÅÊÅÊÇÑ Á¶Á÷À» ±×´ë·Î À¯ÁöÇÏ°í ÀÖ¾î¿ä. ÇÑ ÀÔ ¸Ô¾îº¸¸é, ¿¬¾î º»¿¬ÀÇ °í¼ÒÇÑ ¸ÀÀÌ Àß »ì¾ÆÀÖ´Ù´Â °ÍÀ» ´À³¢½Ç ¼ö ÀÖÀ» °Å¿¹¿ä. FROYA SALMONÀÇ ¿¬¾î´Â ½½¶óÀÌ½º µÇÁö ¾ÊÀº ÇÊ·¿(Åë»ì) ÇüÅÂÀÌ±â ¶§¹®¿¡ ½ä¾î¼­ ½Ì±×·¯¿î È¸·Î Áñ±â¸é ´õÇÒ ³ªÀ§ ¾ø°í °í±Þ ¿¬¾î ½ºÅ×ÀÌÅ©·Î È°¿ëÇØµµ ¼Õ»öÀÌ ¾ø´ä´Ï´Ù.'
 , '153925309868l0.jpg' );
 
 --1
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'[Sea to Table] FROYA SALMON ë…¸ë¥´ì›¨ì´ ìƒì—°ì–´ 2ì¢…','ìƒì„ ','ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©','HIT','ì—°ì´ˆ ì´ë²¤íŠ¸','[Sea to Table]FROYA SALMON ë…¸ë¥´ì›¨ì´ ì—°ì–´ ë±ƒì‚´ 800g(17,800ì›)',19000,17800,1780,default
-,'í¬ìž¥ í›„ ê³µê¸°ì¤‘ìœ¼ë¡œ ë…¸ì¶œë˜ëŠ” ì‹œê°„ì´ ì „í˜€ ì—†ê³  ë‹¨ í•œë²ˆì˜ ëƒ‰ë™ ê³¼ì • ì—†ì´ ê¹Œë‹¤ë¡­ê²Œ ë“¤ì–´ì˜¨ ì—°ì–´ì´ê¸° ë•Œë¬¸ì— íƒ„ë ¥ ìžˆê³  íƒ±íƒ±í•œ ì¡°ì§ì„ ê·¸ëŒ€ë¡œ ìœ ì§€í•˜ê³  ìžˆì–´ìš”. í•œ ìž… ë¨¹ì–´ë³´ë©´, ì—°ì–´ ë³¸ì—°ì˜ ê³ ì†Œí•œ ë§›ì´ ìž˜ ì‚´ì•„ìžˆë‹¤ëŠ” ê²ƒì„ ëŠë¼ì‹¤ ìˆ˜ ìžˆì„ ê±°ì˜ˆìš”. FROYA SALMONì˜ ì—°ì–´ëŠ” ìŠ¬ë¼ì´ìŠ¤ ë˜ì§€ ì•Šì€ í•„ë ›(í†µì‚´) í˜•íƒœì´ê¸° ë•Œë¬¸ì— ì°ì–´ì„œ ì‹±ê·¸ëŸ¬ìš´ íšŒë¡œ ì¦ê¸°ë©´ ë”í•  ë‚˜ìœ„ ì—†ê³  ê³ ê¸‰ ì—°ì–´ ìŠ¤í…Œì´í¬ë¡œ í™œìš©í•´ë„ ì†ìƒ‰ì´ ì—†ë‹µë‹ˆë‹¤.'
-,'ë¸”ë£¨ì”¨í‘¸ë“œ',default,'ì—°ì–´'
+values(seq_product_pnum.nextval,'[Sea to Table] FROYA SALMON ³ë¸£¿þÀÌ »ý¿¬¾î 2Á¾','»ý¼±','½Ä»ç´ë¿ë/°£½Ä¿ë','HIT','¿¬ÃÊ ÀÌº¥Æ®','[Sea to Table]FROYA SALMON ³ë¸£¿þÀÌ ¿¬¾î ¹î»ì 800g(17,800¿ø)',19000,17800,1780,default
+,'Æ÷Àå ÈÄ °ø±âÁßÀ¸·Î ³ëÃâµÇ´Â ½Ã°£ÀÌ ÀüÇô ¾ø°í ´Ü ÇÑ¹øÀÇ ³Ãµ¿ °úÁ¤ ¾øÀÌ ±î´Ù·Ó°Ô µé¾î¿Â ¿¬¾îÀÌ±â ¶§¹®¿¡ Åº·Â ÀÖ°í ÅÊÅÊÇÑ Á¶Á÷À» ±×´ë·Î À¯ÁöÇÏ°í ÀÖ¾î¿ä. ÇÑ ÀÔ ¸Ô¾îº¸¸é, ¿¬¾î º»¿¬ÀÇ °í¼ÒÇÑ ¸ÀÀÌ Àß »ì¾ÆÀÖ´Ù´Â °ÍÀ» ´À³¢½Ç ¼ö ÀÖÀ» °Å¿¹¿ä. FROYA SALMONÀÇ ¿¬¾î´Â ½½¶óÀÌ½º µÇÁö ¾ÊÀº ÇÊ·¿(Åë»ì) ÇüÅÂÀÌ±â ¶§¹®¿¡ ½ä¾î¼­ ½Ì±×·¯¿î È¸·Î Áñ±â¸é ´õÇÒ ³ªÀ§ ¾ø°í °í±Þ ¿¬¾î ½ºÅ×ÀÌÅ©·Î È°¿ëÇØµµ ¼Õ»öÀÌ ¾ø´ä´Ï´Ù.'
+,'ºí·ç¾¾Çªµå',default,'¿¬¾î'
 ,300,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
@@ -1358,18 +1375,18 @@ values(seq_product_images_pimgnum.nextval,'gv30000033309_1.jpg', 40);
 
 --2
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'[Sea to Table] FROYA SALMON ë…¸ë¥´ì›¨ì´ ìƒì—°ì–´ 2ì¢…','ìƒì„ ','ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©','HIT','ì—°ì´ˆ ì´ë²¤íŠ¸','[Sea to Table]FROYA SALMON ë…¸ë¥´ì›¨ì´ ì—°ì–´ ë“±ì‚´ 180g(13,0000ì›)',15000,13000,1300,default
-,'í¬ìž¥ í›„ ê³µê¸°ì¤‘ìœ¼ë¡œ ë…¸ì¶œë˜ëŠ” ì‹œê°„ì´ ì „í˜€ ì—†ê³  ë‹¨ í•œë²ˆì˜ ëƒ‰ë™ ê³¼ì • ì—†ì´ ê¹Œë‹¤ë¡­ê²Œ ë“¤ì–´ì˜¨ ì—°ì–´ì´ê¸° ë•Œë¬¸ì— íƒ„ë ¥ ìžˆê³  íƒ±íƒ±í•œ ì¡°ì§ì„ ê·¸ëŒ€ë¡œ ìœ ì§€í•˜ê³  ìžˆì–´ìš”. í•œ ìž… ë¨¹ì–´ë³´ë©´, ì—°ì–´ ë³¸ì—°ì˜ ê³ ì†Œí•œ ë§›ì´ ìž˜ ì‚´ì•„ìžˆë‹¤ëŠ” ê²ƒì„ ëŠë¼ì‹¤ ìˆ˜ ìžˆì„ ê±°ì˜ˆìš”. FROYA SALMONì˜ ì—°ì–´ëŠ” ìŠ¬ë¼ì´ìŠ¤ ë˜ì§€ ì•Šì€ í•„ë ›(í†µì‚´) í˜•íƒœì´ê¸° ë•Œë¬¸ì— ì°ì–´ì„œ ì‹±ê·¸ëŸ¬ìš´ íšŒë¡œ ì¦ê¸°ë©´ ë”í•  ë‚˜ìœ„ ì—†ê³  ê³ ê¸‰ ì—°ì–´ ìŠ¤í…Œì´í¬ë¡œ í™œìš©í•´ë„ ì†ìƒ‰ì´ ì—†ë‹µë‹ˆë‹¤.'
-,'ë¸”ë£¨ì”¨í‘¸ë“œ',default,'ì—°ì–´'
+values(seq_product_pnum.nextval,'[Sea to Table] FROYA SALMON ³ë¸£¿þÀÌ »ý¿¬¾î 2Á¾','»ý¼±','½Ä»ç´ë¿ë/°£½Ä¿ë','HIT','¿¬ÃÊ ÀÌº¥Æ®','[Sea to Table]FROYA SALMON ³ë¸£¿þÀÌ ¿¬¾î µî»ì 180g(13,0000¿ø)',15000,13000,1300,default
+,'Æ÷Àå ÈÄ °ø±âÁßÀ¸·Î ³ëÃâµÇ´Â ½Ã°£ÀÌ ÀüÇô ¾ø°í ´Ü ÇÑ¹øÀÇ ³Ãµ¿ °úÁ¤ ¾øÀÌ ±î´Ù·Ó°Ô µé¾î¿Â ¿¬¾îÀÌ±â ¶§¹®¿¡ Åº·Â ÀÖ°í ÅÊÅÊÇÑ Á¶Á÷À» ±×´ë·Î À¯ÁöÇÏ°í ÀÖ¾î¿ä. ÇÑ ÀÔ ¸Ô¾îº¸¸é, ¿¬¾î º»¿¬ÀÇ °í¼ÒÇÑ ¸ÀÀÌ Àß »ì¾ÆÀÖ´Ù´Â °ÍÀ» ´À³¢½Ç ¼ö ÀÖÀ» °Å¿¹¿ä. FROYA SALMONÀÇ ¿¬¾î´Â ½½¶óÀÌ½º µÇÁö ¾ÊÀº ÇÊ·¿(Åë»ì) ÇüÅÂÀÌ±â ¶§¹®¿¡ ½ä¾î¼­ ½Ì±×·¯¿î È¸·Î Áñ±â¸é ´õÇÒ ³ªÀ§ ¾ø°í °í±Þ ¿¬¾î ½ºÅ×ÀÌÅ©·Î È°¿ëÇØµµ ¼Õ»öÀÌ ¾ø´ä´Ï´Ù.'
+,'ºí·ç¾¾Çªµå',default,'¿¬¾î'
 ,180,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'gv30000033313_1.jpg', 41);
 --3
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'[Sea to Table] FROYA SALMON ë…¸ë¥´ì›¨ì´ ìƒì—°ì–´ 2ì¢…','ìƒì„ ','ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©','HIT','ì—°ì´ˆ ì´ë²¤íŠ¸','ë½êµ(1,500ì›)',1500,1500,150,default
-,'í¬ìž¥ í›„ ê³µê¸°ì¤‘ìœ¼ë¡œ ë…¸ì¶œë˜ëŠ” ì‹œê°„ì´ ì „í˜€ ì—†ê³  ë‹¨ í•œë²ˆì˜ ëƒ‰ë™ ê³¼ì • ì—†ì´ ê¹Œë‹¤ë¡­ê²Œ ë“¤ì–´ì˜¨ ì—°ì–´ì´ê¸° ë•Œë¬¸ì— íƒ„ë ¥ ìžˆê³  íƒ±íƒ±í•œ ì¡°ì§ì„ ê·¸ëŒ€ë¡œ ìœ ì§€í•˜ê³  ìžˆì–´ìš”. í•œ ìž… ë¨¹ì–´ë³´ë©´, ì—°ì–´ ë³¸ì—°ì˜ ê³ ì†Œí•œ ë§›ì´ ìž˜ ì‚´ì•„ìžˆë‹¤ëŠ” ê²ƒì„ ëŠë¼ì‹¤ ìˆ˜ ìžˆì„ ê±°ì˜ˆìš”. FROYA SALMONì˜ ì—°ì–´ëŠ” ìŠ¬ë¼ì´ìŠ¤ ë˜ì§€ ì•Šì€ í•„ë ›(í†µì‚´) í˜•íƒœì´ê¸° ë•Œë¬¸ì— ì°ì–´ì„œ ì‹±ê·¸ëŸ¬ìš´ íšŒë¡œ ì¦ê¸°ë©´ ë”í•  ë‚˜ìœ„ ì—†ê³  ê³ ê¸‰ ì—°ì–´ ìŠ¤í…Œì´í¬ë¡œ í™œìš©í•´ë„ ì†ìƒ‰ì´ ì—†ë‹µë‹ˆë‹¤.'
-,'ë¸”ë£¨ì”¨í‘¸ë“œ',default,'ë½êµ'
+values(seq_product_pnum.nextval,'[Sea to Table] FROYA SALMON ³ë¸£¿þÀÌ »ý¿¬¾î 2Á¾','»ý¼±','½Ä»ç´ë¿ë/°£½Ä¿ë','HIT','¿¬ÃÊ ÀÌº¥Æ®','¶ô±³(1,500¿ø)',1500,1500,150,default
+,'Æ÷Àå ÈÄ °ø±âÁßÀ¸·Î ³ëÃâµÇ´Â ½Ã°£ÀÌ ÀüÇô ¾ø°í ´Ü ÇÑ¹øÀÇ ³Ãµ¿ °úÁ¤ ¾øÀÌ ±î´Ù·Ó°Ô µé¾î¿Â ¿¬¾îÀÌ±â ¶§¹®¿¡ Åº·Â ÀÖ°í ÅÊÅÊÇÑ Á¶Á÷À» ±×´ë·Î À¯ÁöÇÏ°í ÀÖ¾î¿ä. ÇÑ ÀÔ ¸Ô¾îº¸¸é, ¿¬¾î º»¿¬ÀÇ °í¼ÒÇÑ ¸ÀÀÌ Àß »ì¾ÆÀÖ´Ù´Â °ÍÀ» ´À³¢½Ç ¼ö ÀÖÀ» °Å¿¹¿ä. FROYA SALMONÀÇ ¿¬¾î´Â ½½¶óÀÌ½º µÇÁö ¾ÊÀº ÇÊ·¿(Åë»ì) ÇüÅÂÀÌ±â ¶§¹®¿¡ ½ä¾î¼­ ½Ì±×·¯¿î È¸·Î Áñ±â¸é ´õÇÒ ³ªÀ§ ¾ø°í °í±Þ ¿¬¾î ½ºÅ×ÀÌÅ©·Î È°¿ëÇØµµ ¼Õ»öÀÌ ¾ø´ä´Ï´Ù.'
+,'ºí·ç¾¾Çªµå',default,'¶ô±³'
 ,120,default,default,default);
 
 
@@ -1377,20 +1394,29 @@ insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'aaaa1234.jpg', 42);
 
 
---------------------------'ì†ŒìŠ¤'------------------------------------
+select *
+from product_images;
+
+select *
+from product;
+
+select *
+from product_package;
+
+--------------------------'¼Ò½º'------------------------------------
 insert into product_package(pacnum, pacname, paccontents,  pacimage)
 values(seq_product_Package_pacnum.nextval
-, '[ì•„ë¹„í¬íŠ¸] ì•„ë³´ì¹´ë„ ì˜¤ì¼ ë“œë ˆì‹± 3ì¢…'
-,'ì „ ì„¸ê³„ì— í¼ì ¸ ìžˆëŠ” ì•„ë³´ì¹´ë„ëŠ” ë¬´ë ¤ 100ì—¬ ì¢…! ì´ë ‡ê²Œ ë‹¤ì–‘í•œ ì•„ë³´ì¹´ë„ ì¤‘ ìš°ë¦¬ê°€ ì£¼ë¡œ ì„­ì·¨í•˜ëŠ” ì•„ë³´ì¹´ë„ëŠ” ë°”ë¡œ í•˜ìŠ¤(Hass) ì¢…ìž…ë‹ˆë‹¤. í•˜ìŠ¤ ì•„ë³´ì¹´ë„ëŠ” ë¯¸êµ­ ë‚¨ë¶€ ìº˜ë¦¬í¬ë‹ˆì•„ì—ì„œ ë£¨ëŒí”„ í•˜ìŠ¤ê°€ ì²˜ìŒ ìœ¡ì¢… ë° ëŒ€ëŸ‰ ìž¬ë°°ì— ì„±ê³µí•´ ê·¸ ì´ë¦„ì„ ì–»ì—ˆìœ¼ë©°, ë§›ì´ ì¢‹ê¸°ë¡œ ìœ ëª…í•´ ì‚¬ì‹œì‚¬ì²  ì‚¬ëž‘ë°›ê³  ìžˆì£ . ë¶€ë“œëŸ¬ìš´ ê³¼ìœ¡ì€ ì§€ë°© í•¨ëŸ‰ì´ ë†’ì•„ ì—´ëŸ‰ë„ ë†’ì§€ë§Œ, ì´ ì§€ë°©ì˜ ëŒ€ë¶€ë¶„ì€ ìš°ë¦¬ ëª¸ì˜ ê±´ê°•ì„ ìœ ì§€í•˜ëŠ” ë°ì— ë„ì›€ì´ ë˜ëŠ” ë¶ˆí¬í™”ì§€ë°©ì‚°ì´ë¼ ì•„ë³´ì¹´ë„ëŠ” ëŒ€í‘œì ì¸ ìŠˆí¼í‘¸ë“œë¡œë„ ì†ê¼½ížˆëŠ”ë°ìš”. ì•„ë¹„í¬íŠ¸ëŠ” Hass í’ˆì¢…ì˜ ì•„ë³´ì¹´ë„ë¥¼ ëƒ‰ì••ì°©í•˜ì—¬ í’ˆì§ˆì´ ì¢‹ì€ ì•„ë³´ì¹´ë„ ì˜¤ì¼ì„ ì–»ì€ ë’¤ ì´ ì˜¤ì¼ë¡œ ë§›ìžˆëŠ” ë“œë ˆì‹±ì„ ë§Œë“¤ì—ˆìŠµë‹ˆë‹¤.'
+, '[¾ÆºñÆ÷Æ®] ¾Æº¸Ä«µµ ¿ÀÀÏ µå·¹½Ì 3Á¾'
+,'Àü ¼¼°è¿¡ ÆÛÁ® ÀÖ´Â ¾Æº¸Ä«µµ´Â ¹«·Á 100¿© Á¾! ÀÌ·¸°Ô ´Ù¾çÇÑ ¾Æº¸Ä«µµ Áß ¿ì¸®°¡ ÁÖ·Î ¼·ÃëÇÏ´Â ¾Æº¸Ä«µµ´Â ¹Ù·Î ÇÏ½º(Hass) Á¾ÀÔ´Ï´Ù. ÇÏ½º ¾Æº¸Ä«µµ´Â ¹Ì±¹ ³²ºÎ Ä¶¸®Æ÷´Ï¾Æ¿¡¼­ ·çµ¹ÇÁ ÇÏ½º°¡ Ã³À½ À°Á¾ ¹× ´ë·® Àç¹è¿¡ ¼º°øÇØ ±× ÀÌ¸§À» ¾ò¾úÀ¸¸ç, ¸ÀÀÌ ÁÁ±â·Î À¯¸íÇØ »ç½Ã»çÃ¶ »ç¶û¹Þ°í ÀÖÁÒ. ºÎµå·¯¿î °úÀ°Àº Áö¹æ ÇÔ·®ÀÌ ³ô¾Æ ¿­·®µµ ³ôÁö¸¸, ÀÌ Áö¹æÀÇ ´ëºÎºÐÀº ¿ì¸® ¸öÀÇ °Ç°­À» À¯ÁöÇÏ´Â µ¥¿¡ µµ¿òÀÌ µÇ´Â ºÒÆ÷È­Áö¹æ»êÀÌ¶ó ¾Æº¸Ä«µµ´Â ´ëÇ¥ÀûÀÎ ½´ÆÛÇªµå·Îµµ ¼Õ²ÅÈ÷´Âµ¥¿ä. ¾ÆºñÆ÷Æ®´Â Hass Ç°Á¾ÀÇ ¾Æº¸Ä«µµ¸¦ ³Ã¾ÐÂøÇÏ¿© Ç°ÁúÀÌ ÁÁÀº ¾Æº¸Ä«µµ ¿ÀÀÏÀ» ¾òÀº µÚ ÀÌ ¿ÀÀÏ·Î ¸ÀÀÖ´Â µå·¹½ÌÀ» ¸¸µé¾ú½À´Ï´Ù.'
 , '1531731343385l0.jpg' );
 
 
 
 --1
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'[ì•„ë¹„í¬íŠ¸] ì•„ë³´ì¹´ë„ ì˜¤ì¼ ë“œë ˆì‹± 3ì¢…','ì†ŒìŠ¤','ì±„ì‹ì£¼ì˜ìžìš©','NEW','ì—°ì´ˆ ì´ë²¤íŠ¸','[ì•„ë¹„í¬íŠ¸]ê°€ë“ í—ˆë¸Œ (6,600ì›)',7000,6600,660,default
-,'í…Œì´ìŠ¤íŒ… ë…¸íŠ¸ : í—ˆë¸Œì˜ ë©‹ì§„ í’ë¯¸ëŠ” ì–¸ì œë‚˜ ì•¼ì±„ì™€ ì¢‹ì€ ê¶í•©ì„ ì´ë£¨ì£ . ê³ ì†Œí•˜ê³ ë„ í–¥ê¸‹í•œ ë“œë ˆì‹±ì´ë¼ ë‘ë£¨ë‘ë£¨ ì‚¬ìš©í•˜ì‹œê¸°ì— ì¢‹ì•„ìš”.'
-,'HINKLE FINE FOODS',default,'ì•„ë³´ì¹´ë„,ë§ˆëŠ˜'
+values(seq_product_pnum.nextval,'[¾ÆºñÆ÷Æ®] ¾Æº¸Ä«µµ ¿ÀÀÏ µå·¹½Ì 3Á¾','¼Ò½º','Ã¤½ÄÁÖÀÇÀÚ¿ë','NEW','¿¬ÃÊ ÀÌº¥Æ®','[¾ÆºñÆ÷Æ®]°¡µçÇãºê (6,600¿ø)',7000,6600,660,default
+,'Å×ÀÌ½ºÆÃ ³ëÆ® : ÇãºêÀÇ ¸ÚÁø Ç³¹Ì´Â ¾ðÁ¦³ª ¾ßÃ¤¿Í ÁÁÀº ±ÃÇÕÀ» ÀÌ·çÁÒ. °í¼ÒÇÏ°íµµ Çâ±ßÇÑ µå·¹½ÌÀÌ¶ó µÎ·çµÎ·ç »ç¿ëÇÏ½Ã±â¿¡ ÁÁ¾Æ¿ä.'
+,'HINKLE FINE FOODS',default,'¾Æº¸Ä«µµ,¸¶´Ã'
 ,237,default,default,default);
 
 
@@ -1398,35 +1424,35 @@ insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'oil1.jpg', 43);
 --2
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'[ì•„ë¹„í¬íŠ¸] ì•„ë³´ì¹´ë„ ì˜¤ì¼ ë“œë ˆì‹± 3ì¢…','ì†ŒìŠ¤','ì±„ì‹ì£¼ì˜ìžìš©','NEW','ì—°ì´ˆ ì´ë²¤íŠ¸','[ì•„ë¹„í¬íŠ¸]ë² ì´ì»¨ ë°œì‚¬ë¯¹ (6,600ì›)',7000,6600,660,default
-,'í…Œì´ìŠ¤íŒ… ë…¸íŠ¸ : ë°œì‚¬ë¯¹ì˜ ìƒˆì½¤í•˜ë©´ì„œë„ ê¹Šì€ ë§›ì— êµ¬ìš´ ë² ì´ì»¨ì˜ í–¥ì´ ì€ì€í•˜ê²Œ ë”í•´ì ¸ ìƒ‰ë‹¤ë¥¸ ë§›ìœ¼ë¡œ ì¦ê¸¸ ìˆ˜ ìžˆì–´ìš”.'
-,'HINKLE FINE FOODS',default,'ë² ì´ì»¨'
+values(seq_product_pnum.nextval,'[¾ÆºñÆ÷Æ®] ¾Æº¸Ä«µµ ¿ÀÀÏ µå·¹½Ì 3Á¾','¼Ò½º','Ã¤½ÄÁÖÀÇÀÚ¿ë','NEW','¿¬ÃÊ ÀÌº¥Æ®','[¾ÆºñÆ÷Æ®]º£ÀÌÄÁ ¹ß»ç¹Í (6,600¿ø)',7000,6600,660,default
+,'Å×ÀÌ½ºÆÃ ³ëÆ® : ¹ß»ç¹ÍÀÇ »õÄÞÇÏ¸é¼­µµ ±íÀº ¸À¿¡ ±¸¿î º£ÀÌÄÁÀÇ ÇâÀÌ ÀºÀºÇÏ°Ô ´õÇØÁ® »ö´Ù¸¥ ¸ÀÀ¸·Î Áñ±æ ¼ö ÀÖ¾î¿ä.'
+,'HINKLE FINE FOODS',default,'º£ÀÌÄÁ'
 ,237,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'oil2.jpg', 44);
 --3
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'[ì•„ë¹„í¬íŠ¸] ì•„ë³´ì¹´ë„ ì˜¤ì¼ ë“œë ˆì‹± 3ì¢…','ì†ŒìŠ¤','ì±„ì‹ì£¼ì˜ìžìš©','NEW','ì—°ì´ˆ ì´ë²¤íŠ¸','[ì•„ë¹„í¬íŠ¸]   ê°ˆë¦­ ì‹œíŠ¸ëŸ¬ìŠ¤ (6,600ì›)',7000,6600,660,default
-,'í…Œì´ìŠ¤íŒ… ë…¸íŠ¸ : ì•„ë³´ì¹´ë„ ì˜¤ì¼ íŠ¹ìœ ì˜ ê³ ì†Œí•œ ë§›ì— ë§ˆëŠ˜ì˜ í–¥ê¸‹í•¨, ì‹œíŠ¸ëŸ¬ìŠ¤ì˜ ìƒí¼í•¨ì´ ì ˆë¬˜í•˜ê²Œ ì–´ìš°ëŸ¬ì§‘ë‹ˆë‹¤.'
-,'HINKLE FINE FOODS',default,'ì•„ë³´ì¹´ë„,ë ˆëª¬'
+values(seq_product_pnum.nextval,'[¾ÆºñÆ÷Æ®] ¾Æº¸Ä«µµ ¿ÀÀÏ µå·¹½Ì 3Á¾','¼Ò½º','Ã¤½ÄÁÖÀÇÀÚ¿ë','NEW','¿¬ÃÊ ÀÌº¥Æ®','[¾ÆºñÆ÷Æ®]   °¥¸¯ ½ÃÆ®·¯½º (6,600¿ø)',7000,6600,660,default
+,'Å×ÀÌ½ºÆÃ ³ëÆ® : ¾Æº¸Ä«µµ ¿ÀÀÏ Æ¯À¯ÀÇ °í¼ÒÇÑ ¸À¿¡ ¸¶´ÃÀÇ Çâ±ßÇÔ, ½ÃÆ®·¯½ºÀÇ »óÅ­ÇÔÀÌ Àý¹¦ÇÏ°Ô ¾î¿ì·¯Áý´Ï´Ù.'
+,'HINKLE FINE FOODS',default,'¾Æº¸Ä«µµ,·¹¸ó'
 ,237,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'oil3.jpg', 45);
 
-----------------------'ìœ ì œí’ˆ'-----------------------------------------
+----------------------'À¯Á¦Ç°'-----------------------------------------
 insert into product_package(pacnum, pacname, paccontents,  pacimage)
 values(seq_product_Package_pacnum.nextval
-, '[ìƒí•˜ëª©ìž¥] ìœ ê¸°ë† ìš°ìœ '
-,'ìœ ë„¤ìŠ¤ì½” ìƒë¬¼ê¶Œ ë³´ì „ì§€ì—­ìœ¼ë¡œ ì§€ì •ëœ ì²­ì •í•œ ê³ ì°½, ë„ˆë¥¸ ë“¤ê³¼ ê¹¨ë—í•œ ë°”ëžŒ ì†ì— í–‰ë³µí•œ ì –ì†Œê°€ ìžëžë‹ˆë‹¤. í•˜ëŠ˜ê³¼ ë•…ì˜ ê¸°ìš´ì„ ì •ì§í•˜ê²Œ ë‹´ì•„ë‚´ëŠ” ìƒí•˜ëª©ìž¥ì˜ ìš°ìœ ì—ëŠ” ê·¸ í–‰ë³µì´ ê¹ƒë“¤ì–´ ìžˆì§€ìš”. ëª©ìž¥ì£¼ë“¤ì€ ë§¤ì¼ ì˜ë†ì¼ì§€ë¥¼ ì“°ë©° ì†Œë“¤ì˜ ë¨¹ì´ì™€ ë¬¼ í•˜ë‚˜ê¹Œì§€ë„ ì†Œí™€ížˆ í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ë¯¸ì„¸í•œ í•„í„°ë¡œ ìœ í•´ ë¯¸ìƒë¬¼ì„ 99.9% ê±¸ëŸ¬ë‚´ëŠ” ë§ˆì´í¬ë¡œí•„í„° ê³µë²•ì„ ì‚¬ìš©í•´ ì˜¨ë„ì™€ ì‹œê°„ì— ë¯¼ê°í•œ ìš°ìœ ë¥¼ ë” ê¹¨ë—í•˜ê²Œ ë‹´ì•„ëƒˆì£ . ì²œí˜œì˜ í™˜ê²½ì—ì„œ í–‰ë³µí•˜ê²Œ ë§Œë“¤ì–´ì§„ ìš°ìœ ëŠ” ì•„ì´ì˜ ê°„ì‹ìœ¼ë¡œë„, ë°”ìœ ì•„ì¹¨ì˜ ë“ ë“ í•œ ì‹ì‚¬ë¡œë„ ì¢‹ìŠµë‹ˆë‹¤. ìƒí•˜ëª©ìž¥ì˜ ìœ ê¸°ë† ìš°ìœ ì™€ ì €ì§€ë°© ìš°ìœ ë¡œ ëª¸ë„ ë§ˆìŒë„ ê±´ê°•í•˜ê²Œ ì±™ê²¨ë³´ì„¸ìš”.'
+, '[»óÇÏ¸ñÀå] À¯±â³ó ¿ìÀ¯'
+,'À¯³×½ºÄÚ »ý¹°±Ç º¸ÀüÁö¿ªÀ¸·Î ÁöÁ¤µÈ Ã»Á¤ÇÑ °íÃ¢, ³Ê¸¥ µé°ú ±ú²ýÇÑ ¹Ù¶÷ ¼Ó¿¡ Çàº¹ÇÑ Á¥¼Ò°¡ ÀÚ¶ø´Ï´Ù. ÇÏ´Ã°ú ¶¥ÀÇ ±â¿îÀ» Á¤Á÷ÇÏ°Ô ´ã¾Æ³»´Â »óÇÏ¸ñÀåÀÇ ¿ìÀ¯¿¡´Â ±× Çàº¹ÀÌ ±êµé¾î ÀÖÁö¿ä. ¸ñÀåÁÖµéÀº ¸ÅÀÏ ¿µ³óÀÏÁö¸¦ ¾²¸ç ¼ÒµéÀÇ ¸ÔÀÌ¿Í ¹° ÇÏ³ª±îÁöµµ ¼ÒÈ¦È÷ ÇÏÁö ¾Ê½À´Ï´Ù. ¹Ì¼¼ÇÑ ÇÊÅÍ·Î À¯ÇØ ¹Ì»ý¹°À» 99.9% °É·¯³»´Â ¸¶ÀÌÅ©·ÎÇÊÅÍ °ø¹ýÀ» »ç¿ëÇØ ¿Âµµ¿Í ½Ã°£¿¡ ¹Î°¨ÇÑ ¿ìÀ¯¸¦ ´õ ±ú²ýÇÏ°Ô ´ã¾Æ³ÂÁÒ. ÃµÇýÀÇ È¯°æ¿¡¼­ Çàº¹ÇÏ°Ô ¸¸µé¾îÁø ¿ìÀ¯´Â ¾ÆÀÌÀÇ °£½ÄÀ¸·Îµµ, ¹Ù»Û ¾ÆÄ§ÀÇ µçµçÇÑ ½Ä»ç·Îµµ ÁÁ½À´Ï´Ù. »óÇÏ¸ñÀåÀÇ À¯±â³ó ¿ìÀ¯¿Í ÀúÁö¹æ ¿ìÀ¯·Î ¸öµµ ¸¶À½µµ °Ç°­ÇÏ°Ô Ã¬°Üº¸¼¼¿ä.'
 , '1502350543293l0.jpg' );
 
 --1
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'[ìƒí•˜ëª©ìž¥] ìœ ê¸°ë† ìš°ìœ ','ìœ ì œí’ˆ','ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©','NEW','ì—°ì´ˆ ì´ë²¤íŠ¸','ìœ ê¸°ë† ìš°ìœ  750ml(4,300ì›)',4500,4300,430,default
-,'ìƒí•˜ëª©ìž¥ ìœ ê¸°ë† ìš°ìœ ì—ëŠ” ê³ ì†Œí•œ í–¥ê³¼ ë§›ì€ ë¬¼ë¡  ì˜ì–‘ì„±ë¶„ê¹Œì§€ í’ë¶€í•©ë‹ˆë‹¤. ì „ìš© ëª©ìž¥ì—ì„œ ì§‘ìœ í•œ ìœ ê¸°ë† ìš°ìœ ì—ëŠ” ê°“ ì§œë‚¸ ìš°ìœ ì˜ ì‹ ì„ í•¨ì´ ê³ ìŠ¤ëž€ížˆ ë‹´ê²¨ìžˆì£ . ìœ ê¸°ë† ìš°ìœ  í•œ ì»µìœ¼ë¡œ í–‰ë³µí•œ ìžì—°ì˜ ë§› ê·¸ëŒ€ë¡œë¥¼ ìŒë¯¸í•´ë³´ì„¸ìš”'
-,'ë§¤ì¼ìœ ì—…',default,'ìš°ìœ '
+values(seq_product_pnum.nextval,'[»óÇÏ¸ñÀå] À¯±â³ó ¿ìÀ¯','À¯Á¦Ç°','½Ä»ç´ë¿ë/°£½Ä¿ë','NEW','¿¬ÃÊ ÀÌº¥Æ®','À¯±â³ó ¿ìÀ¯ 750ml(4,300¿ø)',4500,4300,430,default
+,'»óÇÏ¸ñÀå À¯±â³ó ¿ìÀ¯¿¡´Â °í¼ÒÇÑ Çâ°ú ¸ÀÀº ¹°·Ð ¿µ¾ç¼ººÐ±îÁö Ç³ºÎÇÕ´Ï´Ù. Àü¿ë ¸ñÀå¿¡¼­ ÁýÀ¯ÇÑ À¯±â³ó ¿ìÀ¯¿¡´Â °« Â¥³½ ¿ìÀ¯ÀÇ ½Å¼±ÇÔÀÌ °í½º¶õÈ÷ ´ã°ÜÀÖÁÒ. À¯±â³ó ¿ìÀ¯ ÇÑ ÄÅÀ¸·Î Çàº¹ÇÑ ÀÚ¿¬ÀÇ ¸À ±×´ë·Î¸¦ À½¹ÌÇØº¸¼¼¿ä'
+,'¸ÅÀÏÀ¯¾÷',default,'¿ìÀ¯'
 ,750,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
@@ -1434,14 +1460,21 @@ values(seq_product_images_pimgnum.nextval,'milk1.jpg', 46);
 
 --2
 insert into product(pnum,fk_pacname,fk_sdname,fk_ctname,fk_stname,fk_etname,pname,price,saleprice,point,pqty,pcontents,pcompanyname,pexpiredate,allergy,weight,salecount,plike,pdate)
-values(seq_product_pnum.nextval,'[ìƒí•˜ëª©ìž¥] ìœ ê¸°ë† ìš°ìœ ','ìœ ì œí’ˆ','ì‹ì‚¬ëŒ€ìš©/ê°„ì‹ìš©','NEW','ì—°ì´ˆ ì´ë²¤íŠ¸','ìœ ê¸°ë† ì €ì§€ë°©ìš°ìœ  750ml(4,400ì›)',4500,4300,430,default
-,'ìš°ìœ ì˜ ì§€ë°©í•¨ëŸ‰ì´ ë¶€ë‹´ìŠ¤ëŸ¬ì› ë˜ ë¶„ë“¤ì€ ì €ì§€ë°© ìš°ìœ ë¥¼ ì„ íƒí•´ë³´ì„¸ìš”. ì§€ë°©í•¨ëŸ‰ì€ ì¤„ì´ê³ , ìš°ìœ ì˜ í’ì„±í•œ ì˜ì–‘ì„±ë¶„ì€ ê·¸ëŒ€ë¡œ ë‹´ì•„ë‚¸ ìœ ê¸°ë† ì €ì§€ë°© ìš°ìœ ëŠ” ê°€ë³ê³  ê¹”ë”í•œ ë§›ì„ ìžëž‘í•©ë‹ˆë‹¤.'
-,'ë§¤ì¼ìœ ì—…',default,'ìš°ìœ '
+values(seq_product_pnum.nextval,'[»óÇÏ¸ñÀå] À¯±â³ó ¿ìÀ¯','À¯Á¦Ç°','½Ä»ç´ë¿ë/°£½Ä¿ë','NEW','¿¬ÃÊ ÀÌº¥Æ®','À¯±â³ó ÀúÁö¹æ¿ìÀ¯ 750ml(4,400¿ø)',4500,4300,430,default
+,'¿ìÀ¯ÀÇ Áö¹æÇÔ·®ÀÌ ºÎ´ã½º·¯¿ü´ø ºÐµéÀº ÀúÁö¹æ ¿ìÀ¯¸¦ ¼±ÅÃÇØº¸¼¼¿ä. Áö¹æÇÔ·®Àº ÁÙÀÌ°í, ¿ìÀ¯ÀÇ Ç³¼ºÇÑ ¿µ¾ç¼ººÐÀº ±×´ë·Î ´ã¾Æ³½ À¯±â³ó ÀúÁö¹æ ¿ìÀ¯´Â °¡º±°í ±ò²ûÇÑ ¸ÀÀ» ÀÚ¶ûÇÕ´Ï´Ù.'
+,'¸ÅÀÏÀ¯¾÷',default,'¿ìÀ¯'
 ,750,default,default,default);
 
 insert into product_images (pimgnum, pimgfilename, fk_pnum)
 values(seq_product_images_pimgnum.nextval,'milk2.jpg', 47);
 --------------------------------------------------------------------------------
+
+alter table member add(pwd varchar2(200));
+update member set pw ='qwer1234$' where userid='leess';
+alter table member modify(pw varchar2(200) not null); 
+ALTER TABLE member RENAME COLUMN pw TO pwd;
+
+---------------------------------------------------------------------------------------
 
 
 select *
@@ -1452,6 +1485,9 @@ order by pnum asc;
 select *
 from product_images
 order by pimgnum asc;
+
+update product_images set pimgnum = 81
+where pimgnum = 82;
 
 select *
 from product_package

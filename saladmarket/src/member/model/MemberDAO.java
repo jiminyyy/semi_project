@@ -74,8 +74,6 @@ public class MemberDAO implements InterMemberDAO {
 	@Override
 	public int idDuplicateCheck(String userid) throws SQLException {
 		
-		int n = 0;
-		
 		try {	
 			conn = ds.getConnection();
 			
@@ -107,9 +105,35 @@ public class MemberDAO implements InterMemberDAO {
 	
 	@Override
 	public int registerMember(MemberVO membervo) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		int result = 0;
+		try {	
+			conn = ds.getConnection();
+			
+			String sql = " insert into member(MNUM, USERID, NAME, EMAIL, PHONE, BIRTHDAY, POSTNUM, ADDRESS1, ADDRESS2, PWD) " + 
+							" values(seq_member_mnum.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, membervo.getUserid());
+			pstmt.setString(2, membervo.getName());
+			pstmt.setString(3, aes.encrypt( membervo.getEmail() ));			// AES256알고리즘으로 양방향 암호화
+			pstmt.setString(4, aes.encrypt( membervo.getPhone() ));			// AES256알고리즘으로 양방향 암호화
+			pstmt.setString(5, membervo.getBirthday());
+			pstmt.setString(6, membervo.getPostnum());
+			pstmt.setString(7, membervo.getAddr1());
+			pstmt.setString(8, membervo.getAddr2());
+			pstmt.setString(9, SHA256.encrypt( membervo.getPwd() ));		// SHA256알고리즘으로 단방향 암호화
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (UnsupportedEncodingException | GeneralSecurityException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return result;
+	} // end of public int registerMember(MemberVO membervo) throws SQLException {
 
 }
 

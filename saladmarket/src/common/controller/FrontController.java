@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 		urlPatterns = { "*.do" }, 
 		initParams = { 
 				@WebInitParam(name = "propertyConfig", 
-							  value = "C:\\Git\\semi_project\\saladmarket\\WebContent\\WEB-INF\\Command.properties", // 역슬래쉬2개 혹은 슬래쉬 
+							  value = "C:\\Users\\jiminy\\git\\semi_project\\saladmarket\\WebContent\\WEB-INF\\Command.properties", // 역슬래쉬2개 혹은 슬래쉬 
 							  description = "*.do 처리 시 매핑 파일")
 		})
 public class FrontController extends HttpServlet {
@@ -99,7 +99,7 @@ public class FrontController extends HttpServlet {
 			System.out.println("존재하지 않는 클래스 입니다!!");
 			e.printStackTrace();
 		}catch (FileNotFoundException e) {
-			System.out.println("C:\\Git\\semi-project\\saladmarket\\WebContent\\WEB-INF\\Command.properties 파일이 없습니다!");
+			System.out.println("C:\\Users\\jiminy\\git\\semi_project\\saladmarket\\WebContent\\WEB-INF\\Command.properties 파일이 없습니다!");
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();

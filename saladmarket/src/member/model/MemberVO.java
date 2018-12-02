@@ -5,6 +5,7 @@ public class MemberVO {
 	private String mnum;
 	
 	private String userid;
+	private String pwd;
 	private String name;
 	private String email;
 	private String phone;
@@ -29,12 +30,13 @@ public class MemberVO {
 		
 	}
 
-	public MemberVO(String mnum, String userid, String name, String email, String phone, String birthday,
+	public MemberVO(String mnum, String userid, String pwd, String name, String email, String phone, String birthday,
 			String postnum, String addr1, String addr2, int point, String registerdate, String last_logindate,
 			String last_changePwdate, String status, int sumMoney, String fk_lvnum) {
 		super();
 		this.mnum = mnum;
 		this.userid = userid;
+		this.pwd = pwd;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
@@ -65,6 +67,14 @@ public class MemberVO {
 
 	public void setUserid(String userid) {
 		this.userid = userid;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
 	public String getName() {
