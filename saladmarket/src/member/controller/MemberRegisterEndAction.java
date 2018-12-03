@@ -42,7 +42,7 @@ public class MemberRegisterEndAction extends AbstractController {
 		
 			if(n == 1) {
 				req.setAttribute("msg", "회원가입 성공!!!");
-				req.setAttribute("loc", "index.do");
+				req.setAttribute("loc", "login.do");
 				
 				super.setRedirect(false);
 				super.setViewPage("/WEB-INF/msg.jsp");

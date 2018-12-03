@@ -89,7 +89,7 @@ public class MemberDAO implements InterMemberDAO {
 			
 			rs.next();
 			
-			int cnt = rs.getInt("CNT");
+			int cnt = rs.getInt("cnt");
 			
 			if(cnt == 1) { // id가 중복
 				return 1;
@@ -107,8 +107,12 @@ public class MemberDAO implements InterMemberDAO {
 	public int registerMember(MemberVO membervo) throws SQLException {
 		
 		int result = 0;
+		
+		int n1 = 0, n2 = 0, n3 = 0;
 		try {	
 			conn = ds.getConnection();
+			
+			conn.setAutoCommit(false);
 			
 			String sql = " insert into member(MNUM, USERID, NAME, EMAIL, PHONE, BIRTHDAY, POSTNUM, ADDRESS1, ADDRESS2, PWD) " + 
 							" values(seq_member_mnum.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
@@ -125,7 +129,37 @@ public class MemberDAO implements InterMemberDAO {
 			pstmt.setString(8, membervo.getAddr2());
 			pstmt.setString(9, SHA256.encrypt( membervo.getPwd() ));		// SHA256알고리즘으로 단방향 암호화
 			
-			result = pstmt.executeUpdate();
+			n1 = pstmt.executeUpdate();
+			
+			if(n1 == 1) {
+				sql = " insert into my_coupon values(?, 1, add_months(sysdate, 3)) " ;
+					  
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, membervo.getUserid());
+				
+				n2 = pstmt.executeUpdate();
+				
+				sql = " insert into my_coupon values(?, 2, add_months(sysdate, 3)) " ;
+				  
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, membervo.getUserid());
+				
+				n3 = pstmt.executeUpdate();
+				
+				if(n2+n3 == 2) {
+					conn.commit();
+					result = 1;
+				}
+				else {
+					conn.rollback();
+					result = 0;
+				}
+				
+			}
+			else {
+				conn.rollback();
+				result = 0;
+			}
 			
 		} catch (UnsupportedEncodingException | GeneralSecurityException e) {
 			e.printStackTrace();

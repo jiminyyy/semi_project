@@ -64,6 +64,7 @@ $(document).ready(function(){
 		}
 		
 		var form_data = {userid:$("#userid").val()};
+		
 		$.ajax({
 			url:"idDuplicateCheck.do",
 			type:"POST",
@@ -72,13 +73,14 @@ $(document).ready(function(){
 		    success:function(json){
 		    	
 		    	if(json.n == 0) {
-		    		$("#error_id").empty();
+		    		$("#id_error").empty();
 		    		$("#good_id").empty().html("ID로 사용가능합니다.");
+		    		$("#hidden").val("0");
 		    	}
 		    	else if(json.n == 1) {
 		    		$("#good_id").empty();
-		    		$("#error_id").empty().html("이미 사용중인 ID입니다.");
-		    		return;
+		    		$("#id_error").empty().html("이미 사용중인 ID입니다.");
+		    		$("#hidden").val("1");
 		    	}
 		    },
 		    error: function(request, status, error){
@@ -172,12 +174,7 @@ $(document).ready(function(){
 		
 	}); //end of $("#phone").blur(function(){
 		
-	/* 181202 우편번호찾기 누르기 전에 에러메시지가 안떴으면 좋겠다...	
-	$("#postnum").focus(function(){
-		
 	
-	});
-	 */	
 	 
 	$("#zipcodeSearch").click(function(){
 		new daum.Postcode({
@@ -208,12 +205,12 @@ $(document).ready(function(){
 function goRegister(event) {
 
 	
-	if ($("#good_id").val().trim() == null && $("#error_id").val().trim() == null){		
+	if ($("#hidden").val().trim() == ""){		
 		alert("ID 중복확인 버튼을 눌러주세요!!")
 		return;
 	}
 	
-	else if ($("#good_id").val().trim() == null){		
+	else if ($("#hidden").val().trim() == "1"){		
 		alert("새로운 ID를 입력하세요!!")
 		return;
 	}
@@ -266,12 +263,13 @@ function goRegister(event) {
 					<input type="text" id="userid" name="userid" class="form-control requiredInfo userid" placeholder="ID" required/>
 					<span class="error">아이디란은 필수입력 사항입니다.</span>
 					<span id="good_id"></span>
-					<span id="error_id"></span> 
+					<span id="id_error"></span>
+					<input type="hidden" id="hidden" name="hidden" value=""/>  
 				</div>
 				
 				<%-- 아이디 중복체크 --%>
 				<div class="col-md-3" style="margin-top: 7%; margin-left: 3%;">
-					<button id="idcheck" class="btn" style="width: 120px; height: 30px; padding: 0%;"><span style="font-size: 10pt;">아이디  중복확인</span></button>
+					<button type="button" id="idcheck" class="btn" style="width: 120px; height: 30px; padding: 0%;"><span style="font-size: 10pt;">아이디  중복확인</span></button>
 				</div>
 			</div>
 			
@@ -327,7 +325,7 @@ function goRegister(event) {
 				</div>
 				<%-- 우편번호찾기 버튼 --%>
 				<div class="col-md-3" style="margin-top: 7%; margin-left: 3%;">
-					<button id="zipcodeSearch" class="btn" style="width: 120px; height: 30px; padding: 0%;">
+					<button  type="button" id="zipcodeSearch" class="btn" style="width: 120px; height: 30px; padding: 0%;">
 					<span style="font-size: 10pt;">우편번호찾기</span></button>
 				</div>
 				
