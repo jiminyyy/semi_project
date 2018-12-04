@@ -9,7 +9,7 @@
 
 	$(document).ready(function(){
 		
-		$("#loginUserid").focus();
+		$("#userid").focus();
 		
 		$("#btnSubmit").click(function(){
 			
@@ -17,7 +17,7 @@
 			
 		}); // end of $("#btnSubmit").click(function(){
 		
-		$("#loginPwd").keydown(function(event){
+		$("#password").keydown(function(event){
 			
 			if(event.keyCode == 13) {
 				goLogin();
@@ -26,8 +26,7 @@
 		}); // end of $("#loginPwd").keydown(function(event){
 			
 		
-		$(".myclose").click(function(){
-			// alert("닫는다.");
+		$(".myclose").click(function(){ // id찾기, 비번찾기 모달팝업창 닫기기능
 			
 			javascript:history.go(0);
 			
@@ -57,18 +56,18 @@
 		
 	function goLogin() {
 		
-		var loginUserid = $("#loginUserid").val().trim();
-		var loginPwd = $("#loginPwd").val().trim();
+		var loginUserid = $("#userid").val().trim();
+		var loginPwd = $("#password").val().trim();
 		
 		if(loginUserid == "") {
 			alert ("아이디를 입력하세요!!");
-			$("#loginUserid").val("").focus();
+			$("#userid").val("").focus();
 			return;
 		}
 		
 		if(loginPwd == "") {
 			alert ("비밀번호를 입력하세요!!");
-			$("#loginPwd").val("").focus();
+			$("#password").val("").focus();
 			return;
 		}
 		
@@ -81,57 +80,17 @@
 		
 	function goLogOut() {
 		
-		location.href = "<%=request.getContextPath()%>/logout.do";
+		location.href = "<%=CtxPath%>/logout.do";
 		
 	} // end of function goLogOut() {
-		
-	function goEditPersonal(idx) {
-		
-		var url = "memberEdit.do?idx="+idx;
-		
-		window.open(url, "memberEdit",
-				    "left=150px, top=50px, width=800px, height=650px");
-
-	}
 	
-	// *** payment gateway(결제) 시작
-	function goCoinPurchaseTypeChoice(idx) { // 코인충전버튼 클릭시 실행되는 함수 -> 코인충전 창을 띄운다.
-		
-		var url = "coinPurchaseTypeChoice.do?idx="+idx;
-	
-		window.open(url, "coinPurchaseTypeChoice",
-					"left=350px, top=100px, width=650px, height=570px");
-		
-	} // end of function goCoinPurchaseTypeChoice(idx) { // 팝업창 띄우기
-
-		
-	function goCoinPurchaseEnd(idx, coinmoney) { // 코인구매액 결제창 띄우기
-	
-		var url = "coinPurchaseEnd.do?idx="+idx+"&coinmoney="+coinmoney;
-		
-		window.open(url, "coinPurchaseTypeEnd",
-					"left=350px, top=100px, width=850px, height=600px");
-	
-	}
-	
-	function goCoinUpdate(idx){ //, coinmoney) {
-		
-		var frm = document.coinUpdateFrm;
-		frm.idx.value = idx;
-		// frm.idx.value = coinmoney;
-		frm.method = "POST";
-		frm.action = "<%=request.getContextPath()%>/coinAddUpdateLoginuser.do";
-		frm.submit();
-	}
-	
-	// *** payment gateway 끝
 	
 </script>
 
 <aside id="colorlib-hero" class="breadcrumbs">
     <div class="flexslider">
        <ul class="slides">
-          <li style="background-image: url(<%=CtxPath %>/store/images/cover-img-1.jpg);">
+          <li style="background-image: url(<%=CtxPath%>/store/images/cover-img-1.jpg);">
              <div class="overlay"></div>
              <div class="container-fluid">
                 <div class="row">
@@ -158,6 +117,7 @@
                 <label for="userid">아이디</label>
              </div>
              <div class="col-md-3">
+             	<%-- c:if 써서 flag가 true면  value = ${cookie_value} --%>
                 <input type="text" id="userid" name="userid" class="form-control" placeholder="ID">
              </div>
           </div>
@@ -172,18 +132,68 @@
           </div>
           <div class="form-group" align="right" style="margin: 0%;">
               <div class="col-md-8">
-                 <input type="checkbox" id="idcheck"><label for="idcheck">아이디 저장</label>
+              <%-- c:if 써서 flag가 true면 checked/ --%>
+                 <input type="checkbox" id="saveid" name="saveid"><label for="idcheck">아이디 저장</label>
              </div>
           </div>
           
           
           <div class="row" style="margin-bottom: 2%">
              <div class="col-md-12" style="margin-top: 1%; margin-left: 33%;" >
-                <button class="btn"><span style="font-size: 9pt;">아이디 찾기</span></button>
-                <button class="btn"><span style="font-size: 9pt;">비밀번호 찾기</span></button>
-                <button class="btn btn-primary" style="margin-left: 2%;"><span style="font-size: 10pt;">로그인</span></button>
+                <button class="btn" data-toggle="modal" data-target="#userIdfind" data-dismiss="modal">
+                	<span style="font-size: 9pt;">아이디 찾기</span></button>
+                <button class="btn" data-toggle="modal" data-target="#passwdFind" data-dismiss="modal">
+                <span style="font-size: 9pt;">비밀번호 찾기</span></button>
+                <button class="btn btn-primary" id="btnSubmit" style="margin-left: 2%;"><span style="font-size: 10pt;">로그인</span></button>
              </div>
           </div>
+          
+<%-- ****** 아이디 찾기 Modal ****** --%>
+<div class="modal fade" id="userIdfind" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close myclose" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">아이디 찾기</h4>
+      </div>
+      <div class="modal-body" style="height: 400px; width: 100%;">
+        <div id="idFind">
+        	<iframe style="border: none; width: 100%; height: 350px;" src="<%=CtxPath%>/idFind.do">
+        	</iframe>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default myclose" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    
+  </div>
+</div>   
+
+<%-- ****** 비밀번호 찾기 Modal ****** --%>
+<div class="modal fade" id="passwdFind" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close myclose" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">비밀번호 찾기</h4>
+      </div>
+      <div class="modal-body">
+        <div id="pwFind">
+        	<iframe style="border: none; width: 100%; height: 400px;" src="<%=CtxPath%>/pwdFind.do">  
+        	</iframe>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default myclose" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
           
           
        </form>

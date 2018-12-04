@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import member.model.MemberVO;
+
 public abstract class AbstractController implements Command {
 	
 	private boolean isRedirect = false;
@@ -37,7 +39,7 @@ public abstract class AbstractController implements Command {
 	}
 	
 	// *** 로그인 유무를 검사해서 로그인했으면 로그인 한 사용자의 정보를 return 비로그인 시 null return
-/*	public MemberVO getLoginUser(HttpServletRequest req) {
+	public MemberVO getLoginUser(HttpServletRequest req) {
 		
 		MemberVO loginuser = null;
 		
@@ -60,7 +62,7 @@ public abstract class AbstractController implements Command {
 		return loginuser;
 		
 	} // end of public static HashMap<String, Object> checkLoginUser(HttpServletRequest req) {
-
+/*
 	public void getCategoryList(HttpServletRequest req) throws SQLException {
 		
 		// jsp_category 테이블에서 카테고리코드 (code)와 카테고리명(cname)을 가져와서 request 영역에 저장시킨다.

@@ -118,6 +118,8 @@ nominvalue
 nocycle
 nocache;
 
+select *
+from member;
 
 -- 보유쿠폰(my_coupon) 테이블 생성 
 create table my_coupon 
