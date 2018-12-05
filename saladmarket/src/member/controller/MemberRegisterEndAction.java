@@ -17,7 +17,7 @@ public class MemberRegisterEndAction extends AbstractController {
 		if(!"POST".equalsIgnoreCase(method)) {
 			// post방식으로 들어온 것이 아니라면
 			req.setAttribute("msg", "잘못된 경로로 들어왔습니다!!!");
-			req.setAttribute("loc", "javascript:history.back()");
+			req.setAttribute("loc", "javascript:history.back()"); 
 			
 			super.setRedirect(false);
 			super.setViewPage("/WEB-INF/msg.jsp");

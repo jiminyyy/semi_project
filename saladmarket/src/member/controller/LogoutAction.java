@@ -2,17 +2,22 @@ package member.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import common.controller.AbstractController;
 
-public class MemberRegisterAction extends AbstractController {
+public class LogoutAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+
+		HttpSession session = req.getSession();
 		
-		super.setRedirect(false);
-		super.setViewPage("/WEB-INF/store/member/join.jsp"); 
+		session.removeAttribute("loginuser");
 		
+		super.setRedirect(true);
+		super.setViewPage("index.do"); 
+ 
 	}
 
 }

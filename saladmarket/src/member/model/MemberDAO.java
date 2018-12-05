@@ -169,5 +169,156 @@ public class MemberDAO implements InterMemberDAO {
 		return result;
 	} // end of public int registerMember(MemberVO membervo) throws SQLException {
 
+	@Override
+	public MemberVO loginOKmemberInfo(String userid, String pwd) throws SQLException {
+			
+		MemberVO membervo = null;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = " select userid, name " +
+						 " , trunc ( MONTHS_BETWEEN (sysdate, last_logindate ) ) as loginDategap " +
+						 " , trunc ( MONTHS_BETWEEN (sysdate, last_changepwdate ) ) as pwdchangegap " +
+						 " from member " +
+						 " where status = 1 " +
+						 " and userid = ? and pwd = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.setString(2, SHA256.encrypt(pwd));
+			
+			rs = pstmt.executeQuery();
+			
+			boolean bool = rs.next();
+			
+			if(bool) {
+				// 회원이 존재하는 경우
+				String v_userid = rs.getString("userid");
+				String name = rs.getString("name");
+				
+				int pwdchangegap = rs.getInt("pwdchangegap");
+				int logindategap = rs.getInt("logindategap");
+				
+				membervo = new MemberVO();
+				membervo.setUserid(v_userid);
+				membervo.setName(name);
+				
+				// 마지막으로 암호를 변경한 날짜가 현재시각으로부터 6개월이 지낫으면 true
+				if(pwdchangegap >= 6)
+					membervo.setRequirePwdChange(true);
+				
+				if(logindategap >= 12) {
+					membervo.setDormant(true);
+				}
+				else {
+			
+					// 로그인이 되었다면 로그인날짜 갱신
+					sql = " update member set last_logindate = sysdate " +
+						  " where userid = ? ";
+					
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, userid);
+					pstmt.executeUpdate();
+					
+				}
+			} // if(bool)
+						
+		} finally {
+			close();
+		}
+		
+		return membervo;
+	}
+	
+	@Override
+	public String getUserid(String name, String mobile) throws SQLException {
+		
+		String userid = null;
+		
+		try {
+			conn = ds.getConnection();
+			// DBCP 객체 ds를 통해 톰캣의 context.xml에 설정되어진 Connection 객체를 빌려오는 것이다.
+		
+			String sql = " select userid " +
+						 " from member " +
+						 " where status = 1 and name = ? and phone = ? ";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, name);
+				pstmt.setString(2, aes.encrypt(mobile));
+				 
+				rs = pstmt.executeQuery();
+				
+				if (rs.next()) {
+					userid = rs.getString("userid");
+				}
+				
+		} catch (UnsupportedEncodingException | GeneralSecurityException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return userid;
+	}
+
+	@Override
+	public int isUserExists(String userid, String email) throws SQLException {
+		
+		 int n = 0;
+		
+		try {
+			conn = ds.getConnection();
+			// DBCP 객체 ds를 통해 톰캣의 context.xml에 설정되어진 Connection 객체를 빌려오는 것이다.
+		
+			String sql = " select count(*) as CNT " +
+						 " from member " +
+						 " where status = 1 and userid = ? and email = ? ";
+				
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.setString(2, aes.encrypt(email));
+			
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			n = rs.getInt("CNT");
+				
+		} catch (UnsupportedEncodingException | GeneralSecurityException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return n;
+	}
+
+	@Override
+	public int updatePwdUser(String userid, String pwd) throws SQLException {
+		
+		int result = 0;
+		
+		try {
+			conn = ds.getConnection();
+			// DBCP 객체 ds를 통해 톰캣의 context.xml에 설정되어진 Connection 객체를 빌려오는 것이다.
+		
+			String sql = " update member set pwd = ? " +
+						 " , last_changepwdate = sysdate " +
+						 " where userid = ? ";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, SHA256.encrypt(pwd));
+				pstmt.setString(2, userid);
+				
+				result = pstmt.executeUpdate();
+		
+		} finally {
+			close();
+		}
+		
+		return result;
+	}
+
+
 }
 

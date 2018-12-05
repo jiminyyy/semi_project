@@ -17,8 +17,8 @@ public class MemberVO {
 	private int point;
 	
 	private String registerdate;
-	private String last_logindate;
-	private String last_changePwdate;
+	private boolean requirePwdChange = false;
+	private boolean dormant = false;
 	
 	private String status;
 	
@@ -31,8 +31,7 @@ public class MemberVO {
 	}
 
 	public MemberVO(String mnum, String userid, String pwd, String name, String email, String phone, String birthday,
-			String postnum, String addr1, String addr2, int point, String registerdate, String last_logindate,
-			String last_changePwdate, String status, int sumMoney, String fk_lvnum) {
+			String postnum, String addr1, String addr2, int point, String registerdate, String status, int sumMoney, String fk_lvnum) {
 		super();
 		this.mnum = mnum;
 		this.userid = userid;
@@ -46,8 +45,6 @@ public class MemberVO {
 		this.addr2 = addr2;
 		this.point = point;
 		this.registerdate = registerdate;
-		this.last_logindate = last_logindate;
-		this.last_changePwdate = last_changePwdate;
 		this.status = status;
 		this.sumMoney = sumMoney;
 		this.fk_lvnum = fk_lvnum;
@@ -149,20 +146,20 @@ public class MemberVO {
 		this.registerdate = registerdate;
 	}
 
-	public String getLast_logindate() {
-		return last_logindate;
+	public boolean isRequirePwdChange() {
+		return requirePwdChange;
 	}
 
-	public void setLast_logindate(String last_logindate) {
-		this.last_logindate = last_logindate;
+	public void setRequirePwdChange(boolean requirePwdChange) {
+		this.requirePwdChange = requirePwdChange;
+	}
+	
+	public boolean isDormant() {
+		return dormant;
 	}
 
-	public String getLast_changePwdate() {
-		return last_changePwdate;
-	}
-
-	public void setLast_changePwdate(String last_changePwdate) {
-		this.last_changePwdate = last_changePwdate;
+	public void setDormant(boolean dormant) {
+		this.dormant = dormant;
 	}
 
 	public String getStatus() {

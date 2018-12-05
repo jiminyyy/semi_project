@@ -11,6 +11,30 @@
 		
 		$("#userid").focus();
 		
+		var userid = getCookie("userid");
+	    $("input[name='userid']").val(userid); 
+	     
+	    if($("input[name='userid']").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 ID가 표시된 상태라면,
+	        $("#saveid").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
+	    }
+	     
+	    $("#saveid").change(function(){ // 체크박스에 변화가 있다면,
+	        if($("#saveid").is(":checked")){ // ID 저장하기 체크했을 때,
+	            var userid= $("input[name='userid']").val();
+	            setCookie("userid", userid, 7); // 7일 동안 쿠키 보관
+	        }else{ // ID 저장하기 체크 해제 시,
+	            deleteCookie("userid");
+	        }
+	    });
+	     
+	    // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
+	    $("input[name='userid']").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
+	        if($("#saveid").is(":checked")){ // ID 저장하기를 체크한 상태라면,
+	            var userid= $("input[name='userid']").val();
+	            setCookie("userid", userid, 7); // 7일 동안 쿠키 보관
+	        }
+	    });
+		
 		$("#btnSubmit").click(function(){
 			
  			goLogin();
@@ -30,30 +54,37 @@
 			
 			javascript:history.go(0);
 			
-			// 현재 페이지를 새로고침을 함으로써 모달창에 입력한 성명과 휴대폰의 값이 텍스트박스에 남겨있지 않고 삭제하는 효과를 누린다. 
-			
-			/* === 새로고침(다시읽기) 방법 3가지 차이점 ===
-			   >>> 1. 일반적인 다시읽기 <<<
-			   window.location.reload();
-			   ==> 이렇게 하면 컴퓨터의 캐쉬에서 우선 파일을 찾아본다.
-			            없으면 서버에서 받아온다.  
-			   
-			   >>> 2. 강력하고 강제적인 다시읽기 <<<
-			   window.location.reload(true);
-			   ==> true 라는 파라미터를 입력하면, 무조건 서버에서 직접 파일을 가져오게 된다.
-			            캐쉬는 완전히 무시된다.
-			   
-			   >>> 3. 부드럽고 소극적인 다시읽기 <<<
-			   history.go(0);
-			   ==> 이렇게 하면 캐쉬에서 현재 페이지의 파일들을 항상 우선적으로 찾는다.
-			*/	
-			
 		});
-			
 		
 	}); // end of $(document).ready(function(){
 		
-		
+	function setCookie(cookieName, value, exdays){
+	    var exdate = new Date();
+	    exdate.setDate(exdate.getDate() + exdays);
+	    var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+	    document.cookie = cookieName + "=" + cookieValue;
+	}
+	 
+	function deleteCookie(cookieName){
+	    var expireDate = new Date();
+	    expireDate.setDate(expireDate.getDate() - 1);
+	    document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+	}
+	 
+	function getCookie(cookieName) {
+	    cookieName = cookieName + '=';
+	    var cookieData = document.cookie;
+	    var start = cookieData.indexOf(cookieName);
+	    var cookieValue = '';
+	    if(start != -1){
+	        start += cookieName.length;
+	        var end = cookieData.indexOf(';', start);
+	        if(end == -1)end = cookieData.length;
+	        cookieValue = cookieData.substring(start, end);
+	    }
+	    return unescape(cookieValue);
+	}
+	
 	function goLogin() {
 		
 		var loginUserid = $("#userid").val().trim();
@@ -114,10 +145,9 @@
           <div class="form-group" style="margin-top: 3%;">
             <div class="col-md-4" style="margin-top: 3%;"></div> <%-- 이부분은 칸 조정할려고 넣어놨어요ㅠㅠ --%>
               <div class="col-md-1" style="margin-top: 3%;">
-                <label for="userid">아이디</label>
+                <label for="userid"><span style="display:table-cell; line-height: 200%;">아이디</span></label>
              </div>
              <div class="col-md-3">
-             	<%-- c:if 써서 flag가 true면  value = ${cookie_value} --%>
                 <input type="text" id="userid" name="userid" class="form-control" placeholder="ID">
              </div>
           </div>
@@ -132,22 +162,23 @@
           </div>
           <div class="form-group" align="right" style="margin: 0%;">
               <div class="col-md-8">
-              <%-- c:if 써서 flag가 true면 checked/ --%>
-                 <input type="checkbox" id="saveid" name="saveid"><label for="idcheck">아이디 저장</label>
+                 <input type="checkbox" id="saveid" name="saveid"><label for="saveid">아이디 저장</label>
              </div>
           </div>
-          
-          
           <div class="row" style="margin-bottom: 2%">
              <div class="col-md-12" style="margin-top: 1%; margin-left: 33%;" >
-                <button class="btn" data-toggle="modal" data-target="#userIdfind" data-dismiss="modal">
+                <button type="button" class="btn" data-toggle="modal" data-target="#userIdfind" data-dismiss="modal">
                 	<span style="font-size: 9pt;">아이디 찾기</span></button>
-                <button class="btn" data-toggle="modal" data-target="#passwdFind" data-dismiss="modal">
+                <button type="button" class="btn" data-toggle="modal" data-target="#passwdFind" data-dismiss="modal">
                 <span style="font-size: 9pt;">비밀번호 찾기</span></button>
-                <button class="btn btn-primary" id="btnSubmit" style="margin-left: 2%;"><span style="font-size: 10pt;">로그인</span></button>
+                <button type="button" class="btn btn-primary" id="btnSubmit" style="margin-left: 2%;"><span style="font-size: 10pt;">로그인</span></button>
              </div>
           </div>
-          
+       </form>
+     </div>
+   </div>
+</div>
+
 <%-- ****** 아이디 찾기 Modal ****** --%>
 <div class="modal fade" id="userIdfind" role="dialog">
   <div class="modal-dialog">
@@ -158,9 +189,9 @@
         <button type="button" class="close myclose" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">아이디 찾기</h4>
       </div>
-      <div class="modal-body" style="height: 400px; width: 100%;">
+      <div class="modal-body" style="height: 500px; width: 100%;">
         <div id="idFind">
-        	<iframe style="border: none; width: 100%; height: 350px;" src="<%=CtxPath%>/idFind.do">
+        	<iframe style="border: none; width: 100%; height: 500px;" src="<%=CtxPath%>/idFind.do">
         	</iframe>
         </div>
       </div>
@@ -184,7 +215,7 @@
       </div>
       <div class="modal-body">
         <div id="pwFind">
-        	<iframe style="border: none; width: 100%; height: 400px;" src="<%=CtxPath%>/pwdFind.do">  
+        	<iframe style="border: none; width: 100%; height: 500px;" src="<%=CtxPath%>/pwdFind.do">  
         	</iframe>
         </div>
       </div>
@@ -194,12 +225,7 @@
     </div>
   </div>
 </div>
-          
-          
-       </form>
-     </div>
-   </div>
-</div>
+
 
 <div class="gototop js-top">
    <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>

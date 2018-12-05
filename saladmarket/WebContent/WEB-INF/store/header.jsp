@@ -80,13 +80,13 @@
                   <div class="col-xs-10 text-right menu-1">
                      <ul>
                         <li class="active"><a href="<%=CtxPath %>/index.do">Home</a></li>
-                        <c:if test="${sessionScope.loginUser == null }">
+                        <c:if test="${sessionScope.loginuser == null }">
                            <li><a href="<%= CtxPath %>/login.do">로그인</a></li>
-                           <li><a href="<%= CtxPath %>/join.do">회원가입</a></li>
+                           <li><a href="<%= CtxPath %>/memberRegister.do.do">회원가입</a></li>
                         </c:if>
                         
-                        <c:if test="${sessionScope.loginUser != null }">
-                           <li>[${sessionScope.loginUser.name }]님</li>
+                        <c:if test="${sessionScope.loginuser != null }">
+                           <li>[${sessionScope.loginuser.name }]님</li>
                            <li><a href="<%= CtxPath %>/logout.do">로그아웃</a></li>
                            <li class="has-dropdown">
                               <a href="<%= CtxPath %>/memberInfoMain.do">마이페이지</a>
