@@ -177,7 +177,7 @@ public class MemberDAO implements InterMemberDAO {
 		try {
 			conn = ds.getConnection();
 			
-			String sql = " select userid, name " +
+			String sql = " select userid, name, email, phone, postnum, address1, address2 " +
 						 " , trunc ( MONTHS_BETWEEN (sysdate, last_logindate ) ) as loginDategap " +
 						 " , trunc ( MONTHS_BETWEEN (sysdate, last_changepwdate ) ) as pwdchangegap " +
 						 " from member " +
@@ -196,6 +196,11 @@ public class MemberDAO implements InterMemberDAO {
 				// 회원이 존재하는 경우
 				String v_userid = rs.getString("userid");
 				String name = rs.getString("name");
+				String email = aes.decrypt(rs.getString("email"));
+				String phone = aes.decrypt(rs.getString("phone"));
+				String postnum = rs.getString("postnum");
+				String address1 = rs.getString("address1");
+				String address2 = rs.getString("address2");
 				
 				int pwdchangegap = rs.getInt("pwdchangegap");
 				int logindategap = rs.getInt("logindategap");
@@ -203,6 +208,11 @@ public class MemberDAO implements InterMemberDAO {
 				membervo = new MemberVO();
 				membervo.setUserid(v_userid);
 				membervo.setName(name);
+				membervo.setEmail(email);
+				membervo.setPhone(phone);
+				membervo.setPostnum(postnum);
+				membervo.setAddr1(address1);
+				membervo.setAddr2(address2);
 				
 				// 마지막으로 암호를 변경한 날짜가 현재시각으로부터 6개월이 지낫으면 true
 				if(pwdchangegap >= 6)
@@ -223,7 +233,8 @@ public class MemberDAO implements InterMemberDAO {
 					
 				}
 			} // if(bool)
-						
+		} catch (GeneralSecurityException | UnsupportedEncodingException e) {
+			e.printStackTrace();
 		} finally {
 			close();
 		}
@@ -318,7 +329,101 @@ public class MemberDAO implements InterMemberDAO {
 		
 		return result;
 	}
+	
+	@Override
+	public MemberVO getMemberDetail(String userid) throws SQLException {
+		
+		MemberVO memberInfo = null;
+		
+		try {	
+			
+			conn = ds.getConnection();
+			
+			String sql	  = " select MNUM, USERID, PWD, NAME, EMAIL, PHONE, BIRTHDAY, POSTNUM, ADDRESS1, ADDRESS2 "+
+							 "		, POINT, REGISTERDATE, LAST_LOGINDATE, LAST_CHANGEPWDATE, STATUS, SUMMONEY, FK_LVNUM "+
+							 " from member\n" +
+							 " where USERID = ? " ;
 
+			pstmt = conn.prepareStatement(sql);
+					
+			pstmt.setString(1, userid);
+
+			rs = pstmt.executeQuery();
+			
+			int cnt = 0;
+			
+			if (rs.next()) {
+				cnt++;
+				
+				if(cnt == 1)
+					memberInfo = new MemberVO();
+					
+				String mnum = rs.getString("MNUM");
+				String v_userid = rs.getString("USERID");
+				String name =  rs.getString("NAME");
+				String pwd = rs.getString("PWD");
+				String email = aes.decrypt(rs.getString("EMAIL"));
+				String phone = aes.decrypt(rs.getString("PHONE"));
+				String postnum = rs.getString("POSTNUM");
+				String addr1 = rs.getString("ADDRESS1");
+				String addr2 = rs.getString("ADDRESS2");
+				String birthday = rs.getString("BIRTHDAY");
+				int point = rs.getInt("POINT");
+				String registerdate = rs.getString("REGISTERDATE");
+				String status = rs.getString("STATUS");
+				int sumMoney = rs.getInt("SUMMONEY");
+				String fk_lvnum = rs.getString("FK_LVNUM");
+				
+				memberInfo = new MemberVO(mnum, v_userid, pwd, name, email, phone, birthday, postnum, addr1, addr2, point, registerdate, status, sumMoney, fk_lvnum);
+				
+			}
+			
+		} catch (UnsupportedEncodingException | GeneralSecurityException e) {
+			e.printStackTrace();
+		}  finally {
+			close();
+		}
+		
+		return memberInfo;
+	}
+
+	@Override
+	public int updateMember(MemberVO membervo) throws SQLException {
+		
+		int result = 0;
+		
+		try {	
+			
+			conn = ds.getConnection();
+			
+			String sql = " update member set PWD = ? "
+						 + ", EMAIL = ? "
+						 + ", PHONE = ? "
+						 + ", POSTNUM = ? "
+						 + ", ADDRESS1 = ? "
+						 + ", ADDRESS2 = ? "
+						 + ", last_changepwdate = sysdate "
+						 + " where userid = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, SHA256.encrypt( membervo.getPwd() ));	// SHA256알고리즘으로 단방향 암호화
+			pstmt.setString(2, aes.encrypt( membervo.getEmail() ));	// AES256알고리즘으로 양방향 암호화
+			pstmt.setString(3, aes.encrypt( membervo.getPhone() ));
+			pstmt.setString(4, membervo.getPostnum());
+			pstmt.setString(5, membervo.getAddr1());
+			pstmt.setString(6, membervo.getAddr2());
+			pstmt.setString(7, membervo.getUserid());
+			
+			result = pstmt.executeUpdate();
+		
+		} catch (UnsupportedEncodingException | GeneralSecurityException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return result;
+	}
 
 }
 

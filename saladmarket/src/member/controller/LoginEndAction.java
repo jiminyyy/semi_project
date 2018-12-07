@@ -30,8 +30,6 @@ public class LoginEndAction extends AbstractController {
 			String userid = req.getParameter("userid");
 			String pwd = req.getParameter("pwd");
 
-			String saveid = req.getParameter("saveid");
-			
 			MemberDAO memberdao = new MemberDAO();
 			
 			//181204 로그인 메소드 만들기
@@ -79,9 +77,9 @@ public class LoginEndAction extends AbstractController {
 					return;		
 				}
 				// 세션에 goBackURL이 있다면 장바구니를 통해 들어온것이므로 로그인완료 후 제품 페이지로 돌아가야한다.
-				else if(returnPage == null) {
+				else if(returnPage != null) {
 					super.setRedirect(true);
-					super.setViewPage("index.do");
+					super.setViewPage("returnPage");
 				}
 				
 				else {
@@ -93,9 +91,7 @@ public class LoginEndAction extends AbstractController {
 				
 			}
 			
-			}
-			super.setRedirect(false);
-			super.setViewPage("/WEB-INF/store/index.jsp");
+		}
 
 	} // end of execute
 }

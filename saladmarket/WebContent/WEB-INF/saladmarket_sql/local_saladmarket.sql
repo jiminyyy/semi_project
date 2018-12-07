@@ -1490,3 +1490,68 @@ order by pacnum asc;
 
 commit;
 
+select *
+from my_coupon;
+
+select rnum, pacnum, pacname, paccontents, pacimage, pnum
+        , sdname, ctname, stname, etname, pname, price
+        , saleprice, point, pqty, pcontents
+        , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+from
+(
+    select rownum as rnum,pacnum, pacname, paccontents, pacimage, pnum
+            , sdname, ctname, stname, etname, pname, price
+            , saleprice, point, pqty, pcontents
+            , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+    from 
+    (
+        select pacnum, pacname, paccontents, pacimage, pnum
+                , sdname, ctname, stname, etname, pname, price
+                , saleprice, point, pqty, pcontents
+                , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+        from
+        (
+            select pacnum, pacname, paccontents, pacimage, pnum
+                    , sdname, ctname, stname, etname, pname, price
+                    , saleprice, point, pqty, pcontents
+                    , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+            from
+            (
+                select row_number() over(partition by pacnum order by saleprice) as rno
+                    , b.pacnum, b.pacname, b.paccontents, b.pacimage, a.pnum
+                    , fk_sdname as sdname, a.fk_ctname as ctname, a.fk_stname as stname, a.fk_etname as etname
+                    , a.pname, a.price, a.saleprice, a.point, a.pqty, a.pcontents
+                    , a.pcompanyname, a.pexpiredate, allergy, a.weight, a.salecount, a.plike, a.pdate
+                from product a JOIN product_package b
+                ON a.fk_pacname = b.pacname
+            ) V
+            where rno = 1 and pacnum != 1
+            union all
+            select pacnum, pacname, paccontents, pimgfilename, pnum
+                    , sdname, ctname, stname, etname, pname
+                    , price, saleprice, point, pqty, pcontents
+                    , pcompanyname, pexpiredate, allergy, weight, salecount
+                    , plike, pdate
+            from
+            (
+                select row_number() over(partition by pname order by saleprice) as rno
+                        , b.pacnum, b.pacname, b.paccontents, b.pacimage, pnum
+                        , fk_sdname AS sdname, a.fk_ctname AS ctname, a.fk_stname AS stname, a.fk_etname AS etname, a.pname
+                        , a.price, a.saleprice, a.point, a.pqty, a.pcontents
+                        , a.pcompanyname, a.pexpiredate, allergy, a.weight, a.salecount
+                        , a.plike, a.pdate, c.pimgfilename
+                from product a JOIN product_package b
+                ON a.fk_pacname = b.pacname
+                JOIN product_images c
+                ON a.pnum = c.fk_pnum
+                where pacnum = 1
+            ) V
+            where rno = 1
+        )T
+        --where sdname = '물/주스'
+        where sdname = '건강즙'
+        order by pdate desc, pname asc
+    ) E
+) F
+where rnum between 1 and 8;
+

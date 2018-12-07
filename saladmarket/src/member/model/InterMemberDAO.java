@@ -27,9 +27,9 @@ public interface InterMemberDAO {
 
 	//int getMemberRecovery(int idx) throws SQLException;
 
-	//MemberVO getMemberDetail(int idx) throws SQLException;
+	MemberVO getMemberDetail(String userid) throws SQLException;
 
-	//int updateMember(MemberVO membervo) throws SQLException;
+	int updateMember(MemberVO membervo) throws SQLException;
 	
 	String getUserid(String name, String mobile) throws SQLException;
 	

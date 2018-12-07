@@ -50,7 +50,7 @@ public abstract class AbstractController implements Command {
 		if(loginuser == null) { //로그인 안했으면 msg페이지로 이동
 			
 			String msg =  "먼저 로그인하세요!!!";
-			String loc = "javascript:history.back()";
+			String loc = "index.do";
 						
 			req.setAttribute("msg", msg);
 			req.setAttribute("loc", loc);

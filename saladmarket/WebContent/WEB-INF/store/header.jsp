@@ -82,7 +82,7 @@
                         <li class="active"><a href="<%=CtxPath %>/index.do">Home</a></li>
                         <c:if test="${sessionScope.loginuser == null }">
                            <li><a href="<%= CtxPath %>/login.do">로그인</a></li>
-                           <li><a href="<%= CtxPath %>/memberRegister.do.do">회원가입</a></li>
+                           <li><a href="<%= CtxPath %>/memberRegister.do">회원가입</a></li>
                         </c:if>
                         
                         <c:if test="${sessionScope.loginuser != null }">
@@ -94,7 +94,7 @@
                                  <li><a href="<%= CtxPath %>/memberInfoMain.do">회원정보</a></li><!-- memberModify.jsp 비번 확인후 이곳으로 이동 -->
                                  <li><a href="<%= CtxPath %>/cuponList.do">할인쿠폰</a></li>
                                  <li><a href="<%= CtxPath %>/refundChange.do">환불교환</a></li>
-                                 <li><a href="<%= CtxPath %>/orderLsist.jsp">주문내역</a></li>
+                                 <li><a href="<%= CtxPath %>/orderList.do">주문내역</a></li>
                                  <li><a href="<%= CtxPath %>/cart.do">장바구니</a></li>
                                  <li><a href="<%= CtxPath %>/myPickList.do">찜</a></li>
                               </ul>
