@@ -8,18 +8,18 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/SW/activation.jar"/>
-	<classpathentry kind="lib" path="C:/SW/commons-codec-1.11.jar"/>
-	<classpathentry kind="lib" path="C:/SW/json_simple-1.1.jar"/>
-	<classpathentry kind="lib" path="C:/SW/mail.jar"/>
-	<classpathentry kind="lib" path="C:/SW/taglibs-standard-impl-1.2.5.jar"/>
-	<classpathentry kind="lib" path="C:/SW/taglibs-standard-jstlel-1.2.5.jar"/>
-	<classpathentry kind="lib" path="C:/SW/taglibs-standard-spec-1.2.5.jar"/>
-	<classpathentry kind="lib" path="C:/SW/apache-tomcat-8.0.53-windows-x64/apache-tomcat-8.0.53/lib/el-api.jar"/>
-	<classpathentry kind="lib" path="C:/SW/apache-tomcat-8.0.53-windows-x64/apache-tomcat-8.0.53/lib/jsp-api.jar"/>
-	<classpathentry kind="lib" path="C:/SW/apache-tomcat-8.0.53-windows-x64/apache-tomcat-8.0.53/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/SW/cos.jar"/>
-	<classpathentry kind="lib" path="C:/SW/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="C:/SW/apache-tomcat-8.0.53-windows-x64"/>
+	<classpathentry kind="lib" path="C:/Users/jiminy/SW/apache-tomcat-8.0.53/lib/el-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jiminy/SW/apache-tomcat-8.0.53/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jiminy/SW/apache-tomcat-8.0.53/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jiminy/SW/activation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jiminy/SW/commons-codec-1.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jiminy/SW/cos.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jiminy/SW/json_simple-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jiminy/SW/mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jiminy/SW/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jiminy/SW/taglibs-standard-impl-1.2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jiminy/SW/taglibs-standard-jstlel-1.2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jiminy/SW/taglibs-standard-spec-1.2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jiminy/SW/apache-tomcat-8.0.53"/>
 	<classpathentry kind="output" path="build/WEB-INF/classes"/>
 </classpath>

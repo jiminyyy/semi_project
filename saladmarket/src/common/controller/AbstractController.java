@@ -1,12 +1,15 @@
 package common.controller;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import member.model.MemberVO;
+import product.model.CategoryVO;
+import product.model.ProductDAO;
 
 public abstract class AbstractController implements Command {
 	
@@ -62,16 +65,17 @@ public abstract class AbstractController implements Command {
 		return loginuser;
 		
 	} // end of public static HashMap<String, Object> checkLoginUser(HttpServletRequest req) {
-/*
+	
+	// header에 c:foreach를 써서 대분류, 중분류 표기 및 연결
 	public void getCategoryList(HttpServletRequest req) throws SQLException {
-		
-		// jsp_category 테이블에서 카테고리코드 (code)와 카테고리명(cname)을 가져와서 request 영역에 저장시킨다.
 		
 		ProductDAO pdao = new ProductDAO();
 		List<CategoryVO> categoryList = pdao.getCategoryList();
 		
+		//중분류 가져오는 메소드
+		
 		req.setAttribute("categoryList", categoryList);
 		
 	}
-*/
 }
+
