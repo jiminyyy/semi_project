@@ -72,10 +72,7 @@ public abstract class AbstractController implements Command {
 		ProductDAO pdao = new ProductDAO();
 		List<CategoryVO> categoryList = pdao.getCategoryList();
 		
-		//중분류 가져오는 메소드
-		
 		req.setAttribute("categoryList", categoryList);
-		
 	}
 }
 

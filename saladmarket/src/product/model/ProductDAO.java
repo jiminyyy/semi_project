@@ -122,24 +122,19 @@ public class ProductDAO implements InterProductDAO {
 		
 		return categoryList;
 	}
-
+	
 	@Override
-	public List<ProductVO> getProductsByCategory(String code) throws SQLException {
+	public List<HashMap<String, String>> getsdList(String ldname) throws SQLException {
 		
-
-		List<ProductVO> prodListByCtg = null;
-		
+		List<HashMap<String, String>> sdCtgList = null;
 		try {
 			conn = ds.getConnection();
 			
-			String sql = " select pnum, pname, pcategory_fk, pcompany, pimage1, pimage2, pqty, price, saleprice, " + 
-						 " pspec, pcontent, point, to_char(pinputdate, 'yyyy-mm-dd') as pinputdate "+
-						 " from product "+
-						 " where pcategory_fk = ? "+
-						 " order by pnum desc ";
+			String sql = " select sdnum, fk_ldname, sdname "+
+						 " from small_detail " +
+						 " order by sdnum ";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, code);
 			rs = pstmt.executeQuery();
 			
 			int cnt = 0;
@@ -149,35 +144,32 @@ public class ProductDAO implements InterProductDAO {
 				cnt ++;
 				if(cnt == 1) {
 					
-					prodListByCtg = new ArrayList<ProductVO>();
+					sdCtgList = new ArrayList<HashMap<String, String>>();
 				}
 				
-				int pnum = rs.getInt("pnum");
-				String pname = rs.getString("pname");
-				String pcategorycode = rs.getString("pcategory_fk");
-				String pcompany = rs.getString("pcompany");
-				String pimage1 = rs.getString("pimage1");
-				String pimage2 = rs.getString("pimage2");
-				int pqty = rs.getInt("pqty");
-				int price = rs.getInt("price");
-				int saleprice = rs.getInt("saleprice");
-				String pspec = rs.getString("pspec");
-				String pcontent = rs.getString("pcontent");
-				int point = rs.getInt("point");
-				String pinputdate = rs.getString("pinputdate");
+				String sdnum = rs.getString("sdnum");
+				String fk_ldname = rs.getString("fk_ldname");
+				String sdname = rs.getString("sdname");
 				
-				ProductVO pvo = new ProductVO(pnum, pname, pcategorycode, pcompany, pimage1, pimage2, 
-											  pqty, price, saleprice, pspec, pcontent, point, pinputdate);
+				HashMap<String, String> map = new HashMap<String, String>();
+				
+				map.put("sdnum", sdnum);
+				map.put("fk_ldname", fk_ldname);
+				map.put("sdname", sdname);
 		
-				prodListByCtg.add(pvo);
+				sdCtgList.add(map);
 			}
 			
 		} finally {
 			close();
 		}
 		
-		return prodListByCtg;
+		return sdCtgList;
 	}
+
+	
+
+
 
 
 

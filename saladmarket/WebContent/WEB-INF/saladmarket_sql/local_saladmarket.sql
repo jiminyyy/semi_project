@@ -592,9 +592,13 @@ from
             where rno = 1
         )T
         --where sdname = '¹°/ÁÖ½º'
-        where sdname = '°Ç°­Áó'
+        where sdname in (select sdname from small_detail where fk_ldname = '»ø·¯µå')
         order by pdate desc, pname asc
     ) E
 ) F
 where rnum between 1 and 8;
 
+-
+select *
+from product
+where fk_sdname in (select sdname from small_detail where fk_ldname = 'DIY');

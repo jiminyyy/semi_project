@@ -100,35 +100,33 @@
                               </ul>
                            </li>
                         </c:if>
-                        <li class="has-dropdown">
-                        	<c:forEach var="ldvo" items="${categoryList}">
-                           		<a href="<%= CtxPath %>/productList.do?code=${ldvo.ldnum}">${ldvo.ldname}</a>
-                          	</c:forEach>
-                        <%--    <ul class="dropdown">
-                              <li><a href="<%= CtxPath %>/productList.do">시리얼</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do">샐러드</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do">죽/스프</a></li>
-                           </ul> --%>
-                        </li>
-                        <%-- <li class="has-dropdown">
-                           <a href="<%= CtxPath %>/productList.do">디톡스</a>
+                       	<li class="has-dropdown">
+                         	<a href="<%= CtxPath %>/productList.do?ldCode=1">샐러드</a>
                            <ul class="dropdown">
-                              <li><a href="<%= CtxPath %>/productList.do">물/주스</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do">건강즙</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do">건강차</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldName='샐러드'&sdCode=1">시리얼</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldName='샐러드'&sdCode=2">샐러드</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldName='샐러드'&sdCode=3">죽/스프</a></li>
                            </ul>
                         </li>
                         <li class="has-dropdown">
-                           <a href="<%= CtxPath %>/productList.do">DIY</a>
+                           <a href="<%= CtxPath %>/productList.do?ldCode=2">디톡스</a>
                            <ul class="dropdown">
-                              <li><a href="<%= CtxPath %>/productList.do">야채/곡류</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do">과일</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do">고기/달걀</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do">생선</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do">소스</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do">유제품</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldName='디톡스'&sdCode=4">물/주스</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldName='디톡스'&sdCode=5">건강즙</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldName='디톡스'&sdCode=6">건강차</a></li>
                            </ul>
-                        </li> --%>
+                        </li>
+                        <li class="has-dropdown">
+                           <a href="<%= CtxPath %>/productList.do?ldCode=3">DIY</a>
+                           <ul class="dropdown">
+                              <li><a href="<%= CtxPath %>/productList.do?ldName='DIY'&sdCode=7">야채/곡류</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldName='DIY'&sdCode=8">과일</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldName='DIY'&sdCode=9">고기/달걀</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldName='DIY'&sdCode=10">생선</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldName='DIY'&sdCode=11">소스</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldName='DIY'&sdCode=12">유제품</a></li>
+                           </ul>
+                        </li>
                         <li><a href="">EVENT</a></li>
                         <li><a href=""><i class="icon-shopping-cart"></i> Cart [0]</a></li>
                      </ul>

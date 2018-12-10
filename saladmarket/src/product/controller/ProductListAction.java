@@ -16,15 +16,12 @@ public class ProductListAction extends AbstractController {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		
-		super.getCategoryList(req);
-		
-		String ldcode = req.getParameter("code");
+		String ldCode = req.getParameter("ldCode");
 		
 		ProductDAO pdao = new ProductDAO();
 		
-		// ld코드를 통해 상품리스트를 가져온다
-		List<ProductVO> prodByCategoryList = pdao.getProductsByCategory(ldcode);
-		//String cname = pdao.getCnameByCtgcode(ldcode);
+		// ld코드를 통해 sdname을 가져와서 이를 통해 package리스트를 뽑아..
+		//List<ProductVO> prodByCategoryList = pdao.getProductByCategory(ldCode);
 
 		super.setRedirect(false);
 		super.setViewPage("/WEB-INF/store/product/productList.jsp");
