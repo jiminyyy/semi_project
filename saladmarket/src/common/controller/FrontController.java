@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 		urlPatterns = { "*.do" }, 
 		initParams = { 
 				@WebInitParam(name = "propertyConfig", 
-							  value = "C:/Users/jiminy/git/semi_project/saladmarket/WebContent/WEB-INF/Command.properties",// 역슬래쉬2개 혹은 슬래쉬
+							  value = "C:\\Git\\semi_project\\saladmarket\\WebContent\\WEB-INF\\Command.properties",// 역슬래쉬2개 혹은 슬래쉬
 							  description = "*.do 처리 시 매핑 파일")
 		})
 public class FrontController extends HttpServlet {

@@ -59,6 +59,64 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	
+	
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		$("#totalSearchWord").keydown(function(event){
+			
+			if(event.keyCode == 13) {
+
+				goTotalSearch();
+				
+				return false;
+			}
+			
+		}); // end of $("#searchWord").keydown(function(event){
+			
+		$("#totalSearchWord").val("${totalSearchWord}");
+	
+	});
+		
+		
+	function goSearch(){
+		
+		var searchWord = $("#searchWord").val().trim();
+		
+		if(searchWord == "") {
+			alert("검색어를 입력하세요!!");
+			return;
+		}
+		else {
+			var frm = document.memberFrm;
+			frm.method = "GET";
+			frm.action = "memberList.do";
+			frm.submit();				
+		}
+		
+	} // end of goSearch
+		
+	function goTotalSearch(){
+		
+		var totalSearchWord = $("#totalSearchWord").val().trim();
+		
+		if(totalSearchWord == "") {
+			alert("검색어를 입력하세요!!");
+			return;
+		}
+		else {
+			var frm = document.totalSearchFrm;
+			frm.method = "GET";
+			frm.action = "totalSearchProductList.do";
+			frm.submit();				
+		}
+	
+	
+	} // end of function goTotalSearch(){
+	
+	</script>
 
 	</head>
 	<body>
@@ -101,30 +159,30 @@
                            </li>
                         </c:if>
                        	<li class="has-dropdown">
-                         	<a href="<%= CtxPath %>/productList.do?ldCode=1">샐러드</a>
+                         	<a href="<%= CtxPath %>/productList.do?ldcode=1">샐러드</a>
                            <ul class="dropdown">
-                              <li><a href="<%= CtxPath %>/productList.do?ldName='샐러드'&sdCode=1">시리얼</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do?ldName='샐러드'&sdCode=2">샐러드</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do?ldName='샐러드'&sdCode=3">죽/스프</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldname=샐러드&sdcode=1">시리얼</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldname=샐러드&sdcode=2">샐러드</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldname=샐러드&sdcode=3">죽/스프</a></li>
                            </ul>
                         </li>
                         <li class="has-dropdown">
-                           <a href="<%= CtxPath %>/productList.do?ldCode=2">디톡스</a>
+                           <a href="<%= CtxPath %>/productList.do?ldcode=2">디톡스</a>
                            <ul class="dropdown">
-                              <li><a href="<%= CtxPath %>/productList.do?ldName='디톡스'&sdCode=4">물/주스</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do?ldName='디톡스'&sdCode=5">건강즙</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do?ldName='디톡스'&sdCode=6">건강차</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldname=디톡스&sdcode=4">물/주스</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldname=디톡스&sdcode=5">건강즙</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldname=디톡스&sdcode=6">건강차</a></li>
                            </ul>
                         </li>
                         <li class="has-dropdown">
-                           <a href="<%= CtxPath %>/productList.do?ldCode=3">DIY</a>
+                           <a href="<%= CtxPath %>/productList.do?ldcode=3">DIY</a>
                            <ul class="dropdown">
-                              <li><a href="<%= CtxPath %>/productList.do?ldName='DIY'&sdCode=7">야채/곡류</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do?ldName='DIY'&sdCode=8">과일</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do?ldName='DIY'&sdCode=9">고기/달걀</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do?ldName='DIY'&sdCode=10">생선</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do?ldName='DIY'&sdCode=11">소스</a></li>
-                              <li><a href="<%= CtxPath %>/productList.do?ldName='DIY'&sdCode=12">유제품</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldname=DIY&sdcode=7">야채/곡류</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldname=DIY&sdcode=8">과일</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldname=DIY&sdcode=9">고기/달걀</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldname=DIY&sdcode=10">생선</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldname=DIY&sdcode=11">소스</a></li>
+                              <li><a href="<%= CtxPath %>/productList.do?ldname=DIY&sdcode=12">유제품</a></li>
                            </ul>
                         </li>
                         <li><a href="">EVENT</a></li>
@@ -142,14 +200,15 @@
                            </div>
                         </div>
                         <div class="search-form">
-                           <form action="#" method="get">
+                           <form name="totalSearchFrm">
                               <ul style="margin: 0 auto; float: right;">
                                  <li style="float: left;">
-                                    <input type="search" placeholder="검색할 상품명을 입력하세요" style="border: 2px solid #b7b7b7; border-radius: 0; width: 300px; height: 50px; font-size: 15px; position: relative; top: 30%;" >
+                                    <input type="text" id="totalSearchWord" name="totalSearchWord" placeholder="검색할 상품명을 입력하세요" style="border: 2px solid #b7b7b7; border-radius: 0; width: 300px; height: 50px; font-size: 15px; position: relative; top: 30%;" />
+                                 	<input type="hidden" name="sizePerPage" value="8" />
                                  </li>
                                  
                                  <li style="float: left;">
-                                    <button type="submit" value="Submit" style="height: 50px; border: none;">
+                                    <button type="button" value="Submit" onClick="goTotalSearch();" style="height: 50px; border: none;">
                                        <img src="<%=CtxPath%>/store/images/search.png" style="width:20px; height:20px;"alt="">
                                     </button>
                                  </li>

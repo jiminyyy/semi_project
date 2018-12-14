@@ -1,13 +1,13 @@
 show user;
--- USER¿Ã(∞°) "SALADMARKET"¿‘¥œ¥Ÿ.
+-- USERÏù¥(Í∞Ä) "SALADMARKET"ÏûÖÎãàÎã§.
 
 
--- »∏ø¯ µÓ±ﬁ(member_level) ≈◊¿Ã∫Ì ª˝º∫; 1~3µÓ±ﬁ
+-- ÌöåÏõê Îì±Í∏â(member_level) ÌÖåÏù¥Î∏î ÏÉùÏÑ±; 1~3Îì±Í∏â
 create table member_level 
-(lvnum       number         not null -- µÓ±ﬁπ¯»£; 1, 2, 3
-,lvname      varchar2(100)  not null -- µÓ±ﬁ∏Ì; bronze, silver, gold
-,lvbenefit   clob           not null -- µÓ±ﬁ«˝≈√
-,lvcontents  clob           not null -- µÓ±ﬁ¡∂∞«≥ªøÎ
+(lvnum       number         not null -- Îì±Í∏âÎ≤àÌò∏; 1, 2, 3
+,lvname      varchar2(100)  not null -- Îì±Í∏âÎ™Ö; bronze, silver, gold
+,lvbenefit   clob           not null -- Îì±Í∏âÌòúÌÉù
+,lvcontents  clob           not null -- Îì±Í∏âÏ°∞Í±¥ÎÇ¥Ïö©
 ,constraint  PK_level primary key (lvnum)
 );
   
@@ -22,14 +22,14 @@ nocache;
 select *
 from member_level;
 
--- ƒÌ∆˘(coupon) ≈◊¿Ã∫Ì ª˝º∫ 
+-- Ïø†Ìè∞(coupon) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table coupon 
-(cpnum          number not null             -- ƒÌ∆˘π¯»£ 
-,cpname         varchar2(100) not null      -- ƒÌ∆˘∏Ì 
-,discountper    number not null         -- «“¿Œ¿≤
-,cpstatus        number  default 1 not null         -- ƒÌ∆˘ ªÁøÎ ªÛ≈¬; 0:ªÁøÎµ  1:πÃªÁøÎ
-,cpusemoney   number not null           -- ƒÌ∆˘ ªÁøÎ ¡∂∞«; ex. 1∏∏ø¯ ¿ÃªÛ ªÁøÎΩ√ ~~
-,cpuselimit      number not null           -- ƒÌ∆˘ «“¿Œ±›æ◊ ¡¶«—; ex. √÷¥Î 5000ø¯
+(cpnum          number not null             -- Ïø†Ìè∞Î≤àÌò∏ 
+,cpname         varchar2(100) not null      -- Ïø†Ìè∞Î™Ö 
+,discountper    number not null         -- Ìï†Ïù∏Ïú®
+,cpstatus        number  default 1 not null         -- Ïø†Ìè∞ ÏÇ¨Ïö© ÏÉÅÌÉú; 0:ÏÇ¨Ïö©Îê® 1:ÎØ∏ÏÇ¨Ïö©
+,cpusemoney   number not null           -- Ïø†Ìè∞ ÏÇ¨Ïö© Ï°∞Í±¥; ex. 1ÎßåÏõê Ïù¥ÏÉÅ ÏÇ¨Ïö©Ïãú ~~
+,cpuselimit      number not null           -- Ïø†Ìè∞ Ìï†Ïù∏Í∏àÏï° Ï†úÌïú; ex. ÏµúÎåÄ 5000Ïõê
 ,constraint PK_coupon primary key(cpnum)
 ,constraint CK_coupon_cpstatus check( cpstatus in(0, 1) )
 );
@@ -45,24 +45,24 @@ nocache;
 select *
 from coupon;
 
--- »∏ø¯(member) ≈◊¿Ã∫Ì ª˝º∫ 
+-- ÌöåÏõê(member) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table member 
-(mnum               number                not null  -- »∏ø¯π¯»£
-,userid             varchar2(100)         not null  -- »∏ø¯æ∆¿Ãµ
-,name               varchar2(10)          not null  -- »∏ø¯∏Ì
-,email              varchar2(200)         not null  -- ¿Ã∏ﬁ¿œ(AES256 æœ»£»≠)
-,phone              varchar2(400)         not null  -- »ﬁ¥Î∆˘(AES256 æœ»£»≠)
-,birthday           date                  not null  -- ª˝≥‚ø˘¿œ
-,postnum            number                not null  -- øÏ∆Ìπ¯»£
-,address1           varchar2(200)         not null  -- ¡÷º“
-,address2           varchar2(200)         not null  -- ªÛºº¡÷º“
-,point              number default 0      not null  -- ∆˜¿Œ∆Æ
-,registerdate       date default sysdate  not null  -- ∞°¿‘¿œ¿⁄
-,last_logindate     date default sysdate  not null  -- ∏∂¡ˆ∏∑∑Œ±◊¿Œ¿œ¿⁄
-,last_changepwdate  date default sysdate  not null  -- ∫Òπ–π¯»£∫Ø∞Ê¿œ¿⁄
-,status             number default 1      not null  -- »∏ø¯≈ª≈¿Øπ´ / 0:≈ª≈ 1:»∞µø 2:»ﬁ∏È
-,summoney           number default 0      not null  -- ¥©¿˚±∏∏≈±›æ◊
-,fk_lvnum           number default 1      not null  -- »∏ø¯µÓ±ﬁπ¯»£
+(mnum               number                not null  -- ÌöåÏõêÎ≤àÌò∏
+,userid             varchar2(100)         not null  -- ÌöåÏõêÏïÑÏù¥Îîî
+,name               varchar2(10)          not null  -- ÌöåÏõêÎ™Ö
+,email              varchar2(200)         not null  -- Ïù¥Î©îÏùº(AES256 ÏïîÌò∏Ìôî)
+,phone              varchar2(400)         not null  -- Ìú¥ÎåÄÌè∞(AES256 ÏïîÌò∏Ìôî)
+,birthday           date                  not null  -- ÏÉùÎÖÑÏõîÏùº
+,postnum            number                not null  -- Ïö∞Ìé∏Î≤àÌò∏
+,address1           varchar2(200)         not null  -- Ï£ºÏÜå
+,address2           varchar2(200)         not null  -- ÏÉÅÏÑ∏Ï£ºÏÜå
+,point              number default 0      not null  -- Ìè¨Ïù∏Ìä∏
+,registerdate       date default sysdate  not null  -- Í∞ÄÏûÖÏùºÏûê
+,last_logindate     date default sysdate  not null  -- ÎßàÏßÄÎßâÎ°úÍ∑∏Ïù∏ÏùºÏûê
+,last_changepwdate  date default sysdate  not null  -- ÎπÑÎ∞ÄÎ≤àÌò∏Î≥ÄÍ≤ΩÏùºÏûê
+,status             number default 1      not null  -- ÌöåÏõêÌÉàÌá¥Ïú†Î¨¥ / 0:ÌÉàÌá¥ 1:ÌôúÎèô 2:Ìú¥Î©¥
+,summoney           number default 0      not null  -- ÎàÑÏ†ÅÍµ¨Îß§Í∏àÏï°
+,fk_lvnum           number default 1      not null  -- ÌöåÏõêÎì±Í∏âÎ≤àÌò∏
 ,constraint PK_member_mnum	primary key(mnum)
 ,constraint UQ_member_userid unique(userid)
 ,constraint FK_member_lvnum foreign key(fk_lvnum)
@@ -81,11 +81,11 @@ nocache;
 select *
 from member;
 
--- ∫∏¿ØƒÌ∆˘(my_coupon) ≈◊¿Ã∫Ì ª˝º∫ 
+-- Î≥¥Ïú†Ïø†Ìè∞(my_coupon) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table my_coupon 
-(fk_userid   varchar2(100) not null  -- »∏ø¯æ∆¿Ãµ 
-,fk_cpnum  number not null  -- ƒÌ∆˘π¯»£
-,cpexpiredate date not null         -- ƒÌ∆˘ ªÁøÎ ±‚«—
+(fk_userid   varchar2(100) not null  -- ÌöåÏõêÏïÑÏù¥Îîî 
+,fk_cpnum  number not null  -- Ïø†Ìè∞Î≤àÌò∏
+,cpexpiredate date not null         -- Ïø†Ìè∞ ÏÇ¨Ïö© Í∏∞Ìïú
 ,constraint FK_my_coupon_userid foreign key(fk_userid)
                                   references member(userid)
 ,constraint FK_my_coupon_cpnum foreign key(fk_cpnum)
@@ -95,10 +95,10 @@ create table my_coupon
 select *
 from my_coupon;
 
--- ∞¸∏Æ¿⁄(admin) ≈◊¿Ã∫Ì ª˝º∫ 
+-- Í¥ÄÎ¶¨Ïûê(admin) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table admin 
-(adminid varchar2(100) -- ∞¸∏Æ¿⁄æ∆¿Ãµ 
-,adminpw varchar2(200) -- ∞¸∏Æ¿⁄æœ»£ 
+(adminid varchar2(100) -- Í¥ÄÎ¶¨ÏûêÏïÑÏù¥Îîî 
+,adminpw varchar2(200) -- Í¥ÄÎ¶¨ÏûêÏïîÌò∏ 
 );
 
 select *
@@ -108,12 +108,12 @@ insert into admin values('admin', 'qwer1234$');
 
 -----------------------------------------------------------------------------
 
--- ªÛ«∞∆–≈∞¡ˆ(product_package) ≈◊¿Ã∫Ì ª˝º∫ 
+-- ÏÉÅÌíàÌå®ÌÇ§ÏßÄ(product_package) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table product_package 
-(pacnum       number default 0  not null    -- ªÛ«∞∆–≈∞¡ˆπ¯»£ 
-,pacname      varchar2(100)     not null    -- ªÛ«∞∆–≈∞¡ˆ∏Ì 
-,paccontents  clob                          -- ∆–≈∞¡ˆ≥ªøÎ 
-,pacimage     varchar2(200)                 -- ∆–≈∞¡ˆ¿ÃπÃ¡ˆ 
+(pacnum       number default 0  not null    -- ÏÉÅÌíàÌå®ÌÇ§ÏßÄÎ≤àÌò∏ 
+,pacname      varchar2(100)     not null    -- ÏÉÅÌíàÌå®ÌÇ§ÏßÄÎ™Ö 
+,paccontents  clob                          -- Ìå®ÌÇ§ÏßÄÎÇ¥Ïö© 
+,pacimage     varchar2(200)                 -- Ìå®ÌÇ§ÏßÄÏù¥ÎØ∏ÏßÄ 
 ,constraint PK_product_package primary key(pacnum)
 ,constraint UQ_product_package unique(pacname)
 );
@@ -129,10 +129,10 @@ nocache;
 select *
 from product_package;
 
--- ¥Î∫–∑˘ªÛºº(large_detail) ≈◊¿Ã∫Ì ª˝º∫ 
+-- ÎåÄÎ∂ÑÎ•òÏÉÅÏÑ∏(large_detail) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table large_detail 
-(ldnum   number         not null  -- ¥Î∫–∑˘ªÛººπ¯»£ 
-,ldname  varchar2(100)  not null  -- ¥Î∫–∑˘∏Ì 
+(ldnum   number         not null  -- ÎåÄÎ∂ÑÎ•òÏÉÅÏÑ∏Î≤àÌò∏ 
+,ldname  varchar2(100)  not null  -- ÎåÄÎ∂ÑÎ•òÎ™Ö 
 ,constraint PK_large_detail	primary key(ldnum)
 ,constraint UQ_large_detail unique (ldname)
 );
@@ -148,11 +148,11 @@ nocache;
 select *
 from large_detail;
 
--- º“∫–∑˘ªÛºº(small_detail) ≈◊¿Ã∫Ì ª˝º∫
+-- ÏÜåÎ∂ÑÎ•òÏÉÅÏÑ∏(small_detail) ÌÖåÏù¥Î∏î ÏÉùÏÑ±
 create table small_detail 
-(sdnum     number         not null  -- º“∫–∑˘ªÛººπ¯»£
-,fk_ldname  varchar2(100)       not null  -- ¥Î∫–∑˘ªÛºº∏Ì
-,sdname    varchar2(100)  not null  -- º“∫–∑˘∏Ì
+(sdnum     number         not null  -- ÏÜåÎ∂ÑÎ•òÏÉÅÏÑ∏Î≤àÌò∏
+,fk_ldname  varchar2(100)       not null  -- ÎåÄÎ∂ÑÎ•òÏÉÅÏÑ∏Î™Ö
+,sdname    varchar2(100)  not null  -- ÏÜåÎ∂ÑÎ•òÎ™Ö
 ,constraint PK_small_detail	primary key(sdnum)
 ,constraint FK_small_detail_ldname foreign key(fk_ldname)
                                   references large_detail(ldname)
@@ -170,10 +170,10 @@ nocache;
 select *
 from small_detail;
 
--- Ω∫∆Â≈¬±◊(spec_tag) ≈◊¿Ã∫Ì ª˝º∫ / (Hit, Best, New)
+-- Ïä§ÌéôÌÉúÍ∑∏(spec_tag) ÌÖåÏù¥Î∏î ÏÉùÏÑ± / (Hit, Best, New)
 create table spec_tag 
-(stnum   number         not null  -- Ω∫∆Â≈¬±◊π¯»£ 
-,stname  varchar2(100)  not null  -- Ω∫∆Â≈¬±◊∏Ì 
+(stnum   number         not null  -- Ïä§ÌéôÌÉúÍ∑∏Î≤àÌò∏ 
+,stname  varchar2(100)  not null  -- Ïä§ÌéôÌÉúÍ∑∏Î™Ö 
 ,constraint PK_spec_tag	primary key(stnum)
 ,constraint UQ_spec_tag unique (stname)
 );
@@ -189,10 +189,10 @@ nocache;
 select *
 from spec_tag;
 
--- ƒ´≈◊∞Ì∏Æ≈¬±◊(category_tag) ≈◊¿Ã∫Ì ª˝º∫ 
+-- Ïπ¥ÌÖåÍ≥†Î¶¨ÌÉúÍ∑∏(category_tag) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table category_tag 
-(ctnum   number         not null  -- ƒ´≈◊∞Ì∏Æπ¯»£ 
-,ctname  varchar2(100)  not null  -- ƒ´≈◊∞Ì∏Æ∏Ì 
+(ctnum   number         not null  -- Ïπ¥ÌÖåÍ≥†Î¶¨Î≤àÌò∏ 
+,ctname  varchar2(100)  not null  -- Ïπ¥ÌÖåÍ≥†Î¶¨Î™Ö 
 ,constraint PK_category_tag primary key(ctnum)
 ,constraint UQ_category_tag unique (ctname)
 );
@@ -208,11 +208,11 @@ nocache;
 select *
 from category_tag;
 
--- ¿Ã∫•∆Æ≈¬±◊(event_tag) ≈◊¿Ã∫Ì ª˝º∫ 
+-- Ïù¥Î≤§Ìä∏ÌÉúÍ∑∏(event_tag) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table event_tag 
-(etnum   number  not null  -- ¿Ã∫•∆Æπ¯»£ 
-,etname  varchar2(100)     -- ¿Ã∫•∆Æ∏Ì
-,etimagefilename varchar2(200) -- ¿Ã∫•∆Æ ¿ÃπÃ¡ˆ
+(etnum   number  not null  -- Ïù¥Î≤§Ìä∏Î≤àÌò∏ 
+,etname  varchar2(100)     -- Ïù¥Î≤§Ìä∏Î™Ö
+,etimagefilename varchar2(200) -- Ïù¥Î≤§Ìä∏ Ïù¥ÎØ∏ÏßÄ
 ,constraint PK_event_tag primary key(etnum)
 ,constraint UQ_event_tag unique (etname)
 );
@@ -228,27 +228,27 @@ nocache;
 select *
 from event_tag;
 
--- ªÛ«∞(product) ≈◊¿Ã∫Ì ª˝º∫
+-- ÏÉÅÌíà(product) ÌÖåÏù¥Î∏î ÏÉùÏÑ±
 create table product 
-(pnum          number  not null                -- ªÛ«∞π¯»£ 
-,fk_pacname     varchar2(100)  not null                -- ªÛ«∞∆–≈∞¡ˆ∏Ì
-,fk_sdname      varchar2(100)  not null                -- º“∫–∑˘ªÛºº∏Ì 
-,fk_ctname      varchar2(100)  not null                -- ƒ´≈◊∞Ì∏Æ≈¬±◊∏Ì 
-,fk_stname      varchar2(100)  not null                -- Ω∫∆Â≈¬±◊∏Ì 
-,fk_etname      varchar2(100)  not null      -- ¿Ã∫•∆Æ≈¬±◊∏Ì
-,pname         varchar2(100)  not null         -- ªÛ«∞∏Ì 
-,price         number default 0  not null      -- ø¯∞° 
-,saleprice     number default 0  not null      -- ∆«∏≈∞° 
-,point         number default 0  not null      -- ∆˜¿Œ∆Æ 
-,pqty          number default 0  not null      -- ¿Á∞Ì∑Æ 
-,pcontents     clob                            -- ªÛ«∞º≥∏Ì 
-,pcompanyname  varchar2(100)  not null         -- ªÛ«∞»∏ªÁ∏Ì 
-,pexpiredate varchar2(200) default 'ªÛºº≥ªøÎ¬¸¡∂'  not null -- ¿Ø≈Î±‚«— 
-,allergy       clob                            -- æÀ∑π∏£±‚¡§∫∏ 
-,weight        number default 0  not null      -- øÎ∑Æ 
-,salecount     number default 0  not null      -- ∆«∏≈∑Æ 
-,plike         number default 0  not null      -- ªÛ«∞¡¡æ∆ø‰ 
-,pdate         date default sysdate  not null  -- ªÛ«∞µÓ∑œ¿œ¿⁄
+(pnum          number  not null                -- ÏÉÅÌíàÎ≤àÌò∏ 
+,fk_pacname     varchar2(100)  not null                -- ÏÉÅÌíàÌå®ÌÇ§ÏßÄÎ™Ö
+,fk_sdname      varchar2(100)  not null                -- ÏÜåÎ∂ÑÎ•òÏÉÅÏÑ∏Î™Ö 
+,fk_ctname      varchar2(100)  not null                -- Ïπ¥ÌÖåÍ≥†Î¶¨ÌÉúÍ∑∏Î™Ö 
+,fk_stname      varchar2(100)  not null                -- Ïä§ÌéôÌÉúÍ∑∏Î™Ö 
+,fk_etname      varchar2(100)  not null      -- Ïù¥Î≤§Ìä∏ÌÉúÍ∑∏Î™Ö
+,pname         varchar2(100)  not null         -- ÏÉÅÌíàÎ™Ö 
+,price         number default 0  not null      -- ÏõêÍ∞Ä 
+,saleprice     number default 0  not null      -- ÌåêÎß§Í∞Ä 
+,point         number default 0  not null      -- Ìè¨Ïù∏Ìä∏ 
+,pqty          number default 0  not null      -- Ïû¨Í≥†Îüâ 
+,pcontents     clob                            -- ÏÉÅÌíàÏÑ§Î™Ö 
+,pcompanyname  varchar2(100)  not null         -- ÏÉÅÌíàÌöåÏÇ¨Î™Ö 
+,pexpiredate varchar2(200) default 'ÏÉÅÏÑ∏ÎÇ¥Ïö©Ï∞∏Ï°∞'  not null -- Ïú†ÌÜµÍ∏∞Ìïú 
+,allergy       clob                            -- ÏïåÎ†àÎ•¥Í∏∞Ï†ïÎ≥¥ 
+,weight        number default 0  not null      -- Ïö©Îüâ 
+,salecount     number default 0  not null      -- ÌåêÎß§Îüâ 
+,plike         number default 0  not null      -- ÏÉÅÌíàÏ¢ãÏïÑÏöî 
+,pdate         date default sysdate  not null  -- ÏÉÅÌíàÎì±Î°ùÏùºÏûê
 ,constraint PK_product_pnum primary key(pnum)
 ,constraint FK_product_pacname foreign key(fk_pacname)
                                references product_package(pacname)
@@ -273,28 +273,28 @@ nocache;
 select *
 from product;
 
--- ªÛ«∞πÈæ˜(Product_backup) ≈◊¿Ã∫Ì ª˝º∫ 
+-- ÏÉÅÌíàÎ∞±ÏóÖ(Product_backup) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table product_backup 
 (deletenum     number  not null         -- deletenum 
-,pnum          number  not null                -- ªÛ«∞π¯»£ 
-,fk_pacname     number  not null                -- ªÛ«∞∆–≈∞¡ˆ∏Ì
-,fk_sdname      number  not null                -- º“∫–∑˘ªÛºº∏Ì 
-,fk_ctname      number  not null                -- ƒ´≈◊∞Ì∏Æ≈¬±◊∏Ì 
-,fk_stname      number  not null                -- Ω∫∆Â≈¬±◊∏Ì 
-,fk_etname      number  default 0 not null      -- ¿Ã∫•∆Æ≈¬±◊∏Ì
-,pname         varchar2(100)  not null         -- ªÛ«∞∏Ì 
-,price         number default 0  not null      -- ø¯∞° 
-,saleprice     number default 0  not null      -- ∆«∏≈∞° 
-,point         number default 0  not null      -- ∆˜¿Œ∆Æ 
-,pqty          number default 0  not null      -- ¿Á∞Ì∑Æ 
-,pcontents     clob                            -- ªÛ«∞º≥∏Ì 
-,pcompanyname  varchar2(100)  not null         -- ªÛ«∞»∏ªÁ∏Ì 
-,pexpiredate   date default sysdate  not null  -- ¿Ø≈Î±‚«— 
-,allergy       clob                            -- æÀ∑π∏£±‚¡§∫∏ 
-,weight        number default 0  not null      -- øÎ∑Æ 
-,salecount     number default 0  not null      -- ∆«∏≈∑Æ 
-,plike         number default 0  not null      -- ªÛ«∞¡¡æ∆ø‰ 
-,pdate         date default sysdate  not null  -- ?ªÛ«∞∆«∏≈¿œ¿⁄
+,pnum          number  not null                -- ÏÉÅÌíàÎ≤àÌò∏ 
+,fk_pacname     number  not null                -- ÏÉÅÌíàÌå®ÌÇ§ÏßÄÎ™Ö
+,fk_sdname      number  not null                -- ÏÜåÎ∂ÑÎ•òÏÉÅÏÑ∏Î™Ö 
+,fk_ctname      number  not null                -- Ïπ¥ÌÖåÍ≥†Î¶¨ÌÉúÍ∑∏Î™Ö 
+,fk_stname      number  not null                -- Ïä§ÌéôÌÉúÍ∑∏Î™Ö 
+,fk_etname      number  default 0 not null      -- Ïù¥Î≤§Ìä∏ÌÉúÍ∑∏Î™Ö
+,pname         varchar2(100)  not null         -- ÏÉÅÌíàÎ™Ö 
+,price         number default 0  not null      -- ÏõêÍ∞Ä 
+,saleprice     number default 0  not null      -- ÌåêÎß§Í∞Ä 
+,point         number default 0  not null      -- Ìè¨Ïù∏Ìä∏ 
+,pqty          number default 0  not null      -- Ïû¨Í≥†Îüâ 
+,pcontents     clob                            -- ÏÉÅÌíàÏÑ§Î™Ö 
+,pcompanyname  varchar2(100)  not null         -- ÏÉÅÌíàÌöåÏÇ¨Î™Ö 
+,pexpiredate   date default sysdate  not null  -- Ïú†ÌÜµÍ∏∞Ìïú 
+,allergy       clob                            -- ÏïåÎ†àÎ•¥Í∏∞Ï†ïÎ≥¥ 
+,weight        number default 0  not null      -- Ïö©Îüâ 
+,salecount     number default 0  not null      -- ÌåêÎß§Îüâ 
+,plike         number default 0  not null      -- ÏÉÅÌíàÏ¢ãÏïÑÏöî 
+,pdate         date default sysdate  not null  -- ?ÏÉÅÌíàÌåêÎß§ÏùºÏûê
 ,constraint PK_product_backup primary key(deletenum)
 );
 
@@ -307,11 +307,11 @@ nocycle
 nocache;
 
 
--- ¬Ú(pick) ≈◊¿Ã∫Ì ª˝º∫ 
+-- Ï∞ú(pick) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table pick 
-(picknum    number         not null  -- ¬Úπ¯»£ 
-,fk_userid  varchar2(100)  not null  -- »∏ø¯æ∆¿Ãµ 
-,fk_pnum    number         not null  -- ªÛ«∞π¯»£    
+(picknum    number         not null  -- Ï∞úÎ≤àÌò∏ 
+,fk_userid  varchar2(100)  not null  -- ÌöåÏõêÏïÑÏù¥Îîî 
+,fk_pnum    number         not null  -- ÏÉÅÌíàÎ≤àÌò∏    
 ,constraint PK_pick_picknum primary key(picknum)
 ,constraint FK_pick_userid foreign key(fk_userid)
                             references member(userid)
@@ -327,13 +327,13 @@ nominvalue
 nocycle
 nocache;
 
--- ¿ÂπŸ±∏¥œ ≈◊¿Ã∫Ì ª˝º∫
+-- Ïû•Î∞îÍµ¨Îãà ÌÖåÏù¥Î∏î ÏÉùÏÑ±
  create table product_cart
- (cartno  number               not null   --  ¿ÂπŸ±∏¥œ π¯»£
- ,fk_userid  varchar2(20)         not null   --  ªÁøÎ¿⁄ID
- ,fk_pnum    number(8)            not null   --  ¡¶«∞π¯»£ 
- ,oqty    number(8) default 0  not null   --  ¡÷πÆ∑Æ
- ,status  number(1) default 1             --  ªË¡¶¿Øπ´; 0: ªË¡¶ 1: ª˝º∫
+ (cartno  number               not null   --  Ïû•Î∞îÍµ¨Îãà Î≤àÌò∏
+ ,fk_userid  varchar2(20)         not null   --  ÏÇ¨Ïö©ÏûêID
+ ,fk_pnum    number(8)            not null   --  Ï†úÌíàÎ≤àÌò∏ 
+ ,oqty    number(8) default 0  not null   --  Ï£ºÎ¨∏Îüâ
+ ,status  number(1) default 1             --  ÏÇ≠Ï†úÏú†Î¨¥; 0: ÏÇ≠Ï†ú 1: ÏÉùÏÑ±
  ,constraint PK_product_cart_cartno primary key(cartno)
  ,constraint FK_product_cart_userid foreign key(fk_userid)
                                 references member(userid) 
@@ -351,11 +351,11 @@ nocache;
  nocache;
 
 
--- ªÛ«∞¿ÃπÃ¡ˆ(product_images) ≈◊¿Ã∫Ì ª˝º∫ 
+-- ÏÉÅÌíàÏù¥ÎØ∏ÏßÄ(product_images) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table product_images 
-(pimgnum       number         not null -- ªÛ«∞¿ÃπÃ¡ˆπ¯»£ 
-,pimgfilename  varchar2(100)  not null -- ªÛ«∞¿ÃπÃ¡ˆ∆ƒ¿œ∏Ì 
-,fk_pnum       number         not null -- ªÛ«∞π¯»£ 
+(pimgnum       number         not null -- ÏÉÅÌíàÏù¥ÎØ∏ÏßÄÎ≤àÌò∏ 
+,pimgfilename  varchar2(100)  not null -- ÏÉÅÌíàÏù¥ÎØ∏ÏßÄÌååÏùºÎ™Ö 
+,fk_pnum       number         not null -- ÏÉÅÌíàÎ≤àÌò∏ 
 ,constraint PK_product_images primary key(pimgnum)
 ,constraint FK_product_images_ldnum foreign key(fk_pnum)
                                       references product(pnum)
@@ -372,18 +372,18 @@ nocache;
 select *
 from product_images;
 
--- ∏Æ∫‰∞‘Ω√∆«(review_borad) ≈◊¿Ã∫Ì ª˝º∫ 
+-- Î¶¨Î∑∞Í≤åÏãúÌåê(review_borad) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table review_borad 
-(rbnum        number  not null                -- ∏Æ∫‰π¯»£ 
-,fk_pnum      number  not null                -- ªÛ«∞π¯»£ 
-,fk_userid    varchar2(100)  not null         -- ªÁøÎ¿⁄æ∆¿Ãµ 
-,rbtitle      varchar2(100)  not null         -- ∏Æ∫‰¡¶∏Ò 
-,rbgrade      number default 0      not null  -- ∏Æ∫‰∆Ú¡° 
-,rbwritedate  date default sysdate  not null  -- ∏Æ∫‰¿€º∫¿œ¿⁄ 
-,rbcontents   clob  not null                  -- ∏Æ∫‰≥ªøÎ
-,rbimage    varchar2(200)                 -- ∏Æ∫‰¿ÃπÃ¡ˆ
-,rbviewcount  number default 0  not null      -- ∏Æ∫‰¡∂»∏ºˆ 
-,rblike       number default 0  not null      -- ∏Æ∫‰¡¡æ∆ø‰ 
+(rbnum        number  not null                -- Î¶¨Î∑∞Î≤àÌò∏ 
+,fk_pnum      number  not null                -- ÏÉÅÌíàÎ≤àÌò∏ 
+,fk_userid    varchar2(100)  not null         -- ÏÇ¨Ïö©ÏûêÏïÑÏù¥Îîî 
+,rbtitle      varchar2(100)  not null         -- Î¶¨Î∑∞Ï†úÎ™© 
+,rbgrade      number default 0      not null  -- Î¶¨Î∑∞ÌèâÏ†ê 
+,rbwritedate  date default sysdate  not null  -- Î¶¨Î∑∞ÏûëÏÑ±ÏùºÏûê 
+,rbcontents   clob  not null                  -- Î¶¨Î∑∞ÎÇ¥Ïö©
+,rbimage    varchar2(200)                 -- Î¶¨Î∑∞Ïù¥ÎØ∏ÏßÄ
+,rbviewcount  number default 0  not null      -- Î¶¨Î∑∞Ï°∞ÌöåÏàò 
+,rblike       number default 0  not null      -- Î¶¨Î∑∞Ï¢ãÏïÑÏöî 
 ,rbstatus     number default 1  not null   
 ,constraint PK_review_borad primary key(rbnum)
 ,constraint FK_review_borad_pnum foreign key(fk_pnum)
@@ -404,14 +404,14 @@ nocache;
 select *
 from review_borad;
 
--- ∏Æ∫‰∞‘Ω√∆«¥Ò±€(review_comment) ≈◊¿Ã∫Ì ª˝º∫ 
+-- Î¶¨Î∑∞Í≤åÏãúÌåêÎåìÍ∏Ä(review_comment) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table review_comment 
-(rcnum        number         not null         -- ∏Æ∫‰¥Ò±€π¯»£
-,fk_rbnum     number         not null         -- ∏Æ∫‰∞‘Ω√∆«π¯»£
-,fk_userid    varchar2(100)  not null         -- ªÁøÎ¿⁄æ∆¿Ãµ
-,name      varchar2(10) not null                -- ªÁøÎ¿⁄¿Ã∏ß  
-,rcwritedate  date default sysdate  not null  -- ∏Æ∫‰¥Ò±€¿€º∫¿œ¿⁄ 
-,rccontents   number  not null                -- ∏Æ∫‰¥Ò±€≥ªøÎ 
+(rcnum        number         not null         -- Î¶¨Î∑∞ÎåìÍ∏ÄÎ≤àÌò∏
+,fk_rbnum     number         not null         -- Î¶¨Î∑∞Í≤åÏãúÌåêÎ≤àÌò∏
+,fk_userid    varchar2(100)  not null         -- ÏÇ¨Ïö©ÏûêÏïÑÏù¥Îîî
+,name      varchar2(10) not null                -- ÏÇ¨Ïö©ÏûêÏù¥Î¶Ñ  
+,rcwritedate  date default sysdate  not null  -- Î¶¨Î∑∞ÎåìÍ∏ÄÏûëÏÑ±ÏùºÏûê 
+,rccontents   number  not null                -- Î¶¨Î∑∞ÎåìÍ∏ÄÎÇ¥Ïö© 
 ,constraint PK_review_comment primary key(rcnum)
 ,constraint FK_review_comment_rbnum foreign key(fk_rbnum)
                                        references review_borad(rbnum)
@@ -430,13 +430,13 @@ nocache;
 select *
 from review_comment;
 
--- ªÛ«∞¡÷πÆ(product_order)  ≈◊¿Ã∫Ì ª˝º∫ 
+-- ÏÉÅÌíàÏ£ºÎ¨∏(product_order)  ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table product_order 
-(odrcode        varchar2(100)  not null         -- ¡÷πÆƒ⁄µÂ / »∏ªÁƒ⁄µÂ-¡÷πÆ¿œ¿⁄-seq (ex. s-20181123-1
-,fk_userid      varchar2(100)  not null         -- ªÁøÎ¿⁄æ∆¿Ãµ 
-,odrtotalprice  number         not null         -- ¡÷πÆ√—æ◊ 
-,odrtotalpoint  number         not null         -- ¡÷πÆ√—∆˜¿Œ∆Æ 
-,odrdate        date default sysdate  not null  -- ¡÷πÆ¿œ¿⁄
+(odrcode        varchar2(100)  not null         -- Ï£ºÎ¨∏ÏΩîÎìú / ÌöåÏÇ¨ÏΩîÎìú-Ï£ºÎ¨∏ÏùºÏûê-seq (ex. s-20181123-1
+,fk_userid      varchar2(100)  not null         -- ÏÇ¨Ïö©ÏûêÏïÑÏù¥Îîî 
+,odrtotalprice  number         not null         -- Ï£ºÎ¨∏Ï¥ùÏï° 
+,odrtotalpoint  number         not null         -- Ï£ºÎ¨∏Ï¥ùÌè¨Ïù∏Ìä∏ 
+,odrdate        date default sysdate  not null  -- Ï£ºÎ¨∏ÏùºÏûê
 ,constraint PK_product_order primary key(odrcode)
 ,constraint FK_product_order_userid foreign key(fk_userid)
                                       references member(userid)
@@ -455,16 +455,16 @@ as
 select *
 from product_order;
 
--- ¡÷πÆªÛºº(product_order_detail) ≈◊¿Ã∫Ì ª˝º∫ 
+-- Ï£ºÎ¨∏ÏÉÅÏÑ∏(product_order_detail) ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 create table product_order_detail 
-(odrdnum        number not null            -- ¡÷πÆªÛººπ¯»£ 
-,fk_pnum        number not null            -- ªÛ«∞π¯»£ 
-,fk_odrcode     varchar2(100) not null     -- ¡÷πÆƒ⁄µÂ 
-,oqty           number not null            -- ¡÷πÆºˆ∑Æ 
-,odrprice       number not null            -- ¡÷πÆΩ√ ªÛ«∞∞°∞›
-,odrstatus  number default 0 not null  -- πËº€ªÛ≈¬ / 0:πËº€¿¸(¡÷πÆøœ∑·) 1:πËº€¡ﬂ 2:πËº€øœ∑· 3: ¡÷πÆ√Îº“ 4: ±≥»Ø»Ø∫“
-,deliverdate    date                       -- πËº€øœ∑·¿œ¿⁄?
-,invoice        varchar2(200)              -- øÓº€¿Âπ¯»£ 
+(odrdnum        number not null            -- Ï£ºÎ¨∏ÏÉÅÏÑ∏Î≤àÌò∏ 
+,fk_pnum        number not null            -- ÏÉÅÌíàÎ≤àÌò∏ 
+,fk_odrcode     varchar2(100) not null     -- Ï£ºÎ¨∏ÏΩîÎìú 
+,oqty           number not null            -- Ï£ºÎ¨∏ÏàòÎüâ 
+,odrprice       number not null            -- Ï£ºÎ¨∏Ïãú ÏÉÅÌíàÍ∞ÄÍ≤©
+,odrstatus  number default 0 not null  -- Î∞∞ÏÜ°ÏÉÅÌÉú / 0:Î∞∞ÏÜ°Ï†Ñ(Ï£ºÎ¨∏ÏôÑÎ£å) 1:Î∞∞ÏÜ°Ï§ë 2:Î∞∞ÏÜ°ÏôÑÎ£å 3: Ï£ºÎ¨∏Ï∑®ÏÜå 4: ÍµêÌôòÌôòÎ∂à
+,deliverdate    date                       -- Î∞∞ÏÜ°ÏôÑÎ£åÏùºÏûê?
+,invoice        varchar2(200)              -- Ïö¥ÏÜ°Ïû•Î≤àÌò∏ 
 ,constraint PK_order_detail	primary key (odrdnum)
 ,constraint FK_order_detail_pnum foreign key(fk_pnum)
                                    references product(pnum)                             
@@ -487,11 +487,11 @@ as
 select *
 from product_order_detail;
 
--- ¡÷πÆ√Îº“(order_cancel) ≈◊¿Ã∫Ì ª˝º∫
+-- Ï£ºÎ¨∏Ï∑®ÏÜå(order_cancel) ÌÖåÏù¥Î∏î ÏÉùÏÑ±
 create table order_cancel 
-(odrcnum       number not null  -- ¡÷πÆ√Îº“π¯»£
-,odrccontents  clob not null    -- ¡÷πÆ√Îº“ªÁ¿Ø
-,fk_odrcode     varchar2(100)  not null -- ¡÷πÆƒ⁄µÂ
+(odrcnum       number not null  -- Ï£ºÎ¨∏Ï∑®ÏÜåÎ≤àÌò∏
+,odrccontents  clob not null    -- Ï£ºÎ¨∏Ï∑®ÏÜåÏÇ¨Ïú†
+,fk_odrcode     varchar2(100)  not null -- Ï£ºÎ¨∏ÏΩîÎìú
 ,constraint PK_order_cancel primary key(odrcnum)
 ,constraint FK_order_cancel_odrcode foreign key(fk_odrcode) 
                                        references product_order(odrcode)  on delete cascade
@@ -505,15 +505,15 @@ nominvalue
 nocycle
 nocache;
 
--- ∞·¡¶¡§∫∏ ¿˙¿Â ≈◊¿Ã∫Ì
---(»∏ø¯æ∆¿Ãµ/∞·¡¶¿œΩ√/∞·¡¶±›æ◊/ºº∫Œ∞·¡¶ºˆ¥‹/∞·¡¶ªÛ≈¬(Ω«∆–/º∫∞¯))
+-- Í≤∞Ï†úÏ†ïÎ≥¥ Ï†ÄÏû• ÌÖåÏù¥Î∏î
+--(ÌöåÏõêÏïÑÏù¥Îîî/Í≤∞Ï†úÏùºÏãú/Í≤∞Ï†úÍ∏àÏï°/ÏÑ∏Î∂ÄÍ≤∞Ï†úÏàòÎã®/Í≤∞Ï†úÏÉÅÌÉú(Ïã§Ìå®/ÏÑ±Í≥µ))
 create table payment 
-(paynum  number             not null    -- ∞·¡¶¡§∫∏¿Œµ¶Ω∫
-,fk_userid varchar2(100)    not null    -- ªÁøÎ¿⁄æ∆¿Ãµ
-,paydate    date               not null    -- ∞·¡¶¿œΩ√
-,payamounts number        not null      -- ∞·¡¶±›æ◊
-,paymethod     varchar2(100)    not null    -- ∞·¡¶ºˆ¥‹
-,paystatus      number      not null        -- ∞·¡¶ªÛ≈¬(0; Ω«∆–/1; º∫∞¯)
+(paynum  number             not null    -- Í≤∞Ï†úÏ†ïÎ≥¥Ïù∏Îç±Ïä§
+,fk_userid varchar2(100)    not null    -- ÏÇ¨Ïö©ÏûêÏïÑÏù¥Îîî
+,paydate    date               not null    -- Í≤∞Ï†úÏùºÏãú
+,payamounts number        not null      -- Í≤∞Ï†úÍ∏àÏï°
+,paymethod     varchar2(100)    not null    -- Í≤∞Ï†úÏàòÎã®
+,paystatus      number      not null        -- Í≤∞Ï†úÏÉÅÌÉú(0; Ïã§Ìå®/1; ÏÑ±Í≥µ)
 ,constraint PK_payment primary key(paynum)
 ,constraint FK_payment_userid foreign key(fk_userid)
                                       references member(userid)
@@ -534,18 +534,29 @@ as
 select *
 from payment;
 
+alter table my_coupon add(cpstatus number default 1 not null);
+
+alter table product
+modify fk_pacname null;
+
+alter table product
+drop constraint FK_product_pacname;
+
+commit;
+
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
-select rnum, pacnum, pacname, paccontents, pacimage, pnum
+select rnum, pacnum, prodname, paccontents, pacimage, pnum
         , sdname, ctname, stname, etname, pname, price
         , saleprice, point, pqty, pcontents
         , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
 from
 (
-    select rownum as rnum,pacnum, pacname, paccontents, pacimage, pnum
-            , sdname, ctname, stname, etname, pname, price
-            , saleprice, point, pqty, pcontents
-            , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+    select rownum as rnum,pacnum, case when pacname = 'ÏóÜÏùå' then pname else pacname end as prodname
+						, paccontents, pacimage, pnum
+						, sdname, ctname, stname, etname, pname, price
+						, saleprice, point, pqty, pcontents
+						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
     from 
     (
         select pacnum, pacname, paccontents, pacimage, pnum
@@ -591,8 +602,8 @@ from
             ) V
             where rno = 1
         )T
-        --where sdname = 'π∞/¡÷Ω∫'
-        where sdname in (select sdname from small_detail where fk_ldname = 'ª¯∑ØµÂ')
+        --where sdname = 'Î¨º/Ï£ºÏä§'
+        where sdname in (select sdname from small_detail where fk_ldname = (select ldname from large_detail where ldnum = 1))
         order by pdate desc, pname asc
     ) E
 ) F
@@ -602,3 +613,275 @@ where rnum between 1 and 8;
 select *
 from product
 where fk_sdname in (select sdname from small_detail where fk_ldname = 'DIY');
+
+
+select *
+from product;
+
+-------------------------------------------------------------
+create or replace view view_product
+as
+ select pacnum, pacname, paccontents, pacimage, pnum
+                , sdname, ctname, stname, etname, pname, price
+                , saleprice, point, pqty, pcontents
+                , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+        from
+        (
+            select pacnum, pacname, paccontents, pacimage, pnum
+                    , sdname, ctname, stname, etname, pname, price
+                    , saleprice, point, pqty, pcontents
+                    , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+            from
+            (
+                select row_number() over(partition by pacnum order by saleprice) as rno
+                    , b.pacnum, b.pacname, b.paccontents, b.pacimage, a.pnum
+                    , fk_sdname as sdname, a.fk_ctname as ctname, a.fk_stname as stname, a.fk_etname as etname
+                    , a.pname, a.price, a.saleprice, a.point, a.pqty, a.pcontents
+                    , a.pcompanyname, a.pexpiredate, allergy, a.weight, a.salecount, a.plike, a.pdate
+                from product a JOIN product_package b
+                ON a.fk_pacname = b.pacname
+            ) V
+            where rno = 1 and pacnum != 1
+            union all
+            select pacnum, pacname, paccontents, pimgfilename, pnum
+                    , sdname, ctname, stname, etname, pname
+                    , price, saleprice, point, pqty, pcontents
+                    , pcompanyname, pexpiredate, allergy, weight, salecount
+                    , plike, pdate
+            from
+            (
+                select row_number() over(partition by pname order by saleprice) as rno
+                        , b.pacnum, b.pacname, b.paccontents, b.pacimage, pnum
+                        , fk_sdname AS sdname, a.fk_ctname AS ctname, a.fk_stname AS stname, a.fk_etname AS etname, a.pname
+                        , a.price, a.saleprice, a.point, a.pqty, a.pcontents
+                        , a.pcompanyname, a.pexpiredate, allergy, a.weight, a.salecount
+                        , a.plike, a.pdate, c.pimgfilename
+                from product a JOIN product_package b
+                ON a.fk_pacname = b.pacname
+                JOIN product_images c
+                ON a.pnum = c.fk_pnum
+                where pacnum = 1
+            ) V
+            where rno = 1
+        )T;
+	   
+	   
+select rnum, pacnum, prodname, paccontents, pacimage, pnum
+        , sdname, ctname, stname, etname, pname, price
+        , saleprice, point, pqty, pcontents
+        , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+from
+(
+    select rownum as rnum,pacnum, case when pacname = 'ÏóÜÏùå' then pname else pacname end as prodname
+						, paccontents, pacimage, pnum
+						, sdname, ctname, stname, etname, pname, price
+						, saleprice, point, pqty, pcontents
+						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+    from 
+    (
+        select pacnum, pacname, paccontents, pacimage, pnum
+                , sdname, ctname, stname, etname, pname, price
+                , saleprice, point, pqty, pcontents
+                , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+        from view_product
+	   where sdname in (select sdname from small_detail where fk_ldname = (select ldname from large_detail where ldnum = 1))
+        order by pdate desc, pname asc
+    ) E
+) F
+where rnum between 1 and 8;
+
+-----------------------------------------------
+String sql = "select rnum, pacnum, prodname, paccontents, pacimage, pnum\n"+
+"        , sdname, ctname, stname, etname, pname, price\n"+
+"        , saleprice, point, pqty, pcontents\n"+
+"        , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+"from\n"+
+"(\n"+
+"    select rownum as rnum,pacnum, case when pacname = 'ÏóÜÏùå' then pname else pacname end as prodname\n"+
+"						, paccontents, pacimage, pnum\n"+
+"						, sdname, ctname, stname, etname, pname, price\n"+
+"						, saleprice, point, pqty, pcontents\n"+
+"						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+"    from \n"+
+"    (\n"+
+"        select pacnum, pacname, paccontents, pacimage, pnum\n"+
+"                , sdname, ctname, stname, etname, pname, price\n"+
+"                , saleprice, point, pqty, pcontents\n"+
+"                , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+"        from view_product\n"+
+"	   where sdname in (select sdname from small_detail where fk_ldname = (select ldname from large_detail where ldnum = 1))\n"+
+"        order by pdate desc, pname asc\n"+
+"    ) E\n"+
+") F\n"+
+"where rnum between 1 and 8";
+
+--
+ select rnum, pacnum, prodname, paccontents, pacimage, pnum
+         , sdname, ctname, stname, etname, pname, price
+         , saleprice, point, pqty, pcontents
+         , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+ from
+ (
+     select rownum as rnum,pacnum, case when pacname = 'ÏóÜÏùå' then pname else pacname end as prodname
+ 						, paccontents, pacimage, pnum
+ 						, sdname, ctname, stname, etname, pname, price
+ 						, saleprice, point, pqty, pcontents
+ 						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+     from 
+     (
+         select pacnum, pacname, paccontents, pacimage, pnum
+                 , sdname, ctname, stname, etname, pname, price
+                 , saleprice, point, pqty, pcontents
+                 , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+         from view_product
+  	   where sdname in (select sdname from small_detail where fk_ldname = (select ldname from large_detail where ldnum = 1))
+         order by pdate desc, pname asc
+     ) E
+ ) F
+ where pname like '%'|| 'Ìò∏Î∞ï' || '%' and rnum between 1 and 8;
+ 
+ 
+ --
+ select rnum, pacnum, prodname, paccontents, pacimage, pnum
+         , sdname, ctname, stname, etname, pname, price
+         , saleprice, point, pqty, pcontents
+         , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+ from
+ (
+     select rownum as rnum,pacnum, case when pacname = 'ÏóÜÏùå' then pname else pacname end as prodname
+ 						, paccontents, pacimage, pnum
+ 						, sdname, ctname, stname, etname, pname, price
+ 						, saleprice, point, pqty, pcontents
+ 						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+     from 
+     (
+         select pacnum, pacname, paccontents, pacimage, pnum
+                 , sdname, ctname, stname, etname, pname, price
+                 , saleprice, point, pqty, pcontents
+                 , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+         from view_product
+  	   where sdname in (select sdname from small_detail where fk_ldname = (select ldname from large_detail where ldnum = 1))
+         order by pdate desc, pname asc
+     ) E
+ ) F
+ where pname like '%'|| '' || '%' and rnum between 1 and 8;
+ 
+ select *
+ from product a join product_images b
+ ON a.pnum = b.fk_pnum;
+ 
+ select *
+ from product_images;
+ 
+ ---
+create or replace trigger trg_package
+after update of pacname on product_package for each row
+begin
+    update product
+    set fk_pacname=:NEW.pacname where fk_pacname=:OLD.pacname;
+END;
+
+create or replace trigger trg_categorytag
+after update of ctname on category_tag for each row
+begin
+    update product
+    set fk_ctname=:NEW.ctname where fk_ctname=:OLD.ctname;
+END;
+
+create or replace trigger trg_eventtag
+after update of etname on event_tag for each row
+begin
+    update product
+    set fk_etname=:NEW.etname where fk_etname=:OLD.etname;
+END;
+
+-- Ïù¥ÎØ∏ÏßÄ ÌÖåÏù¥Î∏î on delete cascade Ï∂îÍ∞ÄÌïòÍ∏∞
+alter table product_images
+drop constraint FK_product_images_ldnum;
+
+-- > Ï†úÏïΩÏ°∞Í±¥ Ï∂îÍ∞ÄÌïòÍ∏∞
+alter table product_images
+add constraint FK_product_images_ldnum foreign key(fk_pnum)
+                                      references product(pnum)on delete cascade;
+							   
+---
+ select rnum, pacnum, prodname, paccontents, pacimage, pnum
+         , sdname, ctname, stname, etname, pname, price
+         , saleprice, point, pqty, pcontents
+         , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+ from
+ (
+     select rownum as rnum,pacnum, case when pacname = 'ÏóÜÏùå' then pname else pacname end as prodname
+ 						, paccontents, pacimage, pnum
+ 						, sdname, ctname, stname, etname, pname, price
+ 						, saleprice, point, pqty, pcontents
+ 						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+     from 
+     (
+         select pacnum, pacname, paccontents, pacimage, pnum
+                 , sdname, ctname, stname, etname, pname, price
+                 , saleprice, point, pqty, pcontents
+                 , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+         from view_product
+  	   where sdname in (select sdname from small_detail where fk_ldname = (select ldname from large_detail where ldnum = 1))
+         order by pdate desc, pname asc
+     ) E
+ ) F
+ where stname like '%'|| 'HIT' || '%' and rnum between 1 and 8 
+ 
+ --
+ select rnum, pacnum, prodname, paccontents, pacimage, pnum
+		    , sdname, ctname, stname, etname, pname, price
+		    , saleprice, point, pqty, pcontents
+		    , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+from
+ (
+	 select rownum as rnum, pacnum, prodname, paccontents, pacimage, pnum
+		    , sdname, ctname, stname, etname, pname, price
+		    , saleprice, point, pqty, pcontents
+		    , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+	 from
+	 (
+		select rownum as rnum,pacnum, case when pacname = 'ÏóÜÏùå' then pname else pacname end as prodname
+							, paccontents, pacimage, pnum
+							, sdname, ctname, stname, etname, pname, price
+							, saleprice, point, pqty, pcontents
+							, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+		from 
+		(
+		    select pacnum, pacname, paccontents, pacimage, pnum
+				  , sdname, ctname, stname, etname, pname, price
+				  , saleprice, point, pqty, pcontents
+				  , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+		    from view_product
+		   where sdname in (select sdname from small_detail where fk_ldname = (select ldname from large_detail where ldnum = 2))
+		    order by pdate desc, pname asc
+		) E
+	 ) F
+ where prodname like '%'|| 'Ï≤≠' || '%' 
+ ) T 
+ where rnum between 1 and 8;
+ --
+ select rnum, pacnum, prodname, paccontents, pacimage, pnum
+         , sdname, ctname, stname, etname, pname, price
+         , saleprice, point, pqty, pcontents
+         , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+ from
+ (
+     select rownum as rnum,pacnum, case when pacname = 'ÏóÜÏùå' then pname else pacname end as prodname
+ 						, paccontents, pacimage, pnum
+ 						, sdname, ctname, stname, etname, pname, price
+ 						, saleprice, point, pqty, pcontents
+ 						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+     from 
+     (
+         select pacnum, pacname, paccontents, pacimage, pnum
+                 , sdname, ctname, stname, etname, pname, price
+                 , saleprice, point, pqty, pcontents
+                 , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate
+         from view_product
+  	   where sdname in (select sdname from small_detail where sdnum = 2)
+         order by pdate desc, pname asc
+     ) E
+ ) F
+ where stname like '%'|| 'HIT' || '%' and rnum between 1 and 8 

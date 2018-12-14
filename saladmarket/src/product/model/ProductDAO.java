@@ -166,13 +166,946 @@ public class ProductDAO implements InterProductDAO {
 		
 		return sdCtgList;
 	}
-
+/*
+	@Override
+	public List<HashMap<String, String>> getProductByCategory(String ldCode) throws SQLException {
+		
+		List<HashMap<String, String>> productList = null;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = " select rnum, pacnum, prodname, paccontents, pacimage, pnum\n"+
+						 "         , sdname, ctname, stname, etname, pname, price\n"+
+						 "         , saleprice, point, pqty, pcontents\n"+
+						 "         , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 " from\n"+
+						 " (\n"+
+						 "     select rownum as rnum,pacnum, case when pacname = '없음' then pname else pacname end as prodname\n"+
+						 " 						, paccontents, pacimage, pnum\n"+
+						 " 						, sdname, ctname, stname, etname, pname, price\n"+
+						 " 						, saleprice, point, pqty, pcontents\n"+
+						 " 						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "     from \n"+
+						 "     (\n"+
+						 "         select pacnum, pacname, paccontents, pacimage, pnum\n"+
+						 "                 , sdname, ctname, stname, etname, pname, price\n"+
+						 "                 , saleprice, point, pqty, pcontents\n"+
+						 "                 , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "         from view_product\n"+
+						 "  	   where sdname in (select sdname from small_detail where fk_ldname = (select ldname from large_detail where ldnum = ?))\n"+
+						 "         order by pdate desc, pname asc\n"+
+						 "     ) E\n"+
+						 " ) F\n";
+						 //" where rnum between 1 and 8";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, ldCode);
+			rs = pstmt.executeQuery();
+			
+			int cnt = 0;
+			
+			while(rs.next()) {
+				
+				cnt ++;
+				if(cnt == 1) {
+					
+					productList = new ArrayList<HashMap<String, String>>();
+				}
+				
+				String rnum = rs.getString("rnum");
+				String pacnum = rs.getString("pacnum");
+				String prodname = rs.getString("prodname");
+				String paccontents = rs.getString("paccontents");
+				String pacimage = rs.getString("pacimage");
+				String pnum = rs.getString("pnum");
+				String sdname = rs.getString("sdname");
+				String ctname = rs.getString("ctname");
+				String stname = rs.getString("stname");
+				String etname = rs.getString("etname");
+				String pname = rs.getString("pname");
+				String price = rs.getString("price");
+				String saleprice = rs.getString("saleprice");
+				String point = rs.getString("point");
+				String pqty = rs.getString("pqty");
+				String pcontents = rs.getString("pcontents");
+				String pcompanyname = rs.getString("pcompanyname");
+				String pexpiredate = rs.getString("pexpiredate");
+				String allergy = rs.getString("allergy");
+				String weight = rs.getString("weight");
+				String salecount = rs.getString("salecount");
+				String plike = rs.getString("plike");
+				String pdate = rs.getString("pdate");
+				
+				HashMap<String, String> map = new HashMap<String, String>();
+				
+				map.put("rnum", rnum);
+				map.put("pacnum", pacnum);
+				map.put("prodname", prodname);
+				map.put("paccontents", paccontents);
+				map.put("pacimage", pacimage);
+				map.put("pnum", pnum);
+				map.put("sdname", sdname);
+				map.put("ctname", ctname);
+				map.put("stname", stname);
+				map.put("etname", etname);
+				map.put("pname", pname);
+				map.put("price", price);
+				map.put("saleprice", saleprice);
+				map.put("point", point);
+				map.put("pqty", pqty);
+				map.put("pcontents", pcontents);
+				map.put("pcompanyname", pcompanyname);
+				map.put("pexpiredate", pexpiredate);
+				map.put("allergy", allergy);
+				map.put("weight", weight);
+				map.put("salecount", salecount);
+				map.put("plike", plike);
+				map.put("pdate", pdate);
+				
+				productList.add(map);
+			}
+			
+			
+			
+		}finally {
+			close();
+		}
+		
+		return productList;
+	}
+*/
 	
+	@Override
+	public List<HashMap<String, String>> getSearchContent(int sizePerPage, int currentShowPageNo, String searchword) throws SQLException {
+		
+		List<HashMap<String, String>> productList = null;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = " select rnum, pacnum, prodname, paccontents, pacimage, pnum\n"+
+						 "		     , sdname, ctname, stname, etname, pname, price\n"+
+						 "		     , saleprice, point, pqty, pcontents\n"+
+						 "		     , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 " from\n"+
+						 " (\n"+
+						 " 	select rownum as rnum, pacnum, prodname, paccontents, pacimage, pnum\n"+
+						 "         , sdname, ctname, stname, etname, pname, price\n"+
+						 "         , saleprice, point, pqty, pcontents\n"+
+						 "         , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 " from\n"+
+						 " (\n"+
+						 "     select rownum as rnum,pacnum, case when pacname = '없음' then pname else pacname end as prodname\n"+
+						 " 						, paccontents, pacimage, pnum\n"+
+						 " 						, sdname, ctname, stname, etname, pname, price\n"+
+						 " 						, saleprice, point, pqty, pcontents\n"+
+						 " 						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "     from \n"+
+						 "     (\n"+
+						 "         select pacnum, pacname, paccontents, pacimage, pnum\n"+
+						 "                 , sdname, ctname, stname, etname, pname, price\n"+
+						 "                 , saleprice, point, pqty, pcontents\n"+
+						 "                 , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "         from view_product\n"+
+						 "         order by pdate desc, pname asc\n"+
+						 "     ) E\n"+
+						 " ) F\n" +
+						 " where prodname like '%'|| ? || '%' \n"+
+						 " ) T \n"+
+						 " where rnum between ? and ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchword);
+			pstmt.setInt(2, (currentShowPageNo*sizePerPage) - (sizePerPage - 1) );
+			pstmt.setInt(3, (currentShowPageNo*sizePerPage) );
+			rs = pstmt.executeQuery();
+			
+			int cnt = 0;
+			
+			while(rs.next()) {
+				
+				cnt ++;
+				if(cnt == 1) {
+					
+					productList = new ArrayList<HashMap<String, String>>();
+				}
+				
+				String rnum = rs.getString("rnum");
+				String pacnum = rs.getString("pacnum");
+				String prodname = rs.getString("prodname");
+				String paccontents = rs.getString("paccontents");
+				String pacimage = rs.getString("pacimage");
+				String pnum = rs.getString("pnum");
+				String sdname = rs.getString("sdname");
+				String ctname = rs.getString("ctname");
+				String stname = rs.getString("stname");
+				String etname = rs.getString("etname");
+				String pname = rs.getString("pname");
+				String price = rs.getString("price");
+				String saleprice = rs.getString("saleprice");
+				String point = rs.getString("point");
+				String pqty = rs.getString("pqty");
+				String pcontents = rs.getString("pcontents");
+				String pcompanyname = rs.getString("pcompanyname");
+				String pexpiredate = rs.getString("pexpiredate");
+				String allergy = rs.getString("allergy");
+				String weight = rs.getString("weight");
+				String salecount = rs.getString("salecount");
+				String plike = rs.getString("plike");
+				String pdate = rs.getString("pdate");
+				
+				HashMap<String, String> map = new HashMap<String, String>();
+				
+				map.put("rnum", rnum);
+				map.put("pacnum", pacnum);
+				map.put("prodname", prodname);
+				map.put("paccontents", paccontents);
+				map.put("pacimage", pacimage);
+				map.put("pnum", pnum);
+				map.put("sdname", sdname);
+				map.put("ctname", ctname);
+				map.put("stname", stname);
+				map.put("etname", etname);
+				map.put("pname", pname);
+				map.put("price", price);
+				map.put("saleprice", saleprice);
+				map.put("point", point);
+				map.put("pqty", pqty);
+				map.put("pcontents", pcontents);
+				map.put("pcompanyname", pcompanyname);
+				map.put("pexpiredate", pexpiredate);
+				map.put("allergy", allergy);
+				map.put("weight", weight);
+				map.put("salecount", salecount);
+				map.put("plike", plike);
+				map.put("pdate", pdate);
+				
+				productList.add(map);
+			}
+			
+			
+			
+		}finally {
+			close();
+		}
+		
+		return productList;
+	}
 
+	@Override
+	public List<HashMap<String, String>> getSearchContentByLdcode(int sizePerPage, int currentShowPageNo, String code,
+			String searchword) throws SQLException {
 
-
-
-
+		List<HashMap<String, String>> productList = null;
+		
+		try {
+			conn = ds.getConnection();
+			
+			System.out.println(sizePerPage);
+			System.out.println(currentShowPageNo);
+			System.out.println(code);
+			System.out.println(searchword);
+			
+			String sql = "  select rnum, pacnum, prodname, paccontents, pacimage, pnum\n"+
+					"		    , sdname, ctname, stname, etname, pname, price\n"+
+					"		    , saleprice, point, pqty, pcontents\n"+
+					"		    , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+					"from\n"+
+					" (\n"+
+					"	 select rownum as rnum, pacnum, prodname, paccontents, pacimage, pnum\n"+
+					"		    , sdname, ctname, stname, etname, pname, price\n"+
+					"		    , saleprice, point, pqty, pcontents\n"+
+					"		    , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+					"	 from\n"+
+					"	 (\n"+
+					"		select rownum as rnum,pacnum, case when pacname = '없음' then pname else pacname end as prodname\n"+
+					"							, paccontents, pacimage, pnum\n"+
+					"							, sdname, ctname, stname, etname, pname, price\n"+
+					"							, saleprice, point, pqty, pcontents\n"+
+					"							, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+					"		from \n"+
+					"		(\n"+
+					"		    select pacnum, pacname, paccontents, pacimage, pnum\n"+
+					"				  , sdname, ctname, stname, etname, pname, price\n"+
+					"				  , saleprice, point, pqty, pcontents\n"+
+					"				  , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+					"		    from view_product\n"+
+					"		   where sdname in (select sdname from small_detail where fk_ldname = (select ldname from large_detail where ldnum = ?))\n"+
+					"		    order by pdate desc, pname asc\n"+
+					"		) E\n"+
+					"	 ) F\n"+
+					" where prodname like '%'|| ? || '%' \n"+
+					" ) T \n"+
+					" where rnum between ? and ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, code);
+			pstmt.setString(2, searchword);
+			pstmt.setInt(3, (currentShowPageNo*sizePerPage) - (sizePerPage - 1) );
+			pstmt.setInt(4, (currentShowPageNo*sizePerPage) );
+			rs = pstmt.executeQuery();
+			
+			int cnt = 0;
+			
+			while(rs.next()) {
+				
+				cnt ++;
+				if(cnt == 1) {
+					
+					productList = new ArrayList<HashMap<String, String>>();
+				}
+				
+				String rnum = rs.getString("rnum");
+				String pacnum = rs.getString("pacnum");
+				String prodname = rs.getString("prodname");
+				String paccontents = rs.getString("paccontents");
+				String pacimage = rs.getString("pacimage");
+				String pnum = rs.getString("pnum");
+				String sdname = rs.getString("sdname");
+				String ctname = rs.getString("ctname");
+				String stname = rs.getString("stname");
+				String etname = rs.getString("etname");
+				String pname = rs.getString("pname");
+				String price = rs.getString("price");
+				String saleprice = rs.getString("saleprice");
+				String point = rs.getString("point");
+				String pqty = rs.getString("pqty");
+				String pcontents = rs.getString("pcontents");
+				String pcompanyname = rs.getString("pcompanyname");
+				String pexpiredate = rs.getString("pexpiredate");
+				String allergy = rs.getString("allergy");
+				String weight = rs.getString("weight");
+				String salecount = rs.getString("salecount");
+				String plike = rs.getString("plike");
+				String pdate = rs.getString("pdate");
+				
+				HashMap<String, String> map = new HashMap<String, String>();
+				
+				map.put("rnum", rnum);
+				map.put("pacnum", pacnum);
+				map.put("prodname", prodname);
+				map.put("paccontents", paccontents);
+				map.put("pacimage", pacimage);
+				map.put("pnum", pnum);
+				map.put("sdname", sdname);
+				map.put("ctname", ctname);
+				map.put("stname", stname);
+				map.put("etname", etname);
+				map.put("pname", pname);
+				map.put("price", price);
+				map.put("saleprice", saleprice);
+				map.put("point", point);
+				map.put("pqty", pqty);
+				map.put("pcontents", pcontents);
+				map.put("pcompanyname", pcompanyname);
+				map.put("pexpiredate", pexpiredate);
+				map.put("allergy", allergy);
+				map.put("weight", weight);
+				map.put("salecount", salecount);
+				map.put("plike", plike);
+				map.put("pdate", pdate);
+				
+				productList.add(map);
+			}
+			
+			
+			
+		}finally {
+			close();
+		}
+		
+		return productList;
+	}
 	
+	@Override
+	public List<HashMap<String, String>> getSearchContentBySdcode(int sizePerPage, int currentShowPageNo, String code,
+			String searchword) throws SQLException {
+
+		List<HashMap<String, String>> productList = null;
+		
+		try {
+			conn = ds.getConnection();
+			
+			System.out.println(sizePerPage);
+			System.out.println(currentShowPageNo);
+			System.out.println(code);
+			System.out.println(searchword);
+			
+			String sql = "  select rnum, pacnum, prodname, paccontents, pacimage, pnum\n"+
+					"		    , sdname, ctname, stname, etname, pname, price\n"+
+					"		    , saleprice, point, pqty, pcontents\n"+
+					"		    , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+					"from\n"+
+					" (\n"+
+					"	 select rownum as rnum, pacnum, prodname, paccontents, pacimage, pnum\n"+
+					"		    , sdname, ctname, stname, etname, pname, price\n"+
+					"		    , saleprice, point, pqty, pcontents\n"+
+					"		    , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+					"	 from\n"+
+					"	 (\n"+
+					"		select rownum as rnum,pacnum, case when pacname = '없음' then pname else pacname end as prodname\n"+
+					"							, paccontents, pacimage, pnum\n"+
+					"							, sdname, ctname, stname, etname, pname, price\n"+
+					"							, saleprice, point, pqty, pcontents\n"+
+					"							, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+					"		from \n"+
+					"		(\n"+
+					"		    select pacnum, pacname, paccontents, pacimage, pnum\n"+
+					"				  , sdname, ctname, stname, etname, pname, price\n"+
+					"				  , saleprice, point, pqty, pcontents\n"+
+					"				  , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+					"		    from view_product\n"+
+					"		   where sdname in (select sdname from small_detail where sdnum = ?)\n"+
+					"		    order by pdate desc, pname asc\n"+
+					"		) E\n"+
+					"	 ) F\n"+
+					" where prodname like '%'|| ? || '%' \n"+
+					" ) T \n"+
+					" where rnum between ? and ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, code);
+			pstmt.setString(2, searchword);
+			pstmt.setInt(3, (currentShowPageNo*sizePerPage) - (sizePerPage - 1) );
+			pstmt.setInt(4, (currentShowPageNo*sizePerPage) );
+			rs = pstmt.executeQuery();
+			
+			int cnt = 0;
+			
+			while(rs.next()) {
+				
+				cnt ++;
+				if(cnt == 1) {
+					
+					productList = new ArrayList<HashMap<String, String>>();
+				}
+				
+				String rnum = rs.getString("rnum");
+				String pacnum = rs.getString("pacnum");
+				String prodname = rs.getString("prodname");
+				String paccontents = rs.getString("paccontents");
+				String pacimage = rs.getString("pacimage");
+				String pnum = rs.getString("pnum");
+				String sdname = rs.getString("sdname");
+				String ctname = rs.getString("ctname");
+				String stname = rs.getString("stname");
+				String etname = rs.getString("etname");
+				String pname = rs.getString("pname");
+				String price = rs.getString("price");
+				String saleprice = rs.getString("saleprice");
+				String point = rs.getString("point");
+				String pqty = rs.getString("pqty");
+				String pcontents = rs.getString("pcontents");
+				String pcompanyname = rs.getString("pcompanyname");
+				String pexpiredate = rs.getString("pexpiredate");
+				String allergy = rs.getString("allergy");
+				String weight = rs.getString("weight");
+				String salecount = rs.getString("salecount");
+				String plike = rs.getString("plike");
+				String pdate = rs.getString("pdate");
+				
+				HashMap<String, String> map = new HashMap<String, String>();
+				
+				map.put("rnum", rnum);
+				map.put("pacnum", pacnum);
+				map.put("prodname", prodname);
+				map.put("paccontents", paccontents);
+				map.put("pacimage", pacimage);
+				map.put("pnum", pnum);
+				map.put("sdname", sdname);
+				map.put("ctname", ctname);
+				map.put("stname", stname);
+				map.put("etname", etname);
+				map.put("pname", pname);
+				map.put("price", price);
+				map.put("saleprice", saleprice);
+				map.put("point", point);
+				map.put("pqty", pqty);
+				map.put("pcontents", pcontents);
+				map.put("pcompanyname", pcompanyname);
+				map.put("pexpiredate", pexpiredate);
+				map.put("allergy", allergy);
+				map.put("weight", weight);
+				map.put("salecount", salecount);
+				map.put("plike", plike);
+				map.put("pdate", pdate);
+				
+				productList.add(map);
+			}
+			
+			
+			
+		}finally {
+			close();
+		}
+		
+		return productList;
+	}
+
+	@Override
+	public int getTotalCountByLdcode(String code, String searchword) throws SQLException {
+		///////////////////////////////////////////////////////////////////////////////////////searchword
+		int totalCount = 0;
+		
+		try {
+			conn = ds.getConnection();
+			// 객체 ds 를 통해 아파치톰캣이 제공하는 DBCP(DB Connection pool)에서 생성된 커넥션을 빌려온다.	
+			
+			String sql = " select count(*) AS CNT\n"+
+						 " from\n"+
+						 " (\n"+
+						 "     select rownum as rnum,pacnum, case when pacname = '없음' then pname else pacname end as prodname\n"+
+						 " 						, paccontents, pacimage, pnum\n"+
+						 " 						, sdname, ctname, stname, etname, pname, price\n"+
+						 " 						, saleprice, point, pqty, pcontents\n"+
+						 " 						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "     from \n"+
+						 "     (\n"+
+						 "         select pacnum, pacname, paccontents, pacimage, pnum\n"+
+						 "                 , sdname, ctname, stname, etname, pname, price\n"+
+						 "                 , saleprice, point, pqty, pcontents\n"+
+						 "                 , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "         from view_product\n"+
+						 "  	   where sdname in (select sdname from small_detail where fk_ldname = (select ldname from large_detail where ldnum = ?))\n"+
+						 "         order by pdate desc, pname asc\n"+
+						 "     ) E\n"+
+						 " ) F\n" ;
+					
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, code);
+			
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			totalCount = rs.getInt("CNT");
+			
+		} finally {
+			close();
+		}
+		
+		return totalCount;
+	}
 	
+	@Override
+	public int getTotalCountBySdcode(String code, String searchword) throws SQLException {
+		
+		int totalCount = 0;
+		
+		try {
+			conn = ds.getConnection();
+			// 객체 ds 를 통해 아파치톰캣이 제공하는 DBCP(DB Connection pool)에서 생성된 커넥션을 빌려온다.	
+			
+			String sql = " select count(*) AS CNT\n"+
+						 " from\n"+
+						 " (\n"+
+						 "     select rownum as rnum,pacnum, case when pacname = '없음' then pname else pacname end as prodname\n"+
+						 " 						, paccontents, pacimage, pnum\n"+
+						 " 						, sdname, ctname, stname, etname, pname, price\n"+
+						 " 						, saleprice, point, pqty, pcontents\n"+
+						 " 						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "     from \n"+
+						 "     (\n"+
+						 "         select pacnum, pacname, paccontents, pacimage, pnum\n"+
+						 "                 , sdname, ctname, stname, etname, pname, price\n"+
+						 "                 , saleprice, point, pqty, pcontents\n"+
+						 "                 , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "         from view_product\n"+
+						 "  	   where sdname in (select sdname from small_detail where sdnum = ?)\n"+
+						 "         order by pdate desc, pname asc\n"+
+						 "     ) E\n"+
+						 " ) F\n" ;
+					
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, code);
+			
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			totalCount = rs.getInt("CNT");
+			
+		} finally {
+			close();
+		}
+		
+		return totalCount;
+	}
+
+	@Override
+	public int getTotalSearchCount(String totalSearchWord) throws SQLException {
+		
+		int totalCount = 0;
+		
+		try {
+			conn = ds.getConnection();
+			// 객체 ds 를 통해 아파치톰캣이 제공하는 DBCP(DB Connection pool)에서 생성된 커넥션을 빌려온다.	
+			
+			String sql = " select count(*) AS CNT\n"+
+						 " from\n"+
+						 " (\n"+
+						 "     select rownum as rnum,pacnum, case when pacname = '없음' then pname else pacname end as prodname\n"+
+						 " 						, paccontents, pacimage, pnum\n"+
+						 " 						, sdname, ctname, stname, etname, pname, price\n"+
+						 " 						, saleprice, point, pqty, pcontents\n"+
+						 " 						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "     from \n"+
+						 "     (\n"+
+						 "         select pacnum, pacname, paccontents, pacimage, pnum\n"+
+						 "                 , sdname, ctname, stname, etname, pname, price\n"+
+						 "                 , saleprice, point, pqty, pcontents\n"+
+						 "                 , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "         from view_product\n"+
+						 "         order by pdate desc, pname asc\n"+
+						 "     ) E\n"+
+						 " ) F\n" +
+						 " where prodname like '%'|| ? || '%' ";
+					
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, totalSearchWord);
+			
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			totalCount = rs.getInt("CNT");
+			
+		} finally {
+			close();
+		}
+		
+		return totalCount;
+	}
+
+	@Override
+	public List<HashMap<String, String>> getContentBySpecNLdcode(String code, String spec) throws SQLException {
+		
+		List<HashMap<String, String>> productList = null;
+			
+		try {
+			conn = ds.getConnection();
+			
+			String sql = " select rnum, pacnum, prodname, paccontents, pacimage, pnum\n"+
+						 "         , sdname, ctname, stname, etname, pname, price\n"+
+						 "         , saleprice, point, pqty, pcontents\n"+
+						 "         , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 " from\n"+
+						 " (\n"+
+						 "     select rownum as rnum,pacnum, case when pacname = '없음' then pname else pacname end as prodname\n"+
+						 " 						, paccontents, pacimage, pnum\n"+
+						 " 						, sdname, ctname, stname, etname, pname, price\n"+
+						 " 						, saleprice, point, pqty, pcontents\n"+
+						 " 						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "     from \n"+
+						 "     (\n"+
+						 "         select pacnum, pacname, paccontents, pacimage, pnum\n"+
+						 "                 , sdname, ctname, stname, etname, pname, price\n"+
+						 "                 , saleprice, point, pqty, pcontents\n"+
+						 "                 , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "         from view_product\n"+
+						 "  	   where sdname in (select sdname from small_detail where fk_ldname = (select ldname from large_detail where ldnum = ?))\n"+
+						 "         order by pdate desc, pname asc\n"+
+						 "     ) E\n"+
+						 " ) F\n" +
+						 " where stname like '%'|| ? || '%' and rnum between 1 and 8 ";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, code);
+				pstmt.setString(2, spec);
+				rs = pstmt.executeQuery();
+				
+				int cnt = 0;
+				
+				while(rs.next()) {
+					
+					cnt ++;
+					if(cnt == 1) {
+						
+						productList = new ArrayList<HashMap<String, String>>();
+					}
+					
+					String rnum = rs.getString("rnum");
+					String pacnum = rs.getString("pacnum");
+					String prodname = rs.getString("prodname");
+					String paccontents = rs.getString("paccontents");
+					String pacimage = rs.getString("pacimage");
+					String pnum = rs.getString("pnum");
+					String sdname = rs.getString("sdname");
+					String ctname = rs.getString("ctname");
+					String stname = rs.getString("stname");
+					String etname = rs.getString("etname");
+					String pname = rs.getString("pname");
+					String price = rs.getString("price");
+					String saleprice = rs.getString("saleprice");
+					String point = rs.getString("point");
+					String pqty = rs.getString("pqty");
+					String pcontents = rs.getString("pcontents");
+					String pcompanyname = rs.getString("pcompanyname");
+					String pexpiredate = rs.getString("pexpiredate");
+					String allergy = rs.getString("allergy");
+					String weight = rs.getString("weight");
+					String salecount = rs.getString("salecount");
+					String plike = rs.getString("plike");
+					String pdate = rs.getString("pdate");
+					
+					HashMap<String, String> map = new HashMap<String, String>();
+					
+					map.put("rnum", rnum);
+					map.put("pacnum", pacnum);
+					map.put("prodname", prodname);
+					map.put("paccontents", paccontents);
+					map.put("pacimage", pacimage);
+					map.put("pnum", pnum);
+					map.put("sdname", sdname);
+					map.put("ctname", ctname);
+					map.put("stname", stname);
+					map.put("etname", etname);
+					map.put("pname", pname);
+					map.put("price", price);
+					map.put("saleprice", saleprice);
+					map.put("point", point);
+					map.put("pqty", pqty);
+					map.put("pcontents", pcontents);
+					map.put("pcompanyname", pcompanyname);
+					map.put("pexpiredate", pexpiredate);
+					map.put("allergy", allergy);
+					map.put("weight", weight);
+					map.put("salecount", salecount);
+					map.put("plike", plike);
+					map.put("pdate", pdate);
+					
+					productList.add(map);
+				}
+				
+			}finally {
+				close();
+			}
+			
+			return productList;
+		}
+	
+	@Override
+	public List<HashMap<String, String>> getContentBySpecNSdcode(String code, String spec) throws SQLException {
+		
+		List<HashMap<String, String>> productList = null;
+					
+		try {
+			conn = ds.getConnection();
+			
+			String sql = " select rnum, pacnum, prodname, paccontents, pacimage, pnum\n"+
+						 "         , sdname, ctname, stname, etname, pname, price\n"+
+						 "         , saleprice, point, pqty, pcontents\n"+
+						 "         , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 " from\n"+
+						 " (\n"+
+						 "     select rownum as rnum,pacnum, case when pacname = '없음' then pname else pacname end as prodname\n"+
+						 " 						, paccontents, pacimage, pnum\n"+
+						 " 						, sdname, ctname, stname, etname, pname, price\n"+
+						 " 						, saleprice, point, pqty, pcontents\n"+
+						 " 						, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "     from \n"+
+						 "     (\n"+
+						 "         select pacnum, pacname, paccontents, pacimage, pnum\n"+
+						 "                 , sdname, ctname, stname, etname, pname, price\n"+
+						 "                 , saleprice, point, pqty, pcontents\n"+
+						 "                 , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+						 "         from view_product\n"+
+						 "  	   where sdname in (select sdname from small_detail where sdnum = ?)\n"+
+						 "         order by pdate desc, pname asc\n"+
+						 "     ) E\n"+
+						 " ) F\n" +
+						 " where stname like '%'|| ? || '%' and rnum between 1 and 8 ";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, code);
+				pstmt.setString(2, spec);
+				rs = pstmt.executeQuery();
+				
+				int cnt = 0;
+				
+				while(rs.next()) {
+					
+					cnt ++;
+					if(cnt == 1) {
+						
+						productList = new ArrayList<HashMap<String, String>>();
+					}
+					
+					String rnum = rs.getString("rnum");
+					String pacnum = rs.getString("pacnum");
+					String prodname = rs.getString("prodname");
+					String paccontents = rs.getString("paccontents");
+					String pacimage = rs.getString("pacimage");
+					String pnum = rs.getString("pnum");
+					String sdname = rs.getString("sdname");
+					String ctname = rs.getString("ctname");
+					String stname = rs.getString("stname");
+					String etname = rs.getString("etname");
+					String pname = rs.getString("pname");
+					String price = rs.getString("price");
+					String saleprice = rs.getString("saleprice");
+					String point = rs.getString("point");
+					String pqty = rs.getString("pqty");
+					String pcontents = rs.getString("pcontents");
+					String pcompanyname = rs.getString("pcompanyname");
+					String pexpiredate = rs.getString("pexpiredate");
+					String allergy = rs.getString("allergy");
+					String weight = rs.getString("weight");
+					String salecount = rs.getString("salecount");
+					String plike = rs.getString("plike");
+					String pdate = rs.getString("pdate");
+					
+					HashMap<String, String> map = new HashMap<String, String>();
+					
+					map.put("rnum", rnum);
+					map.put("pacnum", pacnum);
+					map.put("prodname", prodname);
+					map.put("paccontents", paccontents);
+					map.put("pacimage", pacimage);
+					map.put("pnum", pnum);
+					map.put("sdname", sdname);
+					map.put("ctname", ctname);
+					map.put("stname", stname);
+					map.put("etname", etname);
+					map.put("pname", pname);
+					map.put("price", price);
+					map.put("saleprice", saleprice);
+					map.put("point", point);
+					map.put("pqty", pqty);
+					map.put("pcontents", pcontents);
+					map.put("pcompanyname", pcompanyname);
+					map.put("pexpiredate", pexpiredate);
+					map.put("allergy", allergy);
+					map.put("weight", weight);
+					map.put("salecount", salecount);
+					map.put("plike", plike);
+					map.put("pdate", pdate);
+					
+					productList.add(map);
+				}
+				
+			}finally {
+				close();
+			}
+			
+			return productList;
+		}
+	
+	@Override
+	public List<HashMap<String, String>> getSearchProduct(int sizePerPage, int currentShowPageNo, String totalSearchWord) throws SQLException {
+
+		List<HashMap<String, String>> productList = null;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = "  select rnum, pacnum, prodname, paccontents, pacimage, pnum\n"+
+					"		    , sdname, ctname, stname, etname, pname, price\n"+
+					"		    , saleprice, point, pqty, pcontents\n"+
+					"		    , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+					"from\n"+
+					" (\n"+
+					"	 select rownum as rnum, pacnum, prodname, paccontents, pacimage, pnum\n"+
+					"		    , sdname, ctname, stname, etname, pname, price\n"+
+					"		    , saleprice, point, pqty, pcontents\n"+
+					"		    , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+					"	 from\n"+
+					"	 (\n"+
+					"		select rownum as rnum,pacnum, case when pacname = '없음' then pname else pacname end as prodname\n"+
+					"							, paccontents, pacimage, pnum\n"+
+					"							, sdname, ctname, stname, etname, pname, price\n"+
+					"							, saleprice, point, pqty, pcontents\n"+
+					"							, pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+					"		from \n"+
+					"		(\n"+
+					"		    select pacnum, pacname, paccontents, pacimage, pnum\n"+
+					"				  , sdname, ctname, stname, etname, pname, price\n"+
+					"				  , saleprice, point, pqty, pcontents\n"+
+					"				  , pcompanyname, pexpiredate, allergy, weight, salecount, plike, pdate\n"+
+					"		    from view_product\n"+
+					"		    order by pdate desc, pname asc\n"+
+					"		) E\n"+
+					"	 ) F\n"+
+					" where prodname like '%'|| ? || '%' \n"+
+					" ) T \n"+
+					" where rnum between ? and ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, totalSearchWord);
+			pstmt.setInt(2, (currentShowPageNo*sizePerPage) - (sizePerPage - 1) );
+			pstmt.setInt(3, (currentShowPageNo*sizePerPage) );
+			rs = pstmt.executeQuery();
+			
+			int cnt = 0;
+			
+			while(rs.next()) {
+				
+				cnt ++;
+				if(cnt == 1) {
+					
+					productList = new ArrayList<HashMap<String, String>>();
+				}
+				
+				String rnum = rs.getString("rnum");
+				String pacnum = rs.getString("pacnum");
+				String prodname = rs.getString("prodname");
+				String paccontents = rs.getString("paccontents");
+				String pacimage = rs.getString("pacimage");
+				String pnum = rs.getString("pnum");
+				String sdname = rs.getString("sdname");
+				String ctname = rs.getString("ctname");
+				String stname = rs.getString("stname");
+				String etname = rs.getString("etname");
+				String pname = rs.getString("pname");
+				String price = rs.getString("price");
+				String saleprice = rs.getString("saleprice");
+				String point = rs.getString("point");
+				String pqty = rs.getString("pqty");
+				String pcontents = rs.getString("pcontents");
+				String pcompanyname = rs.getString("pcompanyname");
+				String pexpiredate = rs.getString("pexpiredate");
+				String allergy = rs.getString("allergy");
+				String weight = rs.getString("weight");
+				String salecount = rs.getString("salecount");
+				String plike = rs.getString("plike");
+				String pdate = rs.getString("pdate");
+				
+				HashMap<String, String> map = new HashMap<String, String>();
+				
+				map.put("rnum", rnum);
+				map.put("pacnum", pacnum);
+				map.put("prodname", prodname);
+				map.put("paccontents", paccontents);
+				map.put("pacimage", pacimage);
+				map.put("pnum", pnum);
+				map.put("sdname", sdname);
+				map.put("ctname", ctname);
+				map.put("stname", stname);
+				map.put("etname", etname);
+				map.put("pname", pname);
+				map.put("price", price);
+				map.put("saleprice", saleprice);
+				map.put("point", point);
+				map.put("pqty", pqty);
+				map.put("pcontents", pcontents);
+				map.put("pcompanyname", pcompanyname);
+				map.put("pexpiredate", pexpiredate);
+				map.put("allergy", allergy);
+				map.put("weight", weight);
+				map.put("salecount", salecount);
+				map.put("plike", plike);
+				map.put("pdate", pdate);
+				
+				productList.add(map);
+			}
+			
+			
+			
+		}finally {
+			close();
+		}
+		
+		return productList;
+	}
 }
